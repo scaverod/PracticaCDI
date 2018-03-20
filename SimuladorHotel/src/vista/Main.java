@@ -96,7 +96,8 @@ public class Main extends JFrame {
 					.addContainerGap())
 		);
 		
-		JButton btnNewButton_2 = new JButton("New button");
+		JButton btnNewButton_2 = new JButton("Usuario");
+		btnNewButton_2.setIcon(new ImageIcon(Main.class.getResource("/iconos/usuario x32.png")));
 		
 		JButton button = new JButton("New button");
 		
