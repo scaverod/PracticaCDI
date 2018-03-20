@@ -64,7 +64,7 @@ public class Main extends JFrame {
 		);
 		
 		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon(Main.class.getResource("/iconos/Android-Tablet-Frame-PNG.png")));
+		label.setIcon(new ImageIcon(Main.class.getResource("/iconos/marcoTablet.png")));
 		label.setBounds(130, 3, 1080, 690);
 		layeredPane.add(label);
 		
@@ -82,27 +82,51 @@ public class Main extends JFrame {
 				.addGroup(gl_pantalla.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_pantalla.createParallelGroup(Alignment.TRAILING)
-						.addComponent(pantallaMenu, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 931, Short.MAX_VALUE)
-						.addComponent(menuPrincipal, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 931, Short.MAX_VALUE))
+						.addComponent(menuPrincipal, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 931, Short.MAX_VALUE)
+						.addComponent(pantallaMenu, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 931, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		gl_pantalla.setVerticalGroup(
 			gl_pantalla.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_pantalla.createSequentialGroup()
+				.addGroup(Alignment.TRAILING, gl_pantalla.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(menuPrincipal, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
+					.addComponent(menuPrincipal, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
 					.addComponent(pantallaMenu, GroupLayout.PREFERRED_SIZE, 360, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
 		);
+		
+		JButton btnNewButton_2 = new JButton("New button");
+		
+		JButton button = new JButton("New button");
+		
+		JButton button_1 = new JButton("New button");
+		
+		JButton button_2 = new JButton("New button");
 		GroupLayout gl_menuPrincipal = new GroupLayout(menuPrincipal);
 		gl_menuPrincipal.setHorizontalGroup(
 			gl_menuPrincipal.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 931, Short.MAX_VALUE)
+				.addGroup(gl_menuPrincipal.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(btnNewButton_2, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(button_1, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+					.addComponent(button_2, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(button, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
 		);
 		gl_menuPrincipal.setVerticalGroup(
 			gl_menuPrincipal.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 62, Short.MAX_VALUE)
+				.addGroup(gl_menuPrincipal.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_menuPrincipal.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnNewButton_2, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
+						.addComponent(button)
+						.addComponent(button_1)
+						.addComponent(button_2))
+					.addContainerGap(96, Short.MAX_VALUE))
 		);
 		menuPrincipal.setLayout(gl_menuPrincipal);
 		pantalla.setLayout(gl_pantalla);
