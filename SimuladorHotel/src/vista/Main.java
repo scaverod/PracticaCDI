@@ -16,6 +16,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.JButton;
 import javax.swing.JToggleButton;
 import javax.swing.ButtonGroup;
+import java.awt.Font;
 
 public class Main extends JFrame {
 
@@ -103,18 +104,26 @@ public class Main extends JFrame {
 		);
 		
 		JToggleButton btnSpa = new JToggleButton("Spa");
+		btnSpa.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		btnSpa.setSelectedIcon(new ImageIcon(Main.class.getResource("/iconos/spa_x32_black.png")));
 		btnSpa.setIcon(new ImageIcon(Main.class.getResource("/iconos/spa_x32_blue.png")));
 		buttonGroup.add(btnSpa);
 		
 		JToggleButton btnHabitacion = new JToggleButton("Habitaci\u00F3n");
+		btnHabitacion.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		btnHabitacion.setSelectedIcon(new ImageIcon(Main.class.getResource("/iconos/cama_x32_black.png")));
 		btnHabitacion.setIcon(new ImageIcon(Main.class.getResource("/iconos/cama_x32_blue.png")));
 		buttonGroup.add(btnHabitacion);
 		
 		JToggleButton btnCuenta = new JToggleButton("Cuenta");
+		btnCuenta.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		btnCuenta.setSelectedIcon(new ImageIcon(Main.class.getResource("/iconos/usuario_x32_black.png")));
 		buttonGroup.add(btnCuenta);
 		btnCuenta.setIcon(new ImageIcon(Main.class.getResource("/iconos/usuario_x32_blue.png")));
 		
 		JToggleButton btnServicios = new JToggleButton("Servicios");
+		btnServicios.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		btnServicios.setSelectedIcon(new ImageIcon(Main.class.getResource("/iconos/servicios_x32_black.png")));
 		btnServicios.setIcon(new ImageIcon(Main.class.getResource("/iconos/servicios_x32_blue.png")));
 		buttonGroup.add(btnServicios);
 		GroupLayout gl_menuPrincipal = new GroupLayout(menuPrincipal);
@@ -136,15 +145,12 @@ public class Main extends JFrame {
 				.addGroup(gl_menuPrincipal.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_menuPrincipal.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_menuPrincipal.createSequentialGroup()
-							.addGroup(gl_menuPrincipal.createParallelGroup(Alignment.BASELINE, false)
-								.addComponent(btnSpa, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnHabitacion, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnCuenta, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE))
-							.addGap(118))
-						.addGroup(gl_menuPrincipal.createSequentialGroup()
+						.addComponent(btnHabitacion, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_menuPrincipal.createParallelGroup(Alignment.BASELINE)
 							.addComponent(btnServicios, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
-							.addContainerGap(118, Short.MAX_VALUE))))
+							.addComponent(btnSpa, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
+							.addComponent(btnCuenta, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		menuPrincipal.setLayout(gl_menuPrincipal);
 		pantalla.setLayout(gl_pantalla);
