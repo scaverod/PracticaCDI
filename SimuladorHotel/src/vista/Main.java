@@ -1,6 +1,5 @@
 package vista;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -11,12 +10,12 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLayeredPane;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
-import java.awt.CardLayout;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.BoxLayout;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.JButton;
-import javax.swing.SpringLayout;
-import java.awt.FlowLayout;
+import javax.swing.JToggleButton;
+import javax.swing.ButtonGroup;
 
 public class Main extends JFrame {
 
@@ -25,6 +24,7 @@ public class Main extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
 
 	/**
 	 * Launch the application.
@@ -46,6 +46,12 @@ public class Main extends JFrame {
 	 * Create the frame.
 	 */
 	public Main() {
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+			e.printStackTrace();
+		}
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1366, 745);
 		contentPane = new JPanel();
@@ -82,52 +88,63 @@ public class Main extends JFrame {
 				.addGroup(gl_pantalla.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_pantalla.createParallelGroup(Alignment.TRAILING)
-						.addComponent(menuPrincipal, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 931, Short.MAX_VALUE)
-						.addComponent(pantallaMenu, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 931, Short.MAX_VALUE))
+						.addComponent(pantallaMenu, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 931, Short.MAX_VALUE)
+						.addComponent(menuPrincipal, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 931, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		gl_pantalla.setVerticalGroup(
-			gl_pantalla.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_pantalla.createSequentialGroup()
+			gl_pantalla.createParallelGroup(Alignment.TRAILING)
+				.addGroup(Alignment.LEADING, gl_pantalla.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(menuPrincipal, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
-					.addComponent(pantallaMenu, GroupLayout.PREFERRED_SIZE, 360, GroupLayout.PREFERRED_SIZE)
+					.addComponent(menuPrincipal, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(pantallaMenu, GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
 					.addContainerGap())
 		);
 		
-		JButton btnNewButton_2 = new JButton("Usuario");
-		btnNewButton_2.setIcon(new ImageIcon(Main.class.getResource("/iconos/usuario x32.png")));
+		JToggleButton btnSpa = new JToggleButton("Spa");
+		btnSpa.setIcon(new ImageIcon(Main.class.getResource("/iconos/spa_x32_blue.png")));
+		buttonGroup.add(btnSpa);
 		
-		JButton button = new JButton("New button");
+		JToggleButton btnHabitacion = new JToggleButton("Habitaci\u00F3n");
+		btnHabitacion.setIcon(new ImageIcon(Main.class.getResource("/iconos/cama_x32_blue.png")));
+		buttonGroup.add(btnHabitacion);
 		
-		JButton button_1 = new JButton("New button");
+		JToggleButton btnCuenta = new JToggleButton("Cuenta");
+		buttonGroup.add(btnCuenta);
+		btnCuenta.setIcon(new ImageIcon(Main.class.getResource("/iconos/usuario_x32_blue.png")));
 		
-		JButton button_2 = new JButton("New button");
+		JToggleButton btnServicios = new JToggleButton("Servicios");
+		btnServicios.setIcon(new ImageIcon(Main.class.getResource("/iconos/servicios_x32_blue.png")));
+		buttonGroup.add(btnServicios);
 		GroupLayout gl_menuPrincipal = new GroupLayout(menuPrincipal);
 		gl_menuPrincipal.setHorizontalGroup(
 			gl_menuPrincipal.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_menuPrincipal.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(btnNewButton_2, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
+					.addComponent(btnHabitacion, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(button_1, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
+					.addComponent(btnSpa, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-					.addComponent(button_2, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
+					.addComponent(btnServicios, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(button, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
+					.addComponent(btnCuenta, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
 		);
 		gl_menuPrincipal.setVerticalGroup(
 			gl_menuPrincipal.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_menuPrincipal.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_menuPrincipal.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnNewButton_2, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
-						.addComponent(button)
-						.addComponent(button_1)
-						.addComponent(button_2))
-					.addContainerGap(96, Short.MAX_VALUE))
+					.addGroup(gl_menuPrincipal.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_menuPrincipal.createSequentialGroup()
+							.addGroup(gl_menuPrincipal.createParallelGroup(Alignment.BASELINE, false)
+								.addComponent(btnSpa, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
+								.addComponent(btnHabitacion, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
+								.addComponent(btnCuenta, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE))
+							.addGap(118))
+						.addGroup(gl_menuPrincipal.createSequentialGroup()
+							.addComponent(btnServicios, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap(118, Short.MAX_VALUE))))
 		);
 		menuPrincipal.setLayout(gl_menuPrincipal);
 		pantalla.setLayout(gl_pantalla);
