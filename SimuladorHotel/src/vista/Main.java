@@ -17,6 +17,7 @@ import javax.swing.JButton;
 import javax.swing.JToggleButton;
 import javax.swing.ButtonGroup;
 import java.awt.Font;
+import java.awt.CardLayout;
 
 public class Main extends JFrame {
 
@@ -102,6 +103,33 @@ public class Main extends JFrame {
 					.addComponent(pantallaMenu, GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
 					.addContainerGap())
 		);
+		pantallaMenu.setLayout(new CardLayout(0, 0));
+		
+		JPanel panelBienvenida = new JPanel();
+		pantallaMenu.add(panelBienvenida, panelBienvenida.getName());
+		GroupLayout gl_panelBienvenida = new GroupLayout(panelBienvenida);
+		gl_panelBienvenida.setHorizontalGroup(
+			gl_panelBienvenida.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 931, Short.MAX_VALUE)
+		);
+		gl_panelBienvenida.setVerticalGroup(
+			gl_panelBienvenida.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 483, Short.MAX_VALUE)
+		);
+		panelBienvenida.setLayout(gl_panelBienvenida);
+		
+		JPanel panelHabitacion = new JPanel();
+		pantallaMenu.add(panelHabitacion, panelHabitacion.getName());
+		GroupLayout gl_panelHabitacion = new GroupLayout(panelHabitacion);
+		gl_panelHabitacion.setHorizontalGroup(
+			gl_panelHabitacion.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 931, Short.MAX_VALUE)
+		);
+		gl_panelHabitacion.setVerticalGroup(
+			gl_panelHabitacion.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 483, Short.MAX_VALUE)
+		);
+		panelHabitacion.setLayout(gl_panelHabitacion);
 		
 		JToggleButton btnSpa = new JToggleButton("Spa");
 		btnSpa.setFont(new Font("Tahoma", Font.PLAIN, 24));
