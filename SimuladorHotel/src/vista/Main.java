@@ -13,11 +13,12 @@ import javax.swing.ImageIcon;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.JButton;
 import javax.swing.JToggleButton;
 import javax.swing.ButtonGroup;
 import java.awt.Font;
 import java.awt.CardLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Main extends JFrame {
 
@@ -106,19 +107,30 @@ public class Main extends JFrame {
 		pantallaMenu.setLayout(new CardLayout(0, 0));
 		
 		JPanel panelBienvenida = new JPanel();
+		panelBienvenida.setName("panelBienvenida");
 		pantallaMenu.add(panelBienvenida, panelBienvenida.getName());
+		
+		JLabel label_1 = new JLabel("");
+		label_1.setIcon(new ImageIcon(Main.class.getResource("/iconos/imagen_bienvenida.png")));
 		GroupLayout gl_panelBienvenida = new GroupLayout(panelBienvenida);
 		gl_panelBienvenida.setHorizontalGroup(
 			gl_panelBienvenida.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 931, Short.MAX_VALUE)
+				.addGroup(gl_panelBienvenida.createSequentialGroup()
+					.addGap(88)
+					.addComponent(label_1)
+					.addContainerGap(89, Short.MAX_VALUE))
 		);
 		gl_panelBienvenida.setVerticalGroup(
 			gl_panelBienvenida.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 483, Short.MAX_VALUE)
+				.addGroup(gl_panelBienvenida.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(label_1)
+					.addContainerGap(23, Short.MAX_VALUE))
 		);
 		panelBienvenida.setLayout(gl_panelBienvenida);
 		
 		JPanel panelHabitacion = new JPanel();
+		panelHabitacion.setName("panelHabitacion");
 		pantallaMenu.add(panelHabitacion, panelHabitacion.getName());
 		GroupLayout gl_panelHabitacion = new GroupLayout(panelHabitacion);
 		gl_panelHabitacion.setHorizontalGroup(
@@ -138,6 +150,12 @@ public class Main extends JFrame {
 		buttonGroup.add(btnSpa);
 		
 		JToggleButton btnHabitacion = new JToggleButton("Habitaci\u00F3n");
+		btnHabitacion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CardLayout l = (CardLayout) pantallaMenu.getLayout();
+				l.show(pantallaMenu, panelHabitacion.getName());
+			}
+		});
 		btnHabitacion.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		btnHabitacion.setSelectedIcon(new ImageIcon(Main.class.getResource("/iconos/cama_x32_black.png")));
 		btnHabitacion.setIcon(new ImageIcon(Main.class.getResource("/iconos/cama_x32_blue.png")));
