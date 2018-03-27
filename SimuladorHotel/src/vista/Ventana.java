@@ -31,6 +31,7 @@ public class Ventana extends JFrame {
 	private JPasswordField campoUsuario;
 	private JPanel panelPrincipal;
 	private JPanel panelLogin;
+	private JPanel pantalla;
 
 	public Ventana() {
 		try {
@@ -61,7 +62,7 @@ public class Ventana extends JFrame {
 		label.setBounds(130, 3, 1080, 690);
 		layeredPane.add(label);
 		
-		JPanel pantalla = new JPanel();
+		pantalla = new JPanel();
 		layeredPane.setLayer(pantalla, 1);
 		pantalla.setBounds(195, 51, 951, 594);
 		layeredPane.add(pantalla);
@@ -100,27 +101,30 @@ public class Ventana extends JFrame {
 		lblContrasea.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		
 		campoPassword = new JPasswordField();
+		campoPassword.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				loginHandler();
+			}
+		});
+		campoPassword.setToolTipText("Introduzca la contrase\u00F1a asociada al usuario introducido m\u00E1s arriba");
 		campoPassword.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		
 		JLabel lblUsuario = new JLabel("Usuario:");
 		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		
 		campoUsuario = new JPasswordField();
+		campoUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				loginHandler();
+			}
+		});
+		campoUsuario.setToolTipText("Introduzca el usuario que se le ha proporcionado");
 		campoUsuario.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		
 		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// TODO: validación datos
-				
-				if (campoUsuario.getPassword().length == 0 || campoPassword.getPassword().length == 0) {
-					// TODO: esto es temporal; hay que crear los mensajes en otra clase para poder cambiar de idioma fácilmente
-					JOptionPane.showMessageDialog(contentPane, "Ningún campo puede estar vacío.", "Campo(s) vacíos", JOptionPane.ERROR_MESSAGE);
-				}
-				else {
-					CardLayout l = (CardLayout) pantalla.getLayout();
-					l.show(pantalla, panelPrincipal.getName());
-				}
+				loginHandler();
 			}
 		});
 		btnAceptar.setFont(new Font("Tahoma", Font.PLAIN, 24));
@@ -357,5 +361,22 @@ public class Ventana extends JFrame {
 		menuPrincipal.setLayout(gl_menuPrincipal);
 		panelPrincipal.setLayout(gl_panelPrincipal);
 		contentPane.setLayout(gl_contentPane);
+	}
+	
+	/* ******* */
+	/* METHODS */
+	/* ******* */
+	
+	private void loginHandler() {
+		// TODO: call user validation method
+		
+		if (campoUsuario.getPassword().length == 0 || campoPassword.getPassword().length == 0) {
+			// TODO: esto es temporal; hay que crear los mensajes en otra clase para poder cambiar de idioma fácilmente
+			JOptionPane.showMessageDialog(contentPane, "Ningún campo puede estar vacío.", "Campo(s) vacíos", JOptionPane.ERROR_MESSAGE);
+		}
+		else {
+			CardLayout l = (CardLayout) pantalla.getLayout();
+			l.show(pantalla, panelPrincipal.getName());
+		}
 	}
 }
