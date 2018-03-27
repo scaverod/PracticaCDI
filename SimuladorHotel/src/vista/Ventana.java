@@ -46,7 +46,7 @@ public class Ventana extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setCursor(new Cursor(Cursor.HAND_CURSOR));
+//		contentPane.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		
 		JLayeredPane layeredPane = new JLayeredPane();
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
@@ -188,10 +188,10 @@ public class Ventana extends JFrame {
 					.addContainerGap())
 		);
 		gl_panelPrincipal.setVerticalGroup(
-			gl_panelPrincipal.createParallelGroup(Alignment.TRAILING)
-				.addGroup(Alignment.LEADING, gl_panelPrincipal.createSequentialGroup()
+			gl_panelPrincipal.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelPrincipal.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(menuPrincipal, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
+					.addComponent(menuPrincipal, GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(pantallaMenu, GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
 					.addContainerGap())
