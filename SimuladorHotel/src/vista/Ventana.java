@@ -29,6 +29,8 @@ public class Ventana extends JFrame {
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JPasswordField campoPassword;
 	private JPasswordField campoUsuario;
+	private JPanel panelPrincipal;
+	private JPanel panelLogin;
 
 	public Ventana() {
 		try {
@@ -59,29 +61,34 @@ public class Ventana extends JFrame {
 		label.setBounds(130, 3, 1080, 690);
 		layeredPane.add(label);
 		
-		JPanel pantallaLogin = new JPanel();
-		layeredPane.setLayer(pantallaLogin, 2);
-		pantallaLogin.setBounds(195, 51, 951, 594);
-		layeredPane.add(pantallaLogin);
+		JPanel pantalla = new JPanel();
+		layeredPane.setLayer(pantalla, 1);
+		pantalla.setBounds(195, 51, 951, 594);
+		layeredPane.add(pantalla);
+		pantalla.setLayout(new CardLayout(0, 0));
+		
+		panelLogin = new JPanel();
+		panelLogin.setName("panelLogin");
+		pantalla.add(panelLogin, panelLogin.getName());
 		
 		JLabel lblInicieSesinPara = new JLabel("Inicie sesi\u00F3n para usar la aplicaci\u00F3n");
 		lblInicieSesinPara.setHorizontalAlignment(SwingConstants.CENTER);
 		lblInicieSesinPara.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		
 		JPanel panelDatosSesion = new JPanel();
-		GroupLayout gl_pantallaLogin = new GroupLayout(pantallaLogin);
-		gl_pantallaLogin.setHorizontalGroup(
-			gl_pantallaLogin.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_pantallaLogin.createSequentialGroup()
+		GroupLayout gl_panelLogin = new GroupLayout(panelLogin);
+		gl_panelLogin.setHorizontalGroup(
+			gl_panelLogin.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_panelLogin.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_pantallaLogin.createParallelGroup(Alignment.TRAILING)
+					.addGroup(gl_panelLogin.createParallelGroup(Alignment.TRAILING)
 						.addComponent(panelDatosSesion, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 931, Short.MAX_VALUE)
 						.addComponent(lblInicieSesinPara, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 931, Short.MAX_VALUE))
 					.addContainerGap())
 		);
-		gl_pantallaLogin.setVerticalGroup(
-			gl_pantallaLogin.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_pantallaLogin.createSequentialGroup()
+		gl_panelLogin.setVerticalGroup(
+			gl_panelLogin.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelLogin.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(lblInicieSesinPara, GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
 					.addPreferredGap(ComponentPlacement.RELATED)
@@ -101,24 +108,24 @@ public class Ventana extends JFrame {
 		campoUsuario = new JPasswordField();
 		campoUsuario.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		
-		JButton btnNewButton = new JButton("Aceptar");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnAceptar = new JButton("Aceptar");
+		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// TODO: validación datos
 				
-				// TODO: solución temporal
-				/* Habría que usar un card layout como en la pantalla principal porque exige estar cambiando constantemente de capa para poder editarlas */
-				if (campoUsuario.getPassword().length == 0 && campoPassword.getPassword().length == 0) {
+				if (campoUsuario.getPassword().length == 0 || campoPassword.getPassword().length == 0) {
 					// TODO: esto es temporal; hay que crear los mensajes en otra clase para poder cambiar de idioma fácilmente
-					JOptionPane.showMessageDialog(contentPane, "Los campos no pueden estar vacíos.", "Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(contentPane, "Ningún campo puede estar vacío.", "Campo(s) vacíos", JOptionPane.ERROR_MESSAGE);
 				}
-				else
-					pantallaLogin.setVisible(false);
+				else {
+					CardLayout l = (CardLayout) pantalla.getLayout();
+					l.show(pantalla, panelPrincipal.getName());
+				}
 			}
 		});
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		btnAceptar.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		
-		JSeparator separator = new JSeparator();
+		JSeparator separador = new JSeparator();
 		GroupLayout gl_panelDatosSesion = new GroupLayout(panelDatosSesion);
 		gl_panelDatosSesion.setHorizontalGroup(
 			gl_panelDatosSesion.createParallelGroup(Alignment.LEADING)
@@ -133,14 +140,14 @@ public class Ventana extends JFrame {
 							.addComponent(lblContrasea)
 							.addGap(18)
 							.addComponent(campoPassword, GroupLayout.PREFERRED_SIZE, 188, GroupLayout.PREFERRED_SIZE))
-						.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+						.addComponent(btnAceptar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 					.addContainerGap(299, Short.MAX_VALUE))
-				.addComponent(separator, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 931, Short.MAX_VALUE)
+				.addComponent(separador, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 931, Short.MAX_VALUE)
 		);
 		gl_panelDatosSesion.setVerticalGroup(
 			gl_panelDatosSesion.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panelDatosSesion.createSequentialGroup()
-					.addComponent(separator, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
+					.addComponent(separador, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
 					.addGap(135)
 					.addGroup(gl_panelDatosSesion.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblUsuario, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
@@ -150,33 +157,33 @@ public class Ventana extends JFrame {
 						.addComponent(lblContrasea)
 						.addComponent(campoPassword, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
-					.addComponent(btnNewButton)
+					.addComponent(btnAceptar)
 					.addContainerGap(194, Short.MAX_VALUE))
 		);
 		panelDatosSesion.setLayout(gl_panelDatosSesion);
-		pantallaLogin.setLayout(gl_pantallaLogin);
+		panelLogin.setLayout(gl_panelLogin);
 		
-		JPanel pantalla = new JPanel();
-		layeredPane.setLayer(pantalla, 1);
-		pantalla.setBounds(195, 51, 951, 594);
-		layeredPane.add(pantalla);
+		panelPrincipal = new JPanel();
+		panelPrincipal.setName("panelPrincipal");
+		pantalla.add(panelPrincipal, panelPrincipal.getName());
+		layeredPane.setLayer(panelPrincipal, 1);
 		
 		JPanel menuPrincipal = new JPanel();
 		
 		JPanel pantallaMenu = new JPanel();
-		GroupLayout gl_pantalla = new GroupLayout(pantalla);
-		gl_pantalla.setHorizontalGroup(
-			gl_pantalla.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_pantalla.createSequentialGroup()
+		GroupLayout gl_panelPrincipal = new GroupLayout(panelPrincipal);
+		gl_panelPrincipal.setHorizontalGroup(
+			gl_panelPrincipal.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panelPrincipal.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_pantalla.createParallelGroup(Alignment.TRAILING)
+					.addGroup(gl_panelPrincipal.createParallelGroup(Alignment.TRAILING)
 						.addComponent(pantallaMenu, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 931, Short.MAX_VALUE)
 						.addComponent(menuPrincipal, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 931, Short.MAX_VALUE))
 					.addContainerGap())
 		);
-		gl_pantalla.setVerticalGroup(
-			gl_pantalla.createParallelGroup(Alignment.TRAILING)
-				.addGroup(Alignment.LEADING, gl_pantalla.createSequentialGroup()
+		gl_panelPrincipal.setVerticalGroup(
+			gl_panelPrincipal.createParallelGroup(Alignment.TRAILING)
+				.addGroup(Alignment.LEADING, gl_panelPrincipal.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(menuPrincipal, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
@@ -185,50 +192,108 @@ public class Ventana extends JFrame {
 		);
 		pantallaMenu.setLayout(new CardLayout(0, 0));
 		
-		JPanel panelBienvenida = new JPanel();
-		panelBienvenida.setName("panelBienvenida");
-		pantallaMenu.add(panelBienvenida, panelBienvenida.getName());
-		
-		JLabel label_1 = new JLabel("");
-		label_1.setIcon(new ImageIcon(Ventana.class.getResource("/iconos/imagen_bienvenida.png")));
-		GroupLayout gl_panelBienvenida = new GroupLayout(panelBienvenida);
-		gl_panelBienvenida.setHorizontalGroup(
-			gl_panelBienvenida.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panelBienvenida.createSequentialGroup()
-					.addGap(88)
-					.addComponent(label_1)
-					.addContainerGap(89, Short.MAX_VALUE))
-		);
-		gl_panelBienvenida.setVerticalGroup(
-			gl_panelBienvenida.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panelBienvenida.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(label_1)
-					.addContainerGap(23, Short.MAX_VALUE))
-		);
-		panelBienvenida.setLayout(gl_panelBienvenida);
-		
 		JPanel panelHabitacion = new JPanel();
 		panelHabitacion.setName("panelHabitacion");
 		pantallaMenu.add(panelHabitacion, panelHabitacion.getName());
+		
+		JLabel lblPanelhabitacion = new JLabel("[PLACEHOLDER] panelHabitacion");
 		GroupLayout gl_panelHabitacion = new GroupLayout(panelHabitacion);
 		gl_panelHabitacion.setHorizontalGroup(
 			gl_panelHabitacion.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 931, Short.MAX_VALUE)
+				.addGroup(gl_panelHabitacion.createSequentialGroup()
+					.addGap(139)
+					.addComponent(lblPanelhabitacion, GroupLayout.PREFERRED_SIZE, 342, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(450, Short.MAX_VALUE))
 		);
 		gl_panelHabitacion.setVerticalGroup(
 			gl_panelHabitacion.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 483, Short.MAX_VALUE)
+				.addGroup(gl_panelHabitacion.createSequentialGroup()
+					.addGap(74)
+					.addComponent(lblPanelhabitacion, GroupLayout.PREFERRED_SIZE, 209, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(200, Short.MAX_VALUE))
 		);
 		panelHabitacion.setLayout(gl_panelHabitacion);
 		
+		JPanel panelSpa = new JPanel();
+		panelSpa.setName("panelSpa");
+		pantallaMenu.add(panelSpa, panelSpa.getName());
+		
+		JLabel lblPanelspa = new JLabel("[PLACEHOLDER] panelSpa");
+		GroupLayout gl_panelSpa = new GroupLayout(panelSpa);
+		gl_panelSpa.setHorizontalGroup(
+			gl_panelSpa.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelSpa.createSequentialGroup()
+					.addGap(139)
+					.addComponent(lblPanelspa, GroupLayout.PREFERRED_SIZE, 405, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(387, Short.MAX_VALUE))
+		);
+		gl_panelSpa.setVerticalGroup(
+			gl_panelSpa.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelSpa.createSequentialGroup()
+					.addGap(127)
+					.addComponent(lblPanelspa, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(188, Short.MAX_VALUE))
+		);
+		panelSpa.setLayout(gl_panelSpa);
+		
+		JPanel panelServicios = new JPanel();
+		panelServicios.setName("panelServicios");
+		pantallaMenu.add(panelServicios, panelServicios.getName());
+		
+		JLabel lblPanelservicios = new JLabel("[PLACEHOLDER] panelServicios");
+		GroupLayout gl_panelServicios = new GroupLayout(panelServicios);
+		gl_panelServicios.setHorizontalGroup(
+			gl_panelServicios.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelServicios.createSequentialGroup()
+					.addGap(266)
+					.addComponent(lblPanelservicios, GroupLayout.PREFERRED_SIZE, 311, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(354, Short.MAX_VALUE))
+		);
+		gl_panelServicios.setVerticalGroup(
+			gl_panelServicios.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelServicios.createSequentialGroup()
+					.addGap(147)
+					.addComponent(lblPanelservicios, GroupLayout.PREFERRED_SIZE, 179, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(157, Short.MAX_VALUE))
+		);
+		panelServicios.setLayout(gl_panelServicios);
+		
+		JPanel panelCuenta = new JPanel();
+		panelCuenta.setName("panelCuenta");
+		pantallaMenu.add(panelCuenta, panelCuenta.getName());
+		
+		JLabel lblPanelcuenta = new JLabel("[PLACEHOLDER] panelCuenta");
+		GroupLayout gl_panelCuenta = new GroupLayout(panelCuenta);
+		gl_panelCuenta.setHorizontalGroup(
+			gl_panelCuenta.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelCuenta.createSequentialGroup()
+					.addGap(297)
+					.addComponent(lblPanelcuenta, GroupLayout.PREFERRED_SIZE, 291, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(343, Short.MAX_VALUE))
+		);
+		gl_panelCuenta.setVerticalGroup(
+			gl_panelCuenta.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelCuenta.createSequentialGroup()
+					.addGap(110)
+					.addComponent(lblPanelcuenta, GroupLayout.PREFERRED_SIZE, 188, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(185, Short.MAX_VALUE))
+		);
+		panelCuenta.setLayout(gl_panelCuenta);
+		
 		JToggleButton btnSpa = new JToggleButton("Spa");
+		btnSpa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CardLayout l = (CardLayout) pantallaMenu.getLayout();
+				l.show(pantallaMenu, panelSpa.getName());
+			}
+		});
 		btnSpa.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		btnSpa.setSelectedIcon(new ImageIcon(Ventana.class.getResource("/iconos/spa_x32_black.png")));
 		btnSpa.setIcon(new ImageIcon(Ventana.class.getResource("/iconos/spa_x32_blue.png")));
 		buttonGroup.add(btnSpa);
 		
 		JToggleButton btnHabitacion = new JToggleButton("Habitaci\u00F3n");
+		btnHabitacion.setSelected(true);
 		btnHabitacion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				CardLayout l = (CardLayout) pantallaMenu.getLayout();
@@ -241,12 +306,24 @@ public class Ventana extends JFrame {
 		buttonGroup.add(btnHabitacion);
 		
 		JToggleButton btnCuenta = new JToggleButton("Cuenta");
+		btnCuenta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CardLayout l = (CardLayout) pantallaMenu.getLayout();
+				l.show(pantallaMenu, panelCuenta.getName());
+			}
+		});
 		btnCuenta.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		btnCuenta.setSelectedIcon(new ImageIcon(Ventana.class.getResource("/iconos/usuario_x32_black.png")));
 		buttonGroup.add(btnCuenta);
 		btnCuenta.setIcon(new ImageIcon(Ventana.class.getResource("/iconos/usuario_x32_blue.png")));
 		
 		JToggleButton btnServicios = new JToggleButton("Servicios");
+		btnServicios.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CardLayout l = (CardLayout) pantallaMenu.getLayout();
+				l.show(pantallaMenu, panelServicios.getName());
+			}
+		});
 		btnServicios.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		btnServicios.setSelectedIcon(new ImageIcon(Ventana.class.getResource("/iconos/servicios_x32_black.png")));
 		btnServicios.setIcon(new ImageIcon(Ventana.class.getResource("/iconos/servicios_x32_blue.png")));
@@ -278,7 +355,7 @@ public class Ventana extends JFrame {
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		menuPrincipal.setLayout(gl_menuPrincipal);
-		pantalla.setLayout(gl_pantalla);
+		panelPrincipal.setLayout(gl_panelPrincipal);
 		contentPane.setLayout(gl_contentPane);
 	}
 }
