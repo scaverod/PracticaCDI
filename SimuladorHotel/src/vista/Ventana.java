@@ -16,6 +16,7 @@ import javax.swing.JToggleButton;
 import javax.swing.ButtonGroup;
 import java.awt.Font;
 import java.awt.CardLayout;
+import java.awt.Cursor;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
@@ -45,6 +46,7 @@ public class Ventana extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
+		contentPane.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		
 		JLayeredPane layeredPane = new JLayeredPane();
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
@@ -118,7 +120,7 @@ public class Ventana extends JFrame {
 				loginHandler();
 			}
 		});
-		campoUsuario.setToolTipText("Introduzca el usuario que se le ha proporcionado");
+		campoUsuario.setToolTipText("Introduzca su usuario (n\u00FAmero de habitaci\u00F3n)");
 		campoUsuario.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		
 		JButton btnAceptar = new JButton("Aceptar");
