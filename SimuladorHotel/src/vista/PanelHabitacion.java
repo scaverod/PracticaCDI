@@ -6,6 +6,7 @@ import javax.swing.GroupLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.ImageIcon;
 
 public class PanelHabitacion extends JPanel {
 
@@ -21,17 +22,17 @@ public class PanelHabitacion extends JPanel {
 		this.setSize(new Dimension(931, 483));
 		this.setName("panelHabitacion");
 		
-		JLabel lblPanelhabitacion = new JLabel("[PLACEHOLDER] panelHabitacion");
+		JLabel panelFotoHabitacion = new JLabel("");
+		panelFotoHabitacion.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/fotoHabitacion.jpg")));
 		GroupLayout gl_panelHabitacion = new GroupLayout(this);
-		gl_panelHabitacion.setHorizontalGroup(gl_panelHabitacion.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panelHabitacion.createSequentialGroup().addGap(139)
-						.addComponent(lblPanelhabitacion, GroupLayout.PREFERRED_SIZE, 342, GroupLayout.PREFERRED_SIZE)
-						.addContainerGap(450, Short.MAX_VALUE)));
-		gl_panelHabitacion.setVerticalGroup(gl_panelHabitacion.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panelHabitacion.createSequentialGroup().addGap(74)
-						.addComponent(lblPanelhabitacion, GroupLayout.PREFERRED_SIZE, 209, GroupLayout.PREFERRED_SIZE)
-						.addContainerGap(200, Short.MAX_VALUE)));
+		gl_panelHabitacion.setHorizontalGroup(
+			gl_panelHabitacion.createParallelGroup(Alignment.LEADING)
+				.addComponent(panelFotoHabitacion, GroupLayout.DEFAULT_SIZE, 931, Short.MAX_VALUE)
+		);
+		gl_panelHabitacion.setVerticalGroup(
+			gl_panelHabitacion.createParallelGroup(Alignment.LEADING)
+				.addComponent(panelFotoHabitacion, GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
+		);
 		this.setLayout(gl_panelHabitacion);
 	}
-
 }
