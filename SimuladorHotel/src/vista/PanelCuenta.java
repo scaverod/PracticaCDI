@@ -1,5 +1,7 @@
 package vista;
 
+import java.awt.Dimension;
+
 import javax.swing.GroupLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,7 +19,7 @@ public class PanelCuenta extends JPanel {
 	 */
 	
 	public PanelCuenta() {
-		
+		this.setSize(new Dimension(931, 483));
 		this.setName("panelCuenta");
 		
 		JLabel lblPanelcuenta = new JLabel("[PLACEHOLDER] panelCuenta");

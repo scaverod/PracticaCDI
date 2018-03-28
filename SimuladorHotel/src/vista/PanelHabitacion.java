@@ -1,5 +1,7 @@
 package vista;
 
+import java.awt.Dimension;
+
 import javax.swing.GroupLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -16,8 +18,9 @@ public class PanelHabitacion extends JPanel {
 	 * Create the panel.
 	 */
 	public PanelHabitacion() {
-
+		this.setSize(new Dimension(931, 483));
 		this.setName("panelHabitacion");
+		
 		JLabel lblPanelhabitacion = new JLabel("[PLACEHOLDER] panelHabitacion");
 		GroupLayout gl_panelHabitacion = new GroupLayout(this);
 		gl_panelHabitacion.setHorizontalGroup(gl_panelHabitacion.createParallelGroup(Alignment.LEADING)
