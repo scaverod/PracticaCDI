@@ -22,13 +22,14 @@ import javax.swing.SwingConstants;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import javax.swing.JSeparator;
+import javax.swing.JTextField;
 
 public class Ventana extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JPasswordField campoPassword;
-	private JPasswordField campoUsuario;
+	private JTextField campoUsuario;
 	private JPanel panelPrincipal;
 	private JPanel panelLogin;
 	private JPanel pantalla;
@@ -106,7 +107,7 @@ public class Ventana extends JFrame {
 		JLabel lblUsuario = new JLabel("Usuario:");
 		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 24));
 
-		campoUsuario = new JPasswordField();
+		campoUsuario = new JTextField();
 		campoUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				loginHandler();
@@ -184,7 +185,7 @@ public class Ventana extends JFrame {
 
 		JPanel panelServicios = new PanelServicios();
 		pantallaMenu.add(panelServicios, panelServicios.getName());
-		
+
 		JPanel panelCuenta = new PanelCuenta();
 		pantallaMenu.add(panelCuenta, panelCuenta.getName());
 
@@ -268,7 +269,7 @@ public class Ventana extends JFrame {
 	private void loginHandler() {
 		// TODO: call user validation method
 
-		if (campoUsuario.getPassword().length == 0 || campoPassword.getPassword().length == 0) {
+		if (campoUsuario.getText().length() == 0 || campoPassword.getPassword().length == 0) {
 			// TODO: esto es temporal; hay que crear los mensajes en otra clase para poder
 			// cambiar de idioma fácilmente
 			JOptionPane.showMessageDialog(contentPane, "Ningún campo puede estar vacío.", "Campo(s) vacíos",
