@@ -2,6 +2,7 @@ package modelo;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
@@ -19,10 +20,12 @@ public class Texto {
 	
 	public void getIdiomas() {
 		try {
-			Stream s = Files.list(Paths.get("Z:\\PracticaCDI\\SimuladorHotel\\src\\iconos"));
+			Stream<Path> s = Files.list(Paths.get("Z:\\PracticaCDI\\SimuladorHotel\\src\\iconos"));
 			Object[] a = s.toArray();
 			for (int i = 0 ; i < a.length ; i++)
 				System.out.println(a[i].toString());
+			
+			s.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
