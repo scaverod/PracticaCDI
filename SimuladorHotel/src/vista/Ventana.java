@@ -125,31 +125,62 @@ public class Ventana extends JFrame {
 		btnAceptar.setFont(new Font("Tahoma", Font.PLAIN, 24));
 
 		JSeparator separador = new JSeparator();
+		
+		JPanel panelLogo = new JPanel();
+		
+		JPanel panelSlogan = new JPanel();
 		GroupLayout gl_panelDatosSesion = new GroupLayout(panelDatosSesion);
-		gl_panelDatosSesion.setHorizontalGroup(gl_panelDatosSesion.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panelDatosSesion.createSequentialGroup().addGap(298).addGroup(gl_panelDatosSesion
-						.createParallelGroup(Alignment.LEADING, false)
-						.addGroup(gl_panelDatosSesion.createSequentialGroup()
-								.addComponent(lblUsuario, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE)
-								.addGap(18).addComponent(campoUsuario, GroupLayout.PREFERRED_SIZE, 188,
-										GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panelDatosSesion.createSequentialGroup().addComponent(lblContrasea).addGap(18)
-								.addComponent(campoPassword, GroupLayout.PREFERRED_SIZE, 188,
-										GroupLayout.PREFERRED_SIZE))
-						.addComponent(btnAceptar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-						.addContainerGap(299, Short.MAX_VALUE))
-				.addComponent(separador, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 931, Short.MAX_VALUE));
-		gl_panelDatosSesion.setVerticalGroup(gl_panelDatosSesion.createParallelGroup(Alignment.LEADING)
+		gl_panelDatosSesion.setHorizontalGroup(
+			gl_panelDatosSesion.createParallelGroup(Alignment.LEADING)
+				.addComponent(separador, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 931, Short.MAX_VALUE)
 				.addGroup(gl_panelDatosSesion.createSequentialGroup()
-						.addComponent(separador, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE).addGap(135)
-						.addGroup(gl_panelDatosSesion.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblUsuario, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
-								.addComponent(campoUsuario, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
-						.addGap(19)
-						.addGroup(gl_panelDatosSesion.createParallelGroup(Alignment.BASELINE).addComponent(lblContrasea)
-								.addComponent(campoPassword, GroupLayout.PREFERRED_SIZE, 32,
-										GroupLayout.PREFERRED_SIZE))
-						.addGap(18).addComponent(btnAceptar).addContainerGap(194, Short.MAX_VALUE)));
+					.addGap(284)
+					.addComponent(panelLogo, GroupLayout.PREFERRED_SIZE, 330, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(317, Short.MAX_VALUE))
+				.addGroup(gl_panelDatosSesion.createSequentialGroup()
+					.addGap(298)
+					.addGroup(gl_panelDatosSesion.createParallelGroup(Alignment.TRAILING, false)
+						.addComponent(panelSlogan, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addGroup(Alignment.LEADING, gl_panelDatosSesion.createSequentialGroup()
+							.addComponent(lblUsuario, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(campoUsuario, GroupLayout.PREFERRED_SIZE, 188, GroupLayout.PREFERRED_SIZE))
+						.addGroup(Alignment.LEADING, gl_panelDatosSesion.createSequentialGroup()
+							.addComponent(lblContrasea)
+							.addGap(18)
+							.addComponent(campoPassword, GroupLayout.PREFERRED_SIZE, 188, GroupLayout.PREFERRED_SIZE))
+						.addComponent(btnAceptar, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addContainerGap(299, Short.MAX_VALUE))
+		);
+		gl_panelDatosSesion.setVerticalGroup(
+			gl_panelDatosSesion.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelDatosSesion.createSequentialGroup()
+					.addComponent(separador, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(panelLogo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(31)
+					.addGroup(gl_panelDatosSesion.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblUsuario, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
+						.addComponent(campoUsuario, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
+					.addGap(19)
+					.addGroup(gl_panelDatosSesion.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblContrasea)
+						.addComponent(campoPassword, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addComponent(btnAceptar)
+					.addGap(29)
+					.addComponent(panelSlogan, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(86, Short.MAX_VALUE))
+		);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon(Ventana.class.getResource("/iconos/slogan.png")));
+		panelSlogan.add(lblNewLabel_1);
+		
+		//Es una prueba
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(Ventana.class.getResource("/iconos/logoAPP.png")));
+		panelLogo.add(lblNewLabel);
 		panelDatosSesion.setLayout(gl_panelDatosSesion);
 		panelLogin.setLayout(gl_panelLogin);
 

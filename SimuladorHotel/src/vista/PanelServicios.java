@@ -67,23 +67,37 @@ public class PanelServicios extends JPanel {
 		btnCambiarSabanas.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnCambiarSabanas.setFont(new Font("Tahoma", Font.PLAIN, 12));
 
-		// TODO: Completar los botones con los servicios restantes
-		JButton button_6 = new JButton("New button");
+		JButton btnComidaHab = new JButton("Solicitar Comida");
+		btnComidaHab.setIcon(new ImageIcon(PanelServicios.class.getResource("/iconos/comidahab.png")));
+		btnComidaHab.setHorizontalTextPosition(SwingConstants.CENTER);
+		btnComidaHab.setVerticalTextPosition(SwingConstants.BOTTOM);
+		btnComidaHab.setFont(new Font("Tahoma", Font.PLAIN, 12));
 
-		JButton button_7 = new JButton("New button");
-
-		JButton button_8 = new JButton("New button");
+		JButton btnPedirTaxi = new JButton("Pedir Taxi");
+		btnPedirTaxi.setIcon(new ImageIcon(PanelServicios.class.getResource("/iconos/taxi.png")));
+		btnPedirTaxi.setHorizontalTextPosition(SwingConstants.CENTER);
+		btnPedirTaxi.setVerticalTextPosition(SwingConstants.BOTTOM);
+		btnPedirTaxi.setFont(new Font("Tahoma", Font.PLAIN, 12));
 
 		JButton button_9 = new JButton("New button");
 
-		JButton button_10 = new JButton("New button");
+		JButton btnWifi = new JButton("Activar Wifi");
+		btnWifi.setIcon(new ImageIcon(PanelServicios.class.getResource("/iconos/wifi.png")));
+		btnWifi.setHorizontalTextPosition(SwingConstants.CENTER);
+		btnWifi.setVerticalTextPosition(SwingConstants.BOTTOM);
+		btnWifi.setFont(new Font("Tahoma", Font.PLAIN, 12));
 
 		JButton button_11 = new JButton("New button");
 
 		JButton button_12 = new JButton("New button");
 
-		// TODO: POsibilidad de adquirir un servicio especial
-		JButton button_13 = new JButton("New button");
+		JButton btnInformacion = new JButton("Solicitar Informaci\u00F3n");
+		btnInformacion.setIcon(new ImageIcon(PanelServicios.class.getResource("/iconos/info.png")));
+		btnInformacion.setHorizontalTextPosition(SwingConstants.CENTER);
+		btnInformacion.setVerticalTextPosition(SwingConstants.BOTTOM);
+		btnPedirTaxi.setFont(new Font("Tahoma", Font.PLAIN, 12));
+
+		JButton button = new JButton("New button");
 
 		GroupLayout gl_panelServicios = new GroupLayout(this);
 		gl_panelServicios.setHorizontalGroup(gl_panelServicios.createParallelGroup(Alignment.LEADING)
@@ -95,72 +109,70 @@ public class PanelServicios extends JPanel {
 								.addComponent(btnMiniBar, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE))
 						.addGap(43)
 						.addGroup(gl_panelServicios.createParallelGroup(Alignment.LEADING)
+								.addComponent(btnBotones, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
 								.addComponent(btnHorarioLimpieza, GroupLayout.PREFERRED_SIZE, 143,
 										GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnBotones, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
 								.addComponent(btnCambioAlmohada, GroupLayout.PREFERRED_SIZE, 143,
 										GroupLayout.PREFERRED_SIZE))
-						.addGap(49)
-						.addGroup(gl_panelServicios.createParallelGroup(Alignment.LEADING)
+						.addPreferredGap(ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+						.addGroup(gl_panelServicios.createParallelGroup(Alignment.TRAILING)
+								.addComponent(btnComidaHab, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
+								.addComponent(btnPedirTaxi, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
 								.addComponent(btnCambiarSabanas, GroupLayout.PREFERRED_SIZE, 143,
-										GroupLayout.PREFERRED_SIZE)
-								.addComponent(button_6, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
-								.addComponent(button_7, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE))
-						.addGap(53)
-						.addGroup(gl_panelServicios.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_panelServicios.createSequentialGroup()
-										.addComponent(button_10, GroupLayout.PREFERRED_SIZE, 143,
-												GroupLayout.PREFERRED_SIZE)
-										.addPreferredGap(ComponentPlacement.RELATED, 51, Short.MAX_VALUE).addComponent(
-												button_13, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE))
-								.addGroup(gl_panelServicios.createSequentialGroup()
-										.addComponent(button_9, GroupLayout.PREFERRED_SIZE, 143,
-												GroupLayout.PREFERRED_SIZE)
-										.addPreferredGap(ComponentPlacement.RELATED, 51, Short.MAX_VALUE).addComponent(
-												button_12, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE))
-								.addGroup(gl_panelServicios.createSequentialGroup()
-										.addComponent(button_8, GroupLayout.PREFERRED_SIZE, 143,
-												GroupLayout.PREFERRED_SIZE)
-										.addPreferredGap(ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-										.addComponent(button_11, GroupLayout.PREFERRED_SIZE, 143,
-												GroupLayout.PREFERRED_SIZE)))
+										GroupLayout.PREFERRED_SIZE))
+						.addGap(46)
+						.addGroup(gl_panelServicios.createParallelGroup(Alignment.TRAILING)
+								.addComponent(button_9, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
+								.addComponent(btnWifi, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
+								.addComponent(button, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE))
+						.addGap(49)
+						.addGroup(gl_panelServicios.createParallelGroup(Alignment.TRAILING)
+								.addComponent(button_12, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
+								.addComponent(button_11, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
+								.addComponent(btnInformacion, GroupLayout.PREFERRED_SIZE, 143,
+										GroupLayout.PREFERRED_SIZE))
 						.addContainerGap()));
-		gl_panelServicios.setVerticalGroup(gl_panelServicios.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panelServicios.createSequentialGroup().addContainerGap().addGroup(gl_panelServicios
-						.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnCambioToalla, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnHorarioLimpieza, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnCambiarSabanas, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)
-						.addComponent(button_8, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)
-						.addComponent(button_11, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE))
-						.addGap(38)
+		gl_panelServicios.setVerticalGroup(gl_panelServicios.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panelServicios.createSequentialGroup().addContainerGap()
 						.addGroup(gl_panelServicios.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_panelServicios.createSequentialGroup()
+								.addGroup(gl_panelServicios.createParallelGroup(Alignment.BASELINE)
+										.addComponent(btnCambioToalla, GroupLayout.PREFERRED_SIZE, 126,
+												GroupLayout.PREFERRED_SIZE)
+										.addComponent(btnCambioAlmohada, GroupLayout.PREFERRED_SIZE, 126,
+												GroupLayout.PREFERRED_SIZE)
+										.addComponent(btnCambiarSabanas, GroupLayout.PREFERRED_SIZE, 126,
+												GroupLayout.PREFERRED_SIZE))
+								.addComponent(button_11, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)
+								.addComponent(button, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE))
+						.addGap(38)
+						.addGroup(gl_panelServicios.createParallelGroup(Alignment.LEADING).addGroup(gl_panelServicios
+								.createSequentialGroup()
+								.addGroup(gl_panelServicios.createParallelGroup(Alignment.BASELINE)
 										.addComponent(button_12, GroupLayout.PREFERRED_SIZE, 126,
 												GroupLayout.PREFERRED_SIZE)
-										.addPreferredGap(ComponentPlacement.RELATED, 45, Short.MAX_VALUE).addComponent(
-												button_13, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE))
-								.addGroup(gl_panelServicios.createSequentialGroup()
 										.addComponent(button_9, GroupLayout.PREFERRED_SIZE, 126,
+												GroupLayout.PREFERRED_SIZE))
+								.addPreferredGap(ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+								.addGroup(gl_panelServicios.createParallelGroup(Alignment.TRAILING)
+										.addComponent(btnInformacion, GroupLayout.PREFERRED_SIZE, 126,
 												GroupLayout.PREFERRED_SIZE)
-										.addPreferredGap(ComponentPlacement.RELATED, 45, Short.MAX_VALUE).addComponent(
-												button_10, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE))
-								.addGroup(gl_panelServicios.createSequentialGroup()
-										.addComponent(button_6, GroupLayout.PREFERRED_SIZE, 126,
-												GroupLayout.PREFERRED_SIZE)
-										.addPreferredGap(ComponentPlacement.RELATED, 45, Short.MAX_VALUE).addComponent(
-												button_7, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE))
+										.addComponent(btnWifi, GroupLayout.PREFERRED_SIZE, 126,
+												GroupLayout.PREFERRED_SIZE)))
 								.addGroup(gl_panelServicios.createSequentialGroup()
 										.addComponent(btnTelefono, GroupLayout.PREFERRED_SIZE, 126,
 												GroupLayout.PREFERRED_SIZE)
-										.addPreferredGap(ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-										.addComponent(btnMiniBar, GroupLayout.PREFERRED_SIZE, 126,
-												GroupLayout.PREFERRED_SIZE))
-								.addGroup(gl_panelServicios.createSequentialGroup()
+										.addPreferredGap(ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+										.addGroup(gl_panelServicios.createParallelGroup(Alignment.BASELINE)
+												.addComponent(btnMiniBar, GroupLayout.PREFERRED_SIZE, 126,
+														GroupLayout.PREFERRED_SIZE)
+												.addComponent(btnHorarioLimpieza, GroupLayout.PREFERRED_SIZE, 126,
+														GroupLayout.PREFERRED_SIZE)
+												.addComponent(btnPedirTaxi, GroupLayout.PREFERRED_SIZE, 126,
+														GroupLayout.PREFERRED_SIZE)))
+								.addGroup(gl_panelServicios.createParallelGroup(Alignment.BASELINE)
 										.addComponent(btnBotones, GroupLayout.PREFERRED_SIZE, 126,
 												GroupLayout.PREFERRED_SIZE)
-										.addPreferredGap(ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-										.addComponent(btnCambioAlmohada, GroupLayout.PREFERRED_SIZE, 126,
+										.addComponent(btnComidaHab, GroupLayout.PREFERRED_SIZE, 126,
 												GroupLayout.PREFERRED_SIZE)))
 						.addContainerGap()));
 		this.setLayout(gl_panelServicios);
