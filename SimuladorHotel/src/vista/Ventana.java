@@ -126,39 +126,45 @@ public class Ventana extends JFrame {
 
 		JSeparator separador = new JSeparator();
 		
-		JPanel panelLogo = new JPanel();
+		//Es una prueba
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(Ventana.class.getResource("/iconos/logoAPP.png")));
 		
-		JPanel panelSlogan = new JPanel();
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon(Ventana.class.getResource("/iconos/slogan.png")));
 		GroupLayout gl_panelDatosSesion = new GroupLayout(panelDatosSesion);
 		gl_panelDatosSesion.setHorizontalGroup(
 			gl_panelDatosSesion.createParallelGroup(Alignment.LEADING)
 				.addComponent(separador, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 931, Short.MAX_VALUE)
 				.addGroup(gl_panelDatosSesion.createSequentialGroup()
-					.addGap(284)
-					.addComponent(panelLogo, GroupLayout.PREFERRED_SIZE, 330, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(317, Short.MAX_VALUE))
-				.addGroup(gl_panelDatosSesion.createSequentialGroup()
 					.addGap(298)
-					.addGroup(gl_panelDatosSesion.createParallelGroup(Alignment.TRAILING, false)
-						.addComponent(panelSlogan, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addGroup(Alignment.LEADING, gl_panelDatosSesion.createSequentialGroup()
+					.addGroup(gl_panelDatosSesion.createParallelGroup(Alignment.LEADING, false)
+						.addGroup(gl_panelDatosSesion.createSequentialGroup()
 							.addComponent(lblUsuario, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE)
 							.addGap(18)
 							.addComponent(campoUsuario, GroupLayout.PREFERRED_SIZE, 188, GroupLayout.PREFERRED_SIZE))
-						.addGroup(Alignment.LEADING, gl_panelDatosSesion.createSequentialGroup()
+						.addGroup(gl_panelDatosSesion.createSequentialGroup()
 							.addComponent(lblContrasea)
 							.addGap(18)
 							.addComponent(campoPassword, GroupLayout.PREFERRED_SIZE, 188, GroupLayout.PREFERRED_SIZE))
-						.addComponent(btnAceptar, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+						.addComponent(btnAceptar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 					.addContainerGap(299, Short.MAX_VALUE))
+				.addGroup(gl_panelDatosSesion.createSequentialGroup()
+					.addGap(391)
+					.addComponent(lblNewLabel)
+					.addContainerGap(392, Short.MAX_VALUE))
+				.addGroup(gl_panelDatosSesion.createSequentialGroup()
+					.addGap(340)
+					.addComponent(lblNewLabel_1)
+					.addContainerGap(341, Short.MAX_VALUE))
 		);
 		gl_panelDatosSesion.setVerticalGroup(
 			gl_panelDatosSesion.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panelDatosSesion.createSequentialGroup()
 					.addComponent(separador, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
+					.addGap(53)
+					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
-					.addComponent(panelLogo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(31)
 					.addGroup(gl_panelDatosSesion.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblUsuario, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
 						.addComponent(campoUsuario, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
@@ -168,19 +174,10 @@ public class Ventana extends JFrame {
 						.addComponent(campoPassword, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addComponent(btnAceptar)
-					.addGap(29)
-					.addComponent(panelSlogan, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(86, Short.MAX_VALUE))
+					.addGap(18)
+					.addComponent(lblNewLabel_1)
+					.addContainerGap(99, Short.MAX_VALUE))
 		);
-		
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(Ventana.class.getResource("/iconos/slogan.png")));
-		panelSlogan.add(lblNewLabel_1);
-		
-		//Es una prueba
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(Ventana.class.getResource("/iconos/logoAPP.png")));
-		panelLogo.add(lblNewLabel);
 		panelDatosSesion.setLayout(gl_panelDatosSesion);
 		panelLogin.setLayout(gl_panelLogin);
 

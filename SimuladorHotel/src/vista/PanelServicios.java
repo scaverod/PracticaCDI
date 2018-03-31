@@ -79,7 +79,7 @@ public class PanelServicios extends JPanel {
 		btnPedirTaxi.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnPedirTaxi.setFont(new Font("Tahoma", Font.PLAIN, 12));
 
-		JButton button_9 = new JButton("New button");
+		JButton btnMusica = new JButton("New button");
 
 		JButton btnWifi = new JButton("Activar Wifi");
 		btnWifi.setIcon(new ImageIcon(PanelServicios.class.getResource("/iconos/wifi.png")));
@@ -87,94 +87,67 @@ public class PanelServicios extends JPanel {
 		btnWifi.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnWifi.setFont(new Font("Tahoma", Font.PLAIN, 12));
 
-		JButton button_11 = new JButton("New button");
-
-		JButton button_12 = new JButton("New button");
-
 		JButton btnInformacion = new JButton("Solicitar Informaci\u00F3n");
 		btnInformacion.setIcon(new ImageIcon(PanelServicios.class.getResource("/iconos/info.png")));
 		btnInformacion.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnInformacion.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnPedirTaxi.setFont(new Font("Tahoma", Font.PLAIN, 12));
 
-		JButton button = new JButton("New button");
-
 		GroupLayout gl_panelServicios = new GroupLayout(this);
-		gl_panelServicios.setHorizontalGroup(gl_panelServicios.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panelServicios.createSequentialGroup().addContainerGap()
-						.addGroup(gl_panelServicios.createParallelGroup(Alignment.LEADING)
-								.addComponent(btnCambioToalla, GroupLayout.PREFERRED_SIZE, 143,
-										GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnTelefono, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnMiniBar, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE))
-						.addGap(43)
-						.addGroup(gl_panelServicios.createParallelGroup(Alignment.LEADING)
-								.addComponent(btnBotones, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnHorarioLimpieza, GroupLayout.PREFERRED_SIZE, 143,
-										GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnCambioAlmohada, GroupLayout.PREFERRED_SIZE, 143,
-										GroupLayout.PREFERRED_SIZE))
-						.addPreferredGap(ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-						.addGroup(gl_panelServicios.createParallelGroup(Alignment.TRAILING)
-								.addComponent(btnComidaHab, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnPedirTaxi, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnCambiarSabanas, GroupLayout.PREFERRED_SIZE, 143,
-										GroupLayout.PREFERRED_SIZE))
-						.addGap(46)
-						.addGroup(gl_panelServicios.createParallelGroup(Alignment.TRAILING)
-								.addComponent(button_9, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnWifi, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
-								.addComponent(button, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE))
-						.addGap(49)
-						.addGroup(gl_panelServicios.createParallelGroup(Alignment.TRAILING)
-								.addComponent(button_12, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
-								.addComponent(button_11, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnInformacion, GroupLayout.PREFERRED_SIZE, 143,
-										GroupLayout.PREFERRED_SIZE))
-						.addContainerGap()));
-		gl_panelServicios.setVerticalGroup(gl_panelServicios.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_panelServicios.createSequentialGroup().addContainerGap()
-						.addGroup(gl_panelServicios.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_panelServicios.createParallelGroup(Alignment.BASELINE)
-										.addComponent(btnCambioToalla, GroupLayout.PREFERRED_SIZE, 126,
-												GroupLayout.PREFERRED_SIZE)
-										.addComponent(btnCambioAlmohada, GroupLayout.PREFERRED_SIZE, 126,
-												GroupLayout.PREFERRED_SIZE)
-										.addComponent(btnCambiarSabanas, GroupLayout.PREFERRED_SIZE, 126,
-												GroupLayout.PREFERRED_SIZE))
-								.addComponent(button_11, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)
-								.addComponent(button, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE))
-						.addGap(38)
-						.addGroup(gl_panelServicios.createParallelGroup(Alignment.LEADING).addGroup(gl_panelServicios
-								.createSequentialGroup()
-								.addGroup(gl_panelServicios.createParallelGroup(Alignment.BASELINE)
-										.addComponent(button_12, GroupLayout.PREFERRED_SIZE, 126,
-												GroupLayout.PREFERRED_SIZE)
-										.addComponent(button_9, GroupLayout.PREFERRED_SIZE, 126,
-												GroupLayout.PREFERRED_SIZE))
-								.addPreferredGap(ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-								.addGroup(gl_panelServicios.createParallelGroup(Alignment.TRAILING)
-										.addComponent(btnInformacion, GroupLayout.PREFERRED_SIZE, 126,
-												GroupLayout.PREFERRED_SIZE)
-										.addComponent(btnWifi, GroupLayout.PREFERRED_SIZE, 126,
-												GroupLayout.PREFERRED_SIZE)))
-								.addGroup(gl_panelServicios.createSequentialGroup()
-										.addComponent(btnTelefono, GroupLayout.PREFERRED_SIZE, 126,
-												GroupLayout.PREFERRED_SIZE)
-										.addPreferredGap(ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-										.addGroup(gl_panelServicios.createParallelGroup(Alignment.BASELINE)
-												.addComponent(btnMiniBar, GroupLayout.PREFERRED_SIZE, 126,
-														GroupLayout.PREFERRED_SIZE)
-												.addComponent(btnHorarioLimpieza, GroupLayout.PREFERRED_SIZE, 126,
-														GroupLayout.PREFERRED_SIZE)
-												.addComponent(btnPedirTaxi, GroupLayout.PREFERRED_SIZE, 126,
-														GroupLayout.PREFERRED_SIZE)))
-								.addGroup(gl_panelServicios.createParallelGroup(Alignment.BASELINE)
-										.addComponent(btnBotones, GroupLayout.PREFERRED_SIZE, 126,
-												GroupLayout.PREFERRED_SIZE)
-										.addComponent(btnComidaHab, GroupLayout.PREFERRED_SIZE, 126,
-												GroupLayout.PREFERRED_SIZE)))
-						.addContainerGap()));
+		gl_panelServicios.setHorizontalGroup(
+			gl_panelServicios.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelServicios.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panelServicios.createParallelGroup(Alignment.TRAILING)
+						.addComponent(btnCambioToalla, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnTelefono, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnBotones, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_panelServicios.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panelServicios.createSequentialGroup()
+							.addGroup(gl_panelServicios.createParallelGroup(Alignment.LEADING)
+								.addComponent(btnCambioAlmohada, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
+								.addComponent(btnWifi, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(gl_panelServicios.createParallelGroup(Alignment.LEADING)
+								.addComponent(btnHorarioLimpieza, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
+								.addComponent(btnMiniBar, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)))
+						.addGroup(gl_panelServicios.createSequentialGroup()
+							.addComponent(btnComidaHab, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnMusica, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_panelServicios.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnCambiarSabanas, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnPedirTaxi, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnInformacion, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(622, Short.MAX_VALUE))
+		);
+		gl_panelServicios.setVerticalGroup(
+			gl_panelServicios.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelServicios.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panelServicios.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnCambioToalla, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnCambioAlmohada, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnMiniBar, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnCambiarSabanas, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_panelServicios.createParallelGroup(Alignment.TRAILING)
+						.addComponent(btnTelefono, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnWifi, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)
+						.addGroup(Alignment.LEADING, gl_panelServicios.createParallelGroup(Alignment.BASELINE)
+							.addComponent(btnHorarioLimpieza, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)
+							.addComponent(btnPedirTaxi, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_panelServicios.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panelServicios.createParallelGroup(Alignment.BASELINE)
+							.addComponent(btnComidaHab, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)
+							.addComponent(btnBotones, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE))
+						.addComponent(btnMusica, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnInformacion, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(323, Short.MAX_VALUE))
+		);
 		this.setLayout(gl_panelServicios);
 	}
 }
