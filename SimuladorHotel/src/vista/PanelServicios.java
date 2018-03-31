@@ -3,11 +3,8 @@ package vista;
 import java.awt.Dimension;
 import java.awt.Font;
 
-import javax.swing.GroupLayout;
 import javax.swing.JPanel;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 
@@ -104,6 +101,8 @@ public class PanelServicios extends JPanel {
 		btnInformacion.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnInformacion.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnPedirTaxi.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		
+		// NOTA: he usado absolute layout porque viene bien para este caso y el group layout se rompe cada vez que tienes que mover algo cuando hay tantas cosas
 		setLayout(null);
 		add(btnComidaHab);
 		add(btnMusica);
