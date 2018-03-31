@@ -49,6 +49,7 @@ public class SelectorHora extends JPanel {
 		add(label);
 		
 		JButton btnAumentarHoras = new JButton("");
+		btnAumentarHoras.setContentAreaFilled(false);
 		btnAumentarHoras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (horas < 24)
@@ -64,6 +65,7 @@ public class SelectorHora extends JPanel {
 		add(btnAumentarHoras);
 		
 		JButton btnAumentarMinutos = new JButton("");
+		btnAumentarMinutos.setContentAreaFilled(false);
 		btnAumentarMinutos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (minutos < 60)
@@ -79,6 +81,7 @@ public class SelectorHora extends JPanel {
 		add(btnAumentarMinutos);
 		
 		JButton btnDisminuirHoras = new JButton("");
+		btnDisminuirHoras.setContentAreaFilled(false);
 		btnDisminuirHoras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (horas > 0)
@@ -94,6 +97,7 @@ public class SelectorHora extends JPanel {
 		add(btnDisminuirHoras);
 		
 		JButton btnDisminuirMinutos = new JButton("");
+		btnDisminuirMinutos.setContentAreaFilled(false);
 		btnDisminuirMinutos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (minutos > 0)
