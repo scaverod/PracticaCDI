@@ -40,87 +40,94 @@ public class PanelHabitacion extends JPanel {
 		btnCalefaccion.setBounds(10, 305, 101, 69);
 		layeredPane.add(btnCalefaccion);
 		
-		JButton btnLuz = new JButton("luz");
-		btnLuz.setForeground(Color.WHITE);
-		btnLuz.setContentAreaFilled(false);
-		layeredPane.setLayer(btnLuz, 1);
-		btnLuz.setBounds(250, 135, 50, 50);
-		layeredPane.add(btnLuz);
+		JButton btnLuzTechoFondoIzquierda = new JButton("luz");
+		btnLuzTechoFondoIzquierda.setForeground(Color.WHITE);
+		btnLuzTechoFondoIzquierda.setContentAreaFilled(false);
+		layeredPane.setLayer(btnLuzTechoFondoIzquierda, 1);
+		btnLuzTechoFondoIzquierda.setBounds(250, 135, 50, 50);
+		layeredPane.add(btnLuzTechoFondoIzquierda);
 		
-		JButton button = new JButton("luz");
-		layeredPane.setLayer(button, 1);
-		button.setForeground(Color.WHITE);
-		button.setContentAreaFilled(false);
-		button.setBounds(309, 115, 50, 50);
-		layeredPane.add(button);
+		JButton btnLuzTechoCentro = new JButton("luz");
+		layeredPane.setLayer(btnLuzTechoCentro, 1);
+		btnLuzTechoCentro.setForeground(Color.WHITE);
+		btnLuzTechoCentro.setContentAreaFilled(false);
+		btnLuzTechoCentro.setBounds(309, 115, 50, 50);
+		layeredPane.add(btnLuzTechoCentro);
 		
-		JButton button_1 = new JButton("luz");
-		layeredPane.setLayer(button_1, 1);
-		button_1.setForeground(Color.WHITE);
-		button_1.setContentAreaFilled(false);
-		button_1.setBounds(130, 100, 50, 50);
-		layeredPane.add(button_1);
+		JButton btnLuzTechoFrenteIzquierda = new JButton("luz");
+		layeredPane.setLayer(btnLuzTechoFrenteIzquierda, 1);
+		btnLuzTechoFrenteIzquierda.setForeground(Color.WHITE);
+		btnLuzTechoFrenteIzquierda.setContentAreaFilled(false);
+		btnLuzTechoFrenteIzquierda.setBounds(130, 100, 50, 50);
+		layeredPane.add(btnLuzTechoFrenteIzquierda);
 		
-		JButton button_2 = new JButton("luz");
-		layeredPane.setLayer(button_2, 1);
-		button_2.setForeground(Color.WHITE);
-		button_2.setContentAreaFilled(false);
-		button_2.setBounds(460, 70, 50, 50);
-		layeredPane.add(button_2);
+		JButton btnLuzTechoFrenteDerecha = new JButton("luz");
+		layeredPane.setLayer(btnLuzTechoFrenteDerecha, 1);
+		btnLuzTechoFrenteDerecha.setForeground(Color.WHITE);
+		btnLuzTechoFrenteDerecha.setContentAreaFilled(false);
+		btnLuzTechoFrenteDerecha.setBounds(460, 70, 50, 50);
+		layeredPane.add(btnLuzTechoFrenteDerecha);
 		
-		JButton button_3 = new JButton("luz");
-		layeredPane.setLayer(button_3, 1);
-		button_3.setForeground(Color.WHITE);
-		button_3.setContentAreaFilled(false);
-		button_3.setBounds(485, 120, 50, 50);
-		layeredPane.add(button_3);
+		JButton btnLuzTechoFondoDerecha = new JButton("luz");
+		layeredPane.setLayer(btnLuzTechoFondoDerecha, 1);
+		btnLuzTechoFondoDerecha.setForeground(Color.WHITE);
+		btnLuzTechoFondoDerecha.setContentAreaFilled(false);
+		btnLuzTechoFondoDerecha.setBounds(485, 120, 50, 50);
+		layeredPane.add(btnLuzTechoFondoDerecha);
 		
-		JButton button_4 = new JButton("luz");
-		layeredPane.setLayer(button_4, 1);
-		button_4.setForeground(Color.WHITE);
-		button_4.setContentAreaFilled(false);
-		button_4.setBounds(821, 150, 100, 105);
-		layeredPane.add(button_4);
+		JButton btnLuzBanyo = new JButton("luz");
+		layeredPane.setLayer(btnLuzBanyo, 1);
+		btnLuzBanyo.setForeground(Color.WHITE);
+		btnLuzBanyo.setContentAreaFilled(false);
+		btnLuzBanyo.setBounds(821, 150, 100, 105);
+		layeredPane.add(btnLuzBanyo);
 		
-		JButton btnNewButton = new JButton("agua");
-		btnNewButton.setForeground(Color.WHITE);
-		btnNewButton.setContentAreaFilled(false);
-		layeredPane.setLayer(btnNewButton, 1);
-		btnNewButton.setBounds(861, 255, 60, 60);
-		layeredPane.add(btnNewButton);
+		JButton btnGrifoDerecha = new JButton("agua");
+		btnGrifoDerecha.setForeground(Color.WHITE);
+		btnGrifoDerecha.setContentAreaFilled(false);
+		layeredPane.setLayer(btnGrifoDerecha, 1);
+		btnGrifoDerecha.setBounds(861, 255, 60, 60);
+		layeredPane.add(btnGrifoDerecha);
 		
-		JButton button_5 = new JButton("agua");
-		button_5.setForeground(Color.WHITE);
-		button_5.setContentAreaFilled(false);
-		layeredPane.setLayer(button_5, 1);
-		button_5.setBounds(799, 255, 60, 60);
-		layeredPane.add(button_5);
+		JButton btnGrifoIzquierda = new JButton("agua");
+		btnGrifoIzquierda.setForeground(Color.WHITE);
+		btnGrifoIzquierda.setContentAreaFilled(false);
+		layeredPane.setLayer(btnGrifoIzquierda, 1);
+		btnGrifoIzquierda.setBounds(799, 255, 60, 60);
+		layeredPane.add(btnGrifoIzquierda);
 		
-		JButton btnNewButton_1 = new JButton("ventana");
-		btnNewButton_1.setContentAreaFilled(false);
-		layeredPane.setLayer(btnNewButton_1, 1);
-		btnNewButton_1.setBounds(480, 185, 75, 90);
-		layeredPane.add(btnNewButton_1);
+		JButton btnVentana = new JButton("ventana");
+		btnVentana.setContentAreaFilled(false);
+		layeredPane.setLayer(btnVentana, 1);
+		btnVentana.setBounds(480, 185, 75, 90);
+		layeredPane.add(btnVentana);
 		
-		JButton button_6 = new JButton("luz");
-		layeredPane.setLayer(button_6, 1);
-		button_6.setForeground(Color.WHITE);
-		button_6.setContentAreaFilled(false);
-		button_6.setBounds(319, 255, 50, 50);
-		layeredPane.add(button_6);
+		JButton btnLuzMesillaIzquierda = new JButton("luz");
+		layeredPane.setLayer(btnLuzMesillaIzquierda, 1);
+		btnLuzMesillaIzquierda.setForeground(Color.WHITE);
+		btnLuzMesillaIzquierda.setContentAreaFilled(false);
+		btnLuzMesillaIzquierda.setBounds(319, 255, 50, 50);
+		layeredPane.add(btnLuzMesillaIzquierda);
 		
-		JButton button_7 = new JButton("luz");
-		layeredPane.setLayer(button_7, 1);
-		button_7.setForeground(Color.WHITE);
-		button_7.setContentAreaFilled(false);
-		button_7.setBounds(421, 255, 50, 50);
-		layeredPane.add(button_7);
+		JButton btnLuzMesillaDerecha = new JButton("luz");
+		layeredPane.setLayer(btnLuzMesillaDerecha, 1);
+		btnLuzMesillaDerecha.setForeground(Color.WHITE);
+		btnLuzMesillaDerecha.setContentAreaFilled(false);
+		btnLuzMesillaDerecha.setBounds(421, 255, 50, 50);
+		layeredPane.add(btnLuzMesillaDerecha);
 		
-		JButton btnNewButton_2 = new JButton("jacuzzi");
-		btnNewButton_2.setForeground(Color.WHITE);
-		btnNewButton_2.setContentAreaFilled(false);
-		layeredPane.setLayer(btnNewButton_2, 1);
-		btnNewButton_2.setBounds(589, 294, 95, 80);
-		layeredPane.add(btnNewButton_2);
+		JButton btnJacuzzi = new JButton("jacuzzi");
+		btnJacuzzi.setForeground(Color.WHITE);
+		btnJacuzzi.setContentAreaFilled(false);
+		layeredPane.setLayer(btnJacuzzi, 1);
+		btnJacuzzi.setBounds(589, 294, 95, 80);
+		layeredPane.add(btnJacuzzi);
+		
+		JButton btnVentanaGrande = new JButton("ventana");
+		btnVentanaGrande.setForeground(Color.WHITE);
+		layeredPane.setLayer(btnVentanaGrande, 1);
+		btnVentanaGrande.setContentAreaFilled(false);
+		btnVentanaGrande.setBounds(111, 178, 120, 190);
+		layeredPane.add(btnVentanaGrande);
 	}
 }
