@@ -85,8 +85,12 @@ public class PanelServicios extends JPanel {
 		btnPedirTaxi.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnPedirTaxi.setFont(new Font("Tahoma", Font.PLAIN, 12));
 
-		JButton btnMusica = new JButton("New button");
-		btnMusica.setBounds(471, 325, 220, 146);
+		JButton btnTelevision = new JButton("Adquirir Canales");
+		btnTelevision.setIcon(new ImageIcon(PanelServicios.class.getResource("/iconos/television.png")));
+		btnTelevision.setBounds(471, 325, 220, 146);
+		btnTelevision.setHorizontalTextPosition(SwingConstants.CENTER);
+		btnTelevision.setVerticalTextPosition(SwingConstants.BOTTOM);
+		btnTelevision.setFont(new Font("Tahoma", Font.PLAIN, 12));
 
 		JButton btnWifi = new JButton("Activar Wifi");
 		btnWifi.setBounds(10, 325, 220, 146);
@@ -105,7 +109,7 @@ public class PanelServicios extends JPanel {
 		// NOTA: he usado absolute layout porque viene bien para este caso y el group layout se rompe cada vez que tienes que mover algo cuando hay tantas cosas
 		setLayout(null);
 		add(btnComidaHab);
-		add(btnMusica);
+		add(btnTelevision);
 		add(btnTelefono);
 		add(btnBotones);
 		add(btnHorarioLimpieza);
