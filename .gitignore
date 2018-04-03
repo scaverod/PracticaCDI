@@ -35,3 +35,6 @@ local.properties
 .project
 .classpath
 
+# carpeta de iconos inactivos
+# src/iconos/iconos_sin_usar
+# src/iconos/iconos_beta_off
