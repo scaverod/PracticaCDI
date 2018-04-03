@@ -131,11 +131,15 @@ public class Ventana extends JFrame {
 		lblNewLabel.setIcon(new ImageIcon(Ventana.class.getResource("/iconos/logoAPP.png")));
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(Ventana.class.getResource("/iconos/slogan.png")));
+		lblNewLabel_1.setIcon(new ImageIcon(Ventana.class.getResource("/iconos/eslogan1.png")));
 		GroupLayout gl_panelDatosSesion = new GroupLayout(panelDatosSesion);
 		gl_panelDatosSesion.setHorizontalGroup(
 			gl_panelDatosSesion.createParallelGroup(Alignment.LEADING)
 				.addComponent(separador, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 931, Short.MAX_VALUE)
+				.addGroup(gl_panelDatosSesion.createSequentialGroup()
+					.addGap(391)
+					.addComponent(lblNewLabel)
+					.addContainerGap(392, Short.MAX_VALUE))
 				.addGroup(gl_panelDatosSesion.createSequentialGroup()
 					.addGap(298)
 					.addGroup(gl_panelDatosSesion.createParallelGroup(Alignment.LEADING, false)
@@ -150,13 +154,9 @@ public class Ventana extends JFrame {
 						.addComponent(btnAceptar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 					.addContainerGap(299, Short.MAX_VALUE))
 				.addGroup(gl_panelDatosSesion.createSequentialGroup()
-					.addGap(391)
-					.addComponent(lblNewLabel)
-					.addContainerGap(392, Short.MAX_VALUE))
-				.addGroup(gl_panelDatosSesion.createSequentialGroup()
-					.addGap(340)
+					.addGap(282)
 					.addComponent(lblNewLabel_1)
-					.addContainerGap(341, Short.MAX_VALUE))
+					.addContainerGap(291, Short.MAX_VALUE))
 		);
 		gl_panelDatosSesion.setVerticalGroup(
 			gl_panelDatosSesion.createParallelGroup(Alignment.LEADING)
@@ -176,7 +176,7 @@ public class Ventana extends JFrame {
 					.addComponent(btnAceptar)
 					.addGap(18)
 					.addComponent(lblNewLabel_1)
-					.addContainerGap(99, Short.MAX_VALUE))
+					.addContainerGap(66, Short.MAX_VALUE))
 		);
 		panelDatosSesion.setLayout(gl_panelDatosSesion);
 		panelLogin.setLayout(gl_panelLogin);
