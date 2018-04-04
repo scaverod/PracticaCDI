@@ -37,7 +37,16 @@ public class Ventana extends JFrame {
 	private JPanel pantalla;
 	private int xCoord;
 	private int tolerancia = 50;
+	private String pantallaMenuActiva;
 	private JPanel pantallaMenu;
+	private JToggleButton btnHabitacion;
+	private JToggleButton btnSpa;
+	private JToggleButton btnServicios;
+	private JToggleButton btnCuenta;
+	private JPanel panelHabitacion;
+	private JPanel panelSpa;
+	private JPanel panelServicios;
+	private JPanel panelCuenta;
 
 	public Ventana() {
 		try {
@@ -224,23 +233,22 @@ public class Ventana extends JFrame {
 						.addComponent(pantallaMenu, GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE).addContainerGap()));
 		pantallaMenu.setLayout(new CardLayout(0, 0));
 
-		JPanel panelHabitacion = new PanelHabitacion();
+		panelHabitacion = new PanelHabitacion();
 		pantallaMenu.add(panelHabitacion, panelHabitacion.getName());
 
-		JPanel panelSpa = new PanelSpa();
+		panelSpa = new PanelSpa();
 		pantallaMenu.add(panelSpa, panelSpa.getName());
 
-		JPanel panelServicios = new PanelServicios();
+		panelServicios = new PanelServicios();
 		pantallaMenu.add(panelServicios, panelServicios.getName());
 
-		JPanel panelCuenta = new PanelCuenta();
+		panelCuenta = new PanelCuenta();
 		pantallaMenu.add(panelCuenta, panelCuenta.getName());
 
-		JToggleButton btnSpa = new JToggleButton("Spa");
+		btnSpa = new JToggleButton("Spa");
 		btnSpa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CardLayout l = (CardLayout) pantallaMenu.getLayout();
-				l.show(pantallaMenu, panelSpa.getName());
+				changeToSpa();
 			}
 		});
 		btnSpa.setFont(new Font("Tahoma", Font.PLAIN, 24));
@@ -248,12 +256,11 @@ public class Ventana extends JFrame {
 		btnSpa.setIcon(new ImageIcon(Ventana.class.getResource("/iconos/spa_x32_blue.png")));
 		buttonGroup.add(btnSpa);
 
-		JToggleButton btnHabitacion = new JToggleButton("Habitaci\u00F3n");
+		btnHabitacion = new JToggleButton("Habitaci\u00F3n");
 		btnHabitacion.setSelected(true);
 		btnHabitacion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CardLayout l = (CardLayout) pantallaMenu.getLayout();
-				l.show(pantallaMenu, panelHabitacion.getName());
+				changeToHabitacion();
 			}
 		});
 		btnHabitacion.setFont(new Font("Tahoma", Font.PLAIN, 24));
@@ -261,11 +268,10 @@ public class Ventana extends JFrame {
 		btnHabitacion.setIcon(new ImageIcon(Ventana.class.getResource("/iconos/cama_x32_blue.png")));
 		buttonGroup.add(btnHabitacion);
 
-		JToggleButton btnCuenta = new JToggleButton("Cuenta");
+		btnCuenta = new JToggleButton("Cuenta");
 		btnCuenta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CardLayout l = (CardLayout) pantallaMenu.getLayout();
-				l.show(pantallaMenu, panelCuenta.getName());
+				changeToCuenta();
 			}
 		});
 		btnCuenta.setFont(new Font("Tahoma", Font.PLAIN, 24));
@@ -273,11 +279,10 @@ public class Ventana extends JFrame {
 		buttonGroup.add(btnCuenta);
 		btnCuenta.setIcon(new ImageIcon(Ventana.class.getResource("/iconos/usuario_x32_blue.png")));
 
-		JToggleButton btnServicios = new JToggleButton("Servicios");
+		btnServicios = new JToggleButton("Servicios");
 		btnServicios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CardLayout l = (CardLayout) pantallaMenu.getLayout();
-				l.show(pantallaMenu, panelServicios.getName());
+				changeToServicios();
 			}
 		});
 		btnServicios.setFont(new Font("Tahoma", Font.PLAIN, 24));
@@ -324,16 +329,73 @@ public class Ventana extends JFrame {
 		} else {
 			CardLayout l = (CardLayout) pantalla.getLayout();
 			l.show(pantalla, panelPrincipal.getName());
+			pantallaMenuActiva = "panelHabitacion";
 		}
 	}
 	
-	private void desplazamientoDerecha() {
+	private void changeToHabitacion() {
 		CardLayout l = (CardLayout) pantallaMenu.getLayout();
-		l.previous(pantallaMenu);
+		l.show(pantallaMenu, panelHabitacion.getName());
+		pantallaMenuActiva = panelHabitacion.getName();
+	}
+	
+	private void changeToSpa() {
+		CardLayout l = (CardLayout) pantallaMenu.getLayout();
+		l.show(pantallaMenu, panelSpa.getName());
+		pantallaMenuActiva = panelSpa.getName();
+	}
+	
+	private void changeToServicios() {
+		CardLayout l = (CardLayout) pantallaMenu.getLayout();
+		l.show(pantallaMenu, panelServicios.getName());
+		pantallaMenuActiva = panelServicios.getName();
+	}
+	
+	private void changeToCuenta() {
+		CardLayout l = (CardLayout) pantallaMenu.getLayout();
+		l.show(pantallaMenu, panelCuenta.getName());
+		pantallaMenuActiva = panelCuenta.getName();
+	}
+	
+	private void desplazamientoDerecha() {
+		switch (pantallaMenuActiva) {
+			case "panelHabitacion":
+				btnCuenta.setSelected(true);
+				changeToCuenta();
+				break;
+			case "panelSpa":
+				btnHabitacion.setSelected(true);
+				changeToHabitacion();
+				break;
+			case "panelServicios":
+				btnSpa.setSelected(true);
+				changeToSpa();
+				break;
+			case "panelCuenta":
+				btnServicios.setSelected(true);
+				changeToServicios();
+				break;
+		}
 	}
 	
 	private void desplazamientoIzquierda() {
-		CardLayout l = (CardLayout) pantallaMenu.getLayout();
-		l.next(pantallaMenu);
+		switch (pantallaMenuActiva) {
+			case "panelHabitacion":
+				btnSpa.setSelected(true);
+				changeToSpa();
+				break;
+			case "panelSpa":
+				btnServicios.setSelected(true);
+				changeToServicios();
+				break;
+			case "panelServicios":
+				btnCuenta.setSelected(true);
+				changeToCuenta();
+				break;
+			case "panelCuenta":
+				btnHabitacion.setSelected(true);
+				changeToHabitacion();
+				break;
+		}
 	}
 }
