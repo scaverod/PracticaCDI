@@ -23,6 +23,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
+import java.awt.event.MouseMotionAdapter;
+import java.awt.event.MouseEvent;
 
 public class Ventana extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -182,6 +184,12 @@ public class Ventana extends JFrame {
 		panelLogin.setLayout(gl_panelLogin);
 
 		panelPrincipal = new JPanel();
+		panelPrincipal.addMouseMotionListener(new MouseMotionAdapter() {
+			@Override
+			public void mouseDragged(MouseEvent e) {
+				System.out.println("dragged");
+			}
+		});
 		panelPrincipal.setName("panelPrincipal");
 		pantalla.add(panelPrincipal, panelPrincipal.getName());
 		layeredPane.setLayer(panelPrincipal, 1);
