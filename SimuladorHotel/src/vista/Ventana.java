@@ -23,7 +23,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
-import java.awt.event.MouseMotionAdapter;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class Ventana extends JFrame {
@@ -35,6 +35,9 @@ public class Ventana extends JFrame {
 	private JPanel panelPrincipal;
 	private JPanel panelLogin;
 	private JPanel pantalla;
+	private int xCoord;
+	private int tolerancia = 50;
+	private JPanel pantallaMenu;
 
 	public Ventana() {
 		try {
@@ -184,10 +187,18 @@ public class Ventana extends JFrame {
 		panelLogin.setLayout(gl_panelLogin);
 
 		panelPrincipal = new JPanel();
-		panelPrincipal.addMouseMotionListener(new MouseMotionAdapter() {
+		panelPrincipal.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseDragged(MouseEvent e) {
-				System.out.println("dragged");
+			public void mousePressed(MouseEvent e) {
+				xCoord = e.getX();
+			}
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				int diferencia = e.getX() - xCoord;
+				if ((diferencia > 0) && (diferencia > tolerancia))
+					desplazamientoDerecha();
+				else if ((diferencia < 0) && ((-diferencia) > tolerancia))
+					desplazamientoIzquierda();
 			}
 		});
 		panelPrincipal.setName("panelPrincipal");
@@ -196,7 +207,7 @@ public class Ventana extends JFrame {
 
 		JPanel menuPrincipal = new JPanel();
 
-		JPanel pantallaMenu = new JPanel();
+		pantallaMenu = new JPanel();
 		GroupLayout gl_panelPrincipal = new GroupLayout(panelPrincipal);
 		gl_panelPrincipal.setHorizontalGroup(gl_panelPrincipal.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_panelPrincipal.createSequentialGroup().addContainerGap()
@@ -314,5 +325,15 @@ public class Ventana extends JFrame {
 			CardLayout l = (CardLayout) pantalla.getLayout();
 			l.show(pantalla, panelPrincipal.getName());
 		}
+	}
+	
+	private void desplazamientoDerecha() {
+		CardLayout l = (CardLayout) pantallaMenu.getLayout();
+		l.previous(pantallaMenu);
+	}
+	
+	private void desplazamientoIzquierda() {
+		CardLayout l = (CardLayout) pantallaMenu.getLayout();
+		l.next(pantallaMenu);
 	}
 }
