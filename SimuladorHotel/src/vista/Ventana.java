@@ -142,7 +142,7 @@ public class Ventana extends JFrame {
 		
 		//Es una prueba
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(Ventana.class.getResource("/iconos/logoAPP.png")));
+		lblNewLabel.setIcon(new ImageIcon(Ventana.class.getResource("/iconos/logoAplicacion.png")));
 		
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(Ventana.class.getResource("/iconos/eslogan1.png")));
@@ -151,12 +151,12 @@ public class Ventana extends JFrame {
 			gl_panelDatosSesion.createParallelGroup(Alignment.LEADING)
 				.addComponent(separador, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 931, Short.MAX_VALUE)
 				.addGroup(gl_panelDatosSesion.createSequentialGroup()
-					.addGap(391)
-					.addComponent(lblNewLabel)
-					.addContainerGap(392, Short.MAX_VALUE))
+					.addGap(315)
+					.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGap(316))
 				.addGroup(gl_panelDatosSesion.createSequentialGroup()
 					.addGap(298)
-					.addGroup(gl_panelDatosSesion.createParallelGroup(Alignment.LEADING, false)
+					.addGroup(gl_panelDatosSesion.createParallelGroup(Alignment.TRAILING)
 						.addGroup(gl_panelDatosSesion.createSequentialGroup()
 							.addComponent(lblUsuario, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE)
 							.addGap(18)
@@ -165,32 +165,31 @@ public class Ventana extends JFrame {
 							.addComponent(lblContrasea)
 							.addGap(18)
 							.addComponent(campoPassword, GroupLayout.PREFERRED_SIZE, 188, GroupLayout.PREFERRED_SIZE))
-						.addComponent(btnAceptar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-					.addContainerGap(299, Short.MAX_VALUE))
+						.addComponent(btnAceptar, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE))
+					.addContainerGap(287, Short.MAX_VALUE))
 				.addGroup(gl_panelDatosSesion.createSequentialGroup()
-					.addGap(282)
+					.addGap(286)
 					.addComponent(lblNewLabel_1)
-					.addContainerGap(291, Short.MAX_VALUE))
+					.addContainerGap(287, Short.MAX_VALUE))
 		);
 		gl_panelDatosSesion.setVerticalGroup(
-			gl_panelDatosSesion.createParallelGroup(Alignment.LEADING)
+			gl_panelDatosSesion.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_panelDatosSesion.createSequentialGroup()
-					.addComponent(separador, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
-					.addGap(53)
-					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
+					.addComponent(separador, GroupLayout.DEFAULT_SIZE, 1, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblNewLabel)
+					.addGap(30)
 					.addGroup(gl_panelDatosSesion.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblUsuario, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
 						.addComponent(campoUsuario, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
-					.addGap(19)
+					.addGap(18)
 					.addGroup(gl_panelDatosSesion.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblContrasea)
 						.addComponent(campoPassword, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
-					.addGap(18)
+					.addGap(27)
 					.addComponent(btnAceptar)
-					.addGap(18)
-					.addComponent(lblNewLabel_1)
-					.addContainerGap(66, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE))
 		);
 		panelDatosSesion.setLayout(gl_panelDatosSesion);
 		panelLogin.setLayout(gl_panelLogin);
