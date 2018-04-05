@@ -2,6 +2,7 @@ package modelo;
 
 public class Almohada {
 
+	//TODO: mejorar esto
 	//Tipos de almhoada: 
 	
 	//Viscoelasticas

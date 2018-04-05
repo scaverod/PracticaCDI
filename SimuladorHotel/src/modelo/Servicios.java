@@ -8,6 +8,8 @@ public class Servicios {
 	private Taxi taxi;
 	private Wifi wifi;
 	private Llamada llamada;
+	private Sabanas sabanas;
+	private Limpieza limpieza;
 
 	public Servicios() {
 		this.almohada = new Almohada(1.50, 2, 1.25, 1);
@@ -16,6 +18,16 @@ public class Servicios {
 		this.taxi = new Taxi(0.50);
 		this.wifi = new Wifi(false, 2.50, null);
 		this.llamada = new Llamada(0.50, 1.25, 1.50, 2);
+		this.sabanas = new Sabanas(0.50);
+		//TODO: inicialziar limpieza
+	}
+
+	public Sabanas getSabanas() {
+		return sabanas;
+	}
+
+	public void setSabanas(Sabanas sabanas) {
+		this.sabanas = sabanas;
 	}
 
 	public Almohada getAlmohada() {
