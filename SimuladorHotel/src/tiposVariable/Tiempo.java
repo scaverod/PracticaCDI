@@ -1,4 +1,4 @@
-package modelo;
+package tiposVariable;
 
 public class Tiempo {
 

@@ -11,7 +11,7 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-import modelo.Tiempo;
+import tiposVariable.Tiempo;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -151,6 +151,6 @@ public class SelectorHora extends JPanel {
 	}
 	
 	public Tiempo getTiempo () {
-		return new Tiempo (horas, minutos);
+		return new Tiempo(horas, minutos);
 	}
 }
