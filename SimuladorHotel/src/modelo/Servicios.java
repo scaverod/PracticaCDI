@@ -19,7 +19,7 @@ public class Servicios {
 		this.wifi = new Wifi(false, 2.50, null);
 		this.llamada = new Llamada(0.50, 1.25, 1.50, 2);
 		this.sabanas = new Sabanas(0.50);
-		//TODO: inicialziar limpieza
+		this.limpieza = new Limpieza(0.50, null);
 	}
 
 	public Sabanas getSabanas() {
