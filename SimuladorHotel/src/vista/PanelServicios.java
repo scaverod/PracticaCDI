@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
+import javax.swing.JLayeredPane;
 
 public class PanelServicios extends JPanel {
 
@@ -108,6 +109,10 @@ public class PanelServicios extends JPanel {
 		
 		// NOTA: he usado absolute layout porque viene bien para este caso y el group layout se rompe cada vez que tienes que mover algo cuando hay tantas cosas
 		setLayout(null);
+		
+		JLayeredPane layeredPane = new JLayeredPane();
+		layeredPane.setBounds(0, 0, 931, 483);
+		add(layeredPane);
 		add(btnComidaHab);
 		add(btnTelevision);
 		add(btnTelefono);
