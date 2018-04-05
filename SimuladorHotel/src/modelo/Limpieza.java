@@ -1,5 +1,7 @@
 package modelo;
 
+import tiposVariable.Tiempo;
+
 public class Limpieza {
 
 	private double precio;
