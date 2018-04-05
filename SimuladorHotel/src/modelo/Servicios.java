@@ -11,6 +11,7 @@ public class Servicios {
 	private Sabanas sabanas;
 	private Limpieza limpieza;
 	private Comida comida;
+	private Television television;
 
 	public Servicios() {
 		this.almohada = new Almohada(1.50, 2, 1.25, 1);
@@ -22,6 +23,15 @@ public class Servicios {
 		this.sabanas = new Sabanas(0.50);
 		this.limpieza = new Limpieza(0.50, null);
 		this.comida = new Comida(3.50);
+		this.television = new Television(2.50, 3.50, 4.50, 3.50);
+	}
+
+	public Television getTelevision() {
+		return television;
+	}
+
+	public void setTelevision(Television television) {
+		this.television = television;
 	}
 
 	public Comida getComida() {
