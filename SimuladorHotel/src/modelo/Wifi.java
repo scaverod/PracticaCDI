@@ -47,7 +47,7 @@ public class Wifi {
 	 * 
 	 * @return contraseña aleatoria
 	 */
-	public static String generarPwd() {
+	private String generarPwd() {
 		String[] symbols = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "g", "h",
 				"i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "x", "y" };
 		int length = 10;
@@ -64,6 +64,15 @@ public class Wifi {
 		}
 		String pwd = sb.toString();
 		return pwd;
+	}
+
+	/**
+	 * Metodo quiie activa el wifi de una habitación. Genera una contraseña para
+	 * conectarse.
+	 */
+	public void activarWifi() {
+		this.activado = true;
+		this.pwd = this.generarPwd();
 	}
 
 }
