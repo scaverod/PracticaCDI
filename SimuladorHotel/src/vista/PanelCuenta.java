@@ -1,6 +1,7 @@
 package vista;
 
 import java.awt.Dimension;
+import java.awt.Font;
 
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
@@ -35,42 +36,50 @@ public class PanelCuenta extends JPanel {
 		lblHabitacion.setHorizontalAlignment(SwingConstants.CENTER);
 		lblHabitacion.setOpaque(true);
 		lblHabitacion.setForeground(new Color(255, 255, 255));
-		lblHabitacion.setBackground(Color.decode("#005cb9"));
+		lblHabitacion.setBackground(Color.decode("#006df0"));
+		lblHabitacion.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		//TODO: Cambiar para que quede más bonito
 		lblHabitacion.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
 		
-		JButton btnLogout = new JButton("");
-		btnLogout.setIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/exit.png")));
-		btnLogout.setOpaque(true);
-		btnLogout.setBackground(Color.RED);
-		btnLogout.setContentAreaFilled( false );
-		btnLogout.setContentAreaFilled( false );
+		JPanel panelLogout = new JPanel();
+		panelLogout.setBackground(Color.RED);
 		GroupLayout gl_panelCuenta = new GroupLayout(this);
 		gl_panelCuenta.setHorizontalGroup(
 			gl_panelCuenta.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panelCuenta.createSequentialGroup()
 					.addGroup(gl_panelCuenta.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panelCuenta.createSequentialGroup()
-							.addGap(297)
-							.addComponent(lblPanelcuenta, GroupLayout.PREFERRED_SIZE, 291, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panelCuenta.createSequentialGroup()
 							.addContainerGap()
-							.addComponent(lblHabitacion, GroupLayout.PREFERRED_SIZE, 829, GroupLayout.PREFERRED_SIZE)
-							.addGap(4)
-							.addComponent(btnLogout, GroupLayout.PREFERRED_SIZE, 79, Short.MAX_VALUE)))
-					.addContainerGap())
+							.addComponent(lblHabitacion, GroupLayout.PREFERRED_SIZE, 829, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_panelCuenta.createSequentialGroup()
+							.addGap(297)
+							.addComponent(lblPanelcuenta, GroupLayout.PREFERRED_SIZE, 291, GroupLayout.PREFERRED_SIZE)))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(panelLogout, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(12, Short.MAX_VALUE))
 		);
 		gl_panelCuenta.setVerticalGroup(
 			gl_panelCuenta.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panelCuenta.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_panelCuenta.createParallelGroup(Alignment.TRAILING, false)
-						.addComponent(btnLogout, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(lblHabitacion, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE))
-					.addGap(52)
-					.addComponent(lblPanelcuenta, GroupLayout.PREFERRED_SIZE, 188, GroupLayout.PREFERRED_SIZE)
+					.addGroup(gl_panelCuenta.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panelCuenta.createSequentialGroup()
+							.addComponent(panelLogout, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED))
+						.addGroup(gl_panelCuenta.createSequentialGroup()
+							.addComponent(lblHabitacion, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
+							.addGap(52)
+							.addComponent(lblPanelcuenta, GroupLayout.PREFERRED_SIZE, 188, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(185, Short.MAX_VALUE))
 		);
+		
+		JButton btnLogout = new JButton("");
+		btnLogout.setIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/logout.png")));
+		panelLogout.add(btnLogout);
+		btnLogout.setOpaque(true);
+		btnLogout.setBackground(Color.RED);
+		btnLogout.setContentAreaFilled( false );
+		btnLogout.setContentAreaFilled( false );
 		this.setLayout(gl_panelCuenta);
 	}
 }
