@@ -6,12 +6,11 @@ import javax.swing.JPanel;
 import java.awt.CardLayout;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
-import javax.swing.border.BevelBorder;
-import java.awt.Color;
 
 public class PanelServiciosPrincipal extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JPanel panelServicios;
+	private JPanel contentedorPanelServiciosEmergente;
 
 	public PanelServiciosPrincipal() {
 		this.setSize(new Dimension(931, 483));
@@ -21,8 +20,8 @@ public class PanelServiciosPrincipal extends JPanel {
 		panelServicios = new PanelServicios();
 		add(panelServicios, panelServicios.getName());
 		
-		JPanel contentedorPanelServiciosEmergente = new JPanel();
-		add(contentedorPanelServiciosEmergente, "name_8961887996794");
+		contentedorPanelServiciosEmergente = new JPanel();
+		add(contentedorPanelServiciosEmergente, "contenedorPanelServiciosEmergente");
 		contentedorPanelServiciosEmergente.setLayout(null);
 		
 		JPanel PanelServiciosEmergente = new PanelServiciosEmergente();
@@ -48,6 +47,6 @@ public class PanelServiciosPrincipal extends JPanel {
 	
 	private void changeToPanelEmergente() {
 		CardLayout l = (CardLayout) getLayout();
-		// TODO
+		l.show(this, contentedorPanelServiciosEmergente.getName());
 	}
 }

@@ -6,7 +6,6 @@ public class TextoManager {
 	public static final String romana = "RO";
 	
 	String idioma;
-	String[] mensajes;
 	
 	Texto t;
 	
@@ -28,5 +27,9 @@ public class TextoManager {
 	
 	public void getIdiomas() {
 		
+	}
+	
+	public Texto getTexto() {
+		return t;
 	}
 }

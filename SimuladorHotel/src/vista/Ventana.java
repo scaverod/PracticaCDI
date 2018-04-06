@@ -3,6 +3,10 @@ package vista;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import modelo.Texto;
+import modelo.TextoManager;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLayeredPane;
@@ -47,6 +51,10 @@ public class Ventana extends JFrame {
 	private JPanel panelSpa;
 	private JPanel panelServicios;
 	private JPanel panelCuenta;
+	
+	// FIXME: temporal para que salga el texto en vez de "<dynamic>"
+	// Habría que mandarlo desde el Main, por ejemplo
+	private Texto t = new TextoManager(TextoManager.english).getTexto();
 
 	public Ventana() {
 		try {
@@ -85,114 +93,76 @@ public class Ventana extends JFrame {
 		panelLogin.setName("panelLogin");
 		pantalla.add(panelLogin, panelLogin.getName());
 
-		JLabel lblInicieSesinPara = new JLabel("Inicie sesi\u00F3n para usar la aplicaci\u00F3n");
+		JLabel lblInicieSesinPara = new JLabel(t.getLoginIniciaSesion());
+		lblInicieSesinPara.setBounds(10, 11, 939, 76);
 		lblInicieSesinPara.setHorizontalAlignment(SwingConstants.CENTER);
 		lblInicieSesinPara.setFont(new Font("Tahoma", Font.PLAIN, 24));
 
 		JPanel panelDatosSesion = new JPanel();
-		GroupLayout gl_panelLogin = new GroupLayout(panelLogin);
-		gl_panelLogin.setHorizontalGroup(gl_panelLogin.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_panelLogin.createSequentialGroup().addContainerGap()
-						.addGroup(gl_panelLogin.createParallelGroup(Alignment.TRAILING)
-								.addComponent(panelDatosSesion, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 931,
-										Short.MAX_VALUE)
-								.addComponent(lblInicieSesinPara, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 931,
-										Short.MAX_VALUE))
-						.addContainerGap()));
-		gl_panelLogin.setVerticalGroup(gl_panelLogin.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panelLogin.createSequentialGroup().addContainerGap()
-						.addComponent(lblInicieSesinPara, GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(panelDatosSesion, GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
-						.addContainerGap()));
+		panelDatosSesion.setBounds(10, 93, 939, 490);
 
-		JLabel lblContrasea = new JLabel("Contrase\u00F1a:");
+		JLabel lblContrasea = new JLabel(t.getLoginPassword() + ":");
+		lblContrasea.setBounds(304, 289, 128, 29);
 		lblContrasea.setFont(new Font("Tahoma", Font.PLAIN, 24));
 
 		campoPassword = new JPasswordField();
+		campoPassword.setBounds(450, 287, 188, 32);
 		campoPassword.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				loginHandler();
 			}
 		});
-		campoPassword.setToolTipText("Introduzca la contrase\u00F1a asociada al usuario introducido m\u00E1s arriba");
+		campoPassword.setToolTipText(t.getLoginPasswordToolTip());
 		campoPassword.setFont(new Font("Tahoma", Font.PLAIN, 24));
 
-		JLabel lblUsuario = new JLabel("Usuario:");
+		JLabel lblUsuario = new JLabel(t.getLoginUsuario() + ":");
+		lblUsuario.setBounds(304, 239, 120, 29);
 		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 24));
 
 		campoUsuario = new JTextField();
+		campoUsuario.setBounds(450, 237, 188, 32);
 		campoUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				loginHandler();
 			}
 		});
-		campoUsuario.setToolTipText("Introduzca su usuario (n\u00FAmero de habitaci\u00F3n)");
+		campoUsuario.setToolTipText(t.getLoginUsuarioToolTip());
 		campoUsuario.setFont(new Font("Tahoma", Font.PLAIN, 24));
 
-		JButton btnAceptar = new JButton("Aceptar");
+		JButton btnAceptar = new JButton(t.getLoginBtnAceptar());
+		btnAceptar.setBounds(304, 346, 334, 37);
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				loginHandler();
 			}
 		});
+		panelLogin.setLayout(null);
 		btnAceptar.setFont(new Font("Tahoma", Font.PLAIN, 24));
 
 		JSeparator separador = new JSeparator();
+		separador.setBounds(0, 0, 939, 1);
 		
 		//Es una prueba
 		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBounds(301, 7, 337, 200);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setIcon(new ImageIcon(Ventana.class.getResource("/iconos/logoAplicacion.png")));
 		
 		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setBounds(304, 389, 334, 96);
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setIcon(new ImageIcon(Ventana.class.getResource("/iconos/eslogan1.png")));
-		GroupLayout gl_panelDatosSesion = new GroupLayout(panelDatosSesion);
-		gl_panelDatosSesion.setHorizontalGroup(
-			gl_panelDatosSesion.createParallelGroup(Alignment.LEADING)
-				.addComponent(separador, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 931, Short.MAX_VALUE)
-				.addGroup(gl_panelDatosSesion.createSequentialGroup()
-					.addGap(315)
-					.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGap(316))
-				.addGroup(gl_panelDatosSesion.createSequentialGroup()
-					.addGap(298)
-					.addGroup(gl_panelDatosSesion.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_panelDatosSesion.createSequentialGroup()
-							.addComponent(lblUsuario, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(campoUsuario, GroupLayout.PREFERRED_SIZE, 188, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panelDatosSesion.createSequentialGroup()
-							.addComponent(lblContrasea)
-							.addGap(18)
-							.addComponent(campoPassword, GroupLayout.PREFERRED_SIZE, 188, GroupLayout.PREFERRED_SIZE))
-						.addComponent(btnAceptar, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE))
-					.addContainerGap(287, Short.MAX_VALUE))
-				.addGroup(gl_panelDatosSesion.createSequentialGroup()
-					.addGap(286)
-					.addComponent(lblNewLabel_1)
-					.addContainerGap(287, Short.MAX_VALUE))
-		);
-		gl_panelDatosSesion.setVerticalGroup(
-			gl_panelDatosSesion.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_panelDatosSesion.createSequentialGroup()
-					.addComponent(separador, GroupLayout.DEFAULT_SIZE, 1, Short.MAX_VALUE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(lblNewLabel)
-					.addGap(30)
-					.addGroup(gl_panelDatosSesion.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblUsuario, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
-						.addComponent(campoUsuario, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
-					.addGap(18)
-					.addGroup(gl_panelDatosSesion.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblContrasea)
-						.addComponent(campoPassword, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
-					.addGap(27)
-					.addComponent(btnAceptar)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE))
-		);
-		panelDatosSesion.setLayout(gl_panelDatosSesion);
-		panelLogin.setLayout(gl_panelLogin);
+		panelLogin.add(panelDatosSesion);
+		panelDatosSesion.setLayout(null);
+		panelDatosSesion.add(separador);
+		panelDatosSesion.add(lblNewLabel);
+		panelDatosSesion.add(lblUsuario);
+		panelDatosSesion.add(campoUsuario);
+		panelDatosSesion.add(btnAceptar);
+		panelDatosSesion.add(lblContrasea);
+		panelDatosSesion.add(campoPassword);
+		panelDatosSesion.add(lblNewLabel_1);
+		panelLogin.add(lblInicieSesinPara);
 
 		panelPrincipal = new JPanel();
 		panelPrincipal.addMouseListener(new MouseAdapter() {
@@ -244,7 +214,7 @@ public class Ventana extends JFrame {
 		panelCuenta = new PanelCuenta();
 		pantallaMenu.add(panelCuenta, panelCuenta.getName());
 
-		btnSpa = new JToggleButton("Spa");
+		btnSpa = new JToggleButton(t.getMenuPrincipalBtnSpa());
 		btnSpa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				changeToSpa();
@@ -255,7 +225,7 @@ public class Ventana extends JFrame {
 		btnSpa.setIcon(new ImageIcon(Ventana.class.getResource("/iconos/spa_x32_blue.png")));
 		buttonGroup.add(btnSpa);
 
-		btnHabitacion = new JToggleButton("Habitaci\u00F3n");
+		btnHabitacion = new JToggleButton(t.getMenuPrincipalBtnHabitacion());
 		btnHabitacion.setSelected(true);
 		btnHabitacion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -267,7 +237,7 @@ public class Ventana extends JFrame {
 		btnHabitacion.setIcon(new ImageIcon(Ventana.class.getResource("/iconos/cama_x32_blue.png")));
 		buttonGroup.add(btnHabitacion);
 
-		btnCuenta = new JToggleButton("Cuenta");
+		btnCuenta = new JToggleButton(t.getMenuPrincipalBtnCuenta());
 		btnCuenta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				changeToCuenta();
@@ -278,7 +248,7 @@ public class Ventana extends JFrame {
 		buttonGroup.add(btnCuenta);
 		btnCuenta.setIcon(new ImageIcon(Ventana.class.getResource("/iconos/usuario_x32_blue.png")));
 
-		btnServicios = new JToggleButton("Servicios");
+		btnServicios = new JToggleButton(t.getMenuPrincipalBtnServicios());
 		btnServicios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				changeToServicios();
@@ -323,8 +293,7 @@ public class Ventana extends JFrame {
 		if (campoUsuario.getText().length() == 0 || campoPassword.getPassword().length == 0) {
 			// TODO: esto es temporal; hay que crear los mensajes en otra clase para poder
 			// cambiar de idioma fácilmente
-			JOptionPane.showMessageDialog(contentPane, "Ningún campo puede estar vacío.", "Campo(s) vacíos",
-					JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(contentPane, t.getLoginErrorMensaje() + ".", t.getLoginErrorTitulo(), JOptionPane.ERROR_MESSAGE);
 		} else {
 			CardLayout l = (CardLayout) pantalla.getLayout();
 			l.show(pantalla, panelPrincipal.getName());

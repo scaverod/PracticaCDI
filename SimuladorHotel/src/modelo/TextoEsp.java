@@ -9,7 +9,7 @@ public class TextoEsp extends Texto {
 		setLoginPassword("Contraseña");
 		setLoginPasswordToolTip("Introduzca la contraseña asociada al usuario introducido más arriba");
 		setLoginBtnAceptar("Aceptar");
-		setLoginErrorMensaje("Ningún campo puede estar vacío.");
+		setLoginErrorMensaje("Ningún campo puede estar vacío");
 		setLoginErrorTitulo("Campo(s) vacíos");
 		
 		// Menu principal
