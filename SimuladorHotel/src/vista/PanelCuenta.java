@@ -113,7 +113,6 @@ public class PanelCuenta extends JPanel {
 		btnLogout.setOpaque(true);
 		btnLogout.setBackground(Color.RED);
 		btnLogout.setContentAreaFilled( false );
-		btnLogout.setContentAreaFilled( false );
 		this.setLayout(gl_panelCuenta);
 	}
 }

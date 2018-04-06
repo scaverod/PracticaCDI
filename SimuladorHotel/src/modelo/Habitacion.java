@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Habitacion {
 
+	//TODO
 	private Temperatura temperatura;
 	// Si True -> Puerta abierta
 	private boolean puertaAbierta;
