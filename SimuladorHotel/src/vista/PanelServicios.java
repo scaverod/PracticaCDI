@@ -11,6 +11,8 @@ import modelo.Texto;
 import modelo.TextoManager;
 
 import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class PanelServicios extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -19,7 +21,7 @@ public class PanelServicios extends JPanel {
 	// Habría que mandarlo desde el Main, por ejemplo
 	private Texto t = new TextoManager(TextoManager.english).getTexto();
 
-	public PanelServicios() {
+	public PanelServicios(PanelServiciosPrincipal padre) {
 		this.setSize(new Dimension(931, 483));
 		this.setName("panelServicios");
 
@@ -31,6 +33,11 @@ public class PanelServicios extends JPanel {
 		btnMiniBar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 
 		JButton btnCambioToalla = new JButton(t.getPanelServiciosBtnCambioToalla());
+		btnCambioToalla.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				padre.changeToPanelEmergente();
+			}
+		});
 		btnCambioToalla.setBounds(10, 11, 220, 146);
 		btnCambioToalla.setIcon(new ImageIcon(PanelServicios.class.getResource("/iconos/towel.png")));
 		btnCambioToalla.setHorizontalTextPosition(SwingConstants.CENTER);

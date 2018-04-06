@@ -17,14 +17,15 @@ public class PanelServiciosPrincipal extends JPanel {
 		this.setName("panelServiciosPrincipal");
 		setLayout(new CardLayout(0, 0));
 		
-		panelServicios = new PanelServicios();
+		panelServicios = new PanelServicios(this);
 		add(panelServicios, panelServicios.getName());
 		
 		contentedorPanelServiciosEmergente = new JPanel();
-		add(contentedorPanelServiciosEmergente, "contenedorPanelServiciosEmergente");
+		contentedorPanelServiciosEmergente.setName("contenedorPanelServiciosEmergente");
+		add(contentedorPanelServiciosEmergente, contentedorPanelServiciosEmergente.getName());
 		contentedorPanelServiciosEmergente.setLayout(null);
 		
-		JPanel PanelServiciosEmergente = new PanelServiciosEmergente();
+		JPanel PanelServiciosEmergente = new PanelServiciosEmergente(this);
 		PanelServiciosEmergente.setBounds(118, 84, 695, 315);
 		contentedorPanelServiciosEmergente.add(PanelServiciosEmergente);
 		
@@ -40,12 +41,12 @@ public class PanelServiciosPrincipal extends JPanel {
 		changeToPanelServicios();
 	}
 	
-	private void changeToPanelServicios() {
+	void changeToPanelServicios() {
 		CardLayout l = (CardLayout) getLayout();
 		l.show(this, panelServicios.getName());
 	}
 	
-	private void changeToPanelEmergente() {
+	void changeToPanelEmergente() {
 		CardLayout l = (CardLayout) getLayout();
 		l.show(this, contentedorPanelServiciosEmergente.getName());
 	}
