@@ -82,20 +82,6 @@ public class PanelHabitacion extends JPanel {
 		btnLuzBanyo.setBounds(821, 150, 100, 105);
 		layeredPane.add(btnLuzBanyo);
 		
-		JButton btnGrifoDerecha = new JButton("agua");
-		btnGrifoDerecha.setForeground(Color.WHITE);
-		btnGrifoDerecha.setContentAreaFilled(false);
-		layeredPane.setLayer(btnGrifoDerecha, 1);
-		btnGrifoDerecha.setBounds(861, 255, 60, 60);
-		layeredPane.add(btnGrifoDerecha);
-		
-		JButton btnGrifoIzquierda = new JButton("agua");
-		btnGrifoIzquierda.setForeground(Color.WHITE);
-		btnGrifoIzquierda.setContentAreaFilled(false);
-		layeredPane.setLayer(btnGrifoIzquierda, 1);
-		btnGrifoIzquierda.setBounds(799, 255, 60, 60);
-		layeredPane.add(btnGrifoIzquierda);
-		
 		JButton btnVentana = new JButton("ventana");
 		btnVentana.setContentAreaFilled(false);
 		layeredPane.setLayer(btnVentana, 1);
