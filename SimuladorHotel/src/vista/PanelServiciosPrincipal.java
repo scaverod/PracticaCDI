@@ -3,58 +3,51 @@ package vista;
 import java.awt.Dimension;
 
 import javax.swing.JPanel;
-import javax.swing.JButton;
-import javax.swing.JLayeredPane;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
+import java.awt.CardLayout;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import javax.swing.border.BevelBorder;
+import java.awt.Color;
 
 public class PanelServiciosPrincipal extends JPanel {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+	private JPanel panelServicios;
 
-	/**
-	 * Create the panel.
-	 */
 	public PanelServiciosPrincipal() {
 		this.setSize(new Dimension(931, 483));
-		this.setName("panelServicios");
+		this.setName("panelServiciosPrincipal");
+		setLayout(new CardLayout(0, 0));
 		
-		// NOTA: he usado absolute layout porque viene bien para este caso y el group layout se rompe cada vez que tienes que mover algo cuando hay tantas cosas
-		setLayout(null);
+		panelServicios = new PanelServicios();
+		add(panelServicios, panelServicios.getName());
 		
-		JLayeredPane layeredPane = new JLayeredPane();
-		layeredPane.setBounds(0, 0, 931, 483);
-		add(layeredPane);
+		JPanel contentedorPanelServiciosEmergente = new JPanel();
+		add(contentedorPanelServiciosEmergente, "name_8961887996794");
+		contentedorPanelServiciosEmergente.setLayout(null);
 		
-		JPanel ventanaEmergente = new JPanel();
-		ventanaEmergente.setBounds(150, 60, 629, 339);
-		layeredPane.add(ventanaEmergente);
-		layeredPane.setLayer(ventanaEmergente, 0);
+		JPanel PanelServiciosEmergente = new PanelServiciosEmergente();
+		PanelServiciosEmergente.setBounds(118, 84, 695, 315);
+		contentedorPanelServiciosEmergente.add(PanelServiciosEmergente);
 		
-		JButton btnPene = new JButton("PENE");
-		GroupLayout gl_ventanaEmergente = new GroupLayout(ventanaEmergente);
-		gl_ventanaEmergente.setHorizontalGroup(
-			gl_ventanaEmergente.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_ventanaEmergente.createSequentialGroup()
-					.addGap(136)
-					.addComponent(btnPene, GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
-					.addGap(136))
-		);
-		gl_ventanaEmergente.setVerticalGroup(
-			gl_ventanaEmergente.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_ventanaEmergente.createSequentialGroup()
-					.addGap(87)
-					.addComponent(btnPene, GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-					.addGap(87))
-		);
-		ventanaEmergente.setLayout(gl_ventanaEmergente);
+		JLabel lblImagenFondo = new JLabel("");
+		lblImagenFondo.setIcon(new ImageIcon(PanelServiciosPrincipal.class.getResource("/iconos/imagenPanelServiciosFondoEditada.jpg")));
+		lblImagenFondo.setBounds(0, 0, 931, 483);
+		contentedorPanelServiciosEmergente.add(lblImagenFondo);
 		
-		JPanel listaServicios = new PanelServicios();
-		layeredPane.setLayer(listaServicios, 1);
-		listaServicios.setBounds(0, 0, 931, 483);
-		layeredPane.add(listaServicios);
+		// Cambiar al panel emergente
+		changeToPanelEmergente();
+		
+		// Cambiar al panel servicios
+		changeToPanelServicios();
+	}
+	
+	private void changeToPanelServicios() {
+		CardLayout l = (CardLayout) getLayout();
+		l.show(this, panelServicios.getName());
+	}
+	
+	private void changeToPanelEmergente() {
+		CardLayout l = (CardLayout) getLayout();
+		// TODO
 	}
 }
