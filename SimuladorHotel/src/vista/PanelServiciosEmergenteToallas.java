@@ -17,7 +17,7 @@ import java.awt.event.ActionEvent;
 public class PanelServiciosEmergenteToallas extends JPanel {
 	private static final long serialVersionUID = 1L;
 
-	public PanelServiciosEmergenteToallas(MicroControladorPanelesPadreHijo m, String padre) {
+	public PanelServiciosEmergenteToallas(MicroControladorPanelesPadreHijo microControlador) {
 		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102)));
 		this.setSize(new Dimension(695, 315));
 		this.setName("panelServiciosEmergenteToallas");
@@ -31,7 +31,7 @@ public class PanelServiciosEmergenteToallas extends JPanel {
 		JButton btnCerrar = new JButton("Cerrar");
 		btnCerrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				m.cambiarPanel(padre);
+				microControlador.cambiarPanel("panelServicios");
 			}
 		});
 		btnCerrar.setBounds(596, 11, 89, 23);
