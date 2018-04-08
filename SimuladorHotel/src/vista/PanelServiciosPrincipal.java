@@ -21,7 +21,7 @@ public class PanelServiciosPrincipal extends JPanel {
 	// FIXME: temporal para que salga el texto en vez de "<dynamic>"
 	// Habría que mandarlo desde el Main, por ejemplo
 	private Texto t = new TextoManager(TextoManager.english).getTexto();
-
+	
 	public PanelServiciosPrincipal(MicroControladorPanelesPadreHijo m, String hijo) {
 		this.setSize(new Dimension(931, 483));
 		this.setName("panelServiciosPrincipal");
@@ -74,6 +74,11 @@ public class PanelServiciosPrincipal extends JPanel {
 		btnCambioAlmohada.setFont(new Font("Tahoma", Font.PLAIN, 12));
 
 		JButton btnCambiarSabanas = new JButton(t.getPanelServiciosBtnCambiarSabanas());
+		btnCambiarSabanas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				m.cambiarPanel("panelServiciosEmergenteToallas");
+			}
+		});
 		btnCambiarSabanas.setBounds(240, 11, 220, 146);
 		btnCambiarSabanas.setIcon(new ImageIcon(PanelServiciosPrincipal.class.getResource("/iconos/cambioropacama.png")));
 		btnCambiarSabanas.setHorizontalTextPosition(SwingConstants.CENTER);

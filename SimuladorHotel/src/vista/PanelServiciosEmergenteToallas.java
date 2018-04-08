@@ -14,18 +14,18 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class PanelServiciosEmergente extends JPanel {
+public class PanelServiciosEmergenteToallas extends JPanel {
 	private static final long serialVersionUID = 1L;
 
-	public PanelServiciosEmergente(MicroControladorPanelesPadreHijo m, String padre) {
+	public PanelServiciosEmergenteToallas(MicroControladorPanelesPadreHijo m, String padre) {
 		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102)));
 		this.setSize(new Dimension(695, 315));
-		this.setName("panelServiciosEmergente");
+		this.setName("panelServiciosEmergenteToallas");
 		setLayout(null);
 		
-		JLabel lblPanelEmergente = new JLabel("PANEL EMERGENTE");
+		JLabel lblPanelEmergente = new JLabel("PANEL EMERGENTE TOALLAS");
 		lblPanelEmergente.setFont(new Font("Tahoma", Font.PLAIN, 32));
-		lblPanelEmergente.setBounds(207, 138, 280, 39);
+		lblPanelEmergente.setBounds(137, 138, 420, 39);
 		add(lblPanelEmergente);
 		
 		JButton btnCerrar = new JButton("Cerrar");

@@ -14,9 +14,10 @@ public class PanelServicios extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JPanel panelServiciosPrincipal;
 	private JPanel contentedorPanelServiciosEmergente;
-	private JPanel panelServiciosEmergente;
+	private JPanel ventanaEmergente;
 	private JPanel contenedor;
 	private MicroControladorPanelesPadreHijo m;
+	private JPanel panel;
 
 	public PanelServicios() {
 		this.setSize(new Dimension(931, 483));
@@ -30,19 +31,22 @@ public class PanelServicios extends JPanel {
 		
 		m = new MicroControladorPanelesPadreHijo(contenedor);
 		
-		// FIXME: esto no deberia ser asi; funciona, pero no es la mejor manera de hacerlo
-		panelServiciosPrincipal = new PanelServiciosPrincipal(m, "contenedorPanelServiciosEmergente");
-		contenedor.add(panelServiciosPrincipal, panelServiciosPrincipal.getName());
-		
 		contentedorPanelServiciosEmergente = new JPanel();
 		contentedorPanelServiciosEmergente.setName("contenedorPanelServiciosEmergente");
-		contenedor.add(contentedorPanelServiciosEmergente, contentedorPanelServiciosEmergente.getName());
 		contentedorPanelServiciosEmergente.setLayout(null);
 		
-		// FIXME: esto no deberia ser asi; funciona, pero no es la mejor manera de hacerlo
-		panelServiciosEmergente = new PanelServiciosEmergente(m, "panelServiciosPrincipal");
-		panelServiciosEmergente.setBounds(118, 84, 695, 315);
-		contentedorPanelServiciosEmergente.add(panelServiciosEmergente);
+		panelServiciosPrincipal = new PanelServiciosPrincipal(m, contentedorPanelServiciosEmergente.getName());
+		
+		contenedor.add(panelServiciosPrincipal, panelServiciosPrincipal.getName());
+		contenedor.add(contentedorPanelServiciosEmergente, contentedorPanelServiciosEmergente.getName());
+		
+		ventanaEmergente = new JPanel();
+		ventanaEmergente.setBounds(118, 84, 695, 315);
+		contentedorPanelServiciosEmergente.add(ventanaEmergente);
+		ventanaEmergente.setLayout(new CardLayout(0, 0));
+		
+		panel = new PanelServiciosEmergenteToallas(m, "nusep");
+		ventanaEmergente.add(panel, "name_27882405820171");
 		
 		JLabel lblImagenFondo = new JLabel("");
 		lblImagenFondo.setIcon(new ImageIcon(PanelServicios.class.getResource("/iconos/imagenPanelServiciosFondoEditada.jpg")));
