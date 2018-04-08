@@ -33,7 +33,7 @@ public class PanelHabitacion extends JPanel {
 		add(layeredPane);
 
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/fotoHabitacion.jpg")));
+		lblNewLabel.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/habitacion.jpg")));
 		lblNewLabel.setBounds(0, 0, 931, 483);
 		layeredPane.add(lblNewLabel);
 
