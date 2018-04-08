@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
+import controlador.MicroControladorPanelesPadreHijo;
 import modelo.Texto;
 import modelo.TextoManager;
 
@@ -21,7 +22,7 @@ public class PanelServiciosPrincipal extends JPanel {
 	// Habría que mandarlo desde el Main, por ejemplo
 	private Texto t = new TextoManager(TextoManager.english).getTexto();
 
-	public PanelServiciosPrincipal(PanelServicios padre) {
+	public PanelServiciosPrincipal(MicroControladorPanelesPadreHijo m, String hijo) {
 		this.setSize(new Dimension(931, 483));
 		this.setName("panelServiciosPrincipal");
 
@@ -35,7 +36,7 @@ public class PanelServiciosPrincipal extends JPanel {
 		JButton btnCambioToalla = new JButton(t.getPanelServiciosBtnCambioToalla());
 		btnCambioToalla.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				padre.changeToPanelEmergente();
+				m.cambiarPanel(hijo);
 			}
 		});
 		btnCambioToalla.setBounds(10, 11, 220, 146);

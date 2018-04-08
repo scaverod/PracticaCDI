@@ -4,7 +4,7 @@ import java.awt.Dimension;
 
 import javax.swing.JPanel;
 
-import controlador.MicroControladorPanelServicios;
+import controlador.MicroControladorPanelesPadreHijo;
 
 import java.awt.CardLayout;
 import javax.swing.JLabel;
@@ -15,22 +15,32 @@ public class PanelServicios extends JPanel {
 	private JPanel panelServiciosPrincipal;
 	private JPanel contentedorPanelServiciosEmergente;
 	private JPanel panelServiciosEmergente;
-	private MicroControladorPanelServicios m;
+	private JPanel contenedor;
+	private MicroControladorPanelesPadreHijo m;
 
 	public PanelServicios() {
 		this.setSize(new Dimension(931, 483));
 		this.setName("panelServicios");
-		setLayout(new CardLayout(0, 0));
+		setLayout(null);
 		
-		panelServiciosPrincipal = new PanelServiciosPrincipal(this);
-		add(panelServiciosPrincipal, panelServiciosPrincipal.getName());
+		contenedor = new JPanel();
+		contenedor.setBounds(0, 0, 931, 483);
+		add(contenedor);
+		contenedor.setLayout(new CardLayout(0, 0));
+		
+		m = new MicroControladorPanelesPadreHijo(contenedor);
+		
+		// FIXME: esto no deberia ser asi; funciona, pero no es la mejor manera de hacerlo
+		panelServiciosPrincipal = new PanelServiciosPrincipal(m, "contenedorPanelServiciosEmergente");
+		contenedor.add(panelServiciosPrincipal, panelServiciosPrincipal.getName());
 		
 		contentedorPanelServiciosEmergente = new JPanel();
 		contentedorPanelServiciosEmergente.setName("contenedorPanelServiciosEmergente");
-		add(contentedorPanelServiciosEmergente, contentedorPanelServiciosEmergente.getName());
+		contenedor.add(contentedorPanelServiciosEmergente, contentedorPanelServiciosEmergente.getName());
 		contentedorPanelServiciosEmergente.setLayout(null);
 		
-		panelServiciosEmergente = new PanelServiciosEmergente(this);
+		// FIXME: esto no deberia ser asi; funciona, pero no es la mejor manera de hacerlo
+		panelServiciosEmergente = new PanelServiciosEmergente(m, "panelServiciosPrincipal");
 		panelServiciosEmergente.setBounds(118, 84, 695, 315);
 		contentedorPanelServiciosEmergente.add(panelServiciosEmergente);
 		
@@ -38,17 +48,5 @@ public class PanelServicios extends JPanel {
 		lblImagenFondo.setIcon(new ImageIcon(PanelServicios.class.getResource("/iconos/imagenPanelServiciosFondoEditada.jpg")));
 		lblImagenFondo.setBounds(0, 0, 931, 483);
 		contentedorPanelServiciosEmergente.add(lblImagenFondo);
-		
-		m = new MicroControladorPanelServicios(panelServiciosPrincipal, panelServiciosEmergente);
-	}
-	
-	void changeToPanelServicios() {
-		CardLayout l = (CardLayout) getLayout();
-		l.show(this, panelServiciosPrincipal.getName());
-	}
-	
-	void changeToPanelEmergente() {
-		CardLayout l = (CardLayout) getLayout();
-		l.show(this, contentedorPanelServiciosEmergente.getName());
 	}
 }
