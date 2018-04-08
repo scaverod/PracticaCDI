@@ -15,6 +15,8 @@ import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ImageIcon;
 import javax.swing.JScrollPane;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class PanelCuenta extends JPanel {
 
@@ -41,19 +43,36 @@ public class PanelCuenta extends JPanel {
 		lblHabitacion.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
 		
 		JPanel panelLogout = new JPanel();
-		panelLogout.setBackground(Color.RED);
+		panelLogout.setBackground(Color.decode("#e61919"));
 		
 		JScrollPane scrollPane = new JScrollPane();
 		
 		JLabel lblGastos = new JLabel("Gastos");
 		
-		JButton btnNewButton = new JButton("Personalizar Aplicaci\u00F3n");
-		
 		JLabel lblGastoToal = new JLabel("Gasto toal: ");
 		
 		JLabel label = new JLabel("<GASTO>");
 		
-		JScrollPane scrollPane_1 = new JScrollPane();
+		JLabel lblPersonalizarAplicacin = new JLabel("Personalizar Aplicaci\u00F3n");
+		
+		JButton btnESP = new JButton("");
+		btnESP.setOpaque(false);
+		btnESP.setContentAreaFilled( false );
+
+		btnESP.setIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/espa\u00F1a.png")));
+		
+		JButton btnUK = new JButton("");
+		btnUK.setIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/uk.png")));
+		btnUK.setOpaque(false);
+		btnUK.setContentAreaFilled( false );
+		
+		JButton btnRo = new JButton("");
+		btnRo.setIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/rumania.png")));
+		btnRo.setOpaque(false);
+		btnRo.setContentAreaFilled( false );
+		
+		
+		JLabel lblElegirIdioma = new JLabel("Elegir idioma");
 		GroupLayout gl_panelCuenta = new GroupLayout(this);
 		gl_panelCuenta.setHorizontalGroup(
 			gl_panelCuenta.createParallelGroup(Alignment.LEADING)
@@ -66,20 +85,23 @@ public class PanelCuenta extends JPanel {
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(label))
 						.addGroup(gl_panelCuenta.createSequentialGroup()
-							.addGroup(gl_panelCuenta.createParallelGroup(Alignment.TRAILING, false)
-								.addGroup(gl_panelCuenta.createSequentialGroup()
+							.addGroup(gl_panelCuenta.createParallelGroup(Alignment.TRAILING)
+								.addGroup(Alignment.LEADING, gl_panelCuenta.createSequentialGroup()
 									.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 460, GroupLayout.PREFERRED_SIZE)
+									.addGap(118)
 									.addGroup(gl_panelCuenta.createParallelGroup(Alignment.LEADING)
+										.addComponent(lblElegirIdioma)
 										.addGroup(gl_panelCuenta.createSequentialGroup()
-											.addGap(76)
-											.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-										.addGroup(Alignment.TRAILING, gl_panelCuenta.createSequentialGroup()
+											.addComponent(btnESP, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
 											.addPreferredGap(ComponentPlacement.RELATED)
-											.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 293, GroupLayout.PREFERRED_SIZE))))
+											.addComponent(btnUK, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
+											.addPreferredGap(ComponentPlacement.RELATED)
+											.addComponent(btnRo, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE))
+										.addComponent(lblPersonalizarAplicacin)))
 								.addComponent(lblHabitacion, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 829, GroupLayout.PREFERRED_SIZE))
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(panelLogout, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(12, Short.MAX_VALUE))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		gl_panelCuenta.setVerticalGroup(
 			gl_panelCuenta.createParallelGroup(Alignment.LEADING)
@@ -91,23 +113,30 @@ public class PanelCuenta extends JPanel {
 					.addGap(30)
 					.addComponent(lblGastos)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_panelCuenta.createParallelGroup(Alignment.LEADING, false)
+					.addGroup(gl_panelCuenta.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panelCuenta.createSequentialGroup()
-							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(scrollPane_1))
-						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 305, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_panelCuenta.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblGastoToal)
-						.addComponent(label))
+							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 305, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addGroup(gl_panelCuenta.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblGastoToal)
+								.addComponent(label)))
+						.addGroup(gl_panelCuenta.createSequentialGroup()
+							.addComponent(lblPersonalizarAplicacin)
+							.addGap(23)
+							.addComponent(lblElegirIdioma)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addGroup(gl_panelCuenta.createParallelGroup(Alignment.BASELINE)
+								.addComponent(btnESP)
+								.addComponent(btnUK)
+								.addComponent(btnRo))))
 					.addContainerGap(45, Short.MAX_VALUE))
 		);
 		
-		JLabel lblEventosPrximos = new JLabel("Eventos Pr\u00F3ximos");
-		scrollPane_1.setColumnHeaderView(lblEventosPrximos);
-		
 		JButton btnLogout = new JButton("");
+		btnLogout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnLogout.setIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/logout.png")));
 		panelLogout.add(btnLogout);
 		btnLogout.setOpaque(true);

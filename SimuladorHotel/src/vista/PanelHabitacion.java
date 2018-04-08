@@ -133,5 +133,22 @@ public class PanelHabitacion extends JPanel {
 		tglbtnPuerta.setOpaque(false);
 		tglbtnPuerta.setContentAreaFilled(false);
 		layeredPane.add(tglbtnPuerta);
+		
+		JButton btnAlarma = new JButton("");
+		btnAlarma.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/alarm.png")));
+		layeredPane.setLayer(btnAlarma, 1);
+		btnAlarma.setBounds(91, 410, 89, 50);
+		btnAlarma.setContentAreaFilled(false);
+		layeredPane.add(btnAlarma);
+		
+		JToggleButton tglbtnLuz = new JToggleButton("");
+		tglbtnLuz.setSelectedIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/bombillaON.png")));
+		tglbtnLuz.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/bombillaOFF.png")));
+		layeredPane.setLayer(tglbtnLuz, 1);
+		tglbtnLuz.setOpaque(false);
+		tglbtnLuz.setContentAreaFilled(false);
+		tglbtnLuz.setBounds(189, 403, 75, 69);
+		layeredPane.add(tglbtnLuz);
+		
 	}
 }

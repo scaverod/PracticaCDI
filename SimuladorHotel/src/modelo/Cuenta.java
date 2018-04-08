@@ -6,13 +6,24 @@ public class Cuenta {
 	private String usuario;
 	private String pwd;
 	private Servicios servicios;
-	
-	
+	private Idioma idioma;
+
+	public enum Idioma {
+		Ingles, Rumano, Castellano
+	}
+
+	public Cuenta(Gasto gasto, String usuario, String pwd, Servicios servicios, Idioma idioma) {
+		super();
+		this.gasto = gasto;
+		this.usuario = usuario;
+		this.pwd = pwd;
+		this.servicios = servicios;
+		this.idioma = idioma;
+	}
 
 	public Cuenta(String usuario, String pwd) {
 		this.gasto = new Gasto();
-		this.usuario =
-		this.pwd = pwd;
+		this.usuario = this.pwd = pwd;
 		this.servicios = new Servicios();
 	}
 
@@ -46,6 +57,14 @@ public class Cuenta {
 
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
+	}
+
+	public Idioma getIdioma() {
+		return idioma;
+	}
+
+	public void setIdioma(Idioma idioma) {
+		this.idioma = idioma;
 	}
 
 }
