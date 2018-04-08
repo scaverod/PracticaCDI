@@ -25,12 +25,19 @@ public class PanelServicios extends JPanel {
 	// FIXME: temporal para que salga el texto en vez de "<dynamic>"
 	// Habría que mandarlo desde el Main, por ejemplo
 	private Texto t = new TextoManager(TextoManager.english).getTexto();
+	private MicroControladorPanelesPadreHijo microControlador;
+	
 	private JPanel panelServicios;
 	private JPanel panelEmergente;
 	private JPanel panelServicio;
+	
 	private JPanel panelToallas;
-	private MicroControladorPanelesPadreHijo microControlador;
 	private JPanel panelSabanas;
+	private JPanel panelAlmohada;
+	private JPanel panelMinibar;
+	private JPanel panelTelefono;
+	
+	
 
 	public PanelServicios() {
 		this.setSize(new Dimension(931, 483));
@@ -45,6 +52,9 @@ public class PanelServicios extends JPanel {
 		JButton btnCambioToalla = new JButton(t.getPanelServiciosBtnCambioToalla());
 		btnCambioToalla.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// FIXME: pruebas temporales
+				System.out.println(panelToallas.getName());
+				
 				establecerVentanaServicio(panelToallas.getName());
 				mostrarVentanaEmergente();
 			}
@@ -59,6 +69,9 @@ public class PanelServicios extends JPanel {
 		JButton btnCambiarSabanas = new JButton(t.getPanelServiciosBtnCambiarSabanas());
 		btnCambiarSabanas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// FIXME: pruebas temporales
+				System.out.println(panelSabanas.getName());
+				
 				establecerVentanaServicio(panelSabanas.getName());
 				mostrarVentanaEmergente();
 			}
@@ -71,6 +84,15 @@ public class PanelServicios extends JPanel {
 		panelServicios.add(btnCambiarSabanas);
 
 		JButton btnCambioAlmohada = new JButton(t.getPanelServiciosBtnCambioAlmohada());
+		btnCambioAlmohada.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// FIXME: pruebas temporales
+				System.out.println(panelAlmohada.getName());
+				
+				establecerVentanaServicio(panelAlmohada.getName());
+				mostrarVentanaEmergente();
+			}
+		});
 		btnCambioAlmohada.setBounds(471, 11, 220, 146);
 		btnCambioAlmohada.setIcon(new ImageIcon(PanelServicios.class.getResource("/iconos/almohada.png")));
 		btnCambioAlmohada.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -79,6 +101,15 @@ public class PanelServicios extends JPanel {
 		panelServicios.add(btnCambioAlmohada);
 
 		JButton btnMiniBar = new JButton(t.getPanelServiciosBtnMinibar());
+		btnMiniBar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// FIXME: pruebas temporales
+				System.out.println(panelMinibar.getName());
+				
+				establecerVentanaServicio(panelMinibar.getName());
+				mostrarVentanaEmergente();
+			}
+		});
 		btnMiniBar.setBounds(701, 11, 220, 146);
 		btnMiniBar.setIcon(new ImageIcon(PanelServicios.class.getResource("/iconos/minibarnew.png")));
 		btnMiniBar.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -87,6 +118,15 @@ public class PanelServicios extends JPanel {
 		panelServicios.add(btnMiniBar);
 
 		JButton btnTelefono = new JButton(t.getPanelServiciosBtnTelefono());
+		btnTelefono.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// FIXME: pruebas temporales
+				System.out.println(panelTelefono.getName());
+				
+				establecerVentanaServicio(panelTelefono.getName());
+				mostrarVentanaEmergente();
+			}
+		});
 		btnTelefono.setBounds(10, 168, 220, 146);
 		btnTelefono.setIcon(new ImageIcon(PanelServicios.class.getResource("/iconos/phone.png")));
 		btnTelefono.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -179,8 +219,14 @@ public class PanelServicios extends JPanel {
 		panelSabanas = new PanelServiciosEmergenteSabanas(microControlador, this.getName());
 		panelServicio.add(panelSabanas, panelSabanas.getName());
 		
-		JPanel panel_2 = new JPanel();
-		panelServicio.add(panel_2, "name_51396525379081");
+		panelAlmohada = new PanelServiciosEmergenteAlmohada(microControlador, this.getName());
+		panelServicio.add(panelAlmohada, panelAlmohada.getName());
+		
+		panelMinibar = new PanelServiciosEmergenteMinibar(microControlador, this.getName());
+		panelServicio.add(panelMinibar, panelMinibar.getName());
+		
+		panelTelefono = new PanelServiciosEmergenteTelefono(microControlador, this.getName());
+		panelServicio.add(panelTelefono, panelTelefono.getName());
 		
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setIcon(new ImageIcon(PanelServicios.class.getResource("/iconos/imagenPanelServiciosFondoEditada.jpg")));

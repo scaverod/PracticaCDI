@@ -15,13 +15,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 
-public class PanelServiciosEmergenteToallas extends JPanel {
+public class PanelServiciosEmergenteTelefono extends JPanel {
 	private static final long serialVersionUID = 1L;
 
-	public PanelServiciosEmergenteToallas(MicroControladorPanelesPadreHijo microControlador, String padre) {
+	public PanelServiciosEmergenteTelefono(MicroControladorPanelesPadreHijo microControlador, String padre) {
 		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102)));
 		this.setSize(new Dimension(695, 315));
-		this.setName("p" + this.getClass().getSimpleName().substring(1)); // No modificar
+		this.setName("p" + this.getClass().getSimpleName().substring(1));
 		setLayout(null);
 		
 		JLabel lblPanelEmergente = new JLabel(this.getName());
