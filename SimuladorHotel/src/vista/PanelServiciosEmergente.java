@@ -14,7 +14,7 @@ import java.awt.event.ActionEvent;
 public class PanelServiciosEmergente extends JPanel {
 	private static final long serialVersionUID = 1L;
 
-	public PanelServiciosEmergente(PanelServiciosPrincipal padre) {
+	public PanelServiciosEmergente(PanelServicios padre) {
 		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102)));
 		this.setSize(new Dimension(695, 315));
 		this.setName("panelServiciosEmergente");

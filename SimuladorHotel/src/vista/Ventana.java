@@ -208,7 +208,7 @@ public class Ventana extends JFrame {
 		panelSpa = new PanelSpa();
 		pantallaMenu.add(panelSpa, panelSpa.getName());
 
-		panelServicios = new PanelServiciosPrincipal();
+		panelServicios = new PanelServicios();
 		pantallaMenu.add(panelServicios, panelServicios.getName());
 
 		panelCuenta = new PanelCuenta();
@@ -326,9 +326,6 @@ public class Ventana extends JFrame {
 	}
 	
 	private void desplazamientoDerecha() {
-		System.out.println(panelServicios.getName());
-		System.out.println(pantallaMenuActiva);
-		
 		switch (pantallaMenuActiva) {
 			case "panelHabitacion":
 				btnCuenta.setSelected(true);
