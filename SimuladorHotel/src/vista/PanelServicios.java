@@ -16,6 +16,8 @@ import java.awt.CardLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PanelServicios extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -28,6 +30,7 @@ public class PanelServicios extends JPanel {
 	private JPanel panelServicio;
 	private JPanel panelToallas;
 	private MicroControladorPanelesPadreHijo microControlador;
+	private JPanel panelSabanas;
 
 	public PanelServicios() {
 		this.setSize(new Dimension(931, 483));
@@ -54,6 +57,12 @@ public class PanelServicios extends JPanel {
 		panelServicios.add(btnCambioToalla);
 
 		JButton btnCambiarSabanas = new JButton(t.getPanelServiciosBtnCambiarSabanas());
+		btnCambiarSabanas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				establecerVentanaServicio(panelSabanas.getName());
+				mostrarVentanaEmergente();
+			}
+		});
 		btnCambiarSabanas.setBounds(240, 11, 220, 146);
 		btnCambiarSabanas.setIcon(new ImageIcon(PanelServicios.class.getResource("/iconos/cambioropacama.png")));
 		btnCambiarSabanas.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -142,6 +151,16 @@ public class PanelServicios extends JPanel {
 		panelServicios.add(btnInformacion);
 
 		panelEmergente = new JPanel();
+		panelEmergente.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				if (!((e.getX() >= panelServicio.getX())
+						&& (e.getX() <= (panelServicio.getX() + panelServicio.getWidth()))
+						&& (e.getY() >= panelServicio.getY())
+						&& (e.getY() <= (panelServicio.getY() + panelServicio.getHeight()))))
+					mostrarVentanaServicios();
+			}
+		});
 		panelEmergente.setName("panelEmergente");
 		add(panelEmergente, "panelEmergente");
 		panelEmergente.setLayout(null);
@@ -153,11 +172,12 @@ public class PanelServicios extends JPanel {
 		
 		/* SEPARADOR */
 		microControlador = new MicroControladorPanelesPadreHijo(this);
-		panelToallas = new PanelServiciosEmergenteToallas(microControlador);
+		
+		panelToallas = new PanelServiciosEmergenteToallas(microControlador, this.getName());
 		panelServicio.add(panelToallas, panelToallas.getName());
 		
-		JPanel panel_1 = new JPanel();
-		panelServicio.add(panel_1, "name_51395040164721");
+		panelSabanas = new PanelServiciosEmergenteSabanas(microControlador, this.getName());
+		panelServicio.add(panelSabanas, panelSabanas.getName());
 		
 		JPanel panel_2 = new JPanel();
 		panelServicio.add(panel_2, "name_51396525379081");
@@ -178,7 +198,7 @@ public class PanelServicios extends JPanel {
 		l.show(this, panelEmergente.getName());
 	}
 	
-	void mostrarVentanaServicios() {
+	private void mostrarVentanaServicios() {
 		CardLayout l = (CardLayout) this.getLayout();
 		l.show(this, panelServicios.getName());
 	}
