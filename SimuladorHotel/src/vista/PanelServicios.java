@@ -3,6 +3,9 @@ package vista;
 import java.awt.Dimension;
 
 import javax.swing.JPanel;
+
+import controlador.MicroControladorPanelServicios;
+
 import java.awt.CardLayout;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
@@ -12,6 +15,7 @@ public class PanelServicios extends JPanel {
 	private JPanel panelServiciosPrincipal;
 	private JPanel contentedorPanelServiciosEmergente;
 	private JPanel panelServiciosEmergente;
+	private MicroControladorPanelServicios m;
 
 	public PanelServicios() {
 		this.setSize(new Dimension(931, 483));
@@ -35,11 +39,7 @@ public class PanelServicios extends JPanel {
 		lblImagenFondo.setBounds(0, 0, 931, 483);
 		contentedorPanelServiciosEmergente.add(lblImagenFondo);
 		
-		// Cambiar al panel emergente
-		changeToPanelEmergente();
-		
-		// Cambiar al panel servicios
-		changeToPanelServicios();
+		m = new MicroControladorPanelServicios(panelServiciosPrincipal, panelServiciosEmergente);
 	}
 	
 	void changeToPanelServicios() {
