@@ -1,6 +1,7 @@
 package vista;
 
 import java.awt.Dimension;
+import java.awt.Font;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -109,7 +110,7 @@ public class PanelHabitacion extends JPanel {
 		JButton btnAlarma = new JButton("");
 		btnAlarma.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/alarm.png")));
 		layeredPane.setLayer(btnAlarma, 1);
-		btnAlarma.setBounds(91, 403, 89, 69);
+		btnAlarma.setBounds(174, 403, 89, 69);
 		btnAlarma.setContentAreaFilled(false);
 		layeredPane.add(btnAlarma);
 		
@@ -119,7 +120,7 @@ public class PanelHabitacion extends JPanel {
 		layeredPane.setLayer(tglbtnLuz, 1);
 		tglbtnLuz.setOpaque(false);
 		tglbtnLuz.setContentAreaFilled(false);
-		tglbtnLuz.setBounds(189, 403, 75, 69);
+		tglbtnLuz.setBounds(91, 403, 75, 69);
 		layeredPane.add(tglbtnLuz);
 		
 		JButton btnAyuda = new JButton("");
@@ -129,6 +130,21 @@ public class PanelHabitacion extends JPanel {
 		btnAyuda.setOpaque(false);
 		btnAyuda.setContentAreaFilled(false);
 		layeredPane.add(btnAyuda);
+		
+		JButton btnTemperatura = new JButton("");
+		layeredPane.setLayer(btnTemperatura, 1);
+		btnTemperatura.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/thermometer.png")));
+		btnTemperatura.setBounds(10, 11, 97, 73);
+		btnTemperatura.setContentAreaFilled(false);
+		layeredPane.add(btnTemperatura);
+		
+		JLabel lblTemperatura = new JLabel("25\u00BA");
+		lblTemperatura.setForeground(Color.WHITE);
+		layeredPane.setLayer(lblTemperatura, 2);
+		lblTemperatura.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblTemperatura.setBounds(65, 33, 46, 27);
+		layeredPane.add(lblTemperatura);
+		
 		
 	}
 }
