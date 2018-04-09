@@ -114,8 +114,8 @@ public class PanelHabitacion extends JPanel {
 		layeredPane.add(btnAlarma);
 		
 		JToggleButton tglbtnLuz = new JToggleButton("");
-		tglbtnLuz.setSelectedIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/bombillaON.png")));
-		tglbtnLuz.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/bombillaOFF.png")));
+		tglbtnLuz.setSelectedIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/lucesON.png")));
+		tglbtnLuz.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/lucesOFF.png")));
 		layeredPane.setLayer(tglbtnLuz, 1);
 		tglbtnLuz.setOpaque(false);
 		tglbtnLuz.setContentAreaFilled(false);

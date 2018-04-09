@@ -43,7 +43,7 @@ public class PanelCuenta extends JPanel {
 		lblHabitacion.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
 		
 		JPanel panelLogout = new JPanel();
-		panelLogout.setBackground(Color.decode("#e61919"));
+		panelLogout.setBackground(Color.ORANGE);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		
@@ -133,14 +133,9 @@ public class PanelCuenta extends JPanel {
 		);
 		
 		JButton btnLogout = new JButton("");
-		btnLogout.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
 		btnLogout.setIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/logout.png")));
 		panelLogout.add(btnLogout);
 		btnLogout.setOpaque(true);
-		btnLogout.setBackground(Color.RED);
 		btnLogout.setContentAreaFilled( false );
 		this.setLayout(gl_panelCuenta);
 	}
