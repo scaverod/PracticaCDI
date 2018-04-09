@@ -36,6 +36,13 @@ public class PanelServicios extends JPanel {
 	private JPanel panelAlmohada;
 	private JPanel panelMinibar;
 	private JPanel panelTelefono;
+	private JPanel panelBotones;
+	private JPanel panelComida;
+	private JPanel panelLimpieza;
+	private JPanel panelWifi;
+	private JPanel panelTaxi;
+	private JPanel panelTelevision;
+	private JPanel panelInformacion;
 	
 	
 
@@ -52,9 +59,6 @@ public class PanelServicios extends JPanel {
 		JButton btnCambioToalla = new JButton(t.getPanelServiciosBtnCambioToalla());
 		btnCambioToalla.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// FIXME: pruebas temporales
-				System.out.println(panelToallas.getName());
-				
 				establecerVentanaServicio(panelToallas.getName());
 				mostrarVentanaEmergente();
 			}
@@ -69,9 +73,6 @@ public class PanelServicios extends JPanel {
 		JButton btnCambiarSabanas = new JButton(t.getPanelServiciosBtnCambiarSabanas());
 		btnCambiarSabanas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// FIXME: pruebas temporales
-				System.out.println(panelSabanas.getName());
-				
 				establecerVentanaServicio(panelSabanas.getName());
 				mostrarVentanaEmergente();
 			}
@@ -86,9 +87,6 @@ public class PanelServicios extends JPanel {
 		JButton btnCambioAlmohada = new JButton(t.getPanelServiciosBtnCambioAlmohada());
 		btnCambioAlmohada.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// FIXME: pruebas temporales
-				System.out.println(panelAlmohada.getName());
-				
 				establecerVentanaServicio(panelAlmohada.getName());
 				mostrarVentanaEmergente();
 			}
@@ -103,9 +101,6 @@ public class PanelServicios extends JPanel {
 		JButton btnMiniBar = new JButton(t.getPanelServiciosBtnMinibar());
 		btnMiniBar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// FIXME: pruebas temporales
-				System.out.println(panelMinibar.getName());
-				
 				establecerVentanaServicio(panelMinibar.getName());
 				mostrarVentanaEmergente();
 			}
@@ -120,9 +115,6 @@ public class PanelServicios extends JPanel {
 		JButton btnTelefono = new JButton(t.getPanelServiciosBtnTelefono());
 		btnTelefono.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// FIXME: pruebas temporales
-				System.out.println(panelTelefono.getName());
-				
 				establecerVentanaServicio(panelTelefono.getName());
 				mostrarVentanaEmergente();
 			}
@@ -135,6 +127,12 @@ public class PanelServicios extends JPanel {
 		panelServicios.add(btnTelefono);
 
 		JButton btnBotones = new JButton(t.getPanelServiciosBtnBotones());
+		btnBotones.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				establecerVentanaServicio(panelBotones.getName());
+				mostrarVentanaEmergente();
+			}
+		});
 		btnBotones.setBounds(240, 168, 220, 146);
 		btnBotones.setIcon(new ImageIcon(PanelServicios.class.getResource("/iconos/botones.png")));
 		btnBotones.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -143,6 +141,12 @@ public class PanelServicios extends JPanel {
 		panelServicios.add(btnBotones);
 
 		JButton btnComidaHab = new JButton(t.getPanelServiciosBtnComidaHab());
+		btnComidaHab.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				establecerVentanaServicio(panelComida.getName());
+				mostrarVentanaEmergente();
+			}
+		});
 		btnComidaHab.setBounds(471, 168, 220, 146);
 		btnComidaHab.setIcon(new ImageIcon(PanelServicios.class.getResource("/iconos/comidahab.png")));
 		btnComidaHab.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -151,6 +155,12 @@ public class PanelServicios extends JPanel {
 		panelServicios.add(btnComidaHab);
 
 		JButton btnHorarioLimpieza = new JButton(t.getPanelServiciosBtnHorarioLimpieza());
+		btnHorarioLimpieza.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				establecerVentanaServicio(panelLimpieza.getName());
+				mostrarVentanaEmergente();
+			}
+		});
 		btnHorarioLimpieza.setBounds(701, 168, 220, 146);
 		btnHorarioLimpieza.setIcon(new ImageIcon(PanelServicios.class.getResource("/iconos/horariolimpieza.png")));
 		btnHorarioLimpieza.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -159,6 +169,12 @@ public class PanelServicios extends JPanel {
 		panelServicios.add(btnHorarioLimpieza);
 
 		JButton btnWifi = new JButton(t.getPanelServiciosBtnWifi());
+		btnWifi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				establecerVentanaServicio(panelWifi.getName());
+				mostrarVentanaEmergente();
+			}
+		});
 		btnWifi.setBounds(10, 325, 220, 146);
 		btnWifi.setIcon(new ImageIcon(PanelServicios.class.getResource("/iconos/wifi.png")));
 		btnWifi.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -167,6 +183,12 @@ public class PanelServicios extends JPanel {
 		panelServicios.add(btnWifi);
 
 		JButton btnPedirTaxi = new JButton(t.getPanelServiciosBtnPedirTaxi());
+		btnPedirTaxi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				establecerVentanaServicio(panelTaxi.getName());
+				mostrarVentanaEmergente();
+			}
+		});
 		btnPedirTaxi.setBounds(240, 325, 220, 146);
 		btnPedirTaxi.setIcon(new ImageIcon(PanelServicios.class.getResource("/iconos/taxi.png")));
 		btnPedirTaxi.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -175,6 +197,12 @@ public class PanelServicios extends JPanel {
 		panelServicios.add(btnPedirTaxi);
 
 		JButton btnTelevision = new JButton(t.getPanelServiciosBtnTelevision());
+		btnTelevision.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				establecerVentanaServicio(panelTelevision.getName());
+				mostrarVentanaEmergente();
+			}
+		});
 		btnTelevision.setIcon(new ImageIcon(PanelServicios.class.getResource("/iconos/television.png")));
 		btnTelevision.setBounds(471, 325, 220, 146);
 		btnTelevision.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -183,6 +211,12 @@ public class PanelServicios extends JPanel {
 		panelServicios.add(btnTelevision);
 
 		JButton btnInformacion = new JButton(t.getPanelServiciosBtnInformacion());
+		btnInformacion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				establecerVentanaServicio(panelInformacion.getName());
+				mostrarVentanaEmergente();
+			}
+		});
 		btnInformacion.setBounds(701, 325, 220, 146);
 		btnInformacion.setIcon(new ImageIcon(PanelServicios.class.getResource("/iconos/info.png")));
 		btnInformacion.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -227,6 +261,27 @@ public class PanelServicios extends JPanel {
 		
 		panelTelefono = new PanelServiciosEmergenteTelefono(microControlador, this.getName());
 		panelServicio.add(panelTelefono, panelTelefono.getName());
+		
+		panelBotones = new PanelServiciosEmergenteBotones(microControlador, this.getName());
+		panelServicio.add(panelBotones, panelBotones.getName());
+		
+		panelComida = new PanelServiciosEmergenteComida(microControlador, this.getName());
+		panelServicio.add(panelComida, panelComida.getName());
+		
+		panelLimpieza = new PanelServiciosEmergenteLimpieza(microControlador, this.getName());
+		panelServicio.add(panelLimpieza, panelLimpieza.getName());
+		
+		panelWifi = new PanelServiciosEmergenteWifi(microControlador, this.getName());
+		panelServicio.add(panelWifi, panelWifi.getName());
+		
+		panelTaxi = new PanelServiciosEmergenteTaxi(microControlador, this.getName());
+		panelServicio.add(panelTaxi, panelTaxi.getName());
+		
+		panelTelevision = new PanelServiciosEmergenteTelevision(microControlador, this.getName());
+		panelServicio.add(panelTelevision, panelTelevision.getName());
+		
+		panelInformacion = new PanelServiciosEmergenteInformacion(microControlador, this.getName());
+		panelServicio.add(panelInformacion, panelInformacion.getName());
 		
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setIcon(new ImageIcon(PanelServicios.class.getResource("/iconos/imagenPanelServiciosFondoEditada.jpg")));
