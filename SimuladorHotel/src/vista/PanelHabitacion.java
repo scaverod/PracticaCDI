@@ -109,7 +109,7 @@ public class PanelHabitacion extends JPanel {
 		JButton btnAlarma = new JButton("");
 		btnAlarma.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/alarm.png")));
 		layeredPane.setLayer(btnAlarma, 1);
-		btnAlarma.setBounds(91, 410, 89, 50);
+		btnAlarma.setBounds(91, 403, 89, 69);
 		btnAlarma.setContentAreaFilled(false);
 		layeredPane.add(btnAlarma);
 		
