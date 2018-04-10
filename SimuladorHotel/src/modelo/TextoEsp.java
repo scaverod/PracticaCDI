@@ -35,6 +35,9 @@ public class TextoEsp extends Texto {
 		setPanelServiciosBtnWifi("Activar WiFi");
 		setPanelServiciosBtnInformacion("Solicitar información");
 		
+		//Panel Emergen Informacion
+		setBtnAdquirir("Adquirir");
+		
 		// TODO: panel usuario
 	}
 }

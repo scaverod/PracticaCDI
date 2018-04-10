@@ -37,6 +37,9 @@ public abstract class Texto {
 	private String panelServiciosBtnWifi;
 	private String panelServiciosBtnInformacion;
 	
+	//Panel Emergente Informacion
+	private String btnAdquirir;
+	
 	// Panel Usuario
 	// TODO: pendiente de que se haga primero el panel usuario
 	
@@ -233,5 +236,13 @@ public abstract class Texto {
 
 	public String getPanelServiciosBtnInformacion() {
 		return panelServiciosBtnInformacion;
+	}
+
+	public String getBtnAdquirir() {
+		return btnAdquirir;
+	}
+
+	public void setBtnAdquirir(String btnAdquirir) {
+		this.btnAdquirir = btnAdquirir;
 	}
 }
