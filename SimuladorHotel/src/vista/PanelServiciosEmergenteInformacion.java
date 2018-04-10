@@ -16,8 +16,6 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.SwingConstants;
-import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import javax.swing.border.LineBorder;
 
@@ -27,7 +25,7 @@ public class PanelServiciosEmergenteInformacion extends JPanel {
 	
 	// FIXME: temporal para que salga el texto en vez de "<dynamic>"
 		// Habría que mandarlo desde el Main, por ejemplo
-		private Texto t = new TextoManager(TextoManager.español).getTexto();
+		private Texto t = new TextoManager(TextoManager.english).getTexto();
 
 	public PanelServiciosEmergenteInformacion(MicroControladorPanelesPadreHijo microControlador, String padre, Controlador controlador) {
 		setForeground(Color.ORANGE);
@@ -36,7 +34,7 @@ public class PanelServiciosEmergenteInformacion extends JPanel {
 		this.setName("p" + this.getClass().getSimpleName().substring(1)); // No modificar
 		setLayout(null);
 		
-		JButton btnCerrar = new JButton("Cerrar");
+		JButton btnCerrar = new JButton(t.getCerrar());
 		btnCerrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { // No modificar
 				// Devuelve control al padre
@@ -47,9 +45,10 @@ public class PanelServiciosEmergenteInformacion extends JPanel {
 		add(btnCerrar);
 		
 		JButton btnAdquirir = new JButton(t.getBtnAdquirir());
+		btnAdquirir.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnAdquirir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				//TODO: avisar de que en minutos llamarán al telefono
 			}
 		});
 		btnAdquirir.setBounds(260, 223, 175, 53);
@@ -59,7 +58,7 @@ public class PanelServiciosEmergenteInformacion extends JPanel {
 		txtpnInfo.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		txtpnInfo.setEditable(false);
 		txtpnInfo.setOpaque(false);
-		txtpnInfo.setText("Nuestros hoteles cuentan con una atenci\u00F3n totalmente personalizada. Con solo pulsar el bot\u00F3n, le llamaremos al tel\u00E9fono de la habitaci\u00F3n desde la recepci\u00F3n del hotel. \r\n24 horas al d\u00EDa.");
+		txtpnInfo.setText(t.getTxtInformacion());
 		txtpnInfo.setBounds(45, 63, 593, 75);
 		add(txtpnInfo);
 		
@@ -70,7 +69,7 @@ public class PanelServiciosEmergenteInformacion extends JPanel {
 		panel.setBounds(45, 166, 593, 35);
 		add(panel);
 		
-		JLabel lblPrecio = new JLabel("Precio:");
+		JLabel lblPrecio = new JLabel(t.getLblCoste());
 		panel.add(lblPrecio);
 		lblPrecio.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		

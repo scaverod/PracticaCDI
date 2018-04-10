@@ -11,16 +11,16 @@ public class TextoEng extends Texto {
 		setLoginBtnAceptar("Accept");
 		setLoginErrorMensaje("All fields must be filled");
 		setLoginErrorTitulo("Empty field(s)");
-		
+
 		// Menu principal
 		setMenuPrincipalBtnHabitacion("Room");
 		setMenuPrincipalBtnSpa("Spa");
 		setMenuPrincipalBtnServicios("Services");
 		setMenuPrincipalBtnCuenta("Account");
-		
+
 		// TODO: panel habitacion
 		// TODO: panel spa
-		
+
 		// Panel Servicios
 		setPanelServiciosBtnMinibar("Replenish minibar");
 		setPanelServiciosBtnCambioToalla("Change towels");
@@ -34,7 +34,21 @@ public class TextoEng extends Texto {
 		setPanelServiciosBtnTelevision("Buy channels");
 		setPanelServiciosBtnWifi("Enable WiFi");
 		setPanelServiciosBtnInformacion("Ask info");
-		
+		setCerrar("Close");
+		// Panel Emergen Informacion
+		setBtnAdquirir("Acquire");
+		setTxtInformacion(
+				"Our hotels have a totally personalized service. With just pressing the button, we will call the room phone from the hotel reception.\nAvailable 24 hours a day");
+		setLblCoste("Cost :");
+
+		// Panel Emergen Television
+		setPanelServiciosEmergenteTelevisionTxt(
+				"Our hotels have a variety of exclusive channels for our most demanding clients.");
+		// Panel Emergen Television
+		setPanelServiciosEmergenteWifiTxt(
+				"Everyone wants to be able to connect to the internet at any time, that's why, we have Wifi in all the rooms of the hotel of high quality.\r\n"
+						+ "Once you activate the service, it will be available during your entire stay.");
 		// TODO: panel usuario
+
 	}
 }

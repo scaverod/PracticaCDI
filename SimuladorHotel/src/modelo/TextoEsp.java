@@ -11,16 +11,16 @@ public class TextoEsp extends Texto {
 		setLoginBtnAceptar("Aceptar");
 		setLoginErrorMensaje("Ningún campo puede estar vacío");
 		setLoginErrorTitulo("Campo(s) vacíos");
-		
+
 		// Menu principal
 		setMenuPrincipalBtnHabitacion("Habitación");
 		setMenuPrincipalBtnSpa("Spa");
 		setMenuPrincipalBtnServicios("Servicios");
 		setMenuPrincipalBtnCuenta("Cuenta");
-		
+
 		// TODO: panel habitacion
 		// TODO: panel spa
-		
+
 		// Panel Servicios
 		setPanelServiciosBtnMinibar("Reponer minibar");
 		setPanelServiciosBtnCambioToalla("Cambiar toallas");
@@ -34,10 +34,21 @@ public class TextoEsp extends Texto {
 		setPanelServiciosBtnTelevision("Adquirir canales");
 		setPanelServiciosBtnWifi("Activar WiFi");
 		setPanelServiciosBtnInformacion("Solicitar información");
-		
-		//Panel Emergen Informacion
+		setCerrar("Cerrar");
+		// Panel Emergen Informacion
 		setBtnAdquirir("Adquirir");
-		
+		setTxtInformacion(
+				"Nuestros hoteles cuentan con una atención totalmente personalizada. Con solo pulsar el botón, le llamaremos al teléfono de la habitación desde la recepción del hotel.\nDisponible las 24 horas al día");
+
+		setLblCoste("Coste :");
+		// Panel Emergen Television
+		setPanelServiciosEmergenteTelevisionTxt(
+				"Nuestros hoteles cuentan con una variedad de canales exclusivos para nuestros clientes más exigentes.");
+		// Panel Emergen Wifi
+		setPanelServiciosEmergenteWifiTxt(
+				"Todo el mundo quiere tener la posibilidad de conectarse a internet en cualquier momento, por eso, nosotros contamos con Wifi en todas las habitaciones del hotel de alta calidad. \r\n"
+						+ "Una vez usted active el servicio, éste estará disponible durante toda su estancia. ");
+
 		// TODO: panel usuario
 	}
 }

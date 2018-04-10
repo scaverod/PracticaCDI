@@ -36,9 +36,14 @@ public abstract class Texto {
 	private String panelServiciosBtnTelevision;
 	private String panelServiciosBtnWifi;
 	private String panelServiciosBtnInformacion;
+	private String cerrar;
 	
 	//Panel Emergente Informacion
 	private String btnAdquirir;
+	private String txtInformacion;
+	private String lblCoste;
+	private String panelServiciosEmergenteTelevisionTxt;
+	private String panelServiciosEmergenteWifiTxt;
 	
 	// Panel Usuario
 	// TODO: pendiente de que se haga primero el panel usuario
@@ -244,5 +249,45 @@ public abstract class Texto {
 
 	public void setBtnAdquirir(String btnAdquirir) {
 		this.btnAdquirir = btnAdquirir;
+	}
+
+	public String getTxtInformacion() {
+		return txtInformacion;
+	}
+
+	public void setTxtInformacion(String txtInformacion) {
+		this.txtInformacion = txtInformacion;
+	}
+
+	public String getLblCoste() {
+		return lblCoste;
+	}
+
+	public void setLblCoste(String lblCoste) {
+		this.lblCoste = lblCoste;
+	}
+
+	public String getCerrar() {
+		return cerrar;
+	}
+
+	public void setCerrar(String cerrar) {
+		this.cerrar = cerrar;
+	}
+
+	public String getPanelServiciosEmergenteTelevisionTxt() {
+		return panelServiciosEmergenteTelevisionTxt;
+	}
+
+	public void setPanelServiciosEmergenteTelevisionTxt(String panelServiciosEmergenteTelevisionTxt) {
+		this.panelServiciosEmergenteTelevisionTxt = panelServiciosEmergenteTelevisionTxt;
+	}
+
+	public String getPanelServiciosEmergenteWifiTxt() {
+		return panelServiciosEmergenteWifiTxt;
+	}
+
+	public void setPanelServiciosEmergenteWifiTxt(String panelServiciosEmergenteWifiTxt) {
+		this.panelServiciosEmergenteWifiTxt = panelServiciosEmergenteWifiTxt;
 	}
 }

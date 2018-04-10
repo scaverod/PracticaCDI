@@ -7,9 +7,9 @@ import javax.swing.border.BevelBorder;
 
 import controlador.Controlador;
 import controlador.MicroControladorPanelesPadreHijo;
+import modelo.Texto;
+import modelo.TextoManager;
 import tiposVariable.StringDouble;
-
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Color;
@@ -17,13 +17,14 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.SwingConstants;
+
 import javax.swing.ImageIcon;
 import javax.swing.border.EtchedBorder;
 import javax.swing.JTextPane;
 
 public class PanelServiciosEmergenteTelevision extends JPanel {
 	private static final long serialVersionUID = 1L;
+	private Texto t = new TextoManager(TextoManager.english).getTexto();
 
 	public PanelServiciosEmergenteTelevision(MicroControladorPanelesPadreHijo microControlador, String padre,
 			Controlador controlador) {
@@ -33,7 +34,7 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 		this.setName("p" + this.getClass().getSimpleName().substring(1)); // No modificar
 		setLayout(null);
 
-		JButton btnCerrar = new JButton("Cerrar");
+		JButton btnCerrar = new JButton(t.getCerrar());
 		btnCerrar.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		btnCerrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { // No modificar
@@ -65,12 +66,12 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 		btnMoviestar.setBounds(96, 138, 100, 90);
 		btnMoviestar.setContentAreaFilled(false);
 		add(btnMoviestar);
-		
+
 		JTextPane txtpnInfo = new JTextPane();
 		txtpnInfo.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		txtpnInfo.setEditable(false);
 		txtpnInfo.setOpaque(false);
-		txtpnInfo.setText("Nuestros hoteles cuentan con una variedad de canales exclusivos para nuestros clientes m\u00E1s exigentes. Seleccione el canal que desee contratar. ");
+		txtpnInfo.setText(t.getPanelServiciosEmergenteTelevisionTxt());
 		txtpnInfo.setBounds(45, 63, 593, 75);
 		add(txtpnInfo);
 
