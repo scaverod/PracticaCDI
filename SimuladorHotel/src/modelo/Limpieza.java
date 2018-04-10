@@ -13,6 +13,10 @@ public class Limpieza {
 		this.tiempo = tiempo;
 	}
 
+	public Limpieza(Tiempo tiempo) {
+		this.tiempo = tiempo;
+	}
+
 	public double getPrecio() {
 		return precio;
 	}

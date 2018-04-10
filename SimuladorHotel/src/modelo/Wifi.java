@@ -15,6 +15,11 @@ public class Wifi {
 		this.precio = precio;
 		this.pwd = pwd;
 	}
+	public Wifi(boolean activado, String pwd) {
+		this.activado = activado;
+		this.pwd = pwd;
+	}
+	
 
 	public boolean isActivado() {
 		return activado;

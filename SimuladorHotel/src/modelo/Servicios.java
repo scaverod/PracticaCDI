@@ -26,6 +26,20 @@ public class Servicios {
 		this.television = new Television(2.50, 3.50, 4.50, 3.50);
 	}
 
+	public Servicios(Wifi wifi, Limpieza limpieza, Television television) {
+		this.almohada = new Almohada(1.50, 2, 1.25, 1);
+		this.botones = new Botones(1);
+		this.minibar = new MiniBar(4.50);
+		this.taxi = new Taxi(0.50);
+		this.wifi = new Wifi(wifi.isActivado(), 2.50, wifi.getPwd());
+		this.llamada = new Llamada(0.50, 1.25, 1.50, 2);
+		this.sabanas = new Sabanas(0.50);
+		this.limpieza = new Limpieza(0.50, limpieza.getTiempo());
+		this.comida = new Comida(3.50);
+		this.television = new Television(2.50, 3.50, 4.50, 3.50, television.isActivadoMoviestarPlus(),
+				television.isActivadoNetflix(), television.isActivadoBBC(), television.isActivadoBeinSport());
+	}
+
 	public Television getTelevision() {
 		return television;
 	}
@@ -104,6 +118,20 @@ public class Servicios {
 
 	public void setLlamada(Llamada llamada) {
 		this.llamada = llamada;
+	}
+
+	public void cargaWifi(Wifi wifi) {
+		this.wifi.setPwd(wifi.getPwd());
+		this.wifi.setActivado(wifi.isActivado());
+	}
+
+	public void cargaLimpieza(Limpieza limpieza) {
+		this.limpieza.setTiempo(limpieza.getTiempo());
+	}
+
+	public void cargaTelevision(Television television) {
+		this.television = new Television(2.50, 3.50, 4.50, 3.50, television.isActivadoMoviestarPlus(),
+				television.isActivadoNetflix(), television.isActivadoBBC(), television.isActivadoBeinSport());
 	}
 
 }
