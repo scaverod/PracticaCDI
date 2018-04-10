@@ -4,19 +4,156 @@ import java.util.ArrayList;
 
 public class Habitacion {
 
-	//TODO
 	private Temperatura temperatura;
-	// Si True -> Puerta abierta
 	private boolean puertaAbierta;
+	private ArrayList<Alarma> despertador;
 	private Jacuzzi jacuzzi;
-	// Si True -> Encedida
-	private boolean[] luces;
+	private boolean luzTechoHab;
+	private boolean luzTechoBan;
+	private boolean luzMesaIzq;
+	private boolean luzMesaDer;
+	private int persianaIzq;
+	private int persianaDer;
+	private int ventanaIzq;
+	private int ventanaDer;
 
-	// Dependiendo del valor sabremos el estado de la persiana y la posición en la
-	// que se encuentra
-	private int[] persianas;
-	// Dependiendo del valor sabremos el estado de la ventana y la posición en la
-	// que se encuentra
-	private int[] ventanas;
+	public Habitacion(Temperatura temperatura, boolean puertaAbierta, ArrayList<Alarma> despertador, Jacuzzi jacuzzi,
+			boolean luzTechoHab, boolean luzTechoBan, boolean luzMesaIzq, boolean luzMesaDer, int persianaIzq,
+			int persianaDer, int ventanaIzq, int ventanaDer) {
+
+		this.temperatura = temperatura;
+		this.puertaAbierta = puertaAbierta;
+		this.despertador = despertador;
+		this.jacuzzi = jacuzzi;
+		this.luzTechoHab = luzTechoHab;
+		this.luzTechoBan = luzTechoBan;
+		this.luzMesaIzq = luzMesaIzq;
+		this.luzMesaDer = luzMesaDer;
+		this.persianaIzq = persianaIzq;
+		this.persianaDer = persianaDer;
+		this.ventanaIzq = ventanaIzq;
+		this.ventanaDer = ventanaDer;
+	}
+
+	public Habitacion() {
+		this.temperatura = new Temperatura(22);
+		this.puertaAbierta = false;
+		this.despertador = new ArrayList<Alarma>();
+		this.jacuzzi = new Jacuzzi(0, 0, false);
+		this.luzTechoHab = false;
+		this.luzTechoBan = false;
+		this.luzMesaIzq = false;
+		this.luzMesaDer = false;
+		this.persianaIzq = 0;
+		this.persianaDer = 0;
+		this.ventanaIzq = 0;
+		this.ventanaDer = 0;
+	}
+
+	public Temperatura getTemperatura() {
+		return temperatura;
+	}
+
+	public void setTemperatura(Temperatura temperatura) {
+		this.temperatura = temperatura;
+	}
+
+	public boolean isPuertaAbierta() {
+		return puertaAbierta;
+	}
+
+	public void setPuertaAbierta(boolean puertaAbierta) {
+		this.puertaAbierta = puertaAbierta;
+	}
+
+	public ArrayList<Alarma> getDespertador() {
+		return despertador;
+	}
+
+	public void setDespertador(ArrayList<Alarma> despertador) {
+		this.despertador = despertador;
+	}
+
+	public Jacuzzi getJacuzzi() {
+		return jacuzzi;
+	}
+
+	public void setJacuzzi(Jacuzzi jacuzzi) {
+		this.jacuzzi = jacuzzi;
+	}
+
+	public boolean isLuzTechoHab() {
+		return luzTechoHab;
+	}
+
+	public void setLuzTechoHab(boolean luzTechoHab) {
+		this.luzTechoHab = luzTechoHab;
+	}
+
+	public boolean isLuzTechoBan() {
+		return luzTechoBan;
+	}
+
+	public void setLuzTechoBan(boolean luzTechoBan) {
+		this.luzTechoBan = luzTechoBan;
+	}
+
+	public boolean isLuzMesaIzq() {
+		return luzMesaIzq;
+	}
+
+	public void setLuzMesaIzq(boolean luzMesaIzq) {
+		this.luzMesaIzq = luzMesaIzq;
+	}
+
+	public boolean isLuzMesaDer() {
+		return luzMesaDer;
+	}
+
+	public void setLuzMesaDer(boolean luzMesaDer) {
+		this.luzMesaDer = luzMesaDer;
+	}
+
+	public int getPersianaIzq() {
+		return persianaIzq;
+	}
+
+	public void setPersianaIzq(int persianaIzq) {
+		this.persianaIzq = persianaIzq;
+	}
+
+	public int getPersianaDer() {
+		return persianaDer;
+	}
+
+	public void setPersianaDer(int persianaDer) {
+		this.persianaDer = persianaDer;
+	}
+
+	public int getVentanaIzq() {
+		return ventanaIzq;
+	}
+
+	public void setVentanaIzq(int ventanaIzq) {
+		this.ventanaIzq = ventanaIzq;
+	}
+
+	public int getVentanaDer() {
+		return ventanaDer;
+	}
+
+	public void setVentanaDer(int ventanaDer) {
+		this.ventanaDer = ventanaDer;
+	}
+	
+	/**
+	 * Método que apaga todas las luces de la casa
+	 */
+	public void apagarTodasLuces () {
+		this.luzTechoHab = false;
+		this.luzTechoBan = false;
+		this.luzMesaIzq = false;
+		this.luzMesaDer = false;
+	}
 
 }

@@ -2,7 +2,7 @@ package modelo;
 
 import tiposVariable.Tiempo;
 
-public class Despertador {
+public class Alarma {
 
 	public enum DiaSemana {
 		LUNES, MARTES, MIERCOLES, JUEVES, VIERNES, SABADO, DOMINGO
@@ -10,8 +10,8 @@ public class Despertador {
 
 	public Tiempo hora;
 	private DiaSemana dia;
-	
-	public Despertador(Tiempo hora, DiaSemana dia) {
+
+	public Alarma(Tiempo hora, DiaSemana dia) {
 		super();
 		this.hora = hora;
 		this.dia = dia;
@@ -33,7 +33,4 @@ public class Despertador {
 		this.dia = dia;
 	}
 
-	
-	
-	
 }

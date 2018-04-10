@@ -21,7 +21,7 @@ public class PanelSpa extends JPanel {
 	 * Create the panel.
 	 * @param controlador 
 	 */
-	public PanelSpa(Controlador controlador) {
+	public  PanelSpa (Controlador controlador) {
 		this.setSize(new Dimension(931, 483));
 		this.setName("panelSpa");
 		
