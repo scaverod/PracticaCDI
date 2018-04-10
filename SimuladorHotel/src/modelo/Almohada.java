@@ -4,18 +4,16 @@ import java.util.Arrays;
 
 public class Almohada {
 
-
 	private double precioVisco;
 	private double precioLatex;
 	private double precioGel;
 	private double precioPluma;
 	private String nombre;
-	
+
 	public static final String viscoelastica = "Viscoelastica";
 	public static final String latex = "Latex";
 	public static final String gel = "Gel";
 	public static final String pluma = "Pluma";
-	
 
 	public Almohada(double precioVisco, double precioLatex, double precioGel, double precioPluma) {
 
@@ -25,19 +23,13 @@ public class Almohada {
 		this.precioPluma = precioPluma;
 	}
 
-	
-	
 	public String getNombre() {
 		return nombre;
 	}
 
-
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
-
 
 	public double getPrecioVisco() {
 		return precioVisco;
@@ -70,9 +62,15 @@ public class Almohada {
 	public void setPrecioPluma(double precioPluma) {
 		this.precioPluma = precioPluma;
 	}
-	
-	private String [] getAlmohadas () {
-		String aux [] = {viscoelastica,latex , gel, pluma};
+
+	/**
+	 * Método que genera un array de strings con los nombres de los tipos de
+	 * almohadas disponibles.
+	 * 
+	 * @return Array de Strings con los nombres de las almohadas.
+	 */
+	private String[] getTipoAlmohadas() {
+		String aux[] = { viscoelastica, latex, gel, pluma };
 		return aux;
 	}
 
