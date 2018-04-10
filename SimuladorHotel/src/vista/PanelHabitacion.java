@@ -10,6 +10,9 @@ import javax.swing.JLayeredPane;
 import javax.swing.JButton;
 import java.awt.Color;
 import javax.swing.JToggleButton;
+
+import controlador.Controlador;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -24,7 +27,7 @@ public class PanelHabitacion extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public PanelHabitacion() {
+	public PanelHabitacion(Controlador controlador) {
 		this.setSize(new Dimension(931, 483));
 		this.setName("panelHabitacion");
 		setLayout(null);

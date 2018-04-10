@@ -5,6 +5,9 @@ import java.awt.Dimension;
 import javax.swing.GroupLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import controlador.Controlador;
+
 import javax.swing.GroupLayout.Alignment;
 
 public class PanelSpa extends JPanel {
@@ -16,8 +19,9 @@ public class PanelSpa extends JPanel {
 
 	/**
 	 * Create the panel.
+	 * @param controlador 
 	 */
-	public PanelSpa() {
+	public PanelSpa(Controlador controlador) {
 		this.setSize(new Dimension(931, 483));
 		this.setName("panelSpa");
 		

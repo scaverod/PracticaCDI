@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
+import controlador.Controlador;
 import controlador.MicroControladorPanelesPadreHijo;
 import modelo.Texto;
 import modelo.TextoManager;
@@ -46,7 +47,7 @@ public class PanelServicios extends JPanel {
 	
 	
 
-	public PanelServicios() {
+	public PanelServicios(Controlador controlador) {
 		this.setSize(new Dimension(931, 483));
 		this.setName("panelServicios");
 		setLayout(new CardLayout(0, 0));
@@ -247,40 +248,40 @@ public class PanelServicios extends JPanel {
 		/* SEPARADOR */
 		microControlador = new MicroControladorPanelesPadreHijo(this);
 		
-		panelToallas = new PanelServiciosEmergenteToallas(microControlador, this.getName());
+		panelToallas = new PanelServiciosEmergenteToallas(microControlador, this.getName(), controlador);
 		panelServicio.add(panelToallas, panelToallas.getName());
 		
-		panelSabanas = new PanelServiciosEmergenteSabanas(microControlador, this.getName());
+		panelSabanas = new PanelServiciosEmergenteSabanas(microControlador, this.getName(), controlador);
 		panelServicio.add(panelSabanas, panelSabanas.getName());
 		
-		panelAlmohada = new PanelServiciosEmergenteAlmohada(microControlador, this.getName());
+		panelAlmohada = new PanelServiciosEmergenteAlmohada(microControlador, this.getName(), controlador);
 		panelServicio.add(panelAlmohada, panelAlmohada.getName());
 		
-		panelMinibar = new PanelServiciosEmergenteMinibar(microControlador, this.getName());
+		panelMinibar = new PanelServiciosEmergenteMinibar(microControlador, this.getName(), controlador);
 		panelServicio.add(panelMinibar, panelMinibar.getName());
 		
-		panelTelefono = new PanelServiciosEmergenteTelefono(microControlador, this.getName());
+		panelTelefono = new PanelServiciosEmergenteTelefono(microControlador, this.getName(), controlador);
 		panelServicio.add(panelTelefono, panelTelefono.getName());
 		
-		panelBotones = new PanelServiciosEmergenteBotones(microControlador, this.getName());
+		panelBotones = new PanelServiciosEmergenteBotones(microControlador, this.getName(), controlador);
 		panelServicio.add(panelBotones, panelBotones.getName());
 		
-		panelComida = new PanelServiciosEmergenteComida(microControlador, this.getName());
+		panelComida = new PanelServiciosEmergenteComida(microControlador, this.getName(), controlador);
 		panelServicio.add(panelComida, panelComida.getName());
 		
-		panelLimpieza = new PanelServiciosEmergenteLimpieza(microControlador, this.getName());
+		panelLimpieza = new PanelServiciosEmergenteLimpieza(microControlador, this.getName(), controlador);
 		panelServicio.add(panelLimpieza, panelLimpieza.getName());
 		
-		panelWifi = new PanelServiciosEmergenteWifi(microControlador, this.getName());
+		panelWifi = new PanelServiciosEmergenteWifi(microControlador, this.getName(), controlador);
 		panelServicio.add(panelWifi, panelWifi.getName());
 		
-		panelTaxi = new PanelServiciosEmergenteTaxi(microControlador, this.getName());
+		panelTaxi = new PanelServiciosEmergenteTaxi(microControlador, this.getName(), controlador);
 		panelServicio.add(panelTaxi, panelTaxi.getName());
 		
-		panelTelevision = new PanelServiciosEmergenteTelevision(microControlador, this.getName());
+		panelTelevision = new PanelServiciosEmergenteTelevision(microControlador, this.getName(), controlador);
 		panelServicio.add(panelTelevision, panelTelevision.getName());
 		
-		panelInformacion = new PanelServiciosEmergenteInformacion(microControlador, this.getName());
+		panelInformacion = new PanelServiciosEmergenteInformacion(microControlador, this.getName(), controlador);
 		panelServicio.add(panelInformacion, panelInformacion.getName());
 		
 		JLabel lblFondo = new JLabel("");

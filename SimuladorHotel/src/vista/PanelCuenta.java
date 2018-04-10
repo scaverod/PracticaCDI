@@ -11,6 +11,9 @@ import javax.swing.GroupLayout.Alignment;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 import javax.swing.border.EtchedBorder;
+
+import controlador.Controlador;
+
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ImageIcon;
@@ -27,7 +30,7 @@ public class PanelCuenta extends JPanel {
 	 * Create the panel.
 	 */
 
-	public PanelCuenta() {
+	public PanelCuenta(Controlador controlador) {
 		this.setSize(new Dimension(931, 483));
 		this.setName("panelCuenta");
 
@@ -137,4 +140,5 @@ public class PanelCuenta extends JPanel {
 		btnLogout.setContentAreaFilled( false );
 		this.setLayout(gl_panelCuenta);
 	}
+
 }

@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import controlador.Controlador;
 import modelo.Texto;
 import modelo.TextoManager;
 
@@ -51,6 +52,7 @@ public class Ventana extends JFrame {
 	private JPanel panelSpa;
 	private JPanel panelServicios;
 	private JPanel panelCuenta;
+	private Controlador controlador;
 	
 	// FIXME: temporal para que salga el texto en vez de "<dynamic>"
 	// Habría que mandarlo desde el Main, por ejemplo
@@ -63,7 +65,8 @@ public class Ventana extends JFrame {
 				| UnsupportedLookAndFeelException e) {
 			e.printStackTrace();
 		}
-
+		//TODO: cargar los datos
+		this.controlador = new Controlador ();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1366, 745);
 		contentPane = new JPanel();
@@ -202,16 +205,16 @@ public class Ventana extends JFrame {
 						.addComponent(pantallaMenu, GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE).addContainerGap()));
 		pantallaMenu.setLayout(new CardLayout(0, 0));
 
-		panelHabitacion = new PanelHabitacion();
+		panelHabitacion = new PanelHabitacion(controlador);
 		pantallaMenu.add(panelHabitacion, panelHabitacion.getName());
 
-		panelSpa = new PanelSpa();
+		panelSpa = new PanelSpa(controlador);
 		pantallaMenu.add(panelSpa, panelSpa.getName());
 
-		panelServicios = new PanelServicios();
+		panelServicios = new PanelServicios(controlador);
 		pantallaMenu.add(panelServicios, panelServicios.getName());
 
-		panelCuenta = new PanelCuenta();
+		panelCuenta = new PanelCuenta(controlador);
 		pantallaMenu.add(panelCuenta, panelCuenta.getName());
 
 		btnSpa = new JToggleButton(t.getMenuPrincipalBtnSpa());

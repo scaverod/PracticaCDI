@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 
+import controlador.Controlador;
 import controlador.MicroControladorPanelesPadreHijo;
 
 import javax.swing.JLabel;
@@ -18,7 +19,7 @@ import javax.swing.SwingConstants;
 public class PanelServiciosEmergenteTelevision extends JPanel {
 	private static final long serialVersionUID = 1L;
 
-	public PanelServiciosEmergenteTelevision(MicroControladorPanelesPadreHijo microControlador, String padre) {
+	public PanelServiciosEmergenteTelevision(MicroControladorPanelesPadreHijo microControlador, String padre, Controlador controlador) {
 		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102)));
 		this.setSize(new Dimension(695, 315));
 		this.setName("p" + this.getClass().getSimpleName().substring(1)); // No modificar
