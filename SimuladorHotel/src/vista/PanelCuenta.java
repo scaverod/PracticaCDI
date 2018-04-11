@@ -13,11 +13,17 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EtchedBorder;
 
 import controlador.Controlador;
+import modelo.Texto;
+import modelo.TextoManager;
 
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ImageIcon;
-import javax.swing.JScrollPane;
+import javax.swing.ButtonGroup;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JToggleButton;
+import java.awt.Component;
 
 public class PanelCuenta extends JPanel {
 
@@ -25,6 +31,8 @@ public class PanelCuenta extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private Texto t = new TextoManager(TextoManager.english).getTexto();
+	private final ButtonGroup btnIdiomas = new ButtonGroup();
 
 	/**
 	 * Create the panel.
@@ -34,111 +42,115 @@ public class PanelCuenta extends JPanel {
 		this.setSize(new Dimension(931, 483));
 		this.setName("panelCuenta");
 
-		JLabel lblHabitacion = new JLabel("Habitacion");
+		JLabel lblHabitacion = new JLabel(t.getLblCuentaHabitacion() +": " + controlador.getCuenta().getUsuario());
+		lblHabitacion.setBounds(10, 11, 829, 47);
 		lblHabitacion.setHorizontalAlignment(SwingConstants.CENTER);
 		lblHabitacion.setOpaque(true);
 		lblHabitacion.setForeground(new Color(255, 255, 255));
 		lblHabitacion.setBackground(Color.decode("#006df0"));
 		lblHabitacion.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		//TODO: Cambiar para que quede más bonito
+		// TODO: Cambiar para que quede más bonito
 		lblHabitacion.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
-		
-		JPanel panelLogout = new JPanel();
-		panelLogout.setBackground(Color.ORANGE);
-		
-		JScrollPane scrollPane = new JScrollPane();
-		
-		JLabel lblGastos = new JLabel("Gastos");
-		
-		JLabel lblGastoToal = new JLabel("Gasto toal: ");
-		
-		JLabel label = new JLabel("<GASTO>");
-		
-		JLabel lblPersonalizarAplicacin = new JLabel("Personalizar Aplicaci\u00F3n");
-		
-		JButton btnESP = new JButton("");
-		btnESP.setOpaque(false);
-		btnESP.setContentAreaFilled( false );
 
-		btnESP.setIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/espa\u00F1a.png")));
+		JPanel panelLogout = new JPanel();
+		panelLogout.setBounds(843, 11, 76, 47);
+		panelLogout.setBackground(Color.ORANGE);
+
+		JLabel lblGastos = new JLabel("Gastos");
+		lblGastos.setBounds(10, 113, 45, 19);
+		lblGastos.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
-		JButton btnUK = new JButton("");
+		JPanel panel = new JPanel();
+		panel.setBounds(565, 113, 356, 138);
+		
+				JLabel lblElegirIdioma = new JLabel("Elegir idioma");
+				lblElegirIdioma.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		
+				JToggleButton btnESP = new JToggleButton("");
+				btnESP.setSelected(true);
+				btnESP.setIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/espa\u00F1a.png")));
+				btnESP.setSelectedIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/espa\u00F1aSelected.png")));
+				btnESP.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+					}
+				});
+				btnIdiomas.add(btnESP);
+				btnESP.setOpaque(false);
+				btnESP.setContentAreaFilled(false);
+		
+		JToggleButton btnUK = new JToggleButton("");
+		btnUK.setSelectedIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/ukSelected.png")));
+		btnIdiomas.add(btnUK);
 		btnUK.setIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/uk.png")));
 		btnUK.setOpaque(false);
-		btnUK.setContentAreaFilled( false );
+		btnUK.setContentAreaFilled(false);
 		
-		JButton btnRo = new JButton("");
-		btnRo.setIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/rumania.png")));
-		btnRo.setOpaque(false);
-		btnRo.setContentAreaFilled( false );
+		JToggleButton toggleButton = new JToggleButton("");
+		toggleButton.setSelectedIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/rumaniaSelected.png")));
+		btnIdiomas.add(toggleButton);
+		toggleButton.setIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/rumania.png")));
+		toggleButton.setOpaque(false);
+		toggleButton.setContentAreaFilled(false);
 		
+		JLabel lblNewLabel = new JLabel("Castellano");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		JLabel lblElegirIdioma = new JLabel("Elegir idioma");
-		GroupLayout gl_panelCuenta = new GroupLayout(this);
-		gl_panelCuenta.setHorizontalGroup(
-			gl_panelCuenta.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panelCuenta.createSequentialGroup()
+		JLabel lblIngls = new JLabel("Ingl\u00E9s");
+		lblIngls.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		JLabel lblRumano = new JLabel("Rumano");
+		lblRumano.setHorizontalAlignment(SwingConstants.CENTER);
+		GroupLayout gl_panel = new GroupLayout(panel);
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_panelCuenta.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblGastos)
-						.addGroup(gl_panelCuenta.createSequentialGroup()
-							.addComponent(lblGastoToal)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(label))
-						.addGroup(gl_panelCuenta.createSequentialGroup()
-							.addGroup(gl_panelCuenta.createParallelGroup(Alignment.TRAILING)
-								.addGroup(Alignment.LEADING, gl_panelCuenta.createSequentialGroup()
-									.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 460, GroupLayout.PREFERRED_SIZE)
-									.addGap(118)
-									.addGroup(gl_panelCuenta.createParallelGroup(Alignment.LEADING)
-										.addComponent(lblElegirIdioma)
-										.addGroup(gl_panelCuenta.createSequentialGroup()
-											.addComponent(btnESP, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
-											.addPreferredGap(ComponentPlacement.RELATED)
-											.addComponent(btnUK, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
-											.addPreferredGap(ComponentPlacement.RELATED)
-											.addComponent(btnRo, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE))
-										.addComponent(lblPersonalizarAplicacin)))
-								.addComponent(lblHabitacion, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 829, GroupLayout.PREFERRED_SIZE))
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(panelLogout, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)))
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblElegirIdioma)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addComponent(btnESP, GroupLayout.PREFERRED_SIZE, 108, GroupLayout.PREFERRED_SIZE)
+							.addGap(6)
+							.addComponent(btnUK, GroupLayout.PREFERRED_SIZE, 108, GroupLayout.PREFERRED_SIZE)
+							.addGap(6)
+							.addComponent(toggleButton, GroupLayout.PREFERRED_SIZE, 108, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(3)
+							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+							.addGap(31)
+							.addComponent(lblIngls, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+							.addGap(24)
+							.addComponent(lblRumano, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
-		gl_panelCuenta.setVerticalGroup(
-			gl_panelCuenta.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panelCuenta.createSequentialGroup()
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_panelCuenta.createParallelGroup(Alignment.LEADING)
-						.addComponent(panelLogout, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblHabitacion, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE))
-					.addGap(30)
-					.addComponent(lblGastos)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_panelCuenta.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panelCuenta.createSequentialGroup()
-							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 305, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addGroup(gl_panelCuenta.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblGastoToal)
-								.addComponent(label)))
-						.addGroup(gl_panelCuenta.createSequentialGroup()
-							.addComponent(lblPersonalizarAplicacin)
-							.addGap(23)
-							.addComponent(lblElegirIdioma)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addGroup(gl_panelCuenta.createParallelGroup(Alignment.BASELINE)
-								.addComponent(btnESP)
-								.addComponent(btnUK)
-								.addComponent(btnRo))))
-					.addContainerGap(45, Short.MAX_VALUE))
+					.addGap(1)
+					.addComponent(lblElegirIdioma)
+					.addGap(11)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnESP)
+						.addComponent(btnUK)
+						.addComponent(toggleButton))
+					.addGap(6)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblIngls, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblRumano, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(74, Short.MAX_VALUE))
 		);
-		
+		panel.setLayout(gl_panel);
+
 		JButton btnLogout = new JButton("");
 		btnLogout.setIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/logout.png")));
 		panelLogout.add(btnLogout);
 		btnLogout.setOpaque(true);
-		btnLogout.setContentAreaFilled( false );
-		this.setLayout(gl_panelCuenta);
+		btnLogout.setContentAreaFilled(false);
+		setLayout(null);
+		add(lblHabitacion);
+		add(panelLogout);
+		add(lblGastos);
+		add(panel);
 	}
-
 }

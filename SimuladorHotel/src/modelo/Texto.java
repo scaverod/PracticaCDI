@@ -54,6 +54,7 @@ public abstract class Texto {
 	private String panelServiciosEmergenteTaxiTxt;
 
 	// Panel Usuario
+	private String lblCuentaHabitacion;
 	// TODO: pendiente de que se haga primero el panel usuario
 
 	protected void placeHolderParaQueMePongaGettersYSettersAbajoEquisde() {
@@ -321,5 +322,13 @@ public abstract class Texto {
 
 	public void setPanelServiciosEmergenteTaxiTxt(String panelServiciosEmergenteTaxiTxt) {
 		this.panelServiciosEmergenteTaxiTxt = panelServiciosEmergenteTaxiTxt;
+	}
+
+	public String getLblCuentaHabitacion() {
+		return lblCuentaHabitacion;
+	}
+
+	public void setLblCuentaHabitacion(String lblCuentaHabitacion) {
+		this.lblCuentaHabitacion = lblCuentaHabitacion;
 	}
 }

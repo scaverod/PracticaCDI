@@ -21,7 +21,8 @@ public class Cuenta {
 
 	public Cuenta(String usuario, String pwd) {
 		this.gasto = new Gasto();
-		this.usuario = this.pwd = pwd;
+		this.usuario =  usuario;
+		this.pwd = pwd;
 
 	}
 

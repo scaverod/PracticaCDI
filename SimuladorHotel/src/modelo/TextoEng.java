@@ -55,7 +55,9 @@ public class TextoEng extends Texto {
 		// Panel Emergen Txi
 		setPanelServiciosEmergenteTaxiTxt(
 				"Do not waste your time calling a vehicle for your travel. We do it for you.\n\nList of associated companies:");
+		
 		// TODO: panel usuario
+		setLblCuentaHabitacion("Room");
 
 	}
 }

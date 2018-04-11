@@ -55,5 +55,7 @@ public class TextoEsp extends Texto {
 		setPanelServiciosEmergenteTaxiTxt(
 				"No pierdas tu tiempo llamando a un vehículo para tu traslado. Nosotros lo hacemos por tí.\n\nLista de empresas asociadas:");
 		// TODO: panel usuario
+		setLblCuentaHabitacion("Habitación");
+
 	}
 }
