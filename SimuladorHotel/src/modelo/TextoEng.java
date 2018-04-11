@@ -2,6 +2,10 @@ package modelo;
 
 public class TextoEng extends Texto {
 	public TextoEng() {
+		// Comunes
+		setBtnAceptar("Confirm");
+		setBtnCerrar("Close");
+
 		// Panel Login
 		setLoginIniciaSesion("Login to use the app");
 		setLoginUsuario("User");
@@ -48,16 +52,20 @@ public class TextoEng extends Texto {
 		setPanelServiciosEmergenteWifiTxt(
 				"Everyone wants to be able to connect to the internet at any time, that's why, we have Wifi in all the rooms of the hotel of high quality.\r\n"
 						+ "Once you activate the service, it will be available during your entire stay.");
-		
-		setPanelServiciosEmergenteWifiActivadoTxt("You have purchased the WiFi service. We hope you can enjoy the best quality of our internet connection.\n\nTo start using WiFi, enter the key in your devices.");
+
+		setPanelServiciosEmergenteWifiActivadoTxt(
+				"You have purchased the WiFi service. We hope you can enjoy the best quality of our internet connection.\n\nTo start using WiFi, enter the key in your devices.");
 		setPanelServiciosEmergenteWifiPwdTxt("WiFi password:");
-		
+
 		// Panel Emergen Txi
 		setPanelServiciosEmergenteTaxiTxt(
 				"Do not waste your time calling a vehicle for your travel. We do it for you.\n\nList of associated companies:");
-		
+
 		// TODO: panel usuario
+
 		setLblCuentaHabitacion("Room");
+		// Panel Confirmacion
+		setLblConfirmacion("Are you sure you want to buy this service?");
 
 	}
 }

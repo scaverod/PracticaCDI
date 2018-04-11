@@ -35,7 +35,6 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 		setLayout(null);
 
 		JButton btnCerrar = new JButton(t.getCerrar());
-		btnCerrar.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		btnCerrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { // No modificar
 				// Devuelve control al padre
@@ -49,7 +48,7 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 		btnMoviestar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO: implementar esto
-				if (JOptionPane.showConfirmDialog(btnMoviestar, "¿Desea adquirir el canal Moviestar + por el precio de "
+				if (JOptionPane.showConfirmDialog(PanelServiciosEmergenteTelevision.this, "¿Desea adquirir el canal Moviestar + por el precio de "
 						+ String.valueOf(controlador.getServicios().getTelevision().getPrecioMoviestarPlus()) + " €",
 						"Confirmatar compra ", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 					btnMoviestar.setEnabled(false);
@@ -57,13 +56,12 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 							controlador.getServicios().getTelevision().getPrecioMoviestarPlus()));
 					controlador.getServicios().getTelevision().setActivadoMoviestarPlus(true);
 				}
-
 			}
 		});
 		btnMoviestar.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		btnMoviestar
 				.setIcon(new ImageIcon(PanelServiciosEmergenteTelevision.class.getResource("/iconos/movistar.png")));
-		btnMoviestar.setBounds(96, 138, 100, 90);
+		btnMoviestar.setBounds(59, 138, 100, 90);
 		btnMoviestar.setContentAreaFilled(false);
 		add(btnMoviestar);
 
@@ -72,14 +70,14 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 		txtpnInfo.setEditable(false);
 		txtpnInfo.setOpaque(false);
 		txtpnInfo.setText(t.getPanelServiciosEmergenteTelevisionTxt());
-		txtpnInfo.setBounds(45, 63, 593, 75);
+		txtpnInfo.setBounds(51, 63, 593, 75);
 		add(txtpnInfo);
 
 		JButton btnNetflix = new JButton("");
 		btnNetflix.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// TODO: implementar esto
-				if (JOptionPane.showConfirmDialog(btnNetflix,
+				if (JOptionPane.showConfirmDialog(PanelServiciosEmergenteTelevision.this,
 						"¿Desea adquirir el canal Netflix por el precio de "
 								+ String.valueOf(controlador.getServicios().getTelevision().getPrecioNetflix()) + " €",
 						"Confirmar compra ", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
@@ -90,7 +88,7 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 		});
 		btnNetflix.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		btnNetflix.setIcon(new ImageIcon(PanelServiciosEmergenteTelevision.class.getResource("/iconos/netflix.png")));
-		btnNetflix.setBounds(227, 138, 100, 90);
+		btnNetflix.setBounds(218, 138, 100, 90);
 		btnNetflix.setContentAreaFilled(false);
 		add(btnNetflix);
 
@@ -98,7 +96,7 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 		btnBBC.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// TODO: implementar esto
-				if (JOptionPane.showConfirmDialog(btnBBC,
+				if (JOptionPane.showConfirmDialog(PanelServiciosEmergenteTelevision.this,
 						"¿Desea adquirir el canal BBC por el precio de "
 								+ String.valueOf(controlador.getServicios().getTelevision().getPrecioBBC()) + " €",
 						"Confirmar compra ", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
@@ -108,7 +106,7 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 		});
 		btnBBC.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		btnBBC.setIcon(new ImageIcon(PanelServiciosEmergenteTelevision.class.getResource("/iconos/bbc.png")));
-		btnBBC.setBounds(354, 138, 100, 90);
+		btnBBC.setBounds(377, 138, 100, 90);
 		btnBBC.setContentAreaFilled(false);
 		add(btnBBC);
 
@@ -116,7 +114,7 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 		btnBeinSport.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// TODO: implementar esto
-				if (JOptionPane.showConfirmDialog(btnBeinSport, "¿Desea adquirir el canal Bein Sports por el precio de "
+				if (JOptionPane.showConfirmDialog(PanelServiciosEmergenteTelevision.this, "¿Desea adquirir el canal Bein Sports por el precio de "
 						+ String.valueOf(controlador.getServicios().getTelevision().getPrecioBeinSport()) + " €",
 						"Confirmar compra ", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 					btnBeinSport.setEnabled(false);
@@ -126,7 +124,7 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 		btnBeinSport.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		btnBeinSport
 				.setIcon(new ImageIcon(PanelServiciosEmergenteTelevision.class.getResource("/iconos/beinsport.png")));
-		btnBeinSport.setBounds(486, 138, 100, 90);
+		btnBeinSport.setBounds(536, 138, 100, 90);
 		btnBeinSport.setContentAreaFilled(false);
 		add(btnBeinSport);
 	}

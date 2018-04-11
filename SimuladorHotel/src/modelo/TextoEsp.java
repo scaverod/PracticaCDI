@@ -2,6 +2,10 @@ package modelo;
 
 public class TextoEsp extends Texto {
 	public TextoEsp() {
+		// Comunes
+		setBtnAceptar("Aceptar");
+		setBtnCerrar("Cerrar");
+
 		// Panel Login
 		setLoginIniciaSesion("Inicie sesión para usar la aplicación");
 		setLoginUsuario("Usuario");
@@ -55,7 +59,10 @@ public class TextoEsp extends Texto {
 		setPanelServiciosEmergenteTaxiTxt(
 				"No pierdas tu tiempo llamando a un vehículo para tu traslado. Nosotros lo hacemos por tí.\n\nLista de empresas asociadas:");
 		// TODO: panel usuario
+
 		setLblCuentaHabitacion("Habitación");
+		// Panel Confirmacion
+		setLblConfirmacion("¿Desea confirmar su compra?");
 
 	}
 }

@@ -44,8 +44,6 @@ public class PanelServicios extends JPanel {
 	private JPanel panelTaxi;
 	private JPanel panelTelevision;
 	private JPanel panelInformacion;
-	
-	
 
 	public PanelServicios(Controlador controlador) {
 		this.setSize(new Dimension(931, 483));
@@ -88,6 +86,7 @@ public class PanelServicios extends JPanel {
 		JButton btnCambioAlmohada = new JButton(t.getPanelServiciosBtnCambioAlmohada());
 		btnCambioAlmohada.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				((PanelServiciosEmergenteAlmohada) panelAlmohada).cerrarPanelConfirmacion();
 				establecerVentanaServicio(panelAlmohada.getName());
 				mostrarVentanaEmergente();
 			}
@@ -232,8 +231,9 @@ public class PanelServicios extends JPanel {
 				if (!((e.getX() >= panelServicio.getX())
 						&& (e.getX() <= (panelServicio.getX() + panelServicio.getWidth()))
 						&& (e.getY() >= panelServicio.getY())
-						&& (e.getY() <= (panelServicio.getY() + panelServicio.getHeight()))))
+						&& (e.getY() <= (panelServicio.getY() + panelServicio.getHeight())))) {
 					mostrarVentanaServicios();
+				}
 			}
 		});
 		panelEmergente.setName("panelEmergente");
