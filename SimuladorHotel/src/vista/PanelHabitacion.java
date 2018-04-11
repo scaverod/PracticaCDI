@@ -97,6 +97,7 @@ public class PanelHabitacion extends JPanel {
 		layeredPane.add(btnVentanaGrande);
 
 		JToggleButton tglbtnPuerta = new JToggleButton("");
+		tglbtnPuerta.setToolTipText("Abrir o cerrar la puerta principal.");
 		tglbtnPuerta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// TODO:
@@ -111,6 +112,7 @@ public class PanelHabitacion extends JPanel {
 		layeredPane.add(tglbtnPuerta);
 		
 		JButton btnAlarma = new JButton("");
+		btnAlarma.setToolTipText("Programar una alarma.");
 		btnAlarma.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/alarm.png")));
 		layeredPane.setLayer(btnAlarma, 1);
 		btnAlarma.setBounds(174, 403, 89, 69);
@@ -118,6 +120,7 @@ public class PanelHabitacion extends JPanel {
 		layeredPane.add(btnAlarma);
 		
 		JToggleButton tglbtnLuz = new JToggleButton("");
+		tglbtnLuz.setToolTipText("Encender o apagar todas las luces.");
 		tglbtnLuz.setSelectedIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/lucesON.png")));
 		tglbtnLuz.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/lucesOFF.png")));
 		layeredPane.setLayer(tglbtnLuz, 1);
@@ -127,6 +130,7 @@ public class PanelHabitacion extends JPanel {
 		layeredPane.add(tglbtnLuz);
 		
 		JButton btnAyuda = new JButton("");
+		btnAyuda.setToolTipText("<consejos>");
 		btnAyuda.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/help.png")));
 		layeredPane.setLayer(btnAyuda, 1);
 		btnAyuda.setBounds(881, 0, 50, 50);
@@ -135,13 +139,14 @@ public class PanelHabitacion extends JPanel {
 		layeredPane.add(btnAyuda);
 		
 		JButton btnTemperatura = new JButton("");
+		btnTemperatura.setToolTipText("Ajustar la temperatura de la habitaci\u00F3n.");
 		layeredPane.setLayer(btnTemperatura, 1);
 		btnTemperatura.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/thermometer.png")));
 		btnTemperatura.setBounds(10, 11, 97, 73);
 		btnTemperatura.setContentAreaFilled(false);
 		layeredPane.add(btnTemperatura);
 		
-		JLabel lblTemperatura = new JLabel("25\u00BA");
+		JLabel lblTemperatura = new JLabel("23\u00BA");
 		lblTemperatura.setForeground(Color.WHITE);
 		layeredPane.setLayer(lblTemperatura, 2);
 		lblTemperatura.setFont(new Font("Tahoma", Font.BOLD, 12));
