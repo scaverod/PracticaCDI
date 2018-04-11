@@ -243,6 +243,9 @@ public class Ventana extends JFrame {
 		btnCuenta = new JToggleButton(t.getMenuPrincipalBtnCuenta());
 		btnCuenta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//TODO: Controlar esto para que se guarde el estado del resto de las cosas
+				panelCuenta = new PanelCuenta(controlador);
+				pantallaMenu.add(panelCuenta, panelCuenta.getName());
 				changeToCuenta();
 			}
 		});

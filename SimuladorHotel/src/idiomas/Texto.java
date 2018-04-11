@@ -59,7 +59,19 @@ public abstract class Texto {
 
 	// Panel Usuario
 	private String lblCuentaHabitacion;
-	// TODO: pendiente de que se haga primero el panel usuario
+	private String lblElegirIdioma;
+	private String lblCastellano;
+	private String lblIngles;
+	private String lblRumano;
+	// Voy por aquí
+	private String lblGasto;
+	private String btnMsDetalles;
+	private String lblGastoTotal;
+	private String lblPersonalizar;
+	private String lblModoNocturno;
+	private String lblInvertirColores;
+	private String lblSalidaTexto;
+	private String lblAumentarTexto;
 
 	// Panel confirmacion
 	private String lblConfirmacion;
@@ -361,5 +373,101 @@ public abstract class Texto {
 
 	public void setLblCuentaHabitacion(String lblCuentaHabitacion) {
 		this.lblCuentaHabitacion = lblCuentaHabitacion;
+	}
+
+	public String getLblElegirIdioma() {
+		return lblElegirIdioma;
+	}
+
+	public void setLblElegirIdioma(String lblElegirIdioma) {
+		this.lblElegirIdioma = lblElegirIdioma;
+	}
+
+	public String getLblCastellano() {
+		return lblCastellano;
+	}
+
+	public void setLblCastellano(String lblCastellano) {
+		this.lblCastellano = lblCastellano;
+	}
+
+	public String getLblIngles() {
+		return lblIngles;
+	}
+
+	public void setLblIngles(String lblIngles) {
+		this.lblIngles = lblIngles;
+	}
+
+	public String getLblRumano() {
+		return lblRumano;
+	}
+
+	public void setLblRumano(String lblRumano) {
+		this.lblRumano = lblRumano;
+	}
+
+	public String getLblGasto() {
+		return lblGasto;
+	}
+
+	public void setLblGasto(String lblGasto) {
+		this.lblGasto = lblGasto;
+	}
+
+	public String getBtnMsDetalles() {
+		return btnMsDetalles;
+	}
+
+	public void setBtnMsDetalles(String btnMsDetalles) {
+		this.btnMsDetalles = btnMsDetalles;
+	}
+
+	public String getLblGastoTotal() {
+		return lblGastoTotal;
+	}
+
+	public void setLblGastoTotal(String lblGastoTotal) {
+		this.lblGastoTotal = lblGastoTotal;
+	}
+
+	public String getLblPersonalizar() {
+		return lblPersonalizar;
+	}
+
+	public void setLblPersonalizar(String lblPersonalizar) {
+		this.lblPersonalizar = lblPersonalizar;
+	}
+
+	public String getLblModoNocturno() {
+		return lblModoNocturno;
+	}
+
+	public void setLblModoNocturno(String lblModoNocturno) {
+		this.lblModoNocturno = lblModoNocturno;
+	}
+
+	public String getLblInvertirColores() {
+		return lblInvertirColores;
+	}
+
+	public void setLblInvertirColores(String lblInvertirColores) {
+		this.lblInvertirColores = lblInvertirColores;
+	}
+
+	public String getLblSalidaTexto() {
+		return lblSalidaTexto;
+	}
+
+	public void setLblSalidaTexto(String lblSalidaTexto) {
+		this.lblSalidaTexto = lblSalidaTexto;
+	}
+
+	public String getLblAumentarTexto() {
+		return lblAumentarTexto;
+	}
+
+	public void setLblAumentarTexto(String lblAumentarTexto) {
+		this.lblAumentarTexto = lblAumentarTexto;
 	}
 }

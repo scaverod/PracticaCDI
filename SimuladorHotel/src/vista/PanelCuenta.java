@@ -55,9 +55,9 @@ public class PanelCuenta extends JPanel {
 		panelIdioma.setBorder(new LineBorder(Color.decode("#006df0"), 5, true));
 		panelIdioma.setBounds(469, 113, 451, 157);
 
-		JLabel lblElegirIdioma = new JLabel("Elegir idioma");
+		JLabel lblElegirIdioma = new JLabel(t.getLblElegirIdioma());
 		lblElegirIdioma.setHorizontalAlignment(SwingConstants.CENTER);
-		lblElegirIdioma.setBounds(166, 11, 104, 19);
+		lblElegirIdioma.setBounds(153, 11, 144, 19);
 		lblElegirIdioma.setFont(new Font("Tahoma", Font.BOLD, 15));
 
 		JToggleButton btnESP = new JToggleButton("");
@@ -89,15 +89,15 @@ public class PanelCuenta extends JPanel {
 		toggleButton.setOpaque(false);
 		toggleButton.setContentAreaFilled(false);
 
-		JLabel lblNewLabel = new JLabel("Castellano");
-		lblNewLabel.setBounds(45, 116, 90, 26);
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		JLabel lblCastellano = new JLabel(t.getLblCastellano());
+		lblCastellano.setBounds(45, 116, 90, 26);
+		lblCastellano.setHorizontalAlignment(SwingConstants.CENTER);
 
-		JLabel lblIngls = new JLabel("Ingl\u00E9s");
-		lblIngls.setBounds(180, 116, 90, 26);
-		lblIngls.setHorizontalAlignment(SwingConstants.CENTER);
+		JLabel lblIngles = new JLabel(t.getLblIngles());
+		lblIngles.setBounds(180, 116, 90, 26);
+		lblIngles.setHorizontalAlignment(SwingConstants.CENTER);
 
-		JLabel lblRumano = new JLabel("Rumano");
+		JLabel lblRumano = new JLabel(t.getLblRumano());
 		lblRumano.setBounds(315, 116, 90, 26);
 		lblRumano.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -112,8 +112,8 @@ public class PanelCuenta extends JPanel {
 		add(panelIdioma);
 		panelIdioma.setLayout(null);
 		panelIdioma.add(lblElegirIdioma);
-		panelIdioma.add(lblNewLabel);
-		panelIdioma.add(lblIngls);
+		panelIdioma.add(lblCastellano);
+		panelIdioma.add(lblIngles);
 		panelIdioma.add(lblRumano);
 		panelIdioma.add(btnESP);
 		panelIdioma.add(btnUK);
@@ -138,26 +138,26 @@ public class PanelCuenta extends JPanel {
 		btnMsDetalles.setIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/details.png")));
 		btnMsDetalles.setBounds(273, 54, 153, 49);
 		panelGasto.add(btnMsDetalles);
-		
+
 		JPanel panelBorde = new JPanel();
 		panelBorde.setBackground(Color.decode("#bed5ed"));
 		panelBorde.setBorder(new LineBorder(Color.decode("#9bbfe3"), 3, true));
 		panelBorde.setBounds(24, 54, 225, 49);
 		panelGasto.add(panelBorde);
 		panelBorde.setLayout(null);
-		
-		JLabel lblGastoNumero = new JLabel("130.50 \u20AC");
+
+		JLabel lblGastoNumero = new JLabel(controlador.getCuenta().getGasto().getGastoTotal() + " \u20AC");
 		lblGastoNumero.setBackground(Color.ORANGE);
 		lblGastoNumero.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGastoNumero.setBounds(122, 0, 103, 49);
 		panelBorde.add(lblGastoNumero);
 		lblGastoNumero.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		
-				JLabel lblGastoTotal = new JLabel("Gasto total:");
-				lblGastoTotal.setBounds(0, 0, 123, 49);
-				panelBorde.add(lblGastoTotal);
-				lblGastoTotal.setHorizontalAlignment(SwingConstants.CENTER);
-				lblGastoTotal.setFont(new Font("Tahoma", Font.PLAIN, 15));
+
+		JLabel lblGastoTotal = new JLabel("Gasto total:");
+		lblGastoTotal.setBounds(0, 0, 123, 49);
+		panelBorde.add(lblGastoTotal);
+		lblGastoTotal.setHorizontalAlignment(SwingConstants.CENTER);
+		lblGastoTotal.setFont(new Font("Tahoma", Font.PLAIN, 15));
 
 		JPanel panelPersonalizar = new JPanel();
 		panelPersonalizar.setLayout(null);
@@ -171,12 +171,12 @@ public class PanelCuenta extends JPanel {
 		lblPersonalizar.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblPersonalizar.setBounds(174, 11, 103, 19);
 		panelPersonalizar.add(lblPersonalizar);
-		
+
 		JLabel lblModoNocturno = new JLabel("Modo nocturno");
 		lblModoNocturno.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblModoNocturno.setBounds(66, 39, 132, 31);
 		panelPersonalizar.add(lblModoNocturno);
-		
+
 		JToggleButton tglbtnModoNocturno = new JToggleButton("");
 		tglbtnModoNocturno.setSelectedIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/botonON.png")));
 		tglbtnModoNocturno.setContentAreaFilled(false);
@@ -184,22 +184,22 @@ public class PanelCuenta extends JPanel {
 		tglbtnModoNocturno.setIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/botonOFF.png")));
 		tglbtnModoNocturno.setBounds(264, 33, 121, 39);
 		panelPersonalizar.add(tglbtnModoNocturno);
-		
+
 		JLabel lblInvertirColores = new JLabel("Invertir colores");
 		lblInvertirColores.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblInvertirColores.setBounds(66, 109, 132, 31);
 		panelPersonalizar.add(lblInvertirColores);
-		
+
 		JLabel lblSalidaTexto = new JLabel("Salida de texto por voz");
 		lblSalidaTexto.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblSalidaTexto.setBounds(66, 179, 163, 31);
 		panelPersonalizar.add(lblSalidaTexto);
-		
+
 		JLabel lblAumentarTexto = new JLabel("Aumentar texto");
 		lblAumentarTexto.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblAumentarTexto.setBounds(66, 249, 132, 31);
 		panelPersonalizar.add(lblAumentarTexto);
-		
+
 		JToggleButton tglbtnInvertirColores = new JToggleButton("");
 		tglbtnInvertirColores.setSelectedIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/botonON.png")));
 		tglbtnInvertirColores.setIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/botonOFF.png")));
@@ -207,7 +207,7 @@ public class PanelCuenta extends JPanel {
 		tglbtnInvertirColores.setBorderPainted(false);
 		tglbtnInvertirColores.setBounds(264, 105, 121, 39);
 		panelPersonalizar.add(tglbtnInvertirColores);
-		
+
 		JToggleButton tglbtnSalidaTexto = new JToggleButton("");
 		tglbtnSalidaTexto.setSelectedIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/botonON.png")));
 		tglbtnSalidaTexto.setIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/botonOFF.png")));
@@ -215,7 +215,7 @@ public class PanelCuenta extends JPanel {
 		tglbtnSalidaTexto.setBorderPainted(false);
 		tglbtnSalidaTexto.setBounds(264, 177, 121, 39);
 		panelPersonalizar.add(tglbtnSalidaTexto);
-		
+
 		JToggleButton tglbtnAumentarTexto = new JToggleButton("");
 		tglbtnAumentarTexto.setSelectedIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/botonON.png")));
 		tglbtnAumentarTexto.setIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/botonOFF.png")));

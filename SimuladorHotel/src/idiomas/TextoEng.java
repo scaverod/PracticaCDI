@@ -62,8 +62,12 @@ public class TextoEng extends Texto {
 				"Do not waste your time calling a vehicle for your travel. We do it for you.\n\nList of associated companies:");
 
 		// TODO: panel usuario
-
 		setLblCuentaHabitacion("Room");
+		setLblElegirIdioma("Choose Language");
+		setLblCastellano("Spanish");
+		setLblIngles("English");
+		setLblRumano("Romanian");
+
 		// Panel Confirmacion
 		setLblConfirmacion("Are you sure you want to buy this service?");
 
