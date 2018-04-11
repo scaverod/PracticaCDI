@@ -1,4 +1,4 @@
-package modelo;
+package idiomas;
 
 public class TextoRo extends Texto {
 

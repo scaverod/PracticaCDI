@@ -5,8 +5,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controlador.Controlador;
-import modelo.Texto;
-import modelo.TextoManager;
+import idiomas.Texto;
+import idiomas.TextoManager;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;

@@ -1,4 +1,4 @@
-package modelo;
+package idiomas;
 
 public class TextoManager {
 	public static final String español = "ESP";

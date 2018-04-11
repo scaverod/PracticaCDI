@@ -7,8 +7,8 @@ import javax.swing.border.BevelBorder;
 
 import controlador.Controlador;
 import controlador.MicroControladorPanelesPadreHijo;
-import modelo.Texto;
-import modelo.TextoManager;
+import idiomas.Texto;
+import idiomas.TextoManager;
 
 import javax.swing.JLabel;
 import java.awt.Color;

@@ -4,8 +4,8 @@ import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 
 import controlador.MicroControladorLayers;
-import modelo.Texto;
-import modelo.TextoManager;
+import idiomas.Texto;
+import idiomas.TextoManager;
 
 import java.awt.Color;
 import javax.swing.JLabel;
