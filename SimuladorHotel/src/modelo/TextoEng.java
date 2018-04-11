@@ -2,6 +2,10 @@ package modelo;
 
 public class TextoEng extends Texto {
 	public TextoEng() {
+		// Comunes
+		setBtnAceptar("Confirm");
+		setBtnCerrar("Close");
+		
 		// Panel Login
 		setLoginIniciaSesion("Login to use the app");
 		setLoginUsuario("User");
@@ -49,6 +53,8 @@ public class TextoEng extends Texto {
 				"Everyone wants to be able to connect to the internet at any time, that's why, we have Wifi in all the rooms of the hotel of high quality.\r\n"
 						+ "Once you activate the service, it will be available during your entire stay.");
 		// TODO: panel usuario
-
+		
+		// Panel Confirmacion
+		setLblConfirmacion("Are you sure you want to buy this service?");
 	}
 }

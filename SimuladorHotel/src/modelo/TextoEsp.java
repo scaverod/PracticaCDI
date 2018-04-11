@@ -2,6 +2,10 @@ package modelo;
 
 public class TextoEsp extends Texto {
 	public TextoEsp() {
+		// Comunes
+		setBtnAceptar("Aceptar");
+		setBtnCerrar("Cerrar");
+		
 		// Panel Login
 		setLoginIniciaSesion("Inicie sesión para usar la aplicación");
 		setLoginUsuario("Usuario");
@@ -50,5 +54,8 @@ public class TextoEsp extends Texto {
 						+ "Una vez usted active el servicio, éste estará disponible durante toda su estancia. ");
 
 		// TODO: panel usuario
+		
+		// Panel Confirmacion
+		setLblConfirmacion("¿Desea confirmar su compra?");
 	}
 }

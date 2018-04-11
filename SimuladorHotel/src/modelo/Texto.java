@@ -1,6 +1,10 @@
 package modelo;
 
 public abstract class Texto {
+	// Comunes
+	private String btnAceptar;
+	private String btnCerrar;
+	
 	// Panel login
 	private String loginIniciaSesion;
 	private String loginUsuario;
@@ -48,7 +52,150 @@ public abstract class Texto {
 	// Panel Usuario
 	// TODO: pendiente de que se haga primero el panel usuario
 	
+	// Panel confirmacion
+	private String lblConfirmacion;
+	
 	protected void placeHolderParaQueMePongaGettersYSettersAbajoEquisde() {
+	}
+
+	public void setBtnAceptar(String btnAceptar) {
+		this.btnAceptar = btnAceptar;
+	}
+
+	public void setBtnCerrar(String btnCerrar) {
+		this.btnCerrar = btnCerrar;
+	}
+
+	public void setLoginIniciaSesion(String loginIniciaSesion) {
+		this.loginIniciaSesion = loginIniciaSesion;
+	}
+
+	public void setLoginUsuario(String loginUsuario) {
+		this.loginUsuario = loginUsuario;
+	}
+
+	public void setLoginUsuarioToolTip(String loginUsuarioToolTip) {
+		this.loginUsuarioToolTip = loginUsuarioToolTip;
+	}
+
+	public void setLoginPassword(String loginPassword) {
+		this.loginPassword = loginPassword;
+	}
+
+	public void setLoginPasswordToolTip(String loginPasswordToolTip) {
+		this.loginPasswordToolTip = loginPasswordToolTip;
+	}
+
+	public void setLoginBtnAceptar(String loginBtnAceptar) {
+		this.loginBtnAceptar = loginBtnAceptar;
+	}
+
+	public void setLoginErrorMensaje(String loginErrorMensaje) {
+		this.loginErrorMensaje = loginErrorMensaje;
+	}
+
+	public void setLoginErrorTitulo(String loginErrorTitulo) {
+		this.loginErrorTitulo = loginErrorTitulo;
+	}
+
+	public void setMenuPrincipalBtnHabitacion(String menuPrincipalBtnHabitacion) {
+		this.menuPrincipalBtnHabitacion = menuPrincipalBtnHabitacion;
+	}
+
+	public void setMenuPrincipalBtnSpa(String menuPrincipalBtnSpa) {
+		this.menuPrincipalBtnSpa = menuPrincipalBtnSpa;
+	}
+
+	public void setMenuPrincipalBtnServicios(String menuPrincipalBtnServicios) {
+		this.menuPrincipalBtnServicios = menuPrincipalBtnServicios;
+	}
+
+	public void setMenuPrincipalBtnCuenta(String menuPrincipalBtnCuenta) {
+		this.menuPrincipalBtnCuenta = menuPrincipalBtnCuenta;
+	}
+
+	public void setPanelServiciosBtnMinibar(String panelServiciosBtnMinibar) {
+		this.panelServiciosBtnMinibar = panelServiciosBtnMinibar;
+	}
+
+	public void setPanelServiciosBtnCambioToalla(String panelServiciosBtnCambioToalla) {
+		this.panelServiciosBtnCambioToalla = panelServiciosBtnCambioToalla;
+	}
+
+	public void setPanelServiciosBtnTelefono(String panelServiciosBtnTelefono) {
+		this.panelServiciosBtnTelefono = panelServiciosBtnTelefono;
+	}
+
+	public void setPanelServiciosBtnHorarioLimpieza(String panelServiciosBtnHorarioLimpieza) {
+		this.panelServiciosBtnHorarioLimpieza = panelServiciosBtnHorarioLimpieza;
+	}
+
+	public void setPanelServiciosBtnBotones(String panelServiciosBtnBotones) {
+		this.panelServiciosBtnBotones = panelServiciosBtnBotones;
+	}
+
+	public void setPanelServiciosBtnCambioAlmohada(String panelServiciosBtnCambioAlmohada) {
+		this.panelServiciosBtnCambioAlmohada = panelServiciosBtnCambioAlmohada;
+	}
+
+	public void setPanelServiciosBtnCambiarSabanas(String panelServiciosBtnCambiarSabanas) {
+		this.panelServiciosBtnCambiarSabanas = panelServiciosBtnCambiarSabanas;
+	}
+
+	public void setPanelServiciosBtnComidaHab(String panelServiciosBtnComidaHab) {
+		this.panelServiciosBtnComidaHab = panelServiciosBtnComidaHab;
+	}
+
+	public void setPanelServiciosBtnPedirTaxi(String panelServiciosBtnPedirTaxi) {
+		this.panelServiciosBtnPedirTaxi = panelServiciosBtnPedirTaxi;
+	}
+
+	public void setPanelServiciosBtnTelevision(String panelServiciosBtnTelevision) {
+		this.panelServiciosBtnTelevision = panelServiciosBtnTelevision;
+	}
+
+	public void setPanelServiciosBtnWifi(String panelServiciosBtnWifi) {
+		this.panelServiciosBtnWifi = panelServiciosBtnWifi;
+	}
+
+	public void setPanelServiciosBtnInformacion(String panelServiciosBtnInformacion) {
+		this.panelServiciosBtnInformacion = panelServiciosBtnInformacion;
+	}
+
+	public void setCerrar(String cerrar) {
+		this.cerrar = cerrar;
+	}
+
+	public void setBtnAdquirir(String btnAdquirir) {
+		this.btnAdquirir = btnAdquirir;
+	}
+
+	public void setTxtInformacion(String txtInformacion) {
+		this.txtInformacion = txtInformacion;
+	}
+
+	public void setLblCoste(String lblCoste) {
+		this.lblCoste = lblCoste;
+	}
+
+	public void setPanelServiciosEmergenteTelevisionTxt(String panelServiciosEmergenteTelevisionTxt) {
+		this.panelServiciosEmergenteTelevisionTxt = panelServiciosEmergenteTelevisionTxt;
+	}
+
+	public void setPanelServiciosEmergenteWifiTxt(String panelServiciosEmergenteWifiTxt) {
+		this.panelServiciosEmergenteWifiTxt = panelServiciosEmergenteWifiTxt;
+	}
+
+	public void setLblConfirmacion(String lblConfirmacion) {
+		this.lblConfirmacion = lblConfirmacion;
+	}
+
+	public String getBtnAceptar() {
+		return btnAceptar;
+	}
+
+	public String getBtnCerrar() {
+		return btnCerrar;
 	}
 
 	public String getLoginIniciaSesion() {
@@ -123,102 +270,6 @@ public abstract class Texto {
 		return panelServiciosBtnCambioAlmohada;
 	}
 
-	protected void setLoginIniciaSesion(String loginIniciaSesion) {
-		this.loginIniciaSesion = loginIniciaSesion;
-	}
-
-	protected void setLoginUsuario(String loginUsuario) {
-		this.loginUsuario = loginUsuario;
-	}
-
-	protected void setLoginUsuarioToolTip(String loginUsuarioToolTip) {
-		this.loginUsuarioToolTip = loginUsuarioToolTip;
-	}
-
-	protected void setLoginPassword(String loginPassword) {
-		this.loginPassword = loginPassword;
-	}
-
-	protected void setLoginPasswordToolTip(String loginPasswordToolTip) {
-		this.loginPasswordToolTip = loginPasswordToolTip;
-	}
-
-	protected void setLoginBtnAceptar(String loginBtnAceptar) {
-		this.loginBtnAceptar = loginBtnAceptar;
-	}
-
-	protected void setLoginErrorMensaje(String loginErrorMensaje) {
-		this.loginErrorMensaje = loginErrorMensaje;
-	}
-
-	protected void setLoginErrorTitulo(String loginErrorTitulo) {
-		this.loginErrorTitulo = loginErrorTitulo;
-	}
-
-	protected void setMenuPrincipalBtnHabitacion(String menuPrincipalBtnHabitacion) {
-		this.menuPrincipalBtnHabitacion = menuPrincipalBtnHabitacion;
-	}
-
-	protected void setMenuPrincipalBtnSpa(String menuPrincipalBtnSpa) {
-		this.menuPrincipalBtnSpa = menuPrincipalBtnSpa;
-	}
-
-	protected void setMenuPrincipalBtnServicios(String menuPrincipalBtnServicios) {
-		this.menuPrincipalBtnServicios = menuPrincipalBtnServicios;
-	}
-
-	protected void setMenuPrincipalBtnCuenta(String menuPrincipalBtnCuenta) {
-		this.menuPrincipalBtnCuenta = menuPrincipalBtnCuenta;
-	}
-
-	protected void setPanelServiciosBtnMinibar(String panelServiciosBtnMinibar) {
-		this.panelServiciosBtnMinibar = panelServiciosBtnMinibar;
-	}
-
-	protected void setPanelServiciosBtnCambioToalla(String panelServiciosBtnCambioToalla) {
-		this.panelServiciosBtnCambioToalla = panelServiciosBtnCambioToalla;
-	}
-
-	protected void setPanelServiciosBtnTelefono(String panelServiciosBtnTelefono) {
-		this.panelServiciosBtnTelefono = panelServiciosBtnTelefono;
-	}
-
-	protected void setPanelServiciosBtnHorarioLimpieza(String panelServiciosBtnHorarioLimpieza) {
-		this.panelServiciosBtnHorarioLimpieza = panelServiciosBtnHorarioLimpieza;
-	}
-
-	protected void setPanelServiciosBtnBotones(String panelServiciosBtnBotones) {
-		this.panelServiciosBtnBotones = panelServiciosBtnBotones;
-	}
-
-	protected void setPanelServiciosBtnCambioAlmohada(String panelServiciosBtnCambioAlmohada) {
-		this.panelServiciosBtnCambioAlmohada = panelServiciosBtnCambioAlmohada;
-	}
-
-	protected void setPanelServiciosBtnCambiarSabanas(String panelServiciosBtnCambiarSabanas) {
-		this.panelServiciosBtnCambiarSabanas = panelServiciosBtnCambiarSabanas;
-	}
-
-	protected void setPanelServiciosBtnComidaHab(String panelServiciosBtnComidaHab) {
-		this.panelServiciosBtnComidaHab = panelServiciosBtnComidaHab;
-	}
-
-	protected void setPanelServiciosBtnPedirTaxi(String panelServiciosBtnPedirTaxi) {
-		this.panelServiciosBtnPedirTaxi = panelServiciosBtnPedirTaxi;
-	}
-
-	protected void setPanelServiciosBtnTelevision(String panelServiciosBtnTelevision) {
-		this.panelServiciosBtnTelevision = panelServiciosBtnTelevision;
-	}
-
-	protected void setPanelServiciosBtnWifi(String panelServiciosBtnWifi) {
-		this.panelServiciosBtnWifi = panelServiciosBtnWifi;
-	}
-
-	protected void setPanelServiciosBtnInformacion(String panelServiciosBtnInformacion) {
-		this.panelServiciosBtnInformacion = panelServiciosBtnInformacion;
-	}
-
 	public String getPanelServiciosBtnCambiarSabanas() {
 		return panelServiciosBtnCambiarSabanas;
 	}
@@ -243,51 +294,31 @@ public abstract class Texto {
 		return panelServiciosBtnInformacion;
 	}
 
-	public String getBtnAdquirir() {
-		return btnAdquirir;
+	public String getCerrar() {
+		return cerrar;
 	}
 
-	public void setBtnAdquirir(String btnAdquirir) {
-		this.btnAdquirir = btnAdquirir;
+	public String getBtnAdquirir() {
+		return btnAdquirir;
 	}
 
 	public String getTxtInformacion() {
 		return txtInformacion;
 	}
 
-	public void setTxtInformacion(String txtInformacion) {
-		this.txtInformacion = txtInformacion;
-	}
-
 	public String getLblCoste() {
 		return lblCoste;
-	}
-
-	public void setLblCoste(String lblCoste) {
-		this.lblCoste = lblCoste;
-	}
-
-	public String getCerrar() {
-		return cerrar;
-	}
-
-	public void setCerrar(String cerrar) {
-		this.cerrar = cerrar;
 	}
 
 	public String getPanelServiciosEmergenteTelevisionTxt() {
 		return panelServiciosEmergenteTelevisionTxt;
 	}
 
-	public void setPanelServiciosEmergenteTelevisionTxt(String panelServiciosEmergenteTelevisionTxt) {
-		this.panelServiciosEmergenteTelevisionTxt = panelServiciosEmergenteTelevisionTxt;
-	}
-
 	public String getPanelServiciosEmergenteWifiTxt() {
 		return panelServiciosEmergenteWifiTxt;
 	}
 
-	public void setPanelServiciosEmergenteWifiTxt(String panelServiciosEmergenteWifiTxt) {
-		this.panelServiciosEmergenteWifiTxt = panelServiciosEmergenteWifiTxt;
+	public String getLblConfirmacion() {
+		return lblConfirmacion;
 	}
 }
