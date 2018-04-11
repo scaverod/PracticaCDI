@@ -39,7 +39,7 @@ public class TextoEng extends Texto {
 		setBtnAdquirir("Acquire");
 		setTxtInformacion(
 				"Our hotels have a totally personalized service. With just pressing the button, we will call the room phone from the hotel reception.\nAvailable 24 hours a day");
-		setLblCoste("Cost :");
+		setLblCoste("Cost:");
 
 		// Panel Emergen Television
 		setPanelServiciosEmergenteTelevisionTxt(
@@ -48,6 +48,9 @@ public class TextoEng extends Texto {
 		setPanelServiciosEmergenteWifiTxt(
 				"Everyone wants to be able to connect to the internet at any time, that's why, we have Wifi in all the rooms of the hotel of high quality.\r\n"
 						+ "Once you activate the service, it will be available during your entire stay.");
+		
+		setPanelServiciosEmergenteWifiActivadoTxt("You have purchased the WiFi service. We hope you can enjoy the best quality of our internet connection.\n\nTo start using WiFi, enter the key in your devices.");
+		setPanelServiciosEmergenteWifiPwdTxt("WiFi password:");
 		// TODO: panel usuario
 
 	}

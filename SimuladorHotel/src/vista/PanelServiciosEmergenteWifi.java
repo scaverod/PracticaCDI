@@ -11,6 +11,7 @@ import controlador.Controlador;
 import controlador.MicroControladorPanelesPadreHijo;
 import modelo.Texto;
 import modelo.TextoManager;
+import tiposVariable.StringDouble;
 
 import javax.swing.JLabel;
 import java.awt.Color;
@@ -53,27 +54,41 @@ public class PanelServiciosEmergenteWifi extends JPanel {
 
 		JButton btnAdquirir = new JButton(t.getBtnAdquirir());
 		btnAdquirir.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnAdquirir.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				// TODO: avisar de que en minutos llamarán al telefono
-			}
-		});
+
 		btnAdquirir.setBounds(260, 223, 175, 53);
 		add(btnAdquirir);
 
-		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 255, 153));
-		panel.setBorder(new LineBorder(Color.ORANGE, 3));
-		panel.setForeground(Color.ORANGE);
-		panel.setBounds(45, 166, 593, 35);
-		add(panel);
+		JPanel panelPrecio = new JPanel();
+		panelPrecio.setBackground(new Color(255, 255, 153));
+		panelPrecio.setBorder(new LineBorder(Color.ORANGE, 3));
+		panelPrecio.setForeground(Color.ORANGE);
+		panelPrecio.setBounds(45, 166, 593, 35);
+		add(panelPrecio);
 
 		JLabel lblPrecio = new JLabel(t.getLblCoste());
-		panel.add(lblPrecio);
+		panelPrecio.add(lblPrecio);
 		lblPrecio.setFont(new Font("Tahoma", Font.PLAIN, 15));
 
-		JLabel label = new JLabel(String.valueOf(controlador.getServicios().getWifi().getPrecio()) + " \u20AC");
-		panel.add(label);
-		label.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		JLabel labelPrecioYPwd = new JLabel(
+				String.valueOf(controlador.getServicios().getWifi().getPrecio()) + " \u20AC");
+		panelPrecio.add(labelPrecioYPwd);
+		labelPrecioYPwd.setFont(new Font("Tahoma", Font.PLAIN, 15));
+
+		btnAdquirir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO: se contratará el wifi
+
+				// Suponemos que finalmente se ha contratado:
+				txtpnInfo.setText(t.getPanelServiciosEmergenteWifiActivadoTxt());
+				panelPrecio.setBorder(new LineBorder(Color.decode("#005cb9"), 3));
+				panelPrecio.setBackground(Color.decode("#9bbfe3"));
+				String pwd = controlador.getServicios().getWifi().activarWifi();
+				controlador.getCuenta().getGasto()
+						.addGasto(new StringDouble("Contratar WiFi", controlador.getServicios().getWifi().getPrecio()));
+				lblPrecio.setText("");
+				labelPrecioYPwd.setText(t.getPanelServiciosEmergenteWifiPwdTxt() + " " + pwd);
+				btnAdquirir.setVisible(false);
+			}
+		});
 	}
 }

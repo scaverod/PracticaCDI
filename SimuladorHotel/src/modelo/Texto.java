@@ -10,19 +10,19 @@ public abstract class Texto {
 	private String loginBtnAceptar;
 	private String loginErrorMensaje;
 	private String loginErrorTitulo;
-	
+
 	// Menu principal
 	private String menuPrincipalBtnHabitacion;
 	private String menuPrincipalBtnSpa;
 	private String menuPrincipalBtnServicios;
 	private String menuPrincipalBtnCuenta;
-	
+
 	// Panel Habitacion
 	// TODO: pendiente de que se haga primero el panel habitacion
-	
+
 	// Panel Spa
 	// TODO: pendiente de que se haga aprimero el panel spa
-	
+
 	// Panel Servicios
 	private String panelServiciosBtnMinibar;
 	private String panelServiciosBtnCambioToalla;
@@ -37,17 +37,23 @@ public abstract class Texto {
 	private String panelServiciosBtnWifi;
 	private String panelServiciosBtnInformacion;
 	private String cerrar;
-	
-	//Panel Emergente Informacion
+
+	// Panel Emergente Informacion
 	private String btnAdquirir;
 	private String txtInformacion;
 	private String lblCoste;
+
+	// Panel Emergente Televisión
 	private String panelServiciosEmergenteTelevisionTxt;
+	// Panel Emergente Wifi
 	private String panelServiciosEmergenteWifiTxt;
+	private String panelServiciosEmergenteWifiActivadoTxt;
+	private String panelServiciosEmergenteWifiPwdTxt;
 	
+
 	// Panel Usuario
 	// TODO: pendiente de que se haga primero el panel usuario
-	
+
 	protected void placeHolderParaQueMePongaGettersYSettersAbajoEquisde() {
 	}
 
@@ -289,5 +295,21 @@ public abstract class Texto {
 
 	public void setPanelServiciosEmergenteWifiTxt(String panelServiciosEmergenteWifiTxt) {
 		this.panelServiciosEmergenteWifiTxt = panelServiciosEmergenteWifiTxt;
+	}
+
+	public String getPanelServiciosEmergenteWifiActivadoTxt() {
+		return panelServiciosEmergenteWifiActivadoTxt;
+	}
+
+	public void setPanelServiciosEmergenteWifiActivadoTxt(String panelServiciosEmergenteWifiActivadoTxt) {
+		this.panelServiciosEmergenteWifiActivadoTxt = panelServiciosEmergenteWifiActivadoTxt;
+	}
+
+	public String getPanelServiciosEmergenteWifiPwdTxt() {
+		return panelServiciosEmergenteWifiPwdTxt;
+	}
+
+	public void setPanelServiciosEmergenteWifiPwdTxt(String panelServiciosEmergenteWifiPwdTxt) {
+		this.panelServiciosEmergenteWifiPwdTxt = panelServiciosEmergenteWifiPwdTxt;
 	}
 }

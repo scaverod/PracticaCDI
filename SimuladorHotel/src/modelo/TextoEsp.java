@@ -40,7 +40,7 @@ public class TextoEsp extends Texto {
 		setTxtInformacion(
 				"Nuestros hoteles cuentan con una atención totalmente personalizada. Con solo pulsar el botón, le llamaremos al teléfono de la habitación desde la recepción del hotel.\nDisponible las 24 horas al día");
 
-		setLblCoste("Coste :");
+		setLblCoste("Coste:");
 		// Panel Emergen Television
 		setPanelServiciosEmergenteTelevisionTxt(
 				"Nuestros hoteles cuentan con una variedad de canales exclusivos para nuestros clientes más exigentes.");
@@ -48,7 +48,9 @@ public class TextoEsp extends Texto {
 		setPanelServiciosEmergenteWifiTxt(
 				"Todo el mundo quiere tener la posibilidad de conectarse a internet en cualquier momento, por eso, nosotros contamos con Wifi en todas las habitaciones del hotel de alta calidad. \r\n"
 						+ "Una vez usted active el servicio, éste estará disponible durante toda su estancia. ");
-
+		setPanelServiciosEmergenteWifiActivadoTxt(
+				"Has adquirido el servicio de WiFi. Esperamos que pueda disfrutar de la mejor calidad de nuestra conexion a internet.\n\nPara comenzar a usar el WiFi introduzca la clave en sus dispositivos.");
+		setPanelServiciosEmergenteWifiPwdTxt("Clave del WiFi:");
 		// TODO: panel usuario
 	}
 }
