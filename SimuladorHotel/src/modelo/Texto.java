@@ -47,7 +47,7 @@ public abstract class Texto {
 	private String txtInformacion;
 	private String lblCoste;
 
-	// Panel Emergente Televisión
+	// Panel Emergente TelevisiÃ³n
 	private String panelServiciosEmergenteTelevisionTxt;
 	// Panel Emergente Wifi
 	private String panelServiciosEmergenteWifiTxt;
