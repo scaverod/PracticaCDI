@@ -49,7 +49,9 @@ public abstract class Texto {
 	private String panelServiciosEmergenteWifiTxt;
 	private String panelServiciosEmergenteWifiActivadoTxt;
 	private String panelServiciosEmergenteWifiPwdTxt;
-	
+
+	// Panel Emergente Taxi
+	private String panelServiciosEmergenteTaxiTxt;
 
 	// Panel Usuario
 	// TODO: pendiente de que se haga primero el panel usuario
@@ -311,5 +313,13 @@ public abstract class Texto {
 
 	public void setPanelServiciosEmergenteWifiPwdTxt(String panelServiciosEmergenteWifiPwdTxt) {
 		this.panelServiciosEmergenteWifiPwdTxt = panelServiciosEmergenteWifiPwdTxt;
+	}
+
+	public String getPanelServiciosEmergenteTaxiTxt() {
+		return panelServiciosEmergenteTaxiTxt;
+	}
+
+	public void setPanelServiciosEmergenteTaxiTxt(String panelServiciosEmergenteTaxiTxt) {
+		this.panelServiciosEmergenteTaxiTxt = panelServiciosEmergenteTaxiTxt;
 	}
 }

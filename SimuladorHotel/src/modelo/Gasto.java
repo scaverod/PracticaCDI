@@ -8,8 +8,6 @@ public class Gasto {
 
 	private double gastoTotal;
 	private ArrayList<StringDouble> gastos;
-	
-	
 
 	public Gasto() {
 
@@ -32,10 +30,16 @@ public class Gasto {
 	public void setGastos(ArrayList<StringDouble> gastos) {
 		this.gastos = gastos;
 	}
-	
-	public void addGasto (StringDouble servicio) {
+
+	public void addGasto(StringDouble servicio) {
 		gastos.add(servicio);
 		gastoTotal += servicio.getNumero();
 	}
 
+	public void listarGastos() {
+		for (int x = 0; x < gastos.size(); x++) {
+			System.out.println(gastos.get(x).getCadena() + " --> " + String.valueOf(gastos.get(x).getNumero()));
+		}
+		System.out.println("Gasto tolal: " + String.valueOf(gastoTotal));
+	}
 }

@@ -51,6 +51,9 @@ public class TextoEsp extends Texto {
 		setPanelServiciosEmergenteWifiActivadoTxt(
 				"Has adquirido el servicio de WiFi. Esperamos que pueda disfrutar de la mejor calidad de nuestra conexion a internet.\n\nPara comenzar a usar el WiFi introduzca la clave en sus dispositivos.");
 		setPanelServiciosEmergenteWifiPwdTxt("Clave del WiFi:");
+		// Panel Emergen Taxi
+		setPanelServiciosEmergenteTaxiTxt(
+				"No pierdas tu tiempo llamando a un vehículo para tu traslado. Nosotros lo hacemos por tí.\n\nLista de empresas asociadas:");
 		// TODO: panel usuario
 	}
 }

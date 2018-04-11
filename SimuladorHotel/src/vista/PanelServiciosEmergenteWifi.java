@@ -19,8 +19,6 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.SwingConstants;
-import javax.swing.JLayeredPane;
 
 public class PanelServiciosEmergenteWifi extends JPanel {
 	private static final long serialVersionUID = 1L;
