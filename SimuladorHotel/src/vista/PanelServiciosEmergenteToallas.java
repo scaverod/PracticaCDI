@@ -8,6 +8,8 @@ import javax.swing.border.BevelBorder;
 import controlador.Controlador;
 import controlador.MicroControladorLayers;
 import controlador.MicroControladorPanelesPadreHijo;
+import idiomas.Texto;
+import idiomas.TextoManager;
 
 import javax.swing.JLabel;
 import java.awt.Color;
@@ -23,6 +25,10 @@ public class PanelServiciosEmergenteToallas extends JPanel {
 	private JLayeredPane panelContenedor;
 	private JPanel panelPrincipal;
 	private JPanel panelConfirmacion;
+	
+	// FIXME: temporal para que salga el texto en vez de "<dynamic>"
+	// Habría que mandarlo desde el Main, por ejemplo
+	private Texto t = new TextoManager(TextoManager.español).getTexto();
 
 	public PanelServiciosEmergenteToallas(MicroControladorPanelesPadreHijo microControlador, String padre, Controlador controlador) {
 		this.setSize(new Dimension(695, 315));
@@ -52,7 +58,7 @@ public class PanelServiciosEmergenteToallas extends JPanel {
 		lblPanelEmergente.setBounds(10, 138, 675, 39);
 		panelPrincipal.add(lblPanelEmergente);
 		
-		JButton btnCerrar = new JButton("Cerrar");
+		JButton btnCerrar = new JButton(t.getBtnCerrar());
 		btnCerrar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnCerrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { // No modificar

@@ -34,7 +34,7 @@ public class PanelServiciosEmergenteInformacion_OFF extends JPanel {
 		this.setName("p" + this.getClass().getSimpleName().substring(1)); // No modificar
 		setLayout(null);
 		
-		JButton btnCerrar = new JButton(t.getCerrar());
+		JButton btnCerrar = new JButton(t.getBtnCerrar());
 		btnCerrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { // No modificar
 				// Devuelve control al padre

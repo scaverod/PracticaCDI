@@ -27,7 +27,10 @@ public class PanelServiciosEmergenteWifi extends JPanel {
 	private JLayeredPane panelContenedor;
 	private JPanel panelPrincipal;
 	private JPanel panelConfirmacion;
-	private Texto t = new TextoManager(TextoManager.english).getTexto();
+	
+	// FIXME: temporal para que salga el texto en vez de "<dynamic>"
+	// Habría que mandarlo desde el Main, por ejemplo
+	private Texto t = new TextoManager(TextoManager.español).getTexto();
 
 	public PanelServiciosEmergenteWifi(MicroControladorPanelesPadreHijo microControlador, String padre, Controlador controlador) {
 		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102)));
@@ -52,7 +55,7 @@ public class PanelServiciosEmergenteWifi extends JPanel {
 		panelContenedor.setLayer(panelConfirmacion, 0);
 		panelContenedor.add(panelConfirmacion);
 		
-		JButton btnCerrar = new JButton(t.getCerrar());
+		JButton btnCerrar = new JButton(t.getBtnCerrar());
 		btnCerrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { // No modificar
 				// Devuelve control al padre

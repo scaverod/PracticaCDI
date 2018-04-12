@@ -40,7 +40,6 @@ public abstract class Texto {
 	private String panelServiciosBtnTelevision;
 	private String panelServiciosBtnWifi;
 	private String panelServiciosBtnInformacion;
-	private String cerrar;
 
 	// Panel Emergente Informacion
 	private String btnAdquirir;
@@ -183,10 +182,6 @@ public abstract class Texto {
 		this.panelServiciosBtnInformacion = panelServiciosBtnInformacion;
 	}
 
-	public void setCerrar(String cerrar) {
-		this.cerrar = cerrar;
-	}
-
 	public void setBtnAdquirir(String btnAdquirir) {
 		this.btnAdquirir = btnAdquirir;
 	}
@@ -313,10 +308,6 @@ public abstract class Texto {
 
 	public String getPanelServiciosBtnInformacion() {
 		return panelServiciosBtnInformacion;
-	}
-
-	public String getCerrar() {
-		return cerrar;
 	}
 
 	public String getBtnAdquirir() {

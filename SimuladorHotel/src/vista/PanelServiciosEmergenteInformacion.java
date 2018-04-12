@@ -56,7 +56,7 @@ public class PanelServiciosEmergenteInformacion extends JPanel {
 		panelContenedor.setLayer(panelConfirmacion, 0);
 		panelContenedor.add(panelConfirmacion);
 		
-		JButton btnCerrar = new JButton(t.getCerrar());
+		JButton btnCerrar = new JButton(t.getBtnCerrar());
 		btnCerrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { // No modificar
 				// Devuelve control al padre
