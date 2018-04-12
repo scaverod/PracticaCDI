@@ -25,7 +25,7 @@ public class PanelServicios extends JPanel {
 
 	// FIXME: temporal para que salga el texto en vez de "<dynamic>"
 	// Habría que mandarlo desde el Main, por ejemplo
-	private Texto t = new TextoManager(TextoManager.english).getTexto();
+	private Texto t = new TextoManager(TextoManager.español).getTexto();
 	private MicroControladorPanelesPadreHijo microControlador;
 	
 	private JPanel panelServicios;
