@@ -11,6 +11,7 @@ import javax.swing.border.EtchedBorder;
 import controlador.Controlador;
 import idiomas.Texto;
 import idiomas.TextoManager;
+import modelo.Cuenta.Idioma;
 
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
@@ -34,6 +35,7 @@ public class PanelCuenta extends JPanel {
 	 */
 
 	public PanelCuenta(Controlador controlador) {
+
 		this.setSize(new Dimension(931, 483));
 		this.setName("panelCuenta");
 
@@ -67,6 +69,7 @@ public class PanelCuenta extends JPanel {
 		btnESP.setSelectedIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/espa\u00F1aSelected.png")));
 		btnESP.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				controlador.getCuenta().setIdioma(Idioma.Castellano);
 			}
 		});
 		btnIdiomas.add(btnESP);
@@ -74,6 +77,11 @@ public class PanelCuenta extends JPanel {
 		btnESP.setContentAreaFilled(false);
 
 		JToggleButton btnUK = new JToggleButton("");
+		btnUK.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				controlador.getCuenta().setIdioma(Idioma.Ingles);
+			}
+		});
 		btnUK.setBounds(170, 44, 108, 69);
 		btnUK.setSelectedIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/ukSelected.png")));
 		btnIdiomas.add(btnUK);
@@ -82,6 +90,11 @@ public class PanelCuenta extends JPanel {
 		btnUK.setContentAreaFilled(false);
 
 		JToggleButton toggleButton = new JToggleButton("");
+		toggleButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controlador.getCuenta().setIdioma(Idioma.Rumano);
+			}
+		});
 		toggleButton.setBounds(309, 44, 108, 69);
 		toggleButton.setSelectedIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/rumaniaSelected.png")));
 		btnIdiomas.add(toggleButton);
@@ -178,6 +191,15 @@ public class PanelCuenta extends JPanel {
 		panelPersonalizar.add(lblModoNocturno);
 
 		JToggleButton tglbtnModoNocturno = new JToggleButton();
+		tglbtnModoNocturno.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (controlador.getCuenta().getPersonalizacion().isModoNocturno()) {
+					controlador.getCuenta().getPersonalizacion().setModoNocturno(false);
+				} else {
+					controlador.getCuenta().getPersonalizacion().setModoNocturno(true);
+				}
+			}
+		});
 		tglbtnModoNocturno.setSelectedIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/botonON.png")));
 		tglbtnModoNocturno.setContentAreaFilled(false);
 		tglbtnModoNocturno.setBorderPainted(false);
@@ -201,6 +223,15 @@ public class PanelCuenta extends JPanel {
 		panelPersonalizar.add(lblAumentarTexto);
 
 		JToggleButton tglbtnInvertirColores = new JToggleButton("");
+		tglbtnInvertirColores.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (controlador.getCuenta().getPersonalizacion().isInvertiColores()) {
+					controlador.getCuenta().getPersonalizacion().setInvertiColores(false);
+				} else {
+					controlador.getCuenta().getPersonalizacion().setInvertiColores(true);
+				}
+			}
+		});
 		tglbtnInvertirColores.setSelectedIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/botonON.png")));
 		tglbtnInvertirColores.setIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/botonOFF.png")));
 		tglbtnInvertirColores.setContentAreaFilled(false);
@@ -209,6 +240,15 @@ public class PanelCuenta extends JPanel {
 		panelPersonalizar.add(tglbtnInvertirColores);
 
 		JToggleButton tglbtnSalidaTexto = new JToggleButton("");
+		tglbtnSalidaTexto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (controlador.getCuenta().getPersonalizacion().isTextoVoz()) {
+					controlador.getCuenta().getPersonalizacion().setTextoVoz(false);
+				} else {
+					controlador.getCuenta().getPersonalizacion().setTextoVoz(true);
+				}
+			}
+		});
 		tglbtnSalidaTexto.setSelectedIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/botonON.png")));
 		tglbtnSalidaTexto.setIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/botonOFF.png")));
 		tglbtnSalidaTexto.setContentAreaFilled(false);
@@ -217,11 +257,35 @@ public class PanelCuenta extends JPanel {
 		panelPersonalizar.add(tglbtnSalidaTexto);
 
 		JToggleButton tglbtnAumentarTexto = new JToggleButton("");
+		tglbtnAumentarTexto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (controlador.getCuenta().getPersonalizacion().isAumentoTexto()) {
+					controlador.getCuenta().getPersonalizacion().setAumentoTexto(false);
+				} else {
+					controlador.getCuenta().getPersonalizacion().setAumentoTexto(true);
+				}
+			}
+		});
 		tglbtnAumentarTexto.setSelectedIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/botonON.png")));
 		tglbtnAumentarTexto.setIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/botonOFF.png")));
 		tglbtnAumentarTexto.setContentAreaFilled(false);
 		tglbtnAumentarTexto.setBorderPainted(false);
 		tglbtnAumentarTexto.setBounds(264, 249, 121, 39);
 		panelPersonalizar.add(tglbtnAumentarTexto);
+
+		// Actualizar interfaz
+		if (controlador.getCuenta().getPersonalizacion().isModoNocturno()) {
+			tglbtnModoNocturno.setSelected(true);
+		}
+		if (controlador.getCuenta().getPersonalizacion().isInvertiColores()) {
+			tglbtnInvertirColores.setSelected(true);
+		}
+		if (controlador.getCuenta().getPersonalizacion().isTextoVoz()) {
+			tglbtnSalidaTexto.setSelected(true);
+		}
+		if (controlador.getCuenta().getPersonalizacion().isAumentoTexto()) {
+			tglbtnAumentarTexto.setSelected(true);
+		}
 	}
+
 }

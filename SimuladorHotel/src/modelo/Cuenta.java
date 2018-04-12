@@ -26,6 +26,7 @@ public class Cuenta {
 		this.usuario =  usuario;
 		this.pwd = pwd;
 		this.setPersonalizacion(new Personalizacion(false, false, false, false));
+		this.idioma = Idioma.Castellano;
 
 	}
 
