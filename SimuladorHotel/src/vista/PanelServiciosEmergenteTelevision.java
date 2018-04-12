@@ -11,7 +11,6 @@ import controlador.MicroControladorPanelesPadreHijo;
 import idiomas.Texto;
 import idiomas.TextoManager;
 import tiposVariable.StringDouble;
-import javax.swing.JOptionPane;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -19,6 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JLayeredPane;
 
 import java.awt.event.ActionListener;
+import java.util.concurrent.Semaphore;
 import java.awt.event.ActionEvent;
 
 import javax.swing.ImageIcon;
@@ -35,7 +35,7 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 	// Habría que mandarlo desde el Main, por ejemplo
 	private Texto t = new TextoManager(TextoManager.español).getTexto();
 
-	public PanelServiciosEmergenteTelevision(MicroControladorPanelesPadreHijo microControlador, String padre, Controlador controlador) {
+	public PanelServiciosEmergenteTelevision(MicroControladorPanelesPadreHijo microControlador, String padre, Controlador controlador, Semaphore s) {
 		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102)));
 		this.setSize(new Dimension(695, 315));
 		this.setName("p" + this.getClass().getSimpleName().substring(1)); // No modificar
@@ -53,7 +53,7 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 		panelContenedor.add(panelPrincipal);
 		panelPrincipal.setLayout(null);
 		
-		panelConfirmacion = new PanelConfirmacion(new MicroControladorLayers(panelContenedor), this.getName());
+		panelConfirmacion = new PanelConfirmacion(new MicroControladorLayers(panelContenedor), this.getName(), s);
 		panelConfirmacion.setBounds(147, 57, 400, 200);
 		panelContenedor.setLayer(panelConfirmacion, 0);
 		panelContenedor.add(panelConfirmacion);
@@ -63,6 +63,7 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 			public void actionPerformed(ActionEvent e) { // No modificar
 				// Devuelve control al padre
 				microControlador.cambiarPanel(padre);
+				s.release(s.getQueueLength());
 			}
 		});
 		btnCerrar.setBounds(596, 11, 89, 23);
@@ -71,15 +72,28 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 		JButton btnMoviestar = new JButton("");
 		btnMoviestar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO: implementar esto
-				if (JOptionPane.showConfirmDialog(PanelServiciosEmergenteTelevision.this, "¿Desea adquirir el canal Moviestar + por el precio de "
-						+ String.valueOf(controlador.getServicios().getTelevision().getPrecioMoviestarPlus()) + " €",
-						"Confirmatar compra ", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-					btnMoviestar.setEnabled(false);
-					controlador.getCuenta().getGasto().addGasto(new StringDouble("Contratar Moviesta +",
-							controlador.getServicios().getTelevision().getPrecioMoviestarPlus()));
-					controlador.getServicios().getTelevision().setActivadoMoviestarPlus(true);
-				}
+				panelContenedor.setLayer(panelConfirmacion, 2);
+				
+				new Thread() {
+					public void run() {
+						try {
+							s.acquire();
+							
+							if (((PanelConfirmacion)panelConfirmacion).getConfirmacion() == true) {
+								// Actualizar ventana; en otro caso no hacer nada
+								btnMoviestar.setEnabled(false);
+								controlador.getCuenta().getGasto().addGasto(new StringDouble("Contratar Moviesta +",
+										controlador.getServicios().getTelevision().getPrecioMoviestarPlus()));
+								controlador.getServicios().getTelevision().setActivadoMoviestarPlus(true);
+								
+								// Tiene que hacerse siempre!
+								((PanelConfirmacion) panelConfirmacion).setConfirmacion(false);
+							}
+						} catch (InterruptedException e1) {
+							e1.printStackTrace();
+						}
+					}
+				}.start();
 			}
 		});
 		btnMoviestar.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
@@ -99,14 +113,28 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 		JButton btnNetflix = new JButton("");
 		btnNetflix.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// TODO: implementar esto
-				if (JOptionPane.showConfirmDialog(PanelServiciosEmergenteTelevision.this,
-						"¿Desea adquirir el canal Netflix por el precio de "
-								+ String.valueOf(controlador.getServicios().getTelevision().getPrecioNetflix()) + " €",
-						"Confirmar compra ", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-					btnNetflix.setEnabled(false);
-				}
-
+				panelContenedor.setLayer(panelConfirmacion, 2);
+				
+				new Thread() {
+					public void run() {
+						try {
+							s.acquire();
+							
+							if (((PanelConfirmacion)panelConfirmacion).getConfirmacion() == true) {
+								// Actualizar ventana; en otro caso no hacer nada
+								btnNetflix.setEnabled(false);
+								controlador.getCuenta().getGasto().addGasto(new StringDouble("Contratar Netflix",
+										controlador.getServicios().getTelevision().getPrecioNetflix()));
+								controlador.getServicios().getTelevision().setActivadoNetflix(true);
+								
+								// Tiene que hacerse siempre!
+								((PanelConfirmacion) panelConfirmacion).setConfirmacion(false);
+							}
+						} catch (InterruptedException e1) {
+							e1.printStackTrace();
+						}
+					}
+				}.start();
 			}
 		});
 		btnNetflix.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
@@ -118,13 +146,28 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 		JButton btnBBC = new JButton("");
 		btnBBC.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// TODO: implementar esto
-				if (JOptionPane.showConfirmDialog(PanelServiciosEmergenteTelevision.this,
-						"¿Desea adquirir el canal BBC por el precio de "
-								+ String.valueOf(controlador.getServicios().getTelevision().getPrecioBBC()) + " €",
-						"Confirmar compra ", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-					btnBBC.setEnabled(false);
-				}
+				panelContenedor.setLayer(panelConfirmacion, 2);
+				
+				new Thread() {
+					public void run() {
+						try {
+							s.acquire();
+							
+							if (((PanelConfirmacion)panelConfirmacion).getConfirmacion() == true) {
+								// Actualizar ventana; en otro caso no hacer nada
+								btnBBC.setEnabled(false);
+								controlador.getCuenta().getGasto().addGasto(new StringDouble("Contratar BBC",
+										controlador.getServicios().getTelevision().getPrecioBBC()));
+								controlador.getServicios().getTelevision().setActivadoBBC(true);
+								
+								// Tiene que hacerse siempre!
+								((PanelConfirmacion) panelConfirmacion).setConfirmacion(false);
+							}
+						} catch (InterruptedException e1) {
+							e1.printStackTrace();
+						}
+					}
+				}.start();
 			}
 		});
 		btnBBC.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
@@ -136,12 +179,28 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 		JButton btnBeinSport = new JButton("");
 		btnBeinSport.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// TODO: implementar esto
-				if (JOptionPane.showConfirmDialog(PanelServiciosEmergenteTelevision.this, "¿Desea adquirir el canal Bein Sports por el precio de "
-						+ String.valueOf(controlador.getServicios().getTelevision().getPrecioBeinSport()) + " €",
-						"Confirmar compra ", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-					btnBeinSport.setEnabled(false);
-				}
+				panelContenedor.setLayer(panelConfirmacion, 2);
+				
+				new Thread() {
+					public void run() {
+						try {
+							s.acquire();
+							
+							if (((PanelConfirmacion)panelConfirmacion).getConfirmacion() == true) {
+								// Actualizar ventana; en otro caso no hacer nada
+								btnBeinSport.setEnabled(false);
+								controlador.getCuenta().getGasto().addGasto(new StringDouble("Contratar Bein Sport",
+										controlador.getServicios().getTelevision().getPrecioBeinSport()));
+								controlador.getServicios().getTelevision().setActivadoBeinSport(true);
+								
+								// Tiene que hacerse siempre!
+								((PanelConfirmacion) panelConfirmacion).setConfirmacion(false);
+							}
+						} catch (InterruptedException e1) {
+							e1.printStackTrace();
+						}
+					}
+				}.start();
 			}
 		});
 		btnBeinSport.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));

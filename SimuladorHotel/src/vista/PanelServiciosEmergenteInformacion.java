@@ -18,6 +18,7 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.concurrent.Semaphore;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
 import javax.swing.border.LineBorder;
@@ -32,7 +33,7 @@ public class PanelServiciosEmergenteInformacion extends JPanel {
 	// Habría que mandarlo desde el Main, por ejemplo
 	private Texto t = new TextoManager(TextoManager.english).getTexto();
 
-	public PanelServiciosEmergenteInformacion(MicroControladorPanelesPadreHijo microControlador, String padre, Controlador controlador) {
+	public PanelServiciosEmergenteInformacion(MicroControladorPanelesPadreHijo microControlador, String padre, Controlador controlador, Semaphore s) {
 		setForeground(Color.ORANGE);
 		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 109, 240), new Color(0, 109, 240), new Color(0, 109, 240), new Color(0, 109, 240)));
 		this.setSize(new Dimension(695, 315));
@@ -51,7 +52,7 @@ public class PanelServiciosEmergenteInformacion extends JPanel {
 		panelContenedor.add(panelPrincipal);
 		panelPrincipal.setLayout(null);
 		
-		panelConfirmacion = new PanelConfirmacion(new MicroControladorLayers(panelContenedor), this.getName());
+		panelConfirmacion = new PanelConfirmacion(new MicroControladorLayers(panelContenedor), this.getName(), s);
 		panelConfirmacion.setBounds(147, 57, 400, 200);
 		panelContenedor.setLayer(panelConfirmacion, 0);
 		panelContenedor.add(panelConfirmacion);
@@ -61,6 +62,7 @@ public class PanelServiciosEmergenteInformacion extends JPanel {
 			public void actionPerformed(ActionEvent e) { // No modificar
 				// Devuelve control al padre
 				microControlador.cambiarPanel(padre);
+				s.release(s.getQueueLength());
 			}
 		});
 		btnCerrar.setBounds(596, 11, 89, 23);
@@ -71,6 +73,23 @@ public class PanelServiciosEmergenteInformacion extends JPanel {
 		btnAdquirir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				panelContenedor.setLayer(panelConfirmacion, 2);
+				
+				new Thread() {
+					public void run() {
+						try {
+							s.acquire();
+							
+							if (((PanelConfirmacion)panelConfirmacion).getConfirmacion() == true) {
+								// Actualizar ventana; en otro caso no hacer nada
+								
+								// Tiene que hacerse siempre!
+								((PanelConfirmacion) panelConfirmacion).setConfirmacion(false);
+							}
+						} catch (InterruptedException e1) {
+							e1.printStackTrace();
+						}
+					}
+				}.start();
 			}
 		});
 		btnAdquirir.setBounds(260, 223, 175, 53);

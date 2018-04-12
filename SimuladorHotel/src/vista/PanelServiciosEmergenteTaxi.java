@@ -21,6 +21,7 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.concurrent.Semaphore;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 
@@ -34,7 +35,7 @@ public class PanelServiciosEmergenteTaxi extends JPanel {
 	// Habría que mandarlo desde el Main, por ejemplo
 	private Texto t = new TextoManager(TextoManager.español).getTexto();
 
-	public PanelServiciosEmergenteTaxi(MicroControladorPanelesPadreHijo microControlador, String padre, Controlador controlador) {
+	public PanelServiciosEmergenteTaxi(MicroControladorPanelesPadreHijo microControlador, String padre, Controlador controlador, Semaphore s) {
 		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102)));
 		this.setSize(new Dimension(695, 315));
 		this.setName("p" + this.getClass().getSimpleName().substring(1)); // No modificar
@@ -52,7 +53,7 @@ public class PanelServiciosEmergenteTaxi extends JPanel {
 		panelContenedor.add(panelPrincipal);
 		panelPrincipal.setLayout(null);
 		
-		panelConfirmacion = new PanelConfirmacion(new MicroControladorLayers(panelContenedor), this.getName());
+		panelConfirmacion = new PanelConfirmacion(new MicroControladorLayers(panelContenedor), this.getName(), s);
 		panelConfirmacion.setBounds(147, 57, 400, 200);
 		panelContenedor.setLayer(panelConfirmacion, 0);
 		panelContenedor.add(panelConfirmacion);
@@ -62,6 +63,7 @@ public class PanelServiciosEmergenteTaxi extends JPanel {
 			public void actionPerformed(ActionEvent e) { // No modificar
 				// Devuelve control al padre
 				microControlador.cambiarPanel(padre);
+				s.release(s.getQueueLength());
 			}
 		});
 		btnCerrar.setBounds(596, 11, 89, 23);
@@ -78,8 +80,25 @@ public class PanelServiciosEmergenteTaxi extends JPanel {
 		JButton btnCabify = new JButton("");
 		btnCabify.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// FIXME: abrir ventana confirmacion
-//				generarGasto("Cabifay", controlador);
+				panelContenedor.setLayer(panelConfirmacion, 2);
+				
+				new Thread() {
+					public void run() {
+						try {
+							s.acquire();
+							
+							if (((PanelConfirmacion)panelConfirmacion).getConfirmacion() == true) {
+								// Actualizar ventana; en otro caso no hacer nada
+								generarGasto("Cabifay", controlador);
+								
+								// Tiene que hacerse siempre!
+								((PanelConfirmacion) panelConfirmacion).setConfirmacion(false);
+							}
+						} catch (InterruptedException e1) {
+							e1.printStackTrace();
+						}
+					}
+				}.start();
 			}
 		});
 		btnCabify.setContentAreaFilled(false);
@@ -90,8 +109,25 @@ public class PanelServiciosEmergenteTaxi extends JPanel {
 		JButton btnUber = new JButton("");
 		btnUber.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// FIXME: abrir ventana confirmacion
-//				generarGasto("Uber", controlador);
+				panelContenedor.setLayer(panelConfirmacion, 2);
+				
+				new Thread() {
+					public void run() {
+						try {
+							s.acquire();
+							
+							if (((PanelConfirmacion)panelConfirmacion).getConfirmacion() == true) {
+								// Actualizar ventana; en otro caso no hacer nada
+								generarGasto("Uber", controlador);
+								
+								// Tiene que hacerse siempre!
+								((PanelConfirmacion) panelConfirmacion).setConfirmacion(false);
+							}
+						} catch (InterruptedException e1) {
+							e1.printStackTrace();
+						}
+					}
+				}.start();
 			}
 		});
 		btnUber.setContentAreaFilled(false);
@@ -102,8 +138,25 @@ public class PanelServiciosEmergenteTaxi extends JPanel {
 		JButton btnTaxi = new JButton("");
 		btnTaxi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				// FIXME: abrir ventana confirmacion
-//				generarGasto("Taxi", controlador);
+				panelContenedor.setLayer(panelConfirmacion, 2);
+				
+				new Thread() {
+					public void run() {
+						try {
+							s.acquire();
+							
+							if (((PanelConfirmacion)panelConfirmacion).getConfirmacion() == true) {
+								// Actualizar ventana; en otro caso no hacer nada
+								generarGasto("Taxi", controlador);
+								
+								// Tiene que hacerse siempre!
+								((PanelConfirmacion) panelConfirmacion).setConfirmacion(false);
+							}
+						} catch (InterruptedException e1) {
+							e1.printStackTrace();
+						}
+					}
+				}.start();
 			}
 		});
 		btnTaxi.setContentAreaFilled(false);

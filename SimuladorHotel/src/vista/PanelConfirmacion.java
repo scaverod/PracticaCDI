@@ -13,6 +13,7 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.concurrent.Semaphore;
 import java.awt.event.ActionEvent;
 import java.awt.Rectangle;
 
@@ -22,8 +23,10 @@ public class PanelConfirmacion extends JPanel {
 	private Texto t = new TextoManager(TextoManager.english).getTexto();
 
 	private static final long serialVersionUID = 1L;
+	
+	private boolean confirmacion;
 
-	public PanelConfirmacion(MicroControladorLayers m, String panel) {
+	public PanelConfirmacion(MicroControladorLayers m, String panel, Semaphore s) {
 		this.setName("p" + this.getClass().getSimpleName().substring(1));
 		
 		setBounds(new Rectangle(0, 0, 400, 200));
@@ -45,6 +48,8 @@ public class PanelConfirmacion extends JPanel {
 		JButton btnNewButton = new JButton("Cancelar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				confirmacion = false;
+				s.release(s.getQueueLength());
 				m.changeLayer(PanelConfirmacion.this, 0);
 			}
 		});
@@ -55,8 +60,8 @@ public class PanelConfirmacion extends JPanel {
 		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				metodo(panel);
-				// Siempre al final
+				confirmacion = true;
+				s.release(s.getQueueLength());
 				m.changeLayer(PanelConfirmacion.this, 0);
 			}
 		});
@@ -71,49 +76,13 @@ public class PanelConfirmacion extends JPanel {
 		JLabel lblSs = new JLabel(panel);
 		lblSs.setBounds(89, 105, 301, 14);
 		add(lblSs);
-		
 	}
 	
-	// FIXME: dar nombre significativo
-	// Este metodo se podría usar tambien para otras ventanas fuera del panelServicios
-	private void metodo(String panel) {
-		switch (panel) {
-			case "panelServiciosEmergenteAlmohada":
-				// Lo que tenga que hacer (guardar, modificar, etc sobre el controlador, p.e.), aqui
-				break;
-			case "panelServiciosEmergenteBotones":
-				// Lo que tenga que hacer (guardar, modificar, etc sobre el controlador, p.e.), aqui
-				break;
-			case "panelServiciosEmergenteComida":
-				// Lo que tenga que hacer (guardar, modificar, etc sobre el controlador, p.e.), aqui
-				break;
-			case "panelServiciosEmergenteInformacion":
-				// Lo que tenga que hacer (guardar, modificar, etc sobre el controlador, p.e.), aqui
-				break;
-			case "panelServiciosEmergenteLimpieza":
-				// Lo que tenga que hacer (guardar, modificar, etc sobre el controlador, p.e.), aqui
-				break;
-			case "panelServiciosEmergenteMinibar":
-				// Lo que tenga que hacer (guardar, modificar, etc sobre el controlador, p.e.), aqui
-				break;
-			case "panelServiciosEmergenteSabanas":
-				// Lo que tenga que hacer (guardar, modificar, etc sobre el controlador, p.e.), aqui
-				break;
-			case "panelServiciosEmergenteTaxi":
-				// Lo que tenga que hacer (guardar, modificar, etc sobre el controlador, p.e.), aqui
-				break;
-			case "panelServiciosEmergenteTelefono":
-				// Lo que tenga que hacer (guardar, modificar, etc sobre el controlador, p.e.), aqui
-				break;
-			case "panelServiciosEmergenteTelevision":
-				// Lo que tenga que hacer (guardar, modificar, etc sobre el controlador, p.e.), aqui
-				break;
-			case "panelServiciosEmergenteToallas":
-				// Lo que tenga que hacer (guardar, modificar, etc sobre el controlador, p.e.), aqui
-				break;
-			case "panelServiciosEmergenteWifi":
-				// Lo que tenga que hacer (guardar, modificar, etc sobre el controlador, p.e.), aqui
-				break;
-		}
+	public boolean getConfirmacion() {
+		return confirmacion;
+	}
+	
+	public void setConfirmacion(boolean confirmacion) {
+		this.confirmacion = confirmacion;
 	}
 }
