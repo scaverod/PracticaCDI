@@ -89,18 +89,18 @@ public class PanelCuenta extends JPanel {
 		btnUK.setOpaque(false);
 		btnUK.setContentAreaFilled(false);
 
-		JToggleButton toggleButton = new JToggleButton("");
-		toggleButton.addActionListener(new ActionListener() {
+		JToggleButton btnRU = new JToggleButton("");
+		btnRU.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controlador.getCuenta().setIdioma(Idioma.Rumano);
 			}
 		});
-		toggleButton.setBounds(309, 44, 108, 69);
-		toggleButton.setSelectedIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/rumaniaSelected.png")));
-		btnIdiomas.add(toggleButton);
-		toggleButton.setIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/rumania.png")));
-		toggleButton.setOpaque(false);
-		toggleButton.setContentAreaFilled(false);
+		btnRU.setBounds(309, 44, 108, 69);
+		btnRU.setSelectedIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/rumaniaSelected.png")));
+		btnIdiomas.add(btnRU);
+		btnRU.setIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/rumania.png")));
+		btnRU.setOpaque(false);
+		btnRU.setContentAreaFilled(false);
 
 		JLabel lblCastellano = new JLabel(t.getLblCastellano());
 		lblCastellano.setBounds(45, 116, 90, 26);
@@ -130,7 +130,7 @@ public class PanelCuenta extends JPanel {
 		panelIdioma.add(lblRumano);
 		panelIdioma.add(btnESP);
 		panelIdioma.add(btnUK);
-		panelIdioma.add(toggleButton);
+		panelIdioma.add(btnRU);
 
 		JPanel panelGasto = new JPanel();
 		panelGasto.setLayout(null);
@@ -285,6 +285,13 @@ public class PanelCuenta extends JPanel {
 		}
 		if (controlador.getCuenta().getPersonalizacion().isAumentoTexto()) {
 			tglbtnAumentarTexto.setSelected(true);
+		}
+		if (controlador.getCuenta().getIdioma() == Idioma.Castellano) {
+			btnESP.setSelected(true);
+		} else if (controlador.getCuenta().getIdioma() == Idioma.Ingles) {
+			btnUK.setSelected(true);
+		} else {
+			btnRU.setSelected(true);
 		}
 	}
 
