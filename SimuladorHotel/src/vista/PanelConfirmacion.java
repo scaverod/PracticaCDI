@@ -74,11 +74,46 @@ public class PanelConfirmacion extends JPanel {
 		
 	}
 	
+	// FIXME: dar nombre significativo
+	// Este metodo se podría usar tambien para otras ventanas fuera del panelServicios
 	private void metodo(String panel) {
 		switch (panel) {
-		case "panelServiciosEmergenteAlmohada":
-			// Lo que tenga que hacer aqui, o en un metodo para esta clase
-			break;
+			case "panelServiciosEmergenteAlmohada":
+				// Lo que tenga que hacer (guardar, modificar, etc sobre el controlador, p.e.), aqui
+				break;
+			case "panelServiciosEmergenteBotones":
+				// Lo que tenga que hacer (guardar, modificar, etc sobre el controlador, p.e.), aqui
+				break;
+			case "panelServiciosEmergenteComida":
+				// Lo que tenga que hacer (guardar, modificar, etc sobre el controlador, p.e.), aqui
+				break;
+			case "panelServiciosEmergenteInformacion":
+				// Lo que tenga que hacer (guardar, modificar, etc sobre el controlador, p.e.), aqui
+				break;
+			case "panelServiciosEmergenteLimpieza":
+				// Lo que tenga que hacer (guardar, modificar, etc sobre el controlador, p.e.), aqui
+				break;
+			case "panelServiciosEmergenteMinibar":
+				// Lo que tenga que hacer (guardar, modificar, etc sobre el controlador, p.e.), aqui
+				break;
+			case "panelServiciosEmergenteSabanas":
+				// Lo que tenga que hacer (guardar, modificar, etc sobre el controlador, p.e.), aqui
+				break;
+			case "panelServiciosEmergenteTaxi":
+				// Lo que tenga que hacer (guardar, modificar, etc sobre el controlador, p.e.), aqui
+				break;
+			case "panelServiciosEmergenteTelefono":
+				// Lo que tenga que hacer (guardar, modificar, etc sobre el controlador, p.e.), aqui
+				break;
+			case "panelServiciosEmergenteTelevision":
+				// Lo que tenga que hacer (guardar, modificar, etc sobre el controlador, p.e.), aqui
+				break;
+			case "panelServiciosEmergenteToallas":
+				// Lo que tenga que hacer (guardar, modificar, etc sobre el controlador, p.e.), aqui
+				break;
+			case "panelServiciosEmergenteWifi":
+				// Lo que tenga que hacer (guardar, modificar, etc sobre el controlador, p.e.), aqui
+				break;
 		}
 	}
 }

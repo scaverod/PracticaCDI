@@ -34,19 +34,44 @@ public class PanelServiciosEmergenteBase extends JPanel {
 		add(panelContenedor);
 		panelContenedor.setLayout(null);
 		
-		panelPrincipal = new PanelServiciosEmergenteTaxi(microControlador, padre, controlador);
-		panelPrincipal.setLocation(0, 0);
-		panelPrincipal.setSize(695, 315);
-//		panelPrincipal.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 109, 240), new Color(0, 109, 240), new Color(0, 109, 240), new Color(0, 109, 240)));
-//		panelPrincipal.setBounds(0, 0, 695, 315);
+		panelPrincipal = new JPanel();
+		panelPrincipal.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 109, 240), new Color(0, 109, 240), new Color(0, 109, 240), new Color(0, 109, 240)));
+		panelPrincipal.setBounds(0, 0, 695, 315);
 		panelContenedor.setLayer(panelPrincipal, 1);
 		panelContenedor.add(panelPrincipal);
-//		panelPrincipal.setLayout(null);
+		panelPrincipal.setLayout(null);
 		
 		panelConfirmacion = new PanelConfirmacion(new MicroControladorLayers(panelContenedor), this.getName());
 		panelConfirmacion.setBounds(147, 57, 400, 200);
 		panelContenedor.setLayer(panelConfirmacion, 0);
 		panelContenedor.add(panelConfirmacion);
+		
+		JLabel lblPanelEmergente = new JLabel(this.getName());
+		lblPanelEmergente.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPanelEmergente.setFont(new Font("Tahoma", Font.PLAIN, 32));
+		lblPanelEmergente.setBounds(10, 138, 675, 39);
+		panelPrincipal.add(lblPanelEmergente);
+		
+		JButton btnCerrar = new JButton("Cerrar");
+		btnCerrar.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnCerrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) { // No modificar
+				// Devuelve control al padre
+				cerrarPanelConfirmacion();
+				microControlador.cambiarPanel(padre);
+			}
+		});
+		btnCerrar.setBounds(610, 11, 75, 50);
+		panelPrincipal.add(btnCerrar);
+		
+		JButton btnNewButton = new JButton("botonEjemploVentanaEmergente");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panelContenedor.setLayer(panelConfirmacion, 2);
+			}
+		});
+		btnNewButton.setBounds(253, 230, 189, 23);
+		panelPrincipal.add(btnNewButton);
 	}
 	
 	public void cerrarPanelConfirmacion() {
