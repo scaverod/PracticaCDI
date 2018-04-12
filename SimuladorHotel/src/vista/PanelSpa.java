@@ -52,7 +52,7 @@ public class PanelSpa extends JPanel {
 		btnConEstoSaco.setBounds(290, 160, 351, 162);
 		panelPrincipal.add(btnConEstoSaco);
 		
-		btnOtroBoton = new JButton("Otro boton");
+		btnOtroBoton = new JButton("Con este saco OTRO");
 		btnOtroBoton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				changeToPanelEmergente(panelOtro);
