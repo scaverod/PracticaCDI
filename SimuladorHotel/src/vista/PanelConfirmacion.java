@@ -24,6 +24,8 @@ public class PanelConfirmacion extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	public PanelConfirmacion(MicroControladorLayers m, String panel) {
+		this.setName("p" + this.getClass().getSimpleName().substring(1));
+		
 		setBounds(new Rectangle(0, 0, 400, 200));
 		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102)));
 		setLayout(null);
