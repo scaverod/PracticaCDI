@@ -27,7 +27,7 @@ public class PanelConfirmacion extends JPanel {
 		this.setName("p" + this.getClass().getSimpleName().substring(1));
 		
 		setBounds(new Rectangle(0, 0, 400, 200));
-		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102)));
+		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 109, 240), new Color(0, 109, 240), new Color(0, 109, 240), new Color(0, 109, 240)));
 		setLayout(null);
 		
 		JLabel lblTextoConfirmacion = new JLabel(t.getLblConfirmacion());

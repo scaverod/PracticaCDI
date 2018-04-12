@@ -26,7 +26,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 
 	public PanelServiciosEmergenteAlmohada(MicroControladorPanelesPadreHijo microControlador, String padre, Controlador controlador) {
 		this.setSize(new Dimension(695, 315));
-		this.setName("p" + this.getClass().getSimpleName().substring(1));
+		this.setName("p" + this.getClass().getSimpleName().substring(1)); // No modificar
 		setLayout(null);
 		
 		panelContenedor = new JLayeredPane();
@@ -35,7 +35,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 		panelContenedor.setLayout(null);
 		
 		panelPrincipal = new JPanel();
-		panelPrincipal.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102)));
+		panelPrincipal.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 109, 240), new Color(0, 109, 240), new Color(0, 109, 240), new Color(0, 109, 240)));
 		panelPrincipal.setBounds(0, 0, 695, 315);
 		panelContenedor.setLayer(panelPrincipal, 1);
 		panelContenedor.add(panelPrincipal);

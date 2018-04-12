@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 
 import controlador.Controlador;
+import controlador.MicroControladorLayers;
 import controlador.MicroControladorPanelesPadreHijo;
 import idiomas.Texto;
 import idiomas.TextoManager;
@@ -15,6 +16,8 @@ import javax.swing.JOptionPane;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JButton;
+import javax.swing.JLayeredPane;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -24,16 +27,34 @@ import javax.swing.JTextPane;
 
 public class PanelServiciosEmergenteTelevision extends JPanel {
 	private static final long serialVersionUID = 1L;
+	private JLayeredPane panelContenedor;
+	private JPanel panelPrincipal;
+	private JPanel panelConfirmacion;
 	private Texto t = new TextoManager(TextoManager.english).getTexto();
 
-	public PanelServiciosEmergenteTelevision(MicroControladorPanelesPadreHijo microControlador, String padre,
-			Controlador controlador) {
-		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102),
-				new Color(0, 0, 102)));
+	public PanelServiciosEmergenteTelevision(MicroControladorPanelesPadreHijo microControlador, String padre, Controlador controlador) {
+		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102)));
 		this.setSize(new Dimension(695, 315));
 		this.setName("p" + this.getClass().getSimpleName().substring(1)); // No modificar
 		setLayout(null);
-
+		
+		panelContenedor = new JLayeredPane();
+		panelContenedor.setBounds(0, 0, 695, 315);
+		add(panelContenedor);
+		panelContenedor.setLayout(null);
+		
+		panelPrincipal = new JPanel();
+		panelPrincipal.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 109, 240), new Color(0, 109, 240), new Color(0, 109, 240), new Color(0, 109, 240)));
+		panelPrincipal.setBounds(0, 0, 695, 315);
+		panelContenedor.setLayer(panelPrincipal, 1);
+		panelContenedor.add(panelPrincipal);
+		panelPrincipal.setLayout(null);
+		
+		panelConfirmacion = new PanelConfirmacion(new MicroControladorLayers(panelContenedor), this.getName());
+		panelConfirmacion.setBounds(147, 57, 400, 200);
+		panelContenedor.setLayer(panelConfirmacion, 0);
+		panelContenedor.add(panelConfirmacion);
+		
 		JButton btnCerrar = new JButton(t.getCerrar());
 		btnCerrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { // No modificar
@@ -42,7 +63,7 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 			}
 		});
 		btnCerrar.setBounds(596, 11, 89, 23);
-		add(btnCerrar);
+		panelPrincipal.add(btnCerrar);
 
 		JButton btnMoviestar = new JButton("");
 		btnMoviestar.addActionListener(new ActionListener() {
@@ -59,11 +80,10 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 			}
 		});
 		btnMoviestar.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		btnMoviestar
-				.setIcon(new ImageIcon(PanelServiciosEmergenteTelevision.class.getResource("/iconos/movistar.png")));
+		btnMoviestar.setIcon(new ImageIcon(PanelServiciosEmergenteTelevision.class.getResource("/iconos/movistar.png")));
 		btnMoviestar.setBounds(59, 138, 100, 90);
 		btnMoviestar.setContentAreaFilled(false);
-		add(btnMoviestar);
+		panelPrincipal.add(btnMoviestar);
 
 		JTextPane txtpnInfo = new JTextPane();
 		txtpnInfo.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -71,7 +91,7 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 		txtpnInfo.setOpaque(false);
 		txtpnInfo.setText(t.getPanelServiciosEmergenteTelevisionTxt());
 		txtpnInfo.setBounds(51, 63, 593, 75);
-		add(txtpnInfo);
+		panelPrincipal.add(txtpnInfo);
 
 		JButton btnNetflix = new JButton("");
 		btnNetflix.addActionListener(new ActionListener() {
@@ -90,7 +110,7 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 		btnNetflix.setIcon(new ImageIcon(PanelServiciosEmergenteTelevision.class.getResource("/iconos/netflix.png")));
 		btnNetflix.setBounds(218, 138, 100, 90);
 		btnNetflix.setContentAreaFilled(false);
-		add(btnNetflix);
+		panelPrincipal.add(btnNetflix);
 
 		JButton btnBBC = new JButton("");
 		btnBBC.addActionListener(new ActionListener() {
@@ -108,7 +128,7 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 		btnBBC.setIcon(new ImageIcon(PanelServiciosEmergenteTelevision.class.getResource("/iconos/bbc.png")));
 		btnBBC.setBounds(377, 138, 100, 90);
 		btnBBC.setContentAreaFilled(false);
-		add(btnBBC);
+		panelPrincipal.add(btnBBC);
 
 		JButton btnBeinSport = new JButton("");
 		btnBeinSport.addActionListener(new ActionListener() {
@@ -126,6 +146,10 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 				.setIcon(new ImageIcon(PanelServiciosEmergenteTelevision.class.getResource("/iconos/beinsport.png")));
 		btnBeinSport.setBounds(536, 138, 100, 90);
 		btnBeinSport.setContentAreaFilled(false);
-		add(btnBeinSport);
+		panelPrincipal.add(btnBeinSport);
+	}
+	
+	public void cerrarPanelConfirmacion() {
+		panelContenedor.setLayer(panelConfirmacion, 0);
 	}
 }
