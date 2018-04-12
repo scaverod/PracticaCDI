@@ -38,7 +38,6 @@ public class TextoEng extends Texto {
 		setPanelServiciosBtnTelevision("Buy channels");
 		setPanelServiciosBtnWifi("Enable WiFi");
 		setPanelServiciosBtnInformacion("Ask info");
-		setCerrar("Close");
 		
 		// Panel Emergen Informacion
 		setBtnAdquirir("Acquire");
