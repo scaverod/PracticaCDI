@@ -79,7 +79,7 @@ public class TextoEsp extends Texto {
 		setLblAumentarTexto("Aumentar texto");
 
 		// Panel Confirmacion
-		setLblConfirmacion("¿Desea confirmar su compra?");
+		setLblConfirmacion("¿Desea confirmar la operación?");
 
 	}
 }

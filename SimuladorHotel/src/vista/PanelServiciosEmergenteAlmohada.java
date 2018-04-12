@@ -26,7 +26,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 
 	public PanelServiciosEmergenteAlmohada(MicroControladorPanelesPadreHijo microControlador, String padre, Controlador controlador) {
 		this.setSize(new Dimension(695, 315));
-		this.setName("p" + this.getClass().getSimpleName().substring(1));
+		this.setName("p" + this.getClass().getSimpleName().substring(1)); // No modificar
 		setLayout(null);
 		
 		panelContenedor = new JLayeredPane();
@@ -35,17 +35,16 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 		panelContenedor.setLayout(null);
 		
 		panelPrincipal = new JPanel();
-		panelPrincipal.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102)));
+		panelPrincipal.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 109, 240), new Color(0, 109, 240), new Color(0, 109, 240), new Color(0, 109, 240)));
 		panelPrincipal.setBounds(0, 0, 695, 315);
 		panelContenedor.setLayer(panelPrincipal, 1);
 		panelContenedor.add(panelPrincipal);
 		panelPrincipal.setLayout(null);
 		
-		panelConfirmacion = new PanelConfirmacionAlmohada(new MicroControladorLayers(panelContenedor));
+		panelConfirmacion = new PanelConfirmacion(new MicroControladorLayers(panelContenedor), this.getName());
 		panelConfirmacion.setBounds(147, 57, 400, 200);
 		panelContenedor.setLayer(panelConfirmacion, 0);
 		panelContenedor.add(panelConfirmacion);
-		panelConfirmacion.setLayout(null);
 		
 		JLabel lblPanelEmergente = new JLabel(this.getName());
 		lblPanelEmergente.setHorizontalAlignment(SwingConstants.CENTER);
@@ -54,6 +53,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 		panelPrincipal.add(lblPanelEmergente);
 		
 		JButton btnCerrar = new JButton("Cerrar");
+		btnCerrar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnCerrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { // No modificar
 				// Devuelve control al padre
@@ -61,16 +61,16 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 				microControlador.cambiarPanel(padre);
 			}
 		});
-		btnCerrar.setBounds(596, 11, 89, 23);
+		btnCerrar.setBounds(610, 11, 75, 50);
 		panelPrincipal.add(btnCerrar);
 		
-		JButton btnNewButton = new JButton("New button");
+		JButton btnNewButton = new JButton("botonEjemploVentanaEmergente");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelContenedor.setLayer(panelConfirmacion, 2);
 			}
 		});
-		btnNewButton.setBounds(308, 230, 89, 23);
+		btnNewButton.setBounds(253, 230, 189, 23);
 		panelPrincipal.add(btnNewButton);
 	}
 	

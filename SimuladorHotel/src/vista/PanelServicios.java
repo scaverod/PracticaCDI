@@ -47,7 +47,7 @@ public class PanelServicios extends JPanel {
 
 	public PanelServicios(Controlador controlador) {
 		this.setSize(new Dimension(931, 483));
-		this.setName("panelServicios");
+		this.setName("p" + this.getClass().getSimpleName().substring(1));
 		setLayout(new CardLayout(0, 0));
 
 		panelServicios = new JPanel();
@@ -58,8 +58,8 @@ public class PanelServicios extends JPanel {
 		JButton btnCambioToalla = new JButton(t.getPanelServiciosBtnCambioToalla());
 		btnCambioToalla.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				establecerVentanaServicio(panelToallas.getName());
-				mostrarVentanaEmergente();
+				((PanelServiciosEmergenteToallas) panelToallas).cerrarPanelConfirmacion();
+				changeToVentanaEmergente(panelToallas);
 			}
 		});
 		btnCambioToalla.setBounds(10, 11, 220, 146);
@@ -72,8 +72,8 @@ public class PanelServicios extends JPanel {
 		JButton btnCambiarSabanas = new JButton(t.getPanelServiciosBtnCambiarSabanas());
 		btnCambiarSabanas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				establecerVentanaServicio(panelSabanas.getName());
-				mostrarVentanaEmergente();
+				((PanelServiciosEmergenteSabanas) panelSabanas).cerrarPanelConfirmacion();
+				changeToVentanaEmergente(panelSabanas);
 			}
 		});
 		btnCambiarSabanas.setBounds(240, 11, 220, 146);
@@ -87,8 +87,7 @@ public class PanelServicios extends JPanel {
 		btnCambioAlmohada.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				((PanelServiciosEmergenteAlmohada) panelAlmohada).cerrarPanelConfirmacion();
-				establecerVentanaServicio(panelAlmohada.getName());
-				mostrarVentanaEmergente();
+				changeToVentanaEmergente(panelAlmohada);
 			}
 		});
 		btnCambioAlmohada.setBounds(471, 11, 220, 146);
@@ -101,8 +100,8 @@ public class PanelServicios extends JPanel {
 		JButton btnMiniBar = new JButton(t.getPanelServiciosBtnMinibar());
 		btnMiniBar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				establecerVentanaServicio(panelMinibar.getName());
-				mostrarVentanaEmergente();
+				((PanelServiciosEmergenteMinibar) panelMinibar).cerrarPanelConfirmacion();
+				changeToVentanaEmergente(panelMinibar);
 			}
 		});
 		btnMiniBar.setBounds(701, 11, 220, 146);
@@ -115,8 +114,8 @@ public class PanelServicios extends JPanel {
 		JButton btnTelefono = new JButton(t.getPanelServiciosBtnTelefono());
 		btnTelefono.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				establecerVentanaServicio(panelTelefono.getName());
-				mostrarVentanaEmergente();
+				((PanelServiciosEmergenteTelefono) panelTelefono).cerrarPanelConfirmacion();
+				changeToVentanaEmergente(panelTelefono);
 			}
 		});
 		btnTelefono.setBounds(10, 168, 220, 146);
@@ -129,8 +128,8 @@ public class PanelServicios extends JPanel {
 		JButton btnBotones = new JButton(t.getPanelServiciosBtnBotones());
 		btnBotones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				establecerVentanaServicio(panelBotones.getName());
-				mostrarVentanaEmergente();
+				((PanelServiciosEmergenteBotones) panelBotones).cerrarPanelConfirmacion();
+				changeToVentanaEmergente(panelBotones);
 			}
 		});
 		btnBotones.setBounds(240, 168, 220, 146);
@@ -143,8 +142,8 @@ public class PanelServicios extends JPanel {
 		JButton btnComidaHab = new JButton(t.getPanelServiciosBtnComidaHab());
 		btnComidaHab.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				establecerVentanaServicio(panelComida.getName());
-				mostrarVentanaEmergente();
+				((PanelServiciosEmergenteComida) panelComida).cerrarPanelConfirmacion();
+				changeToVentanaEmergente(panelComida);
 			}
 		});
 		btnComidaHab.setBounds(471, 168, 220, 146);
@@ -157,8 +156,8 @@ public class PanelServicios extends JPanel {
 		JButton btnHorarioLimpieza = new JButton(t.getPanelServiciosBtnHorarioLimpieza());
 		btnHorarioLimpieza.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				establecerVentanaServicio(panelLimpieza.getName());
-				mostrarVentanaEmergente();
+				((PanelServiciosEmergenteLimpieza) panelLimpieza).cerrarPanelConfirmacion();
+				changeToVentanaEmergente(panelLimpieza);
 			}
 		});
 		btnHorarioLimpieza.setBounds(701, 168, 220, 146);
@@ -171,8 +170,8 @@ public class PanelServicios extends JPanel {
 		JButton btnWifi = new JButton(t.getPanelServiciosBtnWifi());
 		btnWifi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				establecerVentanaServicio(panelWifi.getName());
-				mostrarVentanaEmergente();
+				((PanelServiciosEmergenteWifi) panelWifi).cerrarPanelConfirmacion();
+				changeToVentanaEmergente(panelWifi);
 			}
 		});
 		btnWifi.setBounds(10, 325, 220, 146);
@@ -185,8 +184,8 @@ public class PanelServicios extends JPanel {
 		JButton btnPedirTaxi = new JButton(t.getPanelServiciosBtnPedirTaxi());
 		btnPedirTaxi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				establecerVentanaServicio(panelTaxi.getName());
-				mostrarVentanaEmergente();
+				((PanelServiciosEmergenteTaxi) panelTaxi).cerrarPanelConfirmacion();
+				changeToVentanaEmergente(panelTaxi);
 			}
 		});
 		btnPedirTaxi.setBounds(240, 325, 220, 146);
@@ -199,8 +198,8 @@ public class PanelServicios extends JPanel {
 		JButton btnTelevision = new JButton(t.getPanelServiciosBtnTelevision());
 		btnTelevision.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				establecerVentanaServicio(panelTelevision.getName());
-				mostrarVentanaEmergente();
+				((PanelServiciosEmergenteTelevision) panelTelevision).cerrarPanelConfirmacion();
+				changeToVentanaEmergente(panelTelevision);
 			}
 		});
 		btnTelevision.setIcon(new ImageIcon(PanelServicios.class.getResource("/iconos/television.png")));
@@ -213,8 +212,8 @@ public class PanelServicios extends JPanel {
 		JButton btnInformacion = new JButton(t.getPanelServiciosBtnInformacion());
 		btnInformacion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				establecerVentanaServicio(panelInformacion.getName());
-				mostrarVentanaEmergente();
+				((PanelServiciosEmergenteInformacion) panelInformacion).cerrarPanelConfirmacion();
+				changeToVentanaEmergente(panelInformacion);
 			}
 		});
 		btnInformacion.setBounds(701, 325, 220, 146);
@@ -303,5 +302,10 @@ public class PanelServicios extends JPanel {
 	private void mostrarVentanaServicios() {
 		CardLayout l = (CardLayout) this.getLayout();
 		l.show(this, panelServicios.getName());
+	}
+	
+	private void changeToVentanaEmergente(JPanel panel) {
+		establecerVentanaServicio(panel.getName());
+		mostrarVentanaEmergente();
 	}
 }

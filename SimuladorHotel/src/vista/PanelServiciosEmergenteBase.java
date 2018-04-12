@@ -18,15 +18,15 @@ import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.JLayeredPane;
 
-public class PanelServiciosEmergenteToallas extends JPanel {
+public class PanelServiciosEmergenteBase extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JLayeredPane panelContenedor;
 	private JPanel panelPrincipal;
 	private JPanel panelConfirmacion;
 
-	public PanelServiciosEmergenteToallas(MicroControladorPanelesPadreHijo microControlador, String padre, Controlador controlador) {
+	public PanelServiciosEmergenteBase(MicroControladorPanelesPadreHijo microControlador, String padre, Controlador controlador) {
 		this.setSize(new Dimension(695, 315));
-		this.setName("p" + this.getClass().getSimpleName().substring(1));
+		this.setName("p" + this.getClass().getSimpleName().substring(1)); // No modificar
 		setLayout(null);
 		
 		panelContenedor = new JLayeredPane();
