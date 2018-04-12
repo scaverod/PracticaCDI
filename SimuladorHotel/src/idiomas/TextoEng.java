@@ -67,6 +67,14 @@ public class TextoEng extends Texto {
 		setLblCastellano("Spanish");
 		setLblIngles("English");
 		setLblRumano("Romanian");
+		setLblGasto("Spending");
+		setBtnMsDetalles("More details...");
+		setLblGastoTotal("Total cost:");
+		setLblPersonalizar("Personalize");
+		setLblModoNocturno("Night mode");
+		setLblInvertirColores("Reverse colors");
+		setLblSalidaTexto("Text out by voice");
+		setLblAumentarTexto("Increase text");
 
 		// Panel Confirmacion
 		setLblConfirmacion("Are you sure you want to buy this service?");

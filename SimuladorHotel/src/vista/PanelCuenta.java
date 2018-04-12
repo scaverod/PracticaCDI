@@ -126,13 +126,13 @@ public class PanelCuenta extends JPanel {
 		add(panelGasto);
 		panelGasto.setBorder(new LineBorder(Color.decode("#006df0"), 5, true));
 
-		JLabel lblGasto = new JLabel("Gastos");
+		JLabel lblGasto = new JLabel(t.getLblGasto());
 		lblGasto.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGasto.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblGasto.setBounds(186, 11, 79, 19);
 		panelGasto.add(lblGasto);
 
-		JButton btnMsDetalles = new JButton("M\u00E1s detalles...");
+		JButton btnMsDetalles = new JButton(t.getBtnMsDetalles());
 		btnMsDetalles.setBorder(new LineBorder(Color.decode("#9bbfe3"), 3, true));
 		btnMsDetalles.setContentAreaFilled(false);
 		btnMsDetalles.setIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/details.png")));
@@ -153,7 +153,7 @@ public class PanelCuenta extends JPanel {
 		panelBorde.add(lblGastoNumero);
 		lblGastoNumero.setFont(new Font("Tahoma", Font.PLAIN, 15));
 
-		JLabel lblGastoTotal = new JLabel("Gasto total:");
+		JLabel lblGastoTotal = new JLabel(t.getLblGastoTotal());
 		lblGastoTotal.setBounds(0, 0, 123, 49);
 		panelBorde.add(lblGastoTotal);
 		lblGastoTotal.setHorizontalAlignment(SwingConstants.CENTER);
@@ -166,18 +166,18 @@ public class PanelCuenta extends JPanel {
 		add(panelPersonalizar);
 		panelPersonalizar.setBorder(new LineBorder(Color.decode("#006df0"), 5, true));
 
-		JLabel lblPersonalizar = new JLabel("Personalizar");
+		JLabel lblPersonalizar = new JLabel(t.getLblPersonalizar());
 		lblPersonalizar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPersonalizar.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblPersonalizar.setBounds(174, 11, 103, 19);
 		panelPersonalizar.add(lblPersonalizar);
 
-		JLabel lblModoNocturno = new JLabel("Modo nocturno");
+		JLabel lblModoNocturno = new JLabel(t.getLblModoNocturno());
 		lblModoNocturno.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblModoNocturno.setBounds(66, 39, 132, 31);
 		panelPersonalizar.add(lblModoNocturno);
 
-		JToggleButton tglbtnModoNocturno = new JToggleButton("");
+		JToggleButton tglbtnModoNocturno = new JToggleButton();
 		tglbtnModoNocturno.setSelectedIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/botonON.png")));
 		tglbtnModoNocturno.setContentAreaFilled(false);
 		tglbtnModoNocturno.setBorderPainted(false);
@@ -185,17 +185,17 @@ public class PanelCuenta extends JPanel {
 		tglbtnModoNocturno.setBounds(264, 33, 121, 39);
 		panelPersonalizar.add(tglbtnModoNocturno);
 
-		JLabel lblInvertirColores = new JLabel("Invertir colores");
+		JLabel lblInvertirColores = new JLabel(t.getLblInvertirColores());
 		lblInvertirColores.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblInvertirColores.setBounds(66, 109, 132, 31);
 		panelPersonalizar.add(lblInvertirColores);
 
-		JLabel lblSalidaTexto = new JLabel("Salida de texto por voz");
+		JLabel lblSalidaTexto = new JLabel(t.getLblSalidaTexto());
 		lblSalidaTexto.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblSalidaTexto.setBounds(66, 179, 163, 31);
 		panelPersonalizar.add(lblSalidaTexto);
 
-		JLabel lblAumentarTexto = new JLabel("Aumentar texto");
+		JLabel lblAumentarTexto = new JLabel(t.getLblAumentarTexto());
 		lblAumentarTexto.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblAumentarTexto.setBounds(66, 249, 132, 31);
 		panelPersonalizar.add(lblAumentarTexto);

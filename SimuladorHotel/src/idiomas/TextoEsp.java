@@ -69,6 +69,15 @@ public class TextoEsp extends Texto {
 		setLblCastellano("Castellano");
 		setLblIngles("Inglés");
 		setLblRumano("Rumano");
+		setLblGasto("Gasto");
+		setBtnMsDetalles("Más detalles...");
+		setLblGastoTotal("Gasto total:");
+		setLblPersonalizar("Personalizar");
+		setLblModoNocturno("Modo nocturno");
+		setLblInvertirColores("Invertir colores");
+		setLblSalidaTexto("Salida de texto por voz");
+		setLblAumentarTexto("Aumentar texto");
+
 		// Panel Confirmacion
 		setLblConfirmacion("¿Desea confirmar su compra?");
 
