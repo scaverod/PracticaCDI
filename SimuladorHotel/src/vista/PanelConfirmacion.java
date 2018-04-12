@@ -14,16 +14,17 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Rectangle;
 
-public class PanelConfirmacionAlmohada extends JPanel {
+public class PanelConfirmacion extends JPanel {
 	// FIXME: temporal para que salga el texto en vez de "<dynamic>"
 	// Habría que mandarlo desde el Main, por ejemplo
 	private Texto t = new TextoManager(TextoManager.english).getTexto();
 
 	private static final long serialVersionUID = 1L;
-	private boolean confirmacion;
 
-	public PanelConfirmacionAlmohada(MicroControladorLayers m) {
+	public PanelConfirmacion(MicroControladorLayers m, String panel) {
+		setBounds(new Rectangle(0, 0, 400, 200));
 		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102)));
 		setLayout(null);
 		
@@ -42,8 +43,7 @@ public class PanelConfirmacionAlmohada extends JPanel {
 		JButton btnNewButton = new JButton("Cancelar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				confirmacion = false;
-				m.changeLayer(PanelConfirmacionAlmohada.this, 0);
+				m.changeLayer(PanelConfirmacion.this, 0);
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -53,19 +53,30 @@ public class PanelConfirmacionAlmohada extends JPanel {
 		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				metodo(panel);
 				// Siempre al final
-				confirmacion = true;
-				m.changeLayer(PanelConfirmacionAlmohada.this, 0);
+				m.changeLayer(PanelConfirmacion.this, 0);
 			}
 		});
 		btnAceptar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnAceptar.setBounds(53, 130, 120, 40);
 		add(btnAceptar);
 		
+		JLabel lblMiPadreEs = new JLabel("Mi padre es:");
+		lblMiPadreEs.setBounds(20, 105, 59, 14);
+		add(lblMiPadreEs);
+		
+		JLabel lblSs = new JLabel(panel);
+		lblSs.setBounds(89, 105, 301, 14);
+		add(lblSs);
+		
 	}
 	
-	public boolean getConfirmacion() {
-		return confirmacion;
+	private void metodo(String panel) {
+		switch (panel) {
+		case "panelServiciosEmergenteAlmohada":
+			// Lo que tenga que hacer aqui, o en un metodo para esta clase
+			break;
+		}
 	}
 }

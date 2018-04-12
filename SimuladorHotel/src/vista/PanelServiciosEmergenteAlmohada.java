@@ -41,7 +41,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 		panelContenedor.add(panelPrincipal);
 		panelPrincipal.setLayout(null);
 		
-		panelConfirmacion = new PanelConfirmacionAlmohada(new MicroControladorLayers(panelContenedor));
+		panelConfirmacion = new PanelConfirmacion(new MicroControladorLayers(panelContenedor), this.getName());
 		panelConfirmacion.setBounds(147, 57, 400, 200);
 		panelContenedor.setLayer(panelConfirmacion, 0);
 		panelContenedor.add(panelConfirmacion);
@@ -67,6 +67,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 		JButton btnNewButton = new JButton("New button");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+//				panelConfirmacion = new PanelConfirmacion(new MicroControladorLayers(panelContenedor), PanelServiciosEmergenteAlmohada.this.getName());
 				panelContenedor.setLayer(panelConfirmacion, 2);
 			}
 		});

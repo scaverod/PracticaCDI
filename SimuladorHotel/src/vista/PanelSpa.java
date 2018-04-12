@@ -2,40 +2,74 @@ package vista;
 
 import java.awt.Dimension;
 
-import javax.swing.GroupLayout;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import controlador.Controlador;
+import controlador.MicroControladorLayersPadreHijo;
 
-import javax.swing.GroupLayout.Alignment;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JLayeredPane;
+import java.awt.CardLayout;
+import java.awt.event.HierarchyListener;
+import java.awt.event.HierarchyEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
 
 public class PanelSpa extends JPanel {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+	
+	private JPanel panelEmergenteContenedor;
+	private JPanel panelPrincipal;
+	private JPanel panelBase;
+	private JButton btnOtroBoton;
 
-	/**
-	 * Create the panel.
-	 * @param controlador 
-	 */
-	public  PanelSpa (Controlador controlador) {
+	public PanelSpa (Controlador controlador) {
 		this.setSize(new Dimension(931, 483));
-		this.setName("panelSpa");
+		this.setName("p" + this.getClass().getSimpleName().substring(1));
+		setLayout(null);
 		
-		JLabel lblPanelspa = new JLabel("[PLACEHOLDER] panelSpa");
-		GroupLayout gl_panelSpa = new GroupLayout(this);
-		gl_panelSpa.setHorizontalGroup(gl_panelSpa.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panelSpa.createSequentialGroup().addGap(139)
-						.addComponent(lblPanelspa, GroupLayout.PREFERRED_SIZE, 405, GroupLayout.PREFERRED_SIZE)
-						.addContainerGap(387, Short.MAX_VALUE)));
-		gl_panelSpa.setVerticalGroup(gl_panelSpa.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panelSpa.createSequentialGroup().addGap(127)
-						.addComponent(lblPanelspa, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE)
-						.addContainerGap(188, Short.MAX_VALUE)));
-		this.setLayout(gl_panelSpa);
+		JLayeredPane layeredPane = new JLayeredPane();
+		layeredPane.setBounds(0, 0, 931, 483);
+		add(layeredPane);
+		
+		panelPrincipal = new JPanel();
+		layeredPane.setLayer(panelPrincipal, 1);
+		panelPrincipal.setBounds(0, 0, 931, 483);
+		layeredPane.add(panelPrincipal);
+		panelPrincipal.setLayout(null);
+		
+		JButton btnConEstoSaco = new JButton("Con esto saco un panel emergente");
+		btnConEstoSaco.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CardLayout l = (CardLayout) panelEmergenteContenedor.getLayout();
+				l.show(panelEmergenteContenedor, panelBase.getName());
+				
+				layeredPane.setLayer(panelEmergenteContenedor, 2);
+				btnOtroBoton.setEnabled(false);
+			}
+		});
+		btnConEstoSaco.setBounds(290, 160, 351, 162);
+		panelPrincipal.add(btnConEstoSaco);
+		
+		btnOtroBoton = new JButton("Otro boton");
+		btnOtroBoton.setBounds(31, 36, 211, 109);
+		panelPrincipal.add(btnOtroBoton);
+		
+		panelEmergenteContenedor = new JPanel();
+		panelEmergenteContenedor.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent evt) {
+				
+				System.out.println(evt.getPropertyName());
+			}
+		});
+		layeredPane.setLayer(panelEmergenteContenedor, 0);
+		panelEmergenteContenedor.setBounds(118, 84, 695, 315);
+		layeredPane.add(panelEmergenteContenedor);
+		panelEmergenteContenedor.setLayout(new CardLayout(0, 0));
+		
+		panelBase = new PanelSpaEmergenteBase(new MicroControladorLayersPadreHijo(layeredPane, panelEmergenteContenedor));
+		panelEmergenteContenedor.add(panelBase, "panelBase");
 	}
-
 }
