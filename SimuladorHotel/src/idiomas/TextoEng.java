@@ -39,6 +39,7 @@ public class TextoEng extends Texto {
 		setPanelServiciosBtnWifi("Enable WiFi");
 		setPanelServiciosBtnInformacion("Ask info");
 		setCerrar("Close");
+		
 		// Panel Emergen Informacion
 		setBtnAdquirir("Acquire");
 		setTxtInformacion(
@@ -77,7 +78,7 @@ public class TextoEng extends Texto {
 		setLblAumentarTexto("Increase text");
 
 		// Panel Confirmacion
-		setLblConfirmacion("Are you sure you want to buy this service?");
+		setLblConfirmacion("Are you sure you want to proceed?");
 
 	}
 }

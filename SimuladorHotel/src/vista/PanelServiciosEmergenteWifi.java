@@ -12,7 +12,6 @@ import controlador.MicroControladorLayers;
 import controlador.MicroControladorPanelesPadreHijo;
 import idiomas.Texto;
 import idiomas.TextoManager;
-import tiposVariable.StringDouble;
 
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
