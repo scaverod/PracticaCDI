@@ -12,6 +12,7 @@ import controlador.MicroControladorLayers;
 import controlador.MicroControladorPanelesPadreHijo;
 import idiomas.Texto;
 import idiomas.TextoManager;
+import tiposVariable.StringDouble;
 
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
@@ -20,6 +21,7 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.concurrent.Semaphore;
 import java.awt.event.ActionEvent;
 
 public class PanelServiciosEmergenteWifi extends JPanel {
@@ -32,7 +34,7 @@ public class PanelServiciosEmergenteWifi extends JPanel {
 	// Habría que mandarlo desde el Main, por ejemplo
 	private Texto t = new TextoManager(TextoManager.español).getTexto();
 
-	public PanelServiciosEmergenteWifi(MicroControladorPanelesPadreHijo microControlador, String padre, Controlador controlador) {
+	public PanelServiciosEmergenteWifi(MicroControladorPanelesPadreHijo microControlador, String padre, Controlador controlador, Semaphore s) {
 		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102)));
 		this.setSize(new Dimension(695, 315));
 		this.setName("p" + this.getClass().getSimpleName().substring(1)); // No modificar
@@ -50,7 +52,7 @@ public class PanelServiciosEmergenteWifi extends JPanel {
 		panelContenedor.add(panelPrincipal);
 		panelPrincipal.setLayout(null);
 		
-		panelConfirmacion = new PanelConfirmacion(new MicroControladorLayers(panelContenedor), this.getName());
+		panelConfirmacion = new PanelConfirmacion(new MicroControladorLayers(panelContenedor), this.getName(), s);
 		panelConfirmacion.setBounds(147, 57, 400, 200);
 		panelContenedor.setLayer(panelConfirmacion, 0);
 		panelContenedor.add(panelConfirmacion);
@@ -60,6 +62,7 @@ public class PanelServiciosEmergenteWifi extends JPanel {
 			public void actionPerformed(ActionEvent e) { // No modificar
 				// Devuelve control al padre
 				microControlador.cambiarPanel(padre);
+				s.release(s.getQueueLength());
 			}
 		});
 		btnCerrar.setBounds(596, 11, 89, 23);
@@ -97,19 +100,32 @@ public class PanelServiciosEmergenteWifi extends JPanel {
 
 		btnAdquirir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				// FIXME: cambiar al panel confirmacion
-//				// TODO: se contratará el wifi
-//
-//				// Suponemos que finalmente se ha contratado:
-//				txtpnInfo.setText(t.getPanelServiciosEmergenteWifiActivadoTxt());
-//				panelPrecio.setBorder(new LineBorder(Color.decode("#005cb9"), 3));
-//				panelPrecio.setBackground(Color.decode("#9bbfe3"));
-//				String pwd = controlador.getServicios().getWifi().activarWifi();
-//				controlador.getCuenta().getGasto()
-//						.addGasto(new StringDouble("Contratar WiFi", controlador.getServicios().getWifi().getPrecio()));
-//				lblPrecio.setText("");
-//				labelPrecioYPwd.setText(t.getPanelServiciosEmergenteWifiPwdTxt() + " " + pwd);
-//				btnAdquirir.setVisible(false);
+				panelContenedor.setLayer(panelConfirmacion, 2);
+
+				new Thread() {
+					public void run() {
+						try {
+							s.acquire();
+
+							if (((PanelConfirmacion) panelConfirmacion).getConfirmacion() == true) {
+								// Actualizar ventana; en otro caso no hacer nada
+								txtpnInfo.setText(t.getPanelServiciosEmergenteWifiActivadoTxt());
+								panelPrecio.setBorder(new LineBorder(Color.decode("#005cb9"), 3));
+								panelPrecio.setBackground(Color.decode("#9bbfe3"));
+								String pwd = controlador.getServicios().getWifi().activarWifi();
+								controlador.getCuenta().getGasto().addGasto(new StringDouble("Contratar WiFi", controlador.getServicios().getWifi().getPrecio()));
+								lblPrecio.setText("");
+								labelPrecioYPwd.setText(t.getPanelServiciosEmergenteWifiPwdTxt() + " " + pwd);
+								btnAdquirir.setVisible(false);
+								
+								// Tiene que hacerse siempre!
+								((PanelConfirmacion) panelConfirmacion).setConfirmacion(false);
+							}
+						} catch (InterruptedException e1) {
+							e1.printStackTrace();
+						}
+					}
+				}.start();
 			}
 		});
 	}

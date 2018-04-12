@@ -16,6 +16,7 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.concurrent.Semaphore;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.JLayeredPane;
@@ -30,7 +31,7 @@ public class PanelServiciosEmergenteBotones extends JPanel {
 	// Habría que mandarlo desde el Main, por ejemplo
 	private Texto t = new TextoManager(TextoManager.español).getTexto();
 
-	public PanelServiciosEmergenteBotones(MicroControladorPanelesPadreHijo microControlador, String padre, Controlador controlador) {
+	public PanelServiciosEmergenteBotones(MicroControladorPanelesPadreHijo microControlador, String padre, Controlador controlador, Semaphore s) {
 		this.setSize(new Dimension(695, 315));
 		this.setName("p" + this.getClass().getSimpleName().substring(1));
 		setLayout(null);
@@ -47,7 +48,7 @@ public class PanelServiciosEmergenteBotones extends JPanel {
 		panelContenedor.add(panelPrincipal);
 		panelPrincipal.setLayout(null);
 		
-		panelConfirmacion = new PanelConfirmacion(new MicroControladorLayers(panelContenedor), this.getName());
+		panelConfirmacion = new PanelConfirmacion(new MicroControladorLayers(panelContenedor), this.getName(), s);
 		panelConfirmacion.setBounds(147, 57, 400, 200);
 		panelContenedor.setLayer(panelConfirmacion, 0);
 		panelContenedor.add(panelConfirmacion);
@@ -63,8 +64,8 @@ public class PanelServiciosEmergenteBotones extends JPanel {
 		btnCerrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { // No modificar
 				// Devuelve control al padre
-				cerrarPanelConfirmacion();
 				microControlador.cambiarPanel(padre);
+				s.release(s.getQueueLength());
 			}
 		});
 		btnCerrar.setBounds(610, 11, 75, 50);
@@ -74,6 +75,23 @@ public class PanelServiciosEmergenteBotones extends JPanel {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelContenedor.setLayer(panelConfirmacion, 2);
+				
+				new Thread() {
+					public void run() {
+						try {
+							s.acquire();
+							
+							if (((PanelConfirmacion)panelConfirmacion).getConfirmacion() == true) {
+								// Actualizar ventana; en otro caso no hacer nada
+								
+								// Tiene que hacerse siempre!
+								((PanelConfirmacion) panelConfirmacion).setConfirmacion(false);
+							}
+						} catch (InterruptedException e1) {
+							e1.printStackTrace();
+						}
+					}
+				}.start();
 			}
 		});
 		btnNewButton.setBounds(253, 230, 189, 23);
