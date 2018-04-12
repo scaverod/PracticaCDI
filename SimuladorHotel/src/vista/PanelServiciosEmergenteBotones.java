@@ -45,7 +45,6 @@ public class PanelServiciosEmergenteBotones extends JPanel {
 		panelConfirmacion.setBounds(147, 57, 400, 200);
 		panelContenedor.setLayer(panelConfirmacion, 0);
 		panelContenedor.add(panelConfirmacion);
-		panelConfirmacion.setLayout(null);
 		
 		JLabel lblPanelEmergente = new JLabel(this.getName());
 		lblPanelEmergente.setHorizontalAlignment(SwingConstants.CENTER);
@@ -54,6 +53,7 @@ public class PanelServiciosEmergenteBotones extends JPanel {
 		panelPrincipal.add(lblPanelEmergente);
 		
 		JButton btnCerrar = new JButton("Cerrar");
+		btnCerrar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnCerrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { // No modificar
 				// Devuelve control al padre
@@ -61,17 +61,16 @@ public class PanelServiciosEmergenteBotones extends JPanel {
 				microControlador.cambiarPanel(padre);
 			}
 		});
-		btnCerrar.setBounds(596, 11, 89, 23);
+		btnCerrar.setBounds(610, 11, 75, 50);
 		panelPrincipal.add(btnCerrar);
 		
-		JButton btnNewButton = new JButton("New button");
+		JButton btnNewButton = new JButton("botonEjemploVentanaEmergente");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				panelConfirmacion = new PanelConfirmacion(new MicroControladorLayers(panelContenedor), PanelServiciosEmergenteAlmohada.this.getName());
 				panelContenedor.setLayer(panelConfirmacion, 2);
 			}
 		});
-		btnNewButton.setBounds(308, 230, 89, 23);
+		btnNewButton.setBounds(253, 230, 189, 23);
 		panelPrincipal.add(btnNewButton);
 	}
 	
