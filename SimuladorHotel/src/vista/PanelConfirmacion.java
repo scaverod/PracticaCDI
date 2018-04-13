@@ -2,6 +2,7 @@ package vista;
 
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
+import javax.swing.border.LineBorder;
 
 import controlador.MicroControladorLayers;
 import idiomas.Texto;
@@ -40,9 +41,12 @@ public class PanelConfirmacion extends JPanel {
 		add(lblTextoConfirmacion);
 		
 		JLabel lblPrecio = new JLabel(t.getLblCoste() + "<precio>");
+		lblPrecio.setOpaque(true);
 		lblPrecio.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPrecio.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblPrecio.setBounds(10, 62, 380, 40);
+		lblPrecio.setBackground(new Color(255, 255, 153));
+		lblPrecio.setBorder(new LineBorder(Color.ORANGE, 3));
 		add(lblPrecio);
 		
 		JButton btnNewButton = new JButton("Cancelar");
@@ -68,14 +72,6 @@ public class PanelConfirmacion extends JPanel {
 		btnAceptar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnAceptar.setBounds(53, 130, 120, 40);
 		add(btnAceptar);
-		
-		JLabel lblMiPadreEs = new JLabel("Mi padre es:");
-		lblMiPadreEs.setBounds(20, 105, 59, 14);
-		add(lblMiPadreEs);
-		
-		JLabel lblSs = new JLabel(panel);
-		lblSs.setBounds(89, 105, 301, 14);
-		add(lblSs);
 	}
 	
 	public boolean getConfirmacion() {
