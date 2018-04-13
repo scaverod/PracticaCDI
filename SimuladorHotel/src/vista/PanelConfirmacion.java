@@ -49,7 +49,7 @@ public class PanelConfirmacion extends JPanel {
 		lblPrecio.setBorder(new LineBorder(Color.ORANGE, 3));
 		add(lblPrecio);
 		
-		JButton btnNewButton = new JButton("Cancelar");
+		JButton btnNewButton = new JButton(t.getBtnCancelar());
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				confirmacion = false;
@@ -61,7 +61,7 @@ public class PanelConfirmacion extends JPanel {
 		btnNewButton.setBounds(226, 130, 120, 40);
 		add(btnNewButton);
 		
-		JButton btnAceptar = new JButton("Aceptar");
+		JButton btnAceptar = new JButton(t.getBtnAceptar());
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				confirmacion = true;

@@ -4,6 +4,7 @@ public abstract class Texto {
 	// Comunes
 	private String btnAceptar;
 	private String btnCerrar;
+	private String btnCancelar;
 
 	// Panel login
 	private String loginIniciaSesion;
@@ -460,5 +461,13 @@ public abstract class Texto {
 
 	public void setLblAumentarTexto(String lblAumentarTexto) {
 		this.lblAumentarTexto = lblAumentarTexto;
+	}
+
+	public String getBtnCancelar() {
+		return btnCancelar;
+	}
+
+	public void setBtnCancelar(String btnCancelar) {
+		this.btnCancelar = btnCancelar;
 	}
 }

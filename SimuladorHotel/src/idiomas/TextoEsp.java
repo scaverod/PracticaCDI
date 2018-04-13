@@ -5,6 +5,7 @@ public class TextoEsp extends Texto {
 		// Comunes
 		setBtnAceptar("Aceptar");
 		setBtnCerrar("Cerrar");
+		setBtnCancelar("Cancelar");
 
 		// Panel Login
 		setLoginIniciaSesion("Inicie sesión para usar la aplicación");

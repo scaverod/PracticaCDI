@@ -5,6 +5,7 @@ public class TextoEng extends Texto {
 		// Comunes
 		setBtnAceptar("Confirm");
 		setBtnCerrar("Close");
+		setBtnCancelar("Cancel");
 
 		// Panel Login
 		setLoginIniciaSesion("Login to use the app");
