@@ -5,10 +5,13 @@ import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import java.awt.CardLayout;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 import javax.swing.border.EtchedBorder;
 import controlador.Controlador;
+import controlador.MicroControladorLayersPadreHijo;
 import idiomas.Texto;
 import idiomas.TextoManager;
 import modelo.Cuenta.Idioma;
@@ -20,6 +23,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JToggleButton;
 import javax.swing.border.LineBorder;
+import javax.swing.JLayeredPane;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PanelCuenta extends JPanel {
 
@@ -28,7 +36,11 @@ public class PanelCuenta extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	private Texto t = new TextoManager(TextoManager.español).getTexto();
-	private final ButtonGroup btnIdiomas = new ButtonGroup();
+	private final ButtonGroup grupoBtnIdiomas = new ButtonGroup();
+	private JPanel panelPrincipal;
+	private JLayeredPane layeredPane;
+	private JPanel panelEmergenteContenedor;
+	private JPanel panelDetalles;
 
 	/**
 	 * Create the panel.
@@ -72,7 +84,7 @@ public class PanelCuenta extends JPanel {
 				controlador.getCuenta().setIdioma(Idioma.Castellano);
 			}
 		});
-		btnIdiomas.add(btnESP);
+		grupoBtnIdiomas.add(btnESP);
 		btnESP.setOpaque(false);
 		btnESP.setContentAreaFilled(false);
 
@@ -84,7 +96,7 @@ public class PanelCuenta extends JPanel {
 		});
 		btnUK.setBounds(170, 44, 108, 69);
 		btnUK.setSelectedIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/ukSelected.png")));
-		btnIdiomas.add(btnUK);
+		grupoBtnIdiomas.add(btnUK);
 		btnUK.setIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/uk.png")));
 		btnUK.setOpaque(false);
 		btnUK.setContentAreaFilled(false);
@@ -97,7 +109,7 @@ public class PanelCuenta extends JPanel {
 		});
 		btnRU.setBounds(309, 44, 108, 69);
 		btnRU.setSelectedIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/rumaniaSelected.png")));
-		btnIdiomas.add(btnRU);
+		grupoBtnIdiomas.add(btnRU);
 		btnRU.setIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/rumania.png")));
 		btnRU.setOpaque(false);
 		btnRU.setContentAreaFilled(false);
@@ -120,9 +132,25 @@ public class PanelCuenta extends JPanel {
 		btnLogout.setOpaque(true);
 		btnLogout.setContentAreaFilled(false);
 		setLayout(null);
-		add(lblHabitacion);
-		add(panelLogout);
-		add(panelIdioma);
+		
+		layeredPane = new JLayeredPane();
+		layeredPane.setBounds(0, 0, 931, 483);
+		add(layeredPane);
+		
+		panelPrincipal = new JPanel();
+		panelPrincipal.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+//				System.out.println("Me han pinchado :o");
+			}
+		});
+		layeredPane.setLayer(panelPrincipal, 1);
+		panelPrincipal.setBounds(0, 0, 931, 483);
+		layeredPane.add(panelPrincipal);
+		panelPrincipal.setLayout(null);
+		panelPrincipal.add(lblHabitacion);
+		panelPrincipal.add(panelLogout);
+		panelPrincipal.add(panelIdioma);
 		panelIdioma.setLayout(null);
 		panelIdioma.add(lblElegirIdioma);
 		panelIdioma.add(lblCastellano);
@@ -136,7 +164,7 @@ public class PanelCuenta extends JPanel {
 		panelGasto.setLayout(null);
 		panelGasto.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panelGasto.setBounds(468, 278, 451, 157);
-		add(panelGasto);
+		panelPrincipal.add(panelGasto);
 		panelGasto.setBorder(new LineBorder(Color.decode("#006df0"), 5, true));
 
 		JLabel lblGasto = new JLabel(t.getLblGasto());
@@ -146,6 +174,11 @@ public class PanelCuenta extends JPanel {
 		panelGasto.add(lblGasto);
 
 		JButton btnMsDetalles = new JButton(t.getBtnMsDetalles());
+		btnMsDetalles.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				changeToPanelEmergente(panelDetalles);
+			}
+		});
 		btnMsDetalles.setBorder(new LineBorder(Color.decode("#9bbfe3"), 3, true));
 		btnMsDetalles.setContentAreaFilled(false);
 		btnMsDetalles.setIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/details.png")));
@@ -176,7 +209,7 @@ public class PanelCuenta extends JPanel {
 		panelPersonalizar.setLayout(null);
 		panelPersonalizar.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		panelPersonalizar.setBounds(9, 113, 451, 322);
-		add(panelPersonalizar);
+		panelPrincipal.add(panelPersonalizar);
 		panelPersonalizar.setBorder(new LineBorder(Color.decode("#006df0"), 5, true));
 
 		JLabel lblPersonalizar = new JLabel(t.getLblPersonalizar());
@@ -272,6 +305,68 @@ public class PanelCuenta extends JPanel {
 		tglbtnAumentarTexto.setBorderPainted(false);
 		tglbtnAumentarTexto.setBounds(264, 249, 121, 39);
 		panelPersonalizar.add(tglbtnAumentarTexto);
+		
+		panelEmergenteContenedor = new JPanel();
+		panelEmergenteContenedor.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent evt) {
+				if (evt.getNewValue().equals(0)) {
+					//TODO: reactivar elementos del panelPrincipal (ahora panel al frente)
+					lblHabitacion.setEnabled(true);
+					lblElegirIdioma.setEnabled(true);
+					lblCastellano.setEnabled(true);
+					lblIngles.setEnabled(true);
+					lblRumano.setEnabled(true);
+					btnESP.setEnabled(true);
+					btnUK.setEnabled(true);
+					btnRU.setEnabled(true);
+					lblGasto.setEnabled(true);
+					btnMsDetalles.setEnabled(true);
+					lblGastoNumero.setEnabled(true);
+					lblGastoTotal.setEnabled(true);
+					lblPersonalizar.setEnabled(true);
+					lblModoNocturno.setEnabled(true);
+					tglbtnModoNocturno.setEnabled(true);
+					lblInvertirColores.setEnabled(true);
+					lblSalidaTexto.setEnabled(true);
+					lblAumentarTexto.setEnabled(true);
+					tglbtnInvertirColores.setEnabled(true);
+					tglbtnSalidaTexto.setEnabled(true);
+					tglbtnAumentarTexto.setEnabled(true);
+					btnLogout.setEnabled(true);
+				}
+				else if (evt.getNewValue().equals(2)) {
+					// TODO: desactivar elementos del panelPrincipal (ahora panel al fondo)
+					lblHabitacion.setEnabled(false);
+					lblElegirIdioma.setEnabled(false);
+					lblCastellano.setEnabled(false);
+					lblIngles.setEnabled(false);
+					lblRumano.setEnabled(false);
+					btnESP.setEnabled(false);
+					btnUK.setEnabled(false);
+					btnRU.setEnabled(false);
+					lblGasto.setEnabled(false);
+					btnMsDetalles.setEnabled(false);
+					lblGastoNumero.setEnabled(false);
+					lblGastoTotal.setEnabled(false);
+					lblPersonalizar.setEnabled(false);
+					lblModoNocturno.setEnabled(false);
+					tglbtnModoNocturno.setEnabled(false);
+					lblInvertirColores.setEnabled(false);
+					lblSalidaTexto.setEnabled(false);
+					lblAumentarTexto.setEnabled(false);
+					tglbtnInvertirColores.setEnabled(false);
+					tglbtnSalidaTexto.setEnabled(false);
+					tglbtnAumentarTexto.setEnabled(false);
+					btnLogout.setEnabled(false);
+				}
+			}
+		});
+		panelEmergenteContenedor.setBounds(118, 84, 695, 315);
+		layeredPane.add(panelEmergenteContenedor);
+		panelEmergenteContenedor.setLayout(new CardLayout(0, 0));
+		
+		panelDetalles = new PanelCuentaEmergenteDetalles(new MicroControladorLayersPadreHijo(layeredPane, panelEmergenteContenedor));
+		panelEmergenteContenedor.add(panelDetalles, panelDetalles.getName());
 
 		// Actualizar interfaz
 		if (controlador.getCuenta().getPersonalizacion().isModoNocturno()) {
@@ -294,5 +389,14 @@ public class PanelCuenta extends JPanel {
 			btnRU.setSelected(true);
 		}
 	}
-
+	
+	private void changeToPanelEmergente(JPanel subPanel) {
+		// Cambio el panel activo dentro del panel emergente
+		CardLayout l = (CardLayout) panelEmergenteContenedor.getLayout();
+		l.show(panelEmergenteContenedor, subPanel.getName());
+		
+		
+		// Pongo el panel emergente por encima del principal
+		layeredPane.setLayer(panelEmergenteContenedor, 2);
+	}
 }
