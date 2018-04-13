@@ -26,12 +26,15 @@ public class PanelServiciosEmergenteMinibar extends JPanel {
 	private JLayeredPane panelContenedor;
 	private JPanel panelPrincipal;
 	private JPanel panelConfirmacion;
+	private Semaphore s;
 	
 	// FIXME: temporal para que salga el texto en vez de "<dynamic>"
 	// Habría que mandarlo desde el Main, por ejemplo
 	private Texto t = new TextoManager(TextoManager.español).getTexto();
 
 	public PanelServiciosEmergenteMinibar(MicroControladorPanelesPadreHijo microControlador, String padre, Controlador controlador, Semaphore s) {
+		this.s = s;
+		
 		this.setSize(new Dimension(695, 315));
 		this.setName("p" + this.getClass().getSimpleName().substring(1));
 		setLayout(null);
@@ -48,10 +51,7 @@ public class PanelServiciosEmergenteMinibar extends JPanel {
 		panelContenedor.add(panelPrincipal);
 		panelPrincipal.setLayout(null);
 		
-		panelConfirmacion = new PanelConfirmacion(new MicroControladorLayers(panelContenedor), this.getName(), s);
-		panelConfirmacion.setBounds(147, 57, 400, 200);
-		panelContenedor.setLayer(panelConfirmacion, 0);
-		panelContenedor.add(panelConfirmacion);
+		crearPanelConfirmacion("<precio>");
 		
 		JLabel lblPanelEmergente = new JLabel(this.getName());
 		lblPanelEmergente.setHorizontalAlignment(SwingConstants.CENTER);
@@ -74,18 +74,18 @@ public class PanelServiciosEmergenteMinibar extends JPanel {
 		JButton btnNewButton = new JButton("botonEjemploVentanaEmergente");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panelContenedor.setLayer(panelConfirmacion, 2);
-				
 				new Thread() {
 					public void run() {
 						try {
+							mostrarPanelConfirmacion("<precio>");
+							
 							s.acquire();
 							
-							if (((PanelConfirmacion)panelConfirmacion).getConfirmacion() == true) {
+							if (((PanelConfirmacionServicios)panelConfirmacion).getConfirmacion() == true) {
 								// Actualizar ventana; en otro caso no hacer nada
 								
 								// Tiene que hacerse siempre!
-								((PanelConfirmacion) panelConfirmacion).setConfirmacion(false);
+								((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
 							}
 						} catch (InterruptedException e1) {
 							e1.printStackTrace();
@@ -100,5 +100,17 @@ public class PanelServiciosEmergenteMinibar extends JPanel {
 	
 	public void cerrarPanelConfirmacion() {
 		panelContenedor.setLayer(panelConfirmacion, 0);
+	}
+	
+	public void crearPanelConfirmacion(String precio) {
+		panelConfirmacion = new PanelConfirmacionServicios(new MicroControladorLayers(panelContenedor), this.getName(), s, precio);
+		panelConfirmacion.setBounds(147, 57, 400, 200);
+		panelContenedor.setLayer(panelConfirmacion, 0);
+		panelContenedor.add(panelConfirmacion);
+	}
+	
+	public void mostrarPanelConfirmacion(String precio) {
+		crearPanelConfirmacion(precio);
+		panelContenedor.setLayer(panelConfirmacion, 2);
 	}
 }

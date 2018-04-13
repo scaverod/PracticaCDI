@@ -18,7 +18,7 @@ import java.util.concurrent.Semaphore;
 import java.awt.event.ActionEvent;
 import java.awt.Rectangle;
 
-public class PanelConfirmacion extends JPanel {
+public class PanelConfirmacionServicios extends JPanel {
 	// FIXME: temporal para que salga el texto en vez de "<dynamic>"
 	// Habría que mandarlo desde el Main, por ejemplo
 	private Texto t = new TextoManager(TextoManager.english).getTexto();
@@ -27,7 +27,7 @@ public class PanelConfirmacion extends JPanel {
 	
 	private boolean confirmacion;
 
-	public PanelConfirmacion(MicroControladorLayers m, String panel, Semaphore s) {
+	public PanelConfirmacionServicios(MicroControladorLayers m, String panel, Semaphore s, String precio) {
 		this.setName("p" + this.getClass().getSimpleName().substring(1));
 		
 		setBounds(new Rectangle(0, 0, 400, 200));
@@ -40,7 +40,7 @@ public class PanelConfirmacion extends JPanel {
 		lblTextoConfirmacion.setBounds(10, 11, 380, 40);
 		add(lblTextoConfirmacion);
 		
-		JLabel lblPrecio = new JLabel(t.getLblCoste() + "<precio>");
+		JLabel lblPrecio = new JLabel(t.getLblCoste() + " " + precio);
 		lblPrecio.setOpaque(true);
 		lblPrecio.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPrecio.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -54,7 +54,7 @@ public class PanelConfirmacion extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				confirmacion = false;
 				s.release(s.getQueueLength());
-				m.changeLayer(PanelConfirmacion.this, 0);
+				m.changeLayer(PanelConfirmacionServicios.this, 0);
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -66,7 +66,7 @@ public class PanelConfirmacion extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				confirmacion = true;
 				s.release(s.getQueueLength());
-				m.changeLayer(PanelConfirmacion.this, 0);
+				m.changeLayer(PanelConfirmacionServicios.this, 0);
 			}
 		});
 		btnAceptar.setFont(new Font("Tahoma", Font.PLAIN, 15));
