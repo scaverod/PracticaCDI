@@ -15,6 +15,7 @@ import tiposVariable.StringDouble;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 
 import java.awt.event.ActionListener;
@@ -23,6 +24,7 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.border.EtchedBorder;
+import javax.swing.border.LineBorder;
 import javax.swing.JTextPane;
 
 public class PanelServiciosEmergenteTelevision extends JPanel {
@@ -71,6 +73,14 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 		});
 		btnCerrar.setBounds(596, 11, 89, 23);
 		panelPrincipal.add(btnCerrar);
+		
+		JLabel lblGif = new JLabel("");
+		lblGif.setBorder(new LineBorder(Color.GREEN));
+		lblGif.setOpaque(true);
+		lblGif.setVisible(false);
+		lblGif.setIcon(new ImageIcon(PanelServiciosEmergenteWifi.class.getResource("/iconos/check-gif-1.gif")));
+		lblGif.setBounds(287, 103, 120, 109);
+		panelPrincipal.add(lblGif);
 
 		JButton btnMoviestar = new JButton("");
 		btnMoviestar.addActionListener(new ActionListener() {
@@ -89,7 +99,9 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 								controlador.getCuenta().getGasto().addGasto(new StringDouble("Contratar Moviestar +",
 										controlador.getServicios().getTelevision().getPrecioMoviestarPlus()));
 								controlador.getServicios().getTelevision().setActivadoMoviestarPlus(true);
-
+								lblGif.setVisible(true);
+								Thread.sleep(2050);
+								lblGif.setVisible(false);
 								// Tiene que hacerse siempre!
 								((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
 							}
@@ -132,7 +144,9 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 								controlador.getCuenta().getGasto().addGasto(new StringDouble("Contratar Netflix",
 										controlador.getServicios().getTelevision().getPrecioNetflix()));
 								controlador.getServicios().getTelevision().setActivadoNetflix(true);
-
+								lblGif.setVisible(true);
+								Thread.sleep(2050);
+								lblGif.setVisible(false);
 								// Tiene que hacerse siempre!
 								((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
 							}
@@ -166,7 +180,9 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 								controlador.getCuenta().getGasto().addGasto(new StringDouble("Contratar BBC",
 										controlador.getServicios().getTelevision().getPrecioBBC()));
 								controlador.getServicios().getTelevision().setActivadoBBC(true);
-
+								lblGif.setVisible(true);
+								Thread.sleep(2050);
+								lblGif.setVisible(false);
 								// Tiene que hacerse siempre!
 								((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
 							}
@@ -200,7 +216,9 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 								controlador.getCuenta().getGasto().addGasto(new StringDouble("Contratar Bein Sport",
 										controlador.getServicios().getTelevision().getPrecioBeinSport()));
 								controlador.getServicios().getTelevision().setActivadoBeinSport(true);
-
+								lblGif.setVisible(true);
+								Thread.sleep(2050);
+								lblGif.setVisible(false);
 								// Tiene que hacerse siempre!
 								((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
 							}
