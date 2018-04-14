@@ -42,4 +42,5 @@ public class Gasto {
 		}
 		System.out.println("Gasto tolal: " + String.valueOf(gastoTotal));
 	}
+	
 }

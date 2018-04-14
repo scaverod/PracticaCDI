@@ -307,6 +307,7 @@ public class PanelCuenta extends JPanel {
 		panelPersonalizar.add(tglbtnAumentarTexto);
 		
 		panelEmergenteContenedor = new JPanel();
+		panelEmergenteContenedor.setSize(400, 330);
 		panelEmergenteContenedor.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent evt) {
 				if (evt.getNewValue().equals(0)) {
@@ -361,11 +362,11 @@ public class PanelCuenta extends JPanel {
 				}
 			}
 		});
-		panelEmergenteContenedor.setBounds(118, 84, 695, 315);
+		panelEmergenteContenedor.setBounds(267, 84, 397, 315);
 		layeredPane.add(panelEmergenteContenedor);
 		panelEmergenteContenedor.setLayout(new CardLayout(0, 0));
 		
-		panelDetalles = new PanelCuentaEmergenteDetalles(new MicroControladorLayersPadreHijo(layeredPane, panelEmergenteContenedor));
+		panelDetalles = new PanelCuentaEmergenteDetalles(new MicroControladorLayersPadreHijo(layeredPane, panelEmergenteContenedor), controlador);
 		panelEmergenteContenedor.add(panelDetalles, panelDetalles.getName());
 
 		// Actualizar interfaz
