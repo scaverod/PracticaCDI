@@ -16,6 +16,8 @@ import javax.swing.JLayeredPane;
 
 import java.awt.Color;
 import java.awt.Font;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.concurrent.Semaphore;
@@ -71,6 +73,14 @@ public class PanelServiciosEmergenteInformacion extends JPanel {
 		btnCerrar.setBounds(596, 11, 89, 23);
 		panelPrincipal.add(btnCerrar);
 
+		JLabel lblGif = new JLabel("");
+		lblGif.setBorder(new LineBorder(Color.GREEN));
+		lblGif.setOpaque(true);
+		lblGif.setVisible(false);
+		lblGif.setIcon(new ImageIcon(PanelServiciosEmergenteWifi.class.getResource("/iconos/check-gif-1.gif")));
+		lblGif.setBounds(287, 103, 120, 109);
+		panelPrincipal.add(lblGif);
+
 		JButton btnAdquirir = new JButton(t.getBtnAdquirir());
 		btnAdquirir.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnAdquirir.addActionListener(new ActionListener() {
@@ -84,7 +94,9 @@ public class PanelServiciosEmergenteInformacion extends JPanel {
 							s.acquire();
 
 							if (((PanelConfirmacionServicios) panelConfirmacion).getConfirmacion() == true) {
-								// Actualizar ventana; en otro caso no hacer nada
+								lblGif.setVisible(true);
+								Thread.sleep(2050);
+								lblGif.setVisible(false);
 
 								// Tiene que hacerse siempre!
 								((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);

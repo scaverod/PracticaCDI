@@ -80,6 +80,14 @@ public class PanelServiciosEmergenteTaxi extends JPanel {
 		txtpnInfo.setBounds(45, 63, 593, 75);
 		panelPrincipal.add(txtpnInfo);
 
+		JLabel lblGif = new JLabel("");
+		lblGif.setBorder(new LineBorder(Color.GREEN));
+		lblGif.setOpaque(true);
+		lblGif.setVisible(false);
+		lblGif.setIcon(new ImageIcon(PanelServiciosEmergenteWifi.class.getResource("/iconos/check-gif-1.gif")));
+		lblGif.setBounds(287, 103, 120, 109);
+		panelPrincipal.add(lblGif);
+
 		JButton btnCabify = new JButton("");
 		btnCabify.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -93,7 +101,9 @@ public class PanelServiciosEmergenteTaxi extends JPanel {
 							if (((PanelConfirmacionServicios) panelConfirmacion).getConfirmacion() == true) {
 								// Actualizar ventana; en otro caso no hacer nada
 								generarGasto("Cabifay", controlador);
-
+								lblGif.setVisible(true);
+								Thread.sleep(2050);
+								lblGif.setVisible(false);
 								// Tiene que hacerse siempre!
 								((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
 							}
@@ -122,7 +132,9 @@ public class PanelServiciosEmergenteTaxi extends JPanel {
 							if (((PanelConfirmacionServicios) panelConfirmacion).getConfirmacion() == true) {
 								// Actualizar ventana; en otro caso no hacer nada
 								generarGasto("Uber", controlador);
-
+								lblGif.setVisible(true);
+								Thread.sleep(2050);
+								lblGif.setVisible(false);
 								// Tiene que hacerse siempre!
 								((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
 							}
@@ -151,7 +163,9 @@ public class PanelServiciosEmergenteTaxi extends JPanel {
 							if (((PanelConfirmacionServicios) panelConfirmacion).getConfirmacion() == true) {
 								// Actualizar ventana; en otro caso no hacer nada
 								generarGasto("Taxi", controlador);
-
+								lblGif.setVisible(true);
+								Thread.sleep(2050);
+								lblGif.setVisible(false);
 								// Tiene que hacerse siempre!
 								((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
 							}
