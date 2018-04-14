@@ -36,28 +36,31 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 	// Habría que mandarlo desde el Main, por ejemplo
 	private Texto t = new TextoManager(TextoManager.español).getTexto();
 
-	public PanelServiciosEmergenteTelevision(MicroControladorPanelesPadreHijo microControlador, String padre, Controlador controlador, Semaphore s) {
+	public PanelServiciosEmergenteTelevision(MicroControladorPanelesPadreHijo microControlador, String padre,
+			Controlador controlador, Semaphore s) {
 		this.s = s;
-		
-		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102)));
+
+		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102),
+				new Color(0, 0, 102)));
 		this.setSize(new Dimension(695, 315));
 		this.setName("p" + this.getClass().getSimpleName().substring(1)); // No modificar
 		setLayout(null);
-		
+
 		panelContenedor = new JLayeredPane();
 		panelContenedor.setBounds(0, 0, 695, 315);
 		add(panelContenedor);
 		panelContenedor.setLayout(null);
-		
+
 		panelPrincipal = new JPanel();
-		panelPrincipal.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 109, 240), new Color(0, 109, 240), new Color(0, 109, 240), new Color(0, 109, 240)));
+		panelPrincipal.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 109, 240), new Color(0, 109, 240),
+				new Color(0, 109, 240), new Color(0, 109, 240)));
 		panelPrincipal.setBounds(0, 0, 695, 315);
 		panelContenedor.setLayer(panelPrincipal, 1);
 		panelContenedor.add(panelPrincipal);
 		panelPrincipal.setLayout(null);
-		
+
 		crearPanelConfirmacion("<precio>");
-		
+
 		JButton btnCerrar = new JButton(t.getBtnCerrar());
 		btnCerrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { // No modificar
@@ -75,17 +78,18 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 				new Thread() {
 					public void run() {
 						try {
-							mostrarPanelConfirmacion(String.valueOf(controlador.getServicios().getTelevision().getPrecioMoviestarPlus()));
-							
+							mostrarPanelConfirmacion(String
+									.valueOf(controlador.getServicios().getTelevision().getPrecioMoviestarPlus()));
+
 							s.acquire();
-							
-							if (((PanelConfirmacionServicios)panelConfirmacion).getConfirmacion() == true) {
+
+							if (((PanelConfirmacionServicios) panelConfirmacion).getConfirmacion() == true) {
 								// Actualizar ventana; en otro caso no hacer nada
 								btnMoviestar.setEnabled(false);
-								controlador.getCuenta().getGasto().addGasto(new StringDouble("Contratar Moviesta +",
+								controlador.getCuenta().getGasto().addGasto(new StringDouble("Contratar Moviestar +",
 										controlador.getServicios().getTelevision().getPrecioMoviestarPlus()));
 								controlador.getServicios().getTelevision().setActivadoMoviestarPlus(true);
-								
+
 								// Tiene que hacerse siempre!
 								((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
 							}
@@ -97,7 +101,8 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 			}
 		});
 		btnMoviestar.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		btnMoviestar.setIcon(new ImageIcon(PanelServiciosEmergenteTelevision.class.getResource("/iconos/movistar.png")));
+		btnMoviestar
+				.setIcon(new ImageIcon(PanelServiciosEmergenteTelevision.class.getResource("/iconos/movistar.png")));
 		btnMoviestar.setBounds(59, 138, 100, 90);
 		btnMoviestar.setContentAreaFilled(false);
 		panelPrincipal.add(btnMoviestar);
@@ -116,17 +121,18 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 				new Thread() {
 					public void run() {
 						try {
-							mostrarPanelConfirmacion(String.valueOf(controlador.getServicios().getTelevision().getPrecioNetflix()));
-							
+							mostrarPanelConfirmacion(
+									String.valueOf(controlador.getServicios().getTelevision().getPrecioNetflix()));
+
 							s.acquire();
-							
-							if (((PanelConfirmacionServicios)panelConfirmacion).getConfirmacion() == true) {
+
+							if (((PanelConfirmacionServicios) panelConfirmacion).getConfirmacion() == true) {
 								// Actualizar ventana; en otro caso no hacer nada
 								btnNetflix.setEnabled(false);
 								controlador.getCuenta().getGasto().addGasto(new StringDouble("Contratar Netflix",
 										controlador.getServicios().getTelevision().getPrecioNetflix()));
 								controlador.getServicios().getTelevision().setActivadoNetflix(true);
-								
+
 								// Tiene que hacerse siempre!
 								((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
 							}
@@ -149,17 +155,18 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 				new Thread() {
 					public void run() {
 						try {
-							mostrarPanelConfirmacion(String.valueOf(controlador.getServicios().getTelevision().getPrecioBBC()));
-							
+							mostrarPanelConfirmacion(
+									String.valueOf(controlador.getServicios().getTelevision().getPrecioBBC()));
+
 							s.acquire();
-							
-							if (((PanelConfirmacionServicios)panelConfirmacion).getConfirmacion() == true) {
+
+							if (((PanelConfirmacionServicios) panelConfirmacion).getConfirmacion() == true) {
 								// Actualizar ventana; en otro caso no hacer nada
 								btnBBC.setEnabled(false);
 								controlador.getCuenta().getGasto().addGasto(new StringDouble("Contratar BBC",
 										controlador.getServicios().getTelevision().getPrecioBBC()));
 								controlador.getServicios().getTelevision().setActivadoBBC(true);
-								
+
 								// Tiene que hacerse siempre!
 								((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
 							}
@@ -178,21 +185,22 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 
 		JButton btnBeinSport = new JButton("");
 		btnBeinSport.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {				
+			public void actionPerformed(ActionEvent e) {
 				new Thread() {
 					public void run() {
 						try {
-							mostrarPanelConfirmacion(String.valueOf(controlador.getServicios().getTelevision().getPrecioBeinSport()));
-							
+							mostrarPanelConfirmacion(
+									String.valueOf(controlador.getServicios().getTelevision().getPrecioBeinSport()));
+
 							s.acquire();
-							
-							if (((PanelConfirmacionServicios)panelConfirmacion).getConfirmacion() == true) {
+
+							if (((PanelConfirmacionServicios) panelConfirmacion).getConfirmacion() == true) {
 								// Actualizar ventana; en otro caso no hacer nada
 								btnBeinSport.setEnabled(false);
 								controlador.getCuenta().getGasto().addGasto(new StringDouble("Contratar Bein Sport",
 										controlador.getServicios().getTelevision().getPrecioBeinSport()));
 								controlador.getServicios().getTelevision().setActivadoBeinSport(true);
-								
+
 								// Tiene que hacerse siempre!
 								((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
 							}
@@ -210,18 +218,19 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 		btnBeinSport.setContentAreaFilled(false);
 		panelPrincipal.add(btnBeinSport);
 	}
-	
+
 	public void cerrarPanelConfirmacion() {
 		panelContenedor.setLayer(panelConfirmacion, 0);
 	}
-	
+
 	public void crearPanelConfirmacion(String precio) {
-		panelConfirmacion = new PanelConfirmacionServicios(new MicroControladorLayers(panelContenedor), this.getName(), s, precio);
+		panelConfirmacion = new PanelConfirmacionServicios(new MicroControladorLayers(panelContenedor), this.getName(),
+				s, precio);
 		panelConfirmacion.setBounds(147, 57, 400, 200);
 		panelContenedor.setLayer(panelConfirmacion, 0);
 		panelContenedor.add(panelConfirmacion);
 	}
-	
+
 	public void mostrarPanelConfirmacion(String precio) {
 		crearPanelConfirmacion(precio);
 		panelContenedor.setLayer(panelConfirmacion, 2);

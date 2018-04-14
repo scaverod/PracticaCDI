@@ -53,7 +53,7 @@ public class Ventana extends JFrame {
 	private JPanel panelServicios;
 	private JPanel panelCuenta;
 	private Controlador controlador;
-	
+
 	// FIXME: temporal para que salga el texto en vez de "<dynamic>"
 	// Habría que mandarlo desde el Main, por ejemplo
 	private Texto t = new TextoManager(TextoManager.english).getTexto();
@@ -65,8 +65,8 @@ public class Ventana extends JFrame {
 				| UnsupportedLookAndFeelException e) {
 			e.printStackTrace();
 		}
-		//TODO: cargar los datos
-		this.controlador = new Controlador ();
+		// TODO: cargar los datos
+		this.controlador = new Controlador();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1366, 745);
 		contentPane = new JPanel();
@@ -144,13 +144,13 @@ public class Ventana extends JFrame {
 
 		JSeparator separador = new JSeparator();
 		separador.setBounds(0, 0, 939, 1);
-		
-		//Es una prueba
+
+		// Es una prueba
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setBounds(301, 7, 337, 200);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setIcon(new ImageIcon(Ventana.class.getResource("/iconos/logoAplicacion.png")));
-		
+
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setBounds(304, 389, 334, 96);
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -173,6 +173,7 @@ public class Ventana extends JFrame {
 			public void mousePressed(MouseEvent e) {
 				xCoord = e.getX();
 			}
+
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				int diferencia = e.getX() - xCoord;
@@ -243,7 +244,7 @@ public class Ventana extends JFrame {
 		btnCuenta = new JToggleButton(t.getMenuPrincipalBtnCuenta());
 		btnCuenta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//TODO: Controlar esto para que se guarde el estado del resto de las cosas
+				// TODO: Controlar esto para que se guarde el estado del resto de las cosas
 				panelCuenta = new PanelCuenta(controlador);
 				pantallaMenu.add(panelCuenta, panelCuenta.getName());
 				changeToCuenta();
@@ -299,77 +300,78 @@ public class Ventana extends JFrame {
 		if (campoUsuario.getText().length() == 0 || campoPassword.getPassword().length == 0) {
 			// TODO: esto es temporal; hay que crear los mensajes en otra clase para poder
 			// cambiar de idioma fácilmente
-			JOptionPane.showMessageDialog(contentPane, t.getLoginErrorMensaje() + ".", t.getLoginErrorTitulo(), JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(contentPane, t.getLoginErrorMensaje() + ".", t.getLoginErrorTitulo(),
+					JOptionPane.ERROR_MESSAGE);
 		} else {
 			CardLayout l = (CardLayout) pantalla.getLayout();
 			l.show(pantalla, panelPrincipal.getName());
 			pantallaMenuActiva = "panelHabitacion";
 		}
 	}
-	
+
 	private void changeToHabitacion() {
 		CardLayout l = (CardLayout) pantallaMenu.getLayout();
 		l.show(pantallaMenu, panelHabitacion.getName());
 		pantallaMenuActiva = panelHabitacion.getName();
 	}
-	
+
 	private void changeToSpa() {
 		CardLayout l = (CardLayout) pantallaMenu.getLayout();
 		l.show(pantallaMenu, panelSpa.getName());
 		pantallaMenuActiva = panelSpa.getName();
 	}
-	
+
 	private void changeToServicios() {
 		CardLayout l = (CardLayout) pantallaMenu.getLayout();
 		l.show(pantallaMenu, panelServicios.getName());
 		pantallaMenuActiva = panelServicios.getName();
 	}
-	
+
 	private void changeToCuenta() {
 		CardLayout l = (CardLayout) pantallaMenu.getLayout();
 		l.show(pantallaMenu, panelCuenta.getName());
 		pantallaMenuActiva = panelCuenta.getName();
 	}
-	
+
 	private void desplazamientoDerecha() {
 		switch (pantallaMenuActiva) {
-			case "panelHabitacion":
-				btnCuenta.setSelected(true);
-				changeToCuenta();
-				break;
-			case "panelSpa":
-				btnHabitacion.setSelected(true);
-				changeToHabitacion();
-				break;
-			case "panelServicios":
-				btnSpa.setSelected(true);
-				changeToSpa();
-				break;
-			case "panelCuenta":
-				btnServicios.setSelected(true);
-				changeToServicios();
-				break;
+		case "panelHabitacion":
+			btnCuenta.setSelected(true);
+			changeToCuenta();
+			break;
+		case "panelSpa":
+			btnHabitacion.setSelected(true);
+			changeToHabitacion();
+			break;
+		case "panelServicios":
+			btnSpa.setSelected(true);
+			changeToSpa();
+			break;
+		case "panelCuenta":
+			btnServicios.setSelected(true);
+			changeToServicios();
+			break;
 		}
 	}
-	
+
 	private void desplazamientoIzquierda() {
 		switch (pantallaMenuActiva) {
-			case "panelHabitacion":
-				btnSpa.setSelected(true);
-				changeToSpa();
-				break;
-			case "panelSpa":
-				btnServicios.setSelected(true);
-				changeToServicios();
-				break;
-			case "panelServicios":
-				btnCuenta.setSelected(true);
-				changeToCuenta();
-				break;
-			case "panelCuenta":
-				btnHabitacion.setSelected(true);
-				changeToHabitacion();
-				break;
+		case "panelHabitacion":
+			btnSpa.setSelected(true);
+			changeToSpa();
+			break;
+		case "panelSpa":
+			btnServicios.setSelected(true);
+			changeToServicios();
+			break;
+		case "panelServicios":
+			btnCuenta.setSelected(true);
+			changeToCuenta();
+			break;
+		case "panelCuenta":
+			btnHabitacion.setSelected(true);
+			changeToHabitacion();
+			break;
 		}
 	}
 }

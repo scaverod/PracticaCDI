@@ -31,33 +31,36 @@ public class PanelServiciosEmergenteTaxi extends JPanel {
 	private JPanel panelPrincipal;
 	private JPanel panelConfirmacion;
 	private Semaphore s;
-	
+
 	// FIXME: temporal para que salga el texto en vez de "<dynamic>"
 	// Habría que mandarlo desde el Main, por ejemplo
 	private Texto t = new TextoManager(TextoManager.español).getTexto();
 
-	public PanelServiciosEmergenteTaxi(MicroControladorPanelesPadreHijo microControlador, String padre, Controlador controlador, Semaphore s) {
+	public PanelServiciosEmergenteTaxi(MicroControladorPanelesPadreHijo microControlador, String padre,
+			Controlador controlador, Semaphore s) {
 		this.s = s;
-		
-		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102)));
+
+		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102),
+				new Color(0, 0, 102)));
 		this.setSize(new Dimension(695, 315));
 		this.setName("p" + this.getClass().getSimpleName().substring(1)); // No modificar
 		setLayout(null);
-		
+
 		panelContenedor = new JLayeredPane();
 		panelContenedor.setBounds(0, 0, 695, 315);
 		add(panelContenedor);
 		panelContenedor.setLayout(null);
-		
+
 		panelPrincipal = new JPanel();
-		panelPrincipal.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 109, 240), new Color(0, 109, 240), new Color(0, 109, 240), new Color(0, 109, 240)));
+		panelPrincipal.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 109, 240), new Color(0, 109, 240),
+				new Color(0, 109, 240), new Color(0, 109, 240)));
 		panelPrincipal.setBounds(0, 0, 695, 315);
 		panelContenedor.setLayer(panelPrincipal, 1);
 		panelContenedor.add(panelPrincipal);
 		panelPrincipal.setLayout(null);
-		
+
 		crearPanelConfirmacion("<precio>");
-		
+
 		JButton btnCerrar = new JButton(t.getBtnCerrar());
 		btnCerrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { // No modificar
@@ -84,13 +87,13 @@ public class PanelServiciosEmergenteTaxi extends JPanel {
 					public void run() {
 						try {
 							mostrarPanelConfirmacion(String.valueOf(controlador.getServicios().getTaxi().getPrecio()));
-							
+
 							s.acquire();
-							
-							if (((PanelConfirmacionServicios)panelConfirmacion).getConfirmacion() == true) {
+
+							if (((PanelConfirmacionServicios) panelConfirmacion).getConfirmacion() == true) {
 								// Actualizar ventana; en otro caso no hacer nada
 								generarGasto("Cabifay", controlador);
-								
+
 								// Tiene que hacerse siempre!
 								((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
 							}
@@ -113,13 +116,13 @@ public class PanelServiciosEmergenteTaxi extends JPanel {
 					public void run() {
 						try {
 							mostrarPanelConfirmacion(String.valueOf(controlador.getServicios().getTaxi().getPrecio()));
-							
+
 							s.acquire();
-							
-							if (((PanelConfirmacionServicios)panelConfirmacion).getConfirmacion() == true) {
+
+							if (((PanelConfirmacionServicios) panelConfirmacion).getConfirmacion() == true) {
 								// Actualizar ventana; en otro caso no hacer nada
 								generarGasto("Uber", controlador);
-								
+
 								// Tiene que hacerse siempre!
 								((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
 							}
@@ -142,13 +145,13 @@ public class PanelServiciosEmergenteTaxi extends JPanel {
 					public void run() {
 						try {
 							mostrarPanelConfirmacion(String.valueOf(controlador.getServicios().getTaxi().getPrecio()));
-							
+
 							s.acquire();
-							
-							if (((PanelConfirmacionServicios)panelConfirmacion).getConfirmacion() == true) {
+
+							if (((PanelConfirmacionServicios) panelConfirmacion).getConfirmacion() == true) {
 								// Actualizar ventana; en otro caso no hacer nada
 								generarGasto("Taxi", controlador);
-								
+
 								// Tiene que hacerse siempre!
 								((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
 							}
@@ -186,18 +189,19 @@ public class PanelServiciosEmergenteTaxi extends JPanel {
 		controlador.getCuenta().getGasto().addGasto(
 				new StringDouble("Contrata servicio " + compania, controlador.getServicios().getTaxi().getPrecio()));
 	}
-	
+
 	public void cerrarPanelConfirmacion() {
 		panelContenedor.setLayer(panelConfirmacion, 0);
 	}
-	
+
 	public void crearPanelConfirmacion(String precio) {
-		panelConfirmacion = new PanelConfirmacionServicios(new MicroControladorLayers(panelContenedor), this.getName(), s, precio);
+		panelConfirmacion = new PanelConfirmacionServicios(new MicroControladorLayers(panelContenedor), this.getName(),
+				s, precio);
 		panelConfirmacion.setBounds(147, 57, 400, 200);
 		panelContenedor.setLayer(panelConfirmacion, 0);
 		panelContenedor.add(panelConfirmacion);
 	}
-	
+
 	public void mostrarPanelConfirmacion(String precio) {
 		crearPanelConfirmacion(precio);
 		panelContenedor.setLayer(panelConfirmacion, 2);

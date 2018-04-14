@@ -38,7 +38,7 @@ public class PanelCuentaEmergenteDetalles extends JPanel {
 				m.changeLayer(0);
 			}
 		});
-		btnCerrar.setBounds(304, 3, 89, 35);
+		btnCerrar.setBounds(304, 11, 89, 35);
 		add(btnCerrar);
 		Tabla tabla = new Tabla();
 		ArrayList<StringDouble> listagastos = controlador.getCuenta().getGasto().getGastos();
@@ -49,7 +49,8 @@ public class PanelCuentaEmergenteDetalles extends JPanel {
 			}
 		}
 		JScrollPane scrollPane = new JScrollPane(tabla);
-		scrollPane.setBounds(10, 49, 383, 270);
+		scrollPane.setMaximumSize(new Dimension(400, 330));
+		scrollPane.setBounds(10, 49, 380, 270);
 		add(scrollPane);
 
 		JLabel lblListaDeGastos = new JLabel("Lista de Gastos");

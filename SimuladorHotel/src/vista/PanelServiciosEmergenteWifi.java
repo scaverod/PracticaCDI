@@ -23,6 +23,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.concurrent.Semaphore;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class PanelServiciosEmergenteWifi extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -30,33 +31,36 @@ public class PanelServiciosEmergenteWifi extends JPanel {
 	private JPanel panelPrincipal;
 	private JPanel panelConfirmacion;
 	private Semaphore s;
-	
+
 	// FIXME: temporal para que salga el texto en vez de "<dynamic>"
 	// Habría que mandarlo desde el Main, por ejemplo
 	private Texto t = new TextoManager(TextoManager.español).getTexto();
 
-	public PanelServiciosEmergenteWifi(MicroControladorPanelesPadreHijo microControlador, String padre, Controlador controlador, Semaphore s) {
+	public PanelServiciosEmergenteWifi(MicroControladorPanelesPadreHijo microControlador, String padre,
+			Controlador controlador, Semaphore s) {
 		this.s = s;
-		
-		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102)));
+
+		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102),
+				new Color(0, 0, 102)));
 		this.setSize(new Dimension(695, 315));
 		this.setName("p" + this.getClass().getSimpleName().substring(1)); // No modificar
 		setLayout(null);
-		
+
 		panelContenedor = new JLayeredPane();
 		panelContenedor.setBounds(0, 0, 695, 315);
 		add(panelContenedor);
 		panelContenedor.setLayout(null);
-		
+
 		panelPrincipal = new JPanel();
-		panelPrincipal.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 109, 240), new Color(0, 109, 240), new Color(0, 109, 240), new Color(0, 109, 240)));
+		panelPrincipal.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 109, 240), new Color(0, 109, 240),
+				new Color(0, 109, 240), new Color(0, 109, 240)));
 		panelPrincipal.setBounds(0, 0, 695, 315);
 		panelContenedor.setLayer(panelPrincipal, 1);
 		panelContenedor.add(panelPrincipal);
 		panelPrincipal.setLayout(null);
-		
+
 		crearPanelConfirmacion("<precio>");
-		
+
 		JButton btnCerrar = new JButton(t.getBtnCerrar());
 		btnCerrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { // No modificar
@@ -98,13 +102,21 @@ public class PanelServiciosEmergenteWifi extends JPanel {
 		panelPrecio.add(labelPrecioYPwd);
 		labelPrecioYPwd.setFont(new Font("Tahoma", Font.PLAIN, 15));
 
+		JLabel lblGif = new JLabel("");
+		lblGif.setBorder(new LineBorder(Color.GREEN));
+		lblGif.setOpaque(true);
+		lblGif.setVisible(false);
+		lblGif.setIcon(new ImageIcon(PanelServiciosEmergenteWifi.class.getResource("/iconos/check-gif-1.gif")));
+		lblGif.setBounds(287, 103, 120, 109);
+		panelPrincipal.add(lblGif);
+
 		btnAdquirir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				new Thread() {
 					public void run() {
 						try {
 							mostrarPanelConfirmacion(String.valueOf(controlador.getServicios().getWifi().getPrecio()));
-							
+
 							s.acquire();
 
 							if (((PanelConfirmacionServicios) panelConfirmacion).getConfirmacion() == true) {
@@ -113,11 +125,14 @@ public class PanelServiciosEmergenteWifi extends JPanel {
 								panelPrecio.setBorder(new LineBorder(Color.decode("#005cb9"), 3));
 								panelPrecio.setBackground(Color.decode("#9bbfe3"));
 								String pwd = controlador.getServicios().getWifi().activarWifi();
-								controlador.getCuenta().getGasto().addGasto(new StringDouble("Contratar WiFi", controlador.getServicios().getWifi().getPrecio()));
+								controlador.getCuenta().getGasto().addGasto(new StringDouble("Contratar WiFi",
+										controlador.getServicios().getWifi().getPrecio()));
 								lblPrecio.setText("");
 								labelPrecioYPwd.setText(t.getPanelServiciosEmergenteWifiPwdTxt() + " " + pwd);
 								btnAdquirir.setVisible(false);
-								
+								lblGif.setVisible(true);
+								Thread.sleep(2050);
+								lblGif.setVisible(false);
 								// Tiene que hacerse siempre!
 								((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
 							}
@@ -129,18 +144,19 @@ public class PanelServiciosEmergenteWifi extends JPanel {
 			}
 		});
 	}
-	
+
 	public void cerrarPanelConfirmacion() {
 		panelContenedor.setLayer(panelConfirmacion, 0);
 	}
-	
+
 	public void crearPanelConfirmacion(String precio) {
-		panelConfirmacion = new PanelConfirmacionServicios(new MicroControladorLayers(panelContenedor), this.getName(), s, precio);
+		panelConfirmacion = new PanelConfirmacionServicios(new MicroControladorLayers(panelContenedor), this.getName(),
+				s, precio);
 		panelConfirmacion.setBounds(147, 57, 400, 200);
 		panelContenedor.setLayer(panelConfirmacion, 0);
 		panelContenedor.add(panelConfirmacion);
 	}
-	
+
 	public void mostrarPanelConfirmacion(String precio) {
 		crearPanelConfirmacion(precio);
 		panelContenedor.setLayer(panelConfirmacion, 2);

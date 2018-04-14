@@ -132,16 +132,16 @@ public class PanelCuenta extends JPanel {
 		btnLogout.setOpaque(true);
 		btnLogout.setContentAreaFilled(false);
 		setLayout(null);
-		
+
 		layeredPane = new JLayeredPane();
 		layeredPane.setBounds(0, 0, 931, 483);
 		add(layeredPane);
-		
+
 		panelPrincipal = new JPanel();
 		panelPrincipal.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-//				System.out.println("Me han pinchado :o");
+				// System.out.println("Me han pinchado :o");
 			}
 		});
 		layeredPane.setLayer(panelPrincipal, 1);
@@ -305,13 +305,13 @@ public class PanelCuenta extends JPanel {
 		tglbtnAumentarTexto.setBorderPainted(false);
 		tglbtnAumentarTexto.setBounds(264, 249, 121, 39);
 		panelPersonalizar.add(tglbtnAumentarTexto);
-		
+
 		panelEmergenteContenedor = new JPanel();
 		panelEmergenteContenedor.setSize(400, 330);
 		panelEmergenteContenedor.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent evt) {
 				if (evt.getNewValue().equals(0)) {
-					//TODO: reactivar elementos del panelPrincipal (ahora panel al frente)
+					// TODO: reactivar elementos del panelPrincipal (ahora panel al frente)
 					lblHabitacion.setEnabled(true);
 					lblElegirIdioma.setEnabled(true);
 					lblCastellano.setEnabled(true);
@@ -334,8 +334,7 @@ public class PanelCuenta extends JPanel {
 					tglbtnSalidaTexto.setEnabled(true);
 					tglbtnAumentarTexto.setEnabled(true);
 					btnLogout.setEnabled(true);
-				}
-				else if (evt.getNewValue().equals(2)) {
+				} else if (evt.getNewValue().equals(2)) {
 					// TODO: desactivar elementos del panelPrincipal (ahora panel al fondo)
 					lblHabitacion.setEnabled(false);
 					lblElegirIdioma.setEnabled(false);
@@ -365,8 +364,9 @@ public class PanelCuenta extends JPanel {
 		panelEmergenteContenedor.setBounds(267, 84, 397, 315);
 		layeredPane.add(panelEmergenteContenedor);
 		panelEmergenteContenedor.setLayout(new CardLayout(0, 0));
-		
-		panelDetalles = new PanelCuentaEmergenteDetalles(new MicroControladorLayersPadreHijo(layeredPane, panelEmergenteContenedor), controlador);
+
+		panelDetalles = new PanelCuentaEmergenteDetalles(
+				new MicroControladorLayersPadreHijo(layeredPane, panelEmergenteContenedor), controlador);
 		panelEmergenteContenedor.add(panelDetalles, panelDetalles.getName());
 
 		// Actualizar interfaz
@@ -390,13 +390,12 @@ public class PanelCuenta extends JPanel {
 			btnRU.setSelected(true);
 		}
 	}
-	
+
 	private void changeToPanelEmergente(JPanel subPanel) {
 		// Cambio el panel activo dentro del panel emergente
 		CardLayout l = (CardLayout) panelEmergenteContenedor.getLayout();
 		l.show(panelEmergenteContenedor, subPanel.getName());
-		
-		
+
 		// Pongo el panel emergente por encima del principal
 		layeredPane.setLayer(panelEmergenteContenedor, 2);
 	}
