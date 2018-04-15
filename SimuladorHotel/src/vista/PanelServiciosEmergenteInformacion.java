@@ -10,6 +10,7 @@ import controlador.MicroControladorLayers;
 import controlador.MicroControladorPanelesPadreHijo;
 import idiomas.Texto;
 import idiomas.TextoManager;
+import tiposVariable.StringDouble;
 
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
@@ -97,6 +98,7 @@ public class PanelServiciosEmergenteInformacion extends JPanel {
 								lblGif.setVisible(true);
 								Thread.sleep(2050);
 								lblGif.setVisible(false);
+								controlador.getCuenta().getGasto().addGasto(new StringDouble("Solicitar Información", 0));
 
 								// Tiene que hacerse siempre!
 								((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);

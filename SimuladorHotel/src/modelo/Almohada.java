@@ -1,6 +1,5 @@
 package modelo;
 
-import java.util.Arrays;
 
 public class Almohada {
 
