@@ -94,7 +94,7 @@ public class PanelServiciosEmergenteTaxi extends JPanel {
 				new Thread() {
 					public void run() {
 						try {
-							mostrarPanelConfirmacion(String.valueOf(controlador.getServicios().getTaxi().getPrecio()));
+							mostrarPanelConfirmacion(String.valueOf(controlador.getServicios().getTaxi().getPrecio())+ " €");
 
 							s.acquire();
 
@@ -125,7 +125,7 @@ public class PanelServiciosEmergenteTaxi extends JPanel {
 				new Thread() {
 					public void run() {
 						try {
-							mostrarPanelConfirmacion(String.valueOf(controlador.getServicios().getTaxi().getPrecio()));
+							mostrarPanelConfirmacion(String.valueOf(controlador.getServicios().getTaxi().getPrecio())+ " €");
 
 							s.acquire();
 
@@ -156,7 +156,7 @@ public class PanelServiciosEmergenteTaxi extends JPanel {
 				new Thread() {
 					public void run() {
 						try {
-							mostrarPanelConfirmacion(String.valueOf(controlador.getServicios().getTaxi().getPrecio()));
+							mostrarPanelConfirmacion(String.valueOf(controlador.getServicios().getTaxi().getPrecio())+ " €");
 
 							s.acquire();
 

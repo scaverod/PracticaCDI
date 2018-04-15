@@ -73,7 +73,7 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 		});
 		btnCerrar.setBounds(596, 11, 89, 23);
 		panelPrincipal.add(btnCerrar);
-		
+
 		JLabel lblGif = new JLabel("");
 		lblGif.setBorder(new LineBorder(Color.GREEN));
 		lblGif.setOpaque(true);
@@ -88,8 +88,9 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 				new Thread() {
 					public void run() {
 						try {
-							mostrarPanelConfirmacion(String
-									.valueOf(controlador.getServicios().getTelevision().getPrecioMoviestarPlus()));
+							mostrarPanelConfirmacion(
+									String.valueOf(controlador.getServicios().getTelevision().getPrecioMoviestarPlus())
+											+ " €");
 
 							s.acquire();
 
@@ -134,7 +135,8 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 					public void run() {
 						try {
 							mostrarPanelConfirmacion(
-									String.valueOf(controlador.getServicios().getTelevision().getPrecioNetflix()));
+									String.valueOf(controlador.getServicios().getTelevision().getPrecioNetflix())
+											+ " €");
 
 							s.acquire();
 
@@ -170,7 +172,7 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 					public void run() {
 						try {
 							mostrarPanelConfirmacion(
-									String.valueOf(controlador.getServicios().getTelevision().getPrecioBBC()));
+									String.valueOf(controlador.getServicios().getTelevision().getPrecioBBC()) + " €");
 
 							s.acquire();
 
@@ -206,7 +208,8 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 					public void run() {
 						try {
 							mostrarPanelConfirmacion(
-									String.valueOf(controlador.getServicios().getTelevision().getPrecioBeinSport()));
+									String.valueOf(controlador.getServicios().getTelevision().getPrecioBeinSport())
+											+ " €");
 
 							s.acquire();
 
