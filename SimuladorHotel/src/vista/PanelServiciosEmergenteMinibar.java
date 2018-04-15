@@ -17,6 +17,8 @@ import tiposVariable.StringDouble;
 import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.Font;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.concurrent.Semaphore;
@@ -55,6 +57,14 @@ public class PanelServiciosEmergenteMinibar extends JPanel {
 		panelContenedor.setLayer(panelPrincipal, 1);
 		panelContenedor.add(panelPrincipal);
 		panelPrincipal.setLayout(null);
+
+		JLabel lblGif = new JLabel("");
+		lblGif.setBorder(new LineBorder(Color.GREEN));
+		lblGif.setOpaque(true);
+		lblGif.setVisible(false);
+		lblGif.setIcon(new ImageIcon(PanelServiciosEmergenteWifi.class.getResource("/iconos/check-gif-1.gif")));
+		lblGif.setBounds(287, 103, 120, 109);
+		panelPrincipal.add(lblGif);
 
 		JTextPane txtpnInfo = new JTextPane();
 		txtpnInfo.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -108,6 +118,9 @@ public class PanelServiciosEmergenteMinibar extends JPanel {
 								// Actualizar ventana; en otro caso no hacer nada
 								controlador.getCuenta().getGasto().addGasto(new StringDouble("Reponer MiniBar",
 										controlador.getServicios().getMinibar().getPrecio()));
+								lblGif.setVisible(true);
+								Thread.sleep(2050);
+								lblGif.setVisible(false);
 
 								// Tiene que hacerse siempre!
 								((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
