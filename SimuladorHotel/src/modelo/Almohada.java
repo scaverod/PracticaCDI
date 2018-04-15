@@ -1,6 +1,5 @@
 package modelo;
 
-
 public class Almohada {
 
 	private double precioVisco;
@@ -60,17 +59,6 @@ public class Almohada {
 
 	public void setPrecioPluma(double precioPluma) {
 		this.precioPluma = precioPluma;
-	}
-
-	/**
-	 * Método que genera un array de strings con los nombres de los tipos de
-	 * almohadas disponibles.
-	 * 
-	 * @return Array de Strings con los nombres de las almohadas.
-	 */
-	private String[] getTipoAlmohadas() {
-		String aux[] = { viscoelastica, latex, gel, pluma };
-		return aux;
 	}
 
 }

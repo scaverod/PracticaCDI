@@ -1,31 +1,25 @@
 package vista;
 
 import java.awt.Dimension;
-
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
-
 import controlador.Controlador;
 import controlador.MicroControladorLayers;
 import controlador.MicroControladorPanelesPadreHijo;
 import idiomas.Texto;
 import idiomas.TextoManager;
 import tiposVariable.StringDouble;
-
 import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.Font;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.concurrent.Semaphore;
 import java.awt.event.ActionEvent;
-import javax.swing.SwingConstants;
 import javax.swing.JLayeredPane;
-import javax.swing.border.TitledBorder;
 import javax.swing.border.EtchedBorder;
 
 public class PanelServiciosEmergenteAlmohada extends JPanel {
@@ -38,8 +32,8 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 	// FIXME: temporal para que salga el texto en vez de "<dynamic>"
 	// Habría que mandarlo desde el Main, por ejemplo
 	private Texto t = new TextoManager(TextoManager.español).getTexto();
-	//TODO: COMPLETAR TEXTO
-	
+	// TODO: COMPLETAR TEXTO
+
 	public PanelServiciosEmergenteAlmohada(MicroControladorPanelesPadreHijo microControlador, String padre,
 			Controlador controlador, Semaphore s) {
 		this.s = s;
@@ -118,7 +112,8 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 		label.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		panelPrecioLatex.add(label);
 
-		JLabel labelPrecioLatex = new JLabel(String.valueOf(controlador.getServicios().getAlmohada().getPrecioLatex()) + " \u20AC");
+		JLabel labelPrecioLatex = new JLabel(
+				String.valueOf(controlador.getServicios().getAlmohada().getPrecioLatex()) + " \u20AC");
 		labelPrecioLatex.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		panelPrecioLatex.add(labelPrecioLatex);
 
@@ -133,7 +128,8 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 		label_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		panelPrecioPluma.add(label_2);
 
-		JLabel labelPrecioPluma = new JLabel(String.valueOf(controlador.getServicios().getAlmohada().getPrecioPluma()) + " \u20AC");
+		JLabel labelPrecioPluma = new JLabel(
+				String.valueOf(controlador.getServicios().getAlmohada().getPrecioPluma()) + " \u20AC");
 		labelPrecioPluma.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		panelPrecioPluma.add(labelPrecioPluma);
 
@@ -148,7 +144,8 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 		label_4.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		panelPrecioGel.add(label_4);
 
-		JLabel labelPrecioGel = new JLabel(String.valueOf(controlador.getServicios().getAlmohada().getPrecioLatex()) + " \u20AC");
+		JLabel labelPrecioGel = new JLabel(
+				String.valueOf(controlador.getServicios().getAlmohada().getPrecioLatex()) + " \u20AC");
 		labelPrecioGel.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		panelPrecioGel.add(labelPrecioGel);
 
@@ -214,43 +211,43 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 				}.start();
 			}
 		});
-		
-				JButton btnComprarVisco = new JButton("");
-				btnComprarVisco.setContentAreaFilled(false);
-				btnComprarVisco.setOpaque(false);
-				btnComprarVisco
-						.setIcon(new ImageIcon(PanelServiciosEmergenteAlmohada.class.getResource("/iconos/comprar.png")));
-				btnComprarVisco.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						new Thread() {
-							public void run() {
-								try {
-									mostrarPanelConfirmacion(
-											String.valueOf(controlador.getServicios().getAlmohada().getPrecioVisco()) + " €");
 
-									s.acquire();
+		JButton btnComprarVisco = new JButton("");
+		btnComprarVisco.setContentAreaFilled(false);
+		btnComprarVisco.setOpaque(false);
+		btnComprarVisco
+				.setIcon(new ImageIcon(PanelServiciosEmergenteAlmohada.class.getResource("/iconos/comprar.png")));
+		btnComprarVisco.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new Thread() {
+					public void run() {
+						try {
+							mostrarPanelConfirmacion(
+									String.valueOf(controlador.getServicios().getAlmohada().getPrecioVisco()) + " €");
 
-									if (((PanelConfirmacionServicios) panelConfirmacion).getConfirmacion() == true) {
-										// Actualizar ventana; en otro caso no hacer nada
-										controlador.getCuenta().getGasto()
-												.addGasto(new StringDouble("Contratar Almoahada Viscoelástica",
-														controlador.getServicios().getAlmohada().getPrecioVisco()));
-										lblGif.setVisible(true);
-										Thread.sleep(2050);
-										lblGif.setVisible(false);
+							s.acquire();
 
-										// Tiene que hacerse siempre!
-										((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
-									}
-								} catch (InterruptedException e1) {
-									e1.printStackTrace();
-								}
+							if (((PanelConfirmacionServicios) panelConfirmacion).getConfirmacion() == true) {
+								// Actualizar ventana; en otro caso no hacer nada
+								controlador.getCuenta().getGasto()
+										.addGasto(new StringDouble("Contratar Almoahada Viscoelástica",
+												controlador.getServicios().getAlmohada().getPrecioVisco()));
+								lblGif.setVisible(true);
+								Thread.sleep(2050);
+								lblGif.setVisible(false);
+
+								// Tiene que hacerse siempre!
+								((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
 							}
-						}.start();
+						} catch (InterruptedException e1) {
+							e1.printStackTrace();
+						}
 					}
-				});
-				btnComprarVisco.setBounds(532, 91, 75, 35);
-				panelPrincipal.add(btnComprarVisco);
+				}.start();
+			}
+		});
+		btnComprarVisco.setBounds(532, 91, 75, 35);
+		panelPrincipal.add(btnComprarVisco);
 		btnComprarLatex.setContentAreaFilled(false);
 		btnComprarLatex
 				.setIcon(new ImageIcon(PanelServiciosEmergenteAlmohada.class.getResource("/iconos/comprar.png")));

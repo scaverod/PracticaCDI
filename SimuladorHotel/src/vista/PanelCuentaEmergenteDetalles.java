@@ -5,7 +5,6 @@ import javax.swing.border.BevelBorder;
 
 import controlador.Controlador;
 import controlador.MicroControladorLayersPadreHijo;
-import modelo.Gasto;
 import tiposVariable.StringDouble;
 import tiposVariable.Tabla;
 
@@ -16,7 +15,6 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
-import javax.swing.SwingConstants;
 import javax.swing.JScrollPane;
 import java.awt.Dimension;
 
