@@ -21,7 +21,6 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.concurrent.Semaphore;
 import java.awt.event.ActionEvent;
-import javax.swing.SwingConstants;
 import javax.swing.JLayeredPane;
 import javax.swing.ImageIcon;
 
