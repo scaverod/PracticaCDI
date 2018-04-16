@@ -66,7 +66,14 @@ public class TextoEsp extends Texto {
 		// Panel Emergen Botones
 		setPanelServiciosEmergenteBotonesTxt(
 				"Nuestros hoteles cuentan con una atenci\u00F3n totalmente personalizada. Con solo pulsar el bot\u00F3n, un botones se acercar\u00E1 hasta su habitaci\u00F3n para ayudarle en lo que necesite.\r\nDisponible las 24 horas al d\u00EDa");
-
+		
+		//Panel Emergen Almofada
+		setPanelServiciosEmergentealmohadaLatex("Látex");
+		setPanelServiciosEmergentealmohadaVisco("Viscoelástica");
+		setPanelServiciosEmergentealmohadaGel("Gel");
+		setPanelServiciosEmergentealmohadaPluma("Pluma");
+		setPanelServiciosEmergentealmohadaTxt("Completar -> Linea 75 TextoESP");
+		
 		// Panel usuario
 		setLblCuentaHabitacion("Habitación");
 		setLblElegirIdioma("Elegir idioma");

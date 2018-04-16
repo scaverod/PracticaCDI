@@ -39,7 +39,7 @@ public class TextoEng extends Texto {
 		setPanelServiciosBtnTelevision("Buy channels");
 		setPanelServiciosBtnWifi("Enable WiFi");
 		setPanelServiciosBtnInformacion("Ask info");
-		
+
 		// Panel Emergen Informacion
 		setBtnAdquirir("Acquire");
 		setTxtInformacion(
@@ -58,12 +58,20 @@ public class TextoEng extends Texto {
 				"You have purchased the WiFi service. We hope you can enjoy the best quality of our internet connection.\n\nTo start using WiFi, enter the key in your devices.");
 		setPanelServiciosEmergenteWifiPwdTxt("WiFi password:");
 
-		// Panel Emergen Txi
+		// Panel Emergen Taxi
 		setPanelServiciosEmergenteTaxiTxt(
 				"Do not waste your time calling a vehicle for your travel. We do it for you.\n\nList of associated companies:");
-		
+
 		// Panel Emergen Botones
-		setPanelServiciosEmergenteBotonesTxt("Our hotels have a totally personalized service. With just pressing the button, a bellguy will come to your room to help you with what you need.\n Available 24 hours a day");
+		setPanelServiciosEmergenteBotonesTxt(
+				"Our hotels have a totally personalized service. With just pressing the button, a bellguy will come to your room to help you with what you need.\n Available 24 hours a day");
+
+		// Panel Emergen Almofada
+		setPanelServiciosEmergentealmohadaLatex("Latex");
+		setPanelServiciosEmergentealmohadaVisco("Viscoelastic");
+		setPanelServiciosEmergentealmohadaGel("Gel");
+		setPanelServiciosEmergentealmohadaPluma("Feather");
+		setPanelServiciosEmergentealmohadaTxt("Completar -> Linea 74 TextoEng");
 
 		// TODO: panel usuario
 		setLblCuentaHabitacion("Room");

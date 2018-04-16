@@ -53,10 +53,16 @@ public abstract class Texto {
 	private String panelServiciosEmergenteWifiTxt;
 	private String panelServiciosEmergenteWifiActivadoTxt;
 	private String panelServiciosEmergenteWifiPwdTxt;
-	
+
 	// Panel Emergente Wifi
 	private String panelServiciosEmergenteBotonesTxt;
-	
+
+	// Panel Emergente Almohada
+	private String panelServiciosEmergentealmohadaLatex;
+	private String panelServiciosEmergentealmohadaVisco;
+	private String panelServiciosEmergentealmohadaGel;
+	private String panelServiciosEmergentealmohadaPluma;
+	private String panelServiciosEmergentealmohadaTxt;
 
 	// Panel Emergente Taxi
 	private String panelServiciosEmergenteTaxiTxt;
@@ -481,5 +487,45 @@ public abstract class Texto {
 
 	public void setPanelServiciosEmergenteBotonesTxt(String panelServiciosEmergenteBotonesTxt) {
 		this.panelServiciosEmergenteBotonesTxt = panelServiciosEmergenteBotonesTxt;
+	}
+
+	public String getPanelServiciosEmergentealmohadaLatex() {
+		return panelServiciosEmergentealmohadaLatex;
+	}
+
+	public void setPanelServiciosEmergentealmohadaLatex(String panelServiciosEmergentealmohadaLatex) {
+		this.panelServiciosEmergentealmohadaLatex = panelServiciosEmergentealmohadaLatex;
+	}
+
+	public String getPanelServiciosEmergentealmohadaVisco() {
+		return panelServiciosEmergentealmohadaVisco;
+	}
+
+	public void setPanelServiciosEmergentealmohadaVisco(String panelServiciosEmergentealmohadaVisco) {
+		this.panelServiciosEmergentealmohadaVisco = panelServiciosEmergentealmohadaVisco;
+	}
+
+	public String getPanelServiciosEmergentealmohadaPluma() {
+		return panelServiciosEmergentealmohadaPluma;
+	}
+
+	public void setPanelServiciosEmergentealmohadaPluma(String panelServiciosEmergentealmohadaPluma) {
+		this.panelServiciosEmergentealmohadaPluma = panelServiciosEmergentealmohadaPluma;
+	}
+
+	public String getPanelServiciosEmergentealmohadaTxt() {
+		return panelServiciosEmergentealmohadaTxt;
+	}
+
+	public void setPanelServiciosEmergentealmohadaTxt(String panelServiciosEmergentealmohadaTxt) {
+		this.panelServiciosEmergentealmohadaTxt = panelServiciosEmergentealmohadaTxt;
+	}
+
+	public String getPanelServiciosEmergentealmohadaGel() {
+		return panelServiciosEmergentealmohadaGel;
+	}
+
+	public void setPanelServiciosEmergentealmohadaGel(String panelServiciosEmergentealmohadaGel) {
+		this.panelServiciosEmergentealmohadaGel = panelServiciosEmergentealmohadaGel;
 	}
 }

@@ -81,7 +81,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 		txtpnInfo.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		txtpnInfo.setEditable(false);
 		txtpnInfo.setOpaque(false);
-		txtpnInfo.setText("Aquí va el texto");
+		txtpnInfo.setText(t.getPanelServiciosEmergentealmohadaTxt());
 		txtpnInfo.setBounds(45, 31, 555, 35);
 		panelPrincipal.add(txtpnInfo);
 
@@ -158,7 +158,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 		panelPrincipal.add(textPaneVisco);
 
 		JTextPane textPaneLatex = new JTextPane();
-		textPaneLatex.setText("Latex");
+		textPaneLatex.setText(t.getPanelServiciosEmergentealmohadaLatex());
 		textPaneLatex.setOpaque(false);
 		textPaneLatex.setFont(new Font("Tahoma", Font.BOLD, 14));
 		textPaneLatex.setEditable(false);
@@ -166,7 +166,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 		panelPrincipal.add(textPaneLatex);
 
 		JTextPane textPanePluma = new JTextPane();
-		textPanePluma.setText("Pluma");
+		textPanePluma.setText(t.getPanelServiciosEmergentealmohadaPluma());
 		textPanePluma.setOpaque(false);
 		textPanePluma.setFont(new Font("Tahoma", Font.BOLD, 14));
 		textPanePluma.setEditable(false);
@@ -174,7 +174,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 		panelPrincipal.add(textPanePluma);
 
 		JTextPane textPaneGel = new JTextPane();
-		textPaneGel.setText("Gel");
+		textPaneGel.setText(t.getPanelServiciosEmergentealmohadaGel());
 		textPaneGel.setOpaque(false);
 		textPaneGel.setFont(new Font("Tahoma", Font.BOLD, 14));
 		textPaneGel.setEditable(false);
