@@ -63,6 +63,10 @@ public class TextoEsp extends Texto {
 		setPanelServiciosEmergenteTaxiTxt(
 				"No pierdas tu tiempo llamando a un vehículo para tu traslado. Nosotros lo hacemos por tí.\n\nLista de empresas asociadas:");
 
+		// Panel Emergen Botones
+		setPanelServiciosEmergenteBotonesTxt(
+				"Nuestros hoteles cuentan con una atenci\u00F3n totalmente personalizada. Con solo pulsar el bot\u00F3n, un botones se acercar\u00E1 hasta su habitaci\u00F3n para ayudarle en lo que necesite.\r\nDisponible las 24 horas al d\u00EDa");
+
 		// Panel usuario
 		setLblCuentaHabitacion("Habitación");
 		setLblElegirIdioma("Elegir idioma");

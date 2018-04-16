@@ -53,6 +53,10 @@ public abstract class Texto {
 	private String panelServiciosEmergenteWifiTxt;
 	private String panelServiciosEmergenteWifiActivadoTxt;
 	private String panelServiciosEmergenteWifiPwdTxt;
+	
+	// Panel Emergente Wifi
+	private String panelServiciosEmergenteBotonesTxt;
+	
 
 	// Panel Emergente Taxi
 	private String panelServiciosEmergenteTaxiTxt;
@@ -469,5 +473,13 @@ public abstract class Texto {
 
 	public void setBtnCancelar(String btnCancelar) {
 		this.btnCancelar = btnCancelar;
+	}
+
+	public String getPanelServiciosEmergenteBotonesTxt() {
+		return panelServiciosEmergenteBotonesTxt;
+	}
+
+	public void setPanelServiciosEmergenteBotonesTxt(String panelServiciosEmergenteBotonesTxt) {
+		this.panelServiciosEmergenteBotonesTxt = panelServiciosEmergenteBotonesTxt;
 	}
 }

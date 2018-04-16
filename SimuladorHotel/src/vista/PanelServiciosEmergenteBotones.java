@@ -35,7 +35,7 @@ public class PanelServiciosEmergenteBotones extends JPanel {
 
 	// FIXME: temporal para que salga el texto en vez de "<dynamic>"
 	// Habría que mandarlo desde el Main, por ejemplo
-	private Texto t = new TextoManager(TextoManager.español).getTexto();
+	private Texto t = new TextoManager(TextoManager.english).getTexto();
 
 	public PanelServiciosEmergenteBotones(MicroControladorPanelesPadreHijo microControlador, String padre,
 			Controlador controlador, Semaphore s) {
@@ -84,7 +84,7 @@ public class PanelServiciosEmergenteBotones extends JPanel {
 		txtpnInfo.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		txtpnInfo.setEditable(false);
 		txtpnInfo.setOpaque(false);
-		txtpnInfo.setText(t.getTxtInformacion());
+		txtpnInfo.setText(t.getPanelServiciosEmergenteBotonesTxt());
 		txtpnInfo.setBounds(45, 63, 593, 75);
 		panelPrincipal.add(txtpnInfo);
 
