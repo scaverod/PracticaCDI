@@ -30,10 +30,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class PanelCuenta extends JPanel {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private Texto t = new TextoManager(TextoManager.español).getTexto();
 	private final ButtonGroup grupoBtnIdiomas = new ButtonGroup();
@@ -41,10 +37,6 @@ public class PanelCuenta extends JPanel {
 	private JLayeredPane layeredPane;
 	private JPanel panelEmergenteContenedor;
 	private JPanel panelDetalles;
-
-	/**
-	 * Create the panel.
-	 */
 
 	public PanelCuenta(Controlador controlador) {
 

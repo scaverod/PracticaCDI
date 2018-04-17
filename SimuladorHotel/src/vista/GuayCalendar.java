@@ -73,7 +73,10 @@ public class GuayCalendar extends JPanel {
 		JButton btnAumentarAnyo = new JButton("");
 		btnAumentarAnyo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				if (comboAnyo.getSelectedIndex() == 0)
+					comboAnyo.setSelectedIndex(1);
+				else
+					comboAnyo.setSelectedIndex(0);
 			}
 		});
 		btnAumentarAnyo.setIcon(new ImageIcon(GuayCalendar.class.getResource("/iconos/flechaArriba_x32_blue.png")));
@@ -93,6 +96,14 @@ public class GuayCalendar extends JPanel {
 		comboDia = new JComboBox<Integer>();
 		
 		JButton btnDisminuirAnyo = new JButton("");
+		btnDisminuirAnyo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (comboAnyo.getSelectedIndex() == 0)
+					comboAnyo.setSelectedIndex(1);
+				else
+					comboAnyo.setSelectedIndex(0);
+			}
+		});
 		btnDisminuirAnyo.setIcon(new ImageIcon(GuayCalendar.class.getResource("/iconos/flechaAbajo_x32_blue.png")));
 		btnDisminuirAnyo.setContentAreaFilled(false);
 		btnDisminuirAnyo.setBounds(278, 164, 120, 41);
