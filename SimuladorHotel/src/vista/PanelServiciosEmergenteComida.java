@@ -107,7 +107,7 @@ public class PanelServiciosEmergenteComida extends JPanel {
 		JButton btnAdquirir = new JButton(t.getBtnAdquirir());
 		btnAdquirir.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		int hora = Tiempo.getTiempoActual().getHora();
-		if(hora < 7 || hora >= 0)
+		if(hora < 7 && hora >= 0)
 			btnAdquirir.setEnabled(false);
 		else btnAdquirir.setEnabled(true);
 		btnAdquirir.addActionListener(new ActionListener() {
