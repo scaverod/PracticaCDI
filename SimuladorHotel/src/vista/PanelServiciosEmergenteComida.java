@@ -13,6 +13,7 @@ import controlador.MicroControladorPanelesPadreHijo;
 import idiomas.Texto;
 import idiomas.TextoManager;
 import tiposVariable.StringDouble;
+import tiposVariable.Tiempo;
 
 import javax.swing.JLabel;
 import java.awt.Color;
@@ -23,7 +24,6 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.concurrent.Semaphore;
 import java.awt.event.ActionEvent;
-import javax.swing.SwingConstants;
 import javax.swing.JLayeredPane;
 
 public class PanelServiciosEmergenteComida extends JPanel {
@@ -106,6 +106,10 @@ public class PanelServiciosEmergenteComida extends JPanel {
 
 		JButton btnAdquirir = new JButton(t.getBtnAdquirir());
 		btnAdquirir.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		int hora = Tiempo.getTiempoActual().getHora();
+		if(hora < 7 || hora >= 0)
+			btnAdquirir.setEnabled(false);
+		else btnAdquirir.setEnabled(true);
 		btnAdquirir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new Thread() {
