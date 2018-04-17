@@ -35,7 +35,7 @@ public class PanelCuenta extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Texto t = new TextoManager(TextoManager.español).getTexto();
+	private Texto t = new TextoManager(TextoManager.espaÃ±ol).getTexto();
 	private final ButtonGroup grupoBtnIdiomas = new ButtonGroup();
 	private JPanel panelPrincipal;
 	private JLayeredPane layeredPane;
