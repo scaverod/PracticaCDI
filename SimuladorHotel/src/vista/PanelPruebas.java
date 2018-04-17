@@ -46,7 +46,7 @@ public class PanelPruebas extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		panelHora = new SelectorHora();
+		panelHora = new SelectorHora(0,24);
 		panelHora.setBounds(94, 37, 230, 206);
 		contentPane.add(panelHora);
 

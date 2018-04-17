@@ -25,11 +25,17 @@ public class SelectorHora extends JPanel {
 
 	private int horas;
 	private int minutos;
+	private int maxHoras;
+	private int minHoras;
 	private JComboBox<Integer> comboHoras;
 	private JComboBox<Integer> comboMinutos;
+	private JButton btnAumentarMinutos;
+	private JButton btnAumentarHoras;
+	private JButton btnDisminuirHoras;
+	private JButton btnDisminuirMinutos;
 
 	@SuppressWarnings("deprecation")
-	public SelectorHora() {
+	public SelectorHora(int min, int max) {
 		setSize(new Dimension(229, 205));
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -39,10 +45,18 @@ public class SelectorHora extends JPanel {
 		}
 
 		setLayout(null);
-
+		this.maxHoras = min;
+		this.minHoras = max;
 		Date d = new Date(System.currentTimeMillis());
-		horas = d.getHours();
 		minutos = d.getMinutes();
+		maxHoras = max;
+		minHoras = min;
+
+		if (d.getHours() >= minHoras && d.getHours() <= maxHoras) {
+			horas = d.getHours();
+		} else {
+			horas = minHoras;
+		}
 
 		JLabel label = new JLabel(":");
 		label.setForeground(new Color(0, 109, 240));
@@ -51,14 +65,14 @@ public class SelectorHora extends JPanel {
 		label.setBounds(99, 66, 30, 72);
 		add(label);
 
-		JButton btnAumentarHoras = new JButton("");
+		btnAumentarHoras = new JButton("");
 		btnAumentarHoras.setContentAreaFilled(false);
 		btnAumentarHoras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (horas < 24)
+				if (horas < maxHoras)
 					horas++;
 				else
-					horas = 0;
+					horas = minHoras;
 
 				comboHoras.setSelectedItem(horas);
 			}
@@ -67,7 +81,7 @@ public class SelectorHora extends JPanel {
 		btnAumentarHoras.setBounds(0, 0, 89, 41);
 		add(btnAumentarHoras);
 
-		JButton btnAumentarMinutos = new JButton("");
+		btnAumentarMinutos = new JButton("");
 		btnAumentarMinutos.setContentAreaFilled(false);
 		btnAumentarMinutos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -83,14 +97,14 @@ public class SelectorHora extends JPanel {
 		btnAumentarMinutos.setBounds(139, 0, 89, 41);
 		add(btnAumentarMinutos);
 
-		JButton btnDisminuirHoras = new JButton("");
+		btnDisminuirHoras = new JButton("");
 		btnDisminuirHoras.setContentAreaFilled(false);
 		btnDisminuirHoras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (horas > 0)
+				if (horas > minHoras)
 					horas--;
 				else
-					horas = 24;
+					horas = maxHoras;
 
 				comboHoras.setSelectedItem(horas);
 			}
@@ -99,7 +113,7 @@ public class SelectorHora extends JPanel {
 		btnDisminuirHoras.setBounds(0, 164, 89, 41);
 		add(btnDisminuirHoras);
 
-		JButton btnDisminuirMinutos = new JButton("");
+		btnDisminuirMinutos = new JButton("");
 		btnDisminuirMinutos.setContentAreaFilled(false);
 		btnDisminuirMinutos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -123,8 +137,7 @@ public class SelectorHora extends JPanel {
 		});
 		comboHoras.setForeground(new Color(0, 109, 240));
 		comboHoras.setFont(new Font("Tahoma", Font.PLAIN, 40));
-		comboHoras.setModel(new DefaultComboBoxModel<Integer>(new Integer[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
-				13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24 }));
+		this.setRangoHora(minHoras, maxHoras);
 		comboHoras.setSelectedItem(horas);
 		comboHoras.setBounds(0, 52, 89, 101);
 		add(comboHoras);
@@ -156,5 +169,42 @@ public class SelectorHora extends JPanel {
 
 	public Tiempo getTiempo() {
 		return new Tiempo(horas, minutos);
+	}
+
+	public void setTiempo(Tiempo tiempo) {
+		comboHoras.setSelectedIndex(tiempo.getHora() - minHoras);
+		comboMinutos.setSelectedIndex(tiempo.getMinutos());
+	}
+
+	public void desactivar() {
+		comboHoras.setEnabled(false);
+		comboMinutos.setEnabled(false);
+		btnAumentarMinutos.setEnabled(false);
+		btnAumentarHoras.setEnabled(false);
+		btnDisminuirHoras.setEnabled(false);
+		btnDisminuirMinutos.setEnabled(false);
+	}
+
+	public void activar() {
+		comboHoras.setEnabled(true);
+		comboMinutos.setEnabled(true);
+		btnAumentarMinutos.setEnabled(true);
+		btnAumentarHoras.setEnabled(true);
+		btnDisminuirHoras.setEnabled(true);
+		btnDisminuirMinutos.setEnabled(true);
+	}
+
+	public void setRangoHora(int min, int max) {
+		int numhoras = 1 + max - min;
+		this.maxHoras = max;
+		this.minHoras = min;
+		Integer[] horas = new Integer[numhoras];
+		int i = 0;
+		while (min <= max) {
+			horas[i] = min;
+			min++;
+			i++;
+		}
+		comboHoras.setModel(new DefaultComboBoxModel<Integer>(horas));
 	}
 }
