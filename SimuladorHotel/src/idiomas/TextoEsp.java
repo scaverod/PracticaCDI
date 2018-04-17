@@ -74,6 +74,18 @@ public class TextoEsp extends Texto {
 		setPanelServiciosEmergentealmohadaPluma("Pluma");
 		setPanelServiciosEmergentealmohadaTxt("Completar -> Linea 75 TextoESP");
 		
+		//Panel Emergente Comida
+		setPanelServiciosEmergenteComidaTxt(
+				"Nuestros hoteles cuentan con una atenci\u00F3n totalmente personalizada. Con solo pulsar el bot\u00F3n, un botones le llevará la comida desde nuestro exclusivo restaurante directamente a su habitación, para que pueda disfrutar de nuestra comida gourmet con total comodidad");
+		
+		//Panel Emergente Toallas
+		setPanelServiciosEmergenteToallasTxt(
+				"Nuestros hoteles cuentan con una atenci\u00F3n totalmente personalizada. Con solo pulsar el bot\u00F3n, nuestro servicio de limpieza subirá a su habitación con un juego de toallas limpias. Servicio disponible las 24 horas del día");
+		
+		//Panel Emergente Minibar
+		setPanelServiciosEmergenteMinibarTxt(
+				"Nuestros hoteles cuentan con una atenci\u00F3n totalmente personalizada. Con solo pulsar el bot\u00F3n, un botones repondrá todos los artículos del minibar, para que siempre pueda disfrutar de las mejores bebidas y snacks que tenemos a su disposición");
+		
 		// Panel usuario
 		setLblCuentaHabitacion("Habitación");
 		setLblElegirIdioma("Elegir idioma");

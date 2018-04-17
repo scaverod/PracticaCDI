@@ -3,17 +3,22 @@ package vista;
 import java.awt.Dimension;
 
 import javax.swing.JPanel;
+import javax.swing.JTextPane;
 import javax.swing.border.BevelBorder;
+import javax.swing.border.LineBorder;
 
 import controlador.Controlador;
 import controlador.MicroControladorLayers;
 import controlador.MicroControladorPanelesPadreHijo;
 import idiomas.Texto;
 import idiomas.TextoManager;
+import tiposVariable.StringDouble;
 
 import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.Font;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.concurrent.Semaphore;
@@ -53,13 +58,39 @@ public class PanelServiciosEmergenteComida extends JPanel {
 		panelContenedor.add(panelPrincipal);
 		panelPrincipal.setLayout(null);
 
+		JLabel lblGif = new JLabel("");
+		lblGif.setBorder(new LineBorder(Color.GREEN));
+		lblGif.setOpaque(true);
+		lblGif.setVisible(false);
+		lblGif.setIcon(new ImageIcon(PanelServiciosEmergenteWifi.class.getResource("/iconos/check-gif-1.gif")));
+		lblGif.setBounds(287, 103, 120, 109);
+		panelPrincipal.add(lblGif);
+
+		JTextPane txtpnInfo = new JTextPane();
+		txtpnInfo.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		txtpnInfo.setEditable(false);
+		txtpnInfo.setOpaque(false);
+		//Mensaje en la clase Texto
+		txtpnInfo.setText(t.getPanelServiciosEmergenteComidaTxt());
+		txtpnInfo.setBounds(45, 63, 593, 75);
+		panelPrincipal.add(txtpnInfo);
+
 		crearPanelConfirmacion("<precio>");
 
-		JLabel lblPanelEmergente = new JLabel(this.getName());
-		lblPanelEmergente.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPanelEmergente.setFont(new Font("Tahoma", Font.PLAIN, 32));
-		lblPanelEmergente.setBounds(10, 138, 675, 39);
-		panelPrincipal.add(lblPanelEmergente);
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(255, 255, 153));
+		panel.setBorder(new LineBorder(Color.ORANGE, 3));
+		panel.setForeground(Color.ORANGE);
+		panel.setBounds(45, 166, 593, 35);
+		panelPrincipal.add(panel);
+
+		JLabel lblPrecio = new JLabel(t.getLblCoste());
+		panel.add(lblPrecio);
+		lblPrecio.setFont(new Font("Tahoma", Font.PLAIN, 15));
+
+		JLabel label = new JLabel(String.valueOf(controlador.getServicios().getMinibar().getPrecio()) + "\u20AC");
+		panel.add(label);
+		label.setFont(new Font("Tahoma", Font.PLAIN, 15));
 
 		JButton btnCerrar = new JButton(t.getBtnCerrar());
 		btnCerrar.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -73,18 +104,24 @@ public class PanelServiciosEmergenteComida extends JPanel {
 		btnCerrar.setBounds(610, 11, 75, 50);
 		panelPrincipal.add(btnCerrar);
 
-		JButton btnNewButton = new JButton("botonEjemploVentanaEmergente");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnAdquirir = new JButton(t.getBtnAdquirir());
+		btnAdquirir.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnAdquirir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new Thread() {
 					public void run() {
 						try {
-							mostrarPanelConfirmacion("<precio>");
+							mostrarPanelConfirmacion(controlador.getServicios().getComida().getPrecio() + "\u20AC");
 
 							s.acquire();
 
 							if (((PanelConfirmacionServicios) panelConfirmacion).getConfirmacion() == true) {
 								// Actualizar ventana; en otro caso no hacer nada
+								controlador.getCuenta().getGasto().addGasto(new StringDouble("Pedido de comida",
+										controlador.getServicios().getComida().getPrecio()));
+								lblGif.setVisible(true);
+								Thread.sleep(2050);
+								lblGif.setVisible(false);
 
 								// Tiene que hacerse siempre!
 								((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
@@ -96,8 +133,8 @@ public class PanelServiciosEmergenteComida extends JPanel {
 				}.start();
 			}
 		});
-		btnNewButton.setBounds(253, 230, 189, 23);
-		panelPrincipal.add(btnNewButton);
+		btnAdquirir.setBounds(260, 223, 175, 53);
+		panelPrincipal.add(btnAdquirir);
 	}
 
 	public void cerrarPanelConfirmacion() {
