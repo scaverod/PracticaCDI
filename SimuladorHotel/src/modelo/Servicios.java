@@ -12,6 +12,7 @@ public class Servicios {
 	private Limpieza limpieza;
 	private Comida comida;
 	private Television television;
+	private Toallas toallas;
 
 	public Servicios() {
 		this.almohada = new Almohada(1.50, 2, 1.25, 1);
@@ -24,6 +25,7 @@ public class Servicios {
 		this.limpieza = new Limpieza(0.50, null);
 		this.comida = new Comida(3.50);
 		this.television = new Television(2.50, 3.50, 4.50, 3.50);
+		this.toallas = new Toallas(0.25);
 	}
 
 	public Servicios(Wifi wifi, Limpieza limpieza, Television television) {
@@ -38,6 +40,7 @@ public class Servicios {
 		this.comida = new Comida(3.50);
 		this.television = new Television(2.50, 3.50, 4.50, 3.50, television.isActivadoMoviestarPlus(),
 				television.isActivadoNetflix(), television.isActivadoBBC(), television.isActivadoBeinSport());
+		this.toallas = new Toallas(0.25);
 	}
 
 	public Television getTelevision() {
@@ -132,6 +135,14 @@ public class Servicios {
 	public void cargaTelevision(Television television) {
 		this.television = new Television(2.50, 3.50, 4.50, 3.50, television.isActivadoMoviestarPlus(),
 				television.isActivadoNetflix(), television.isActivadoBBC(), television.isActivadoBeinSport());
+	}
+
+	public Toallas getToallas() {
+		return toallas;
+	}
+
+	public void setToallas(Toallas toallas) {
+		this.toallas = toallas;
 	}
 
 }

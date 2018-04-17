@@ -21,7 +21,7 @@ import java.awt.event.ActionEvent;
 
 public class GuayCalendar extends JPanel {
 	private static final long serialVersionUID = 1L;
-
+	
 	private JComboBox<Integer> comboDia;
 	private JComboBox<Integer> comboMes;
 	private JComboBox<Integer> comboAnyo;
@@ -62,6 +62,16 @@ public class GuayCalendar extends JPanel {
 		add(btnAumentarDia);
 
 		JButton btnAumentarMes = new JButton("");
+		btnAumentarMes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (fecha.getMonth() < Fecha.MONTH_MAX)
+					fecha.setMonth(fecha.getMonth() + 1);
+				else
+					fecha.setMonth(Fecha.MONTH_MIN);
+				
+				comboMes.setSelectedItem(fecha.getMonth());	
+			}
+		});
 		btnAumentarMes.setContentAreaFilled(false);
 		btnAumentarMes.setIcon(new ImageIcon(GuayCalendar.class.getResource("/iconos/flechaArriba_x32_blue.png")));
 		btnAumentarMes.setBounds(139, 0, 89, 41);
@@ -73,6 +83,10 @@ public class GuayCalendar extends JPanel {
 		JButton btnAumentarAnyo = new JButton("");
 		btnAumentarAnyo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (comboAnyo.getSelectedIndex() == 0)
+					comboAnyo.setSelectedIndex(1);
+				else
+					comboAnyo.setSelectedIndex(0);
 			}
 		});
 		btnAumentarAnyo.setIcon(new ImageIcon(GuayCalendar.class.getResource("/iconos/flechaArriba_x32_blue.png")));
@@ -84,6 +98,16 @@ public class GuayCalendar extends JPanel {
 		add(btnDisminuirDia);
 
 		JButton btnDisminuirMes = new JButton("");
+		btnDisminuirMes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (fecha.getMonth() > Fecha.DAY_MIN)
+					fecha.setMonth(fecha.getMonth() - 1);
+				else
+					fecha.setMonth(Fecha.MONTH_MAX);
+				
+				comboMes.setSelectedItem(fecha.getMonth());
+			}
+		});
 		btnDisminuirMes.setContentAreaFilled(false);
 		btnDisminuirMes.setIcon(new ImageIcon(GuayCalendar.class.getResource("/iconos/flechaAbajo_x32_blue.png")));
 		btnDisminuirMes.setBounds(139, 164, 89, 41);
@@ -92,14 +116,21 @@ public class GuayCalendar extends JPanel {
 		comboDia = new JComboBox<Integer>();
 		
 		JButton btnDisminuirAnyo = new JButton("");
+		btnDisminuirAnyo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (comboAnyo.getSelectedIndex() == 0)
+					comboAnyo.setSelectedIndex(1);
+				else
+					comboAnyo.setSelectedIndex(0);
+			}
+		});
 		btnDisminuirAnyo.setIcon(new ImageIcon(GuayCalendar.class.getResource("/iconos/flechaAbajo_x32_blue.png")));
 		btnDisminuirAnyo.setContentAreaFilled(false);
 		btnDisminuirAnyo.setBounds(278, 164, 120, 41);
 		add(btnDisminuirAnyo);
 		comboDia.setForeground(new Color(0, 109, 240));
 		comboDia.setFont(new Font("Tahoma", Font.PLAIN, 40));
-		comboDia.setModel(new DefaultComboBoxModel<Integer>(new Integer[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
-				13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31 }));
+		comboDia.setModel(new DefaultComboBoxModel<Integer>(new Integer[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31 }));
 		comboDia.setSelectedItem(fecha.getDay());
 		comboDia.setBounds(0, 52, 89, 101);
 		add(comboDia);
@@ -107,8 +138,7 @@ public class GuayCalendar extends JPanel {
 		comboMes = new JComboBox<Integer>();
 		comboMes.setForeground(new Color(0, 109, 240));
 		comboMes.setFont(new Font("Tahoma", Font.PLAIN, 40));
-		comboMes.setModel(new DefaultComboBoxModel<Integer>(new Integer[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,
-				12}));
+		comboMes.setModel(new DefaultComboBoxModel<Integer>(new Integer[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}));
 		comboMes.setSelectedItem(fecha.getMonth());
 		comboMes.setBounds(139, 52, 89, 101);
 		add(comboMes);

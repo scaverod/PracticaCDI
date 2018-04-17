@@ -103,6 +103,8 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 								lblGif.setVisible(true);
 								Thread.sleep(2050);
 								lblGif.setVisible(false);
+								btnMoviestar.setIcon(new ImageIcon(
+										PanelServiciosEmergenteTelevision.class.getResource("/iconos/movistarC.png")));
 								// Tiene que hacerse siempre!
 								((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
 							}
@@ -150,6 +152,8 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 								Thread.sleep(2050);
 								lblGif.setVisible(false);
 								// Tiene que hacerse siempre!
+								btnNetflix.setIcon(new ImageIcon(
+										PanelServiciosEmergenteTelevision.class.getResource("/iconos/netflixC.png")));
 								((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
 							}
 						} catch (InterruptedException e1) {
@@ -185,6 +189,8 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 								lblGif.setVisible(true);
 								Thread.sleep(2050);
 								lblGif.setVisible(false);
+								btnBBC.setIcon(new ImageIcon(
+										PanelServiciosEmergenteTelevision.class.getResource("/iconos/bbcC.png")));
 								// Tiene que hacerse siempre!
 								((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
 							}
@@ -222,6 +228,8 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 								lblGif.setVisible(true);
 								Thread.sleep(2050);
 								lblGif.setVisible(false);
+								btnBeinSport.setIcon(new ImageIcon(
+										PanelServiciosEmergenteTelevision.class.getResource("/iconos/beinC.png")));
 								// Tiene que hacerse siempre!
 								((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
 							}

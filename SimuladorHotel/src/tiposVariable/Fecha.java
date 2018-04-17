@@ -3,11 +3,11 @@ package tiposVariable;
 import java.util.Date;
 
 public class Fecha {
-	private final int DAY_MAX = 31;
-	private final int MONTH_MAX = 12;
-	private final int DAY_MIN = 1;
-	private final int MONTH_MIN = 1;
-	private final int YEAR_MIN = 1900;
+	public static final int DAY_MAX = 31;
+	public static final int MONTH_MAX = 12;
+	public static final int DAY_MIN = 1;
+	public static final int MONTH_MIN = 1;
+	public static final int YEAR_MIN = 1900;
 	
 	private int day;
 	private int month;
@@ -43,21 +43,25 @@ public class Fecha {
 	}
 	
 	public boolean setDay(int day) {
-		if (day > DAY_MIN && day < DAY_MAX) {
+		if (day >= DAY_MIN && day <= DAY_MAX) {
 			this.day = day;
 			return true;
 		}
-		else
+		else {
+			System.out.println("Days can't be less than " + DAY_MIN + " or more than " + DAY_MAX);
 			return false;
+		}
 	}
 	
 	public boolean setMonth(int month) {
-		if (month > MONTH_MIN && month < MONTH_MAX) {
+		if (month >= MONTH_MIN && month <= MONTH_MAX) {
 			this.month = month;
 			return true;
 		}
-		else
+		else {
+			System.out.println("Months can't be less than " + MONTH_MIN + " or more than " + MONTH_MAX);
 			return false;
+		}
 	}
 	
 	public boolean setYear(int year) {

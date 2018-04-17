@@ -30,27 +30,19 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class PanelCuenta extends JPanel {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	private Texto t = new TextoManager(TextoManager.espa�ol).getTexto();
+	private Texto t;
 	private final ButtonGroup grupoBtnIdiomas = new ButtonGroup();
 	private JPanel panelPrincipal;
 	private JLayeredPane layeredPane;
 	private JPanel panelEmergenteContenedor;
 	private JPanel panelDetalles;
 
-	/**
-	 * Create the panel.
-	 */
-
 	public PanelCuenta(Controlador controlador) {
 
 		this.setSize(new Dimension(931, 483));
 		this.setName("panelCuenta");
-
+		t = controlador.getTexto();
 		JLabel lblHabitacion = new JLabel(t.getLblCuentaHabitacion() + ": " + controlador.getCuenta().getUsuario());
 		lblHabitacion.setBounds(10, 11, 829, 47);
 		lblHabitacion.setHorizontalAlignment(SwingConstants.CENTER);
@@ -58,7 +50,7 @@ public class PanelCuenta extends JPanel {
 		lblHabitacion.setForeground(new Color(255, 255, 255));
 		lblHabitacion.setBackground(Color.decode("#006df0"));
 		lblHabitacion.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		// TODO: Cambiar para que quede m�s bonito
+		// TODO: Cambiar para que quede más bonito
 		lblHabitacion.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
 
 		JPanel panelLogout = new JPanel();
@@ -79,21 +71,12 @@ public class PanelCuenta extends JPanel {
 		btnESP.setSelected(true);
 		btnESP.setIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/espa\u00F1a.png")));
 		btnESP.setSelectedIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/espa\u00F1aSelected.png")));
-		btnESP.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				controlador.getCuenta().setIdioma(Idioma.Castellano);
-			}
-		});
 		grupoBtnIdiomas.add(btnESP);
 		btnESP.setOpaque(false);
 		btnESP.setContentAreaFilled(false);
 
 		JToggleButton btnUK = new JToggleButton("");
-		btnUK.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				controlador.getCuenta().setIdioma(Idioma.Ingles);
-			}
-		});
+
 		btnUK.setBounds(170, 44, 108, 69);
 		btnUK.setSelectedIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/ukSelected.png")));
 		grupoBtnIdiomas.add(btnUK);
@@ -102,11 +85,7 @@ public class PanelCuenta extends JPanel {
 		btnUK.setContentAreaFilled(false);
 
 		JToggleButton btnRU = new JToggleButton("");
-		btnRU.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				controlador.getCuenta().setIdioma(Idioma.Rumano);
-			}
-		});
+
 		btnRU.setBounds(309, 44, 108, 69);
 		btnRU.setSelectedIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/rumaniaSelected.png")));
 		grupoBtnIdiomas.add(btnRU);
@@ -114,16 +93,16 @@ public class PanelCuenta extends JPanel {
 		btnRU.setOpaque(false);
 		btnRU.setContentAreaFilled(false);
 
-		JLabel lblCastellano = new JLabel(t.getLblCastellano());
-		lblCastellano.setBounds(45, 116, 90, 26);
+		JLabel lblCastellano = new JLabel("Español");
+		lblCastellano.setBounds(31, 116, 108, 26);
 		lblCastellano.setHorizontalAlignment(SwingConstants.CENTER);
 
-		JLabel lblIngles = new JLabel(t.getLblIngles());
-		lblIngles.setBounds(180, 116, 90, 26);
+		JLabel lblIngles = new JLabel("English");
+		lblIngles.setBounds(170, 116, 108, 26);
 		lblIngles.setHorizontalAlignment(SwingConstants.CENTER);
 
-		JLabel lblRumano = new JLabel(t.getLblRumano());
-		lblRumano.setBounds(315, 116, 90, 26);
+		JLabel lblRumano = new JLabel("Română");
+		lblRumano.setBounds(309, 116, 108, 26);
 		lblRumano.setHorizontalAlignment(SwingConstants.CENTER);
 
 		JButton btnLogout = new JButton("");
@@ -368,6 +347,60 @@ public class PanelCuenta extends JPanel {
 		panelDetalles = new PanelCuentaEmergenteDetalles(
 				new MicroControladorLayersPadreHijo(layeredPane, panelEmergenteContenedor), controlador);
 		panelEmergenteContenedor.add(panelDetalles, panelDetalles.getName());
+
+		btnESP.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controlador.getCuenta().setIdioma(Idioma.Castellano);
+				controlador.setTexto(new TextoManager(TextoManager.español).getTexto());
+				t = controlador.getTexto();
+				lblHabitacion.setText(t.getLblCuentaHabitacion() + ": " + controlador.getCuenta().getUsuario());
+				lblElegirIdioma.setText(t.getLblElegirIdioma());
+				lblAumentarTexto.setText(t.getLblAumentarTexto());
+				lblSalidaTexto.setText(t.getLblSalidaTexto());
+				lblInvertirColores.setText(t.getLblInvertirColores());
+				lblModoNocturno.setText(t.getLblModoNocturno());
+				lblPersonalizar.setText(t.getLblPersonalizar());
+				lblGastoTotal.setText(t.getLblGastoTotal());
+				btnMsDetalles.setText(t.getBtnMsDetalles());
+				lblGasto.setText(t.getLblGasto());
+			}
+		});
+
+		btnUK.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controlador.getCuenta().setIdioma(Idioma.Castellano);
+				controlador.setTexto(new TextoManager(TextoManager.english).getTexto());
+				t = controlador.getTexto();
+				lblHabitacion.setText(t.getLblCuentaHabitacion() + ": " + controlador.getCuenta().getUsuario());
+				lblElegirIdioma.setText(t.getLblElegirIdioma());
+				lblAumentarTexto.setText(t.getLblAumentarTexto());
+				lblSalidaTexto.setText(t.getLblSalidaTexto());
+				lblInvertirColores.setText(t.getLblInvertirColores());
+				lblModoNocturno.setText(t.getLblModoNocturno());
+				lblPersonalizar.setText(t.getLblPersonalizar());
+				lblGastoTotal.setText(t.getLblGastoTotal());
+				btnMsDetalles.setText(t.getBtnMsDetalles());
+				lblGasto.setText(t.getLblGasto());
+			}
+		});
+
+		btnRU.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controlador.getCuenta().setIdioma(Idioma.Castellano);
+				controlador.setTexto(new TextoManager(TextoManager.romana).getTexto());
+				t = controlador.getTexto();
+				lblHabitacion.setText(t.getLblCuentaHabitacion() + ": " + controlador.getCuenta().getUsuario());
+				lblElegirIdioma.setText(t.getLblElegirIdioma());
+				lblAumentarTexto.setText(t.getLblAumentarTexto());
+				lblSalidaTexto.setText(t.getLblSalidaTexto());
+				lblInvertirColores.setText(t.getLblInvertirColores());
+				lblModoNocturno.setText(t.getLblModoNocturno());
+				lblPersonalizar.setText(t.getLblPersonalizar());
+				lblGastoTotal.setText(t.getLblGastoTotal());
+				btnMsDetalles.setText(t.getBtnMsDetalles());
+				lblGasto.setText(t.getLblGasto());
+			}
+		});
 
 		// Actualizar interfaz
 		if (controlador.getCuenta().getPersonalizacion().isModoNocturno()) {

@@ -88,7 +88,7 @@ public class PanelServiciosEmergenteComida extends JPanel {
 		panel.add(lblPrecio);
 		lblPrecio.setFont(new Font("Tahoma", Font.PLAIN, 15));
 
-		JLabel label = new JLabel(String.valueOf(controlador.getServicios().getMinibar().getPrecio()) + "\u20AC");
+		JLabel label = new JLabel(String.valueOf(controlador.getServicios().getComida().getPrecio()) + "\u20AC");
 		panel.add(label);
 		label.setFont(new Font("Tahoma", Font.PLAIN, 15));
 

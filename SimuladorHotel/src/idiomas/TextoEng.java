@@ -87,6 +87,7 @@ public class TextoEng extends Texto {
 		setLblInvertirColores("Reverse colors");
 		setLblSalidaTexto("Text out by voice");
 		setLblAumentarTexto("Increase text");
+		setLblListaDeGastos("Spending List");
 
 		// Panel Confirmacion
 		setLblConfirmacion("Are you sure you want to proceed?");

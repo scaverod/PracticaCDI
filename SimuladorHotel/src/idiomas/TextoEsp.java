@@ -100,6 +100,7 @@ public class TextoEsp extends Texto {
 		setLblInvertirColores("Invertir colores");
 		setLblSalidaTexto("Salida de texto por voz");
 		setLblAumentarTexto("Aumentar texto");
+		setLblListaDeGastos("Lista de Gastos");
 
 		// Panel Confirmacion
 		setLblConfirmacion("¿Desea confirmar la operación?");
