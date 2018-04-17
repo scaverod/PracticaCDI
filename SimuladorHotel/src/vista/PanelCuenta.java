@@ -35,7 +35,7 @@ public class PanelCuenta extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Texto t = new TextoManager(TextoManager.espa�ol).getTexto();
+	private Texto t = new TextoManager(TextoManager.español).getTexto();
 	private final ButtonGroup grupoBtnIdiomas = new ButtonGroup();
 	private JPanel panelPrincipal;
 	private JLayeredPane layeredPane;
@@ -58,7 +58,7 @@ public class PanelCuenta extends JPanel {
 		lblHabitacion.setForeground(new Color(255, 255, 255));
 		lblHabitacion.setBackground(Color.decode("#006df0"));
 		lblHabitacion.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		// TODO: Cambiar para que quede m�s bonito
+		// TODO: Cambiar para que quede más bonito
 		lblHabitacion.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
 
 		JPanel panelLogout = new JPanel();
@@ -114,16 +114,16 @@ public class PanelCuenta extends JPanel {
 		btnRU.setOpaque(false);
 		btnRU.setContentAreaFilled(false);
 
-		JLabel lblCastellano = new JLabel(t.getLblCastellano());
-		lblCastellano.setBounds(45, 116, 90, 26);
+		JLabel lblCastellano = new JLabel("Español");
+		lblCastellano.setBounds(31, 116, 108, 26);
 		lblCastellano.setHorizontalAlignment(SwingConstants.CENTER);
 
-		JLabel lblIngles = new JLabel(t.getLblIngles());
-		lblIngles.setBounds(180, 116, 90, 26);
+		JLabel lblIngles = new JLabel("English");
+		lblIngles.setBounds(170, 116, 108, 26);
 		lblIngles.setHorizontalAlignment(SwingConstants.CENTER);
 
-		JLabel lblRumano = new JLabel(t.getLblRumano());
-		lblRumano.setBounds(315, 116, 90, 26);
+		JLabel lblRumano = new JLabel("Română");
+		lblRumano.setBounds(309, 116, 108, 26);
 		lblRumano.setHorizontalAlignment(SwingConstants.CENTER);
 
 		JButton btnLogout = new JButton("");

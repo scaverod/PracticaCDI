@@ -21,7 +21,7 @@ import java.awt.event.ActionEvent;
 
 public class GuayCalendar extends JPanel {
 	private static final long serialVersionUID = 1L;
-
+	
 	private JComboBox<Integer> comboDia;
 	private JComboBox<Integer> comboMes;
 	private JComboBox<Integer> comboAnyo;
@@ -73,6 +73,7 @@ public class GuayCalendar extends JPanel {
 		JButton btnAumentarAnyo = new JButton("");
 		btnAumentarAnyo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 			}
 		});
 		btnAumentarAnyo.setIcon(new ImageIcon(GuayCalendar.class.getResource("/iconos/flechaArriba_x32_blue.png")));
