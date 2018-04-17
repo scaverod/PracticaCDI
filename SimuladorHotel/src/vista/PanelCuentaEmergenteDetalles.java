@@ -25,7 +25,7 @@ public class PanelCuentaEmergenteDetalles extends JPanel {
 		setMaximumSize(new Dimension(400, 330));
 		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102),
 				new Color(0, 0, 102)));
-		this.setSize(400, 330);
+		this.setSize(400, 315);
 		this.setName("p" + this.getClass().getSimpleName().substring(1));
 		setLayout(null);
 
@@ -48,7 +48,7 @@ public class PanelCuentaEmergenteDetalles extends JPanel {
 		}
 		JScrollPane scrollPane = new JScrollPane(tabla);
 		scrollPane.setMaximumSize(new Dimension(400, 330));
-		scrollPane.setBounds(10, 49, 380, 270);
+		scrollPane.setBounds(10, 49, 380, 255);
 		add(scrollPane);
 
 		JLabel lblListaDeGastos = new JLabel("Lista de Gastos");
