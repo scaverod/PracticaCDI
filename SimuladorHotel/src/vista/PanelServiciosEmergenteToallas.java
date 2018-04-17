@@ -12,6 +12,7 @@ import controlador.MicroControladorLayers;
 import controlador.MicroControladorPanelesPadreHijo;
 import idiomas.Texto;
 import idiomas.TextoManager;
+import tiposVariable.StringDouble;
 
 import javax.swing.JLabel;
 import java.awt.Color;
@@ -85,11 +86,13 @@ public class PanelServiciosEmergenteToallas extends JPanel {
 				new Thread() {
 					public void run() {
 						try {
-							mostrarPanelConfirmacion("<precio>");
+							mostrarPanelConfirmacion(String.valueOf(controlador.getServicios().getToallas().getPrecio()));
 
 							s.acquire();
 
 							if (((PanelConfirmacionServicios) panelConfirmacion).getConfirmacion() == true) {
+								controlador.getCuenta().getGasto().addGasto(new StringDouble("Cambio de toallas",
+										controlador.getServicios().getToallas().getPrecio()));
 								lblGif.setVisible(true);
 								Thread.sleep(2050);
 								lblGif.setVisible(false);
@@ -112,7 +115,7 @@ public class PanelServiciosEmergenteToallas extends JPanel {
 		txtpnInfo.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		txtpnInfo.setEditable(false);
 		txtpnInfo.setOpaque(false);
-		txtpnInfo.setText(t.getTxtInformacion());
+		txtpnInfo.setText("Cambiar Texto");
 		txtpnInfo.setBounds(45, 63, 593, 75);
 		panelPrincipal.add(txtpnInfo);
 
@@ -127,7 +130,7 @@ public class PanelServiciosEmergenteToallas extends JPanel {
 		panel.add(lblPrecio);
 		lblPrecio.setFont(new Font("Tahoma", Font.PLAIN, 15));
 
-		JLabel label = new JLabel("0\u20AC");
+		JLabel label = new JLabel(String.valueOf(controlador.getServicios().getToallas().getPrecio()) + " \u20AC");
 		panel.add(label);
 		label.setFont(new Font("Tahoma", Font.PLAIN, 15));
 	}
