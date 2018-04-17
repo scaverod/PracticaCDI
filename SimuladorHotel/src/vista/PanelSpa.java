@@ -17,12 +17,8 @@ import java.beans.PropertyChangeListener;
 import java.util.concurrent.Semaphore;
 import java.beans.PropertyChangeEvent;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.JSeparator;
-import javax.swing.SwingConstants;
-import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 
 public class PanelSpa extends JPanel {

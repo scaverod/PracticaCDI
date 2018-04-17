@@ -5,7 +5,6 @@ import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import java.awt.Font;
-import java.util.Date;
 
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
@@ -15,10 +14,10 @@ import tiposVariable.Fecha;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class GuayCalendar extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -29,7 +28,6 @@ public class GuayCalendar extends JPanel {
 	
 	private Fecha fecha;
 
-	@SuppressWarnings("deprecation")
 	public GuayCalendar() {
 		setSize(new Dimension(398, 205));
 		try {
@@ -73,6 +71,10 @@ public class GuayCalendar extends JPanel {
 		btnDisminuirDia.setContentAreaFilled(false);
 		
 		JButton btnAumentarAnyo = new JButton("");
+		btnAumentarAnyo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnAumentarAnyo.setIcon(new ImageIcon(GuayCalendar.class.getResource("/iconos/flechaArriba_x32_blue.png")));
 		btnAumentarAnyo.setContentAreaFilled(false);
 		btnAumentarAnyo.setBounds(278, 0, 120, 41);
@@ -90,10 +92,6 @@ public class GuayCalendar extends JPanel {
 		comboDia = new JComboBox<Integer>();
 		
 		JButton btnDisminuirAnyo = new JButton("");
-		btnDisminuirAnyo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		btnDisminuirAnyo.setIcon(new ImageIcon(GuayCalendar.class.getResource("/iconos/flechaAbajo_x32_blue.png")));
 		btnDisminuirAnyo.setContentAreaFilled(false);
 		btnDisminuirAnyo.setBounds(278, 164, 120, 41);
