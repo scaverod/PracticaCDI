@@ -70,7 +70,8 @@ public class PanelServiciosEmergenteMinibar extends JPanel {
 		txtpnInfo.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		txtpnInfo.setEditable(false);
 		txtpnInfo.setOpaque(false);
-		txtpnInfo.setText("Aquí va la información referente al minibar");
+		//Mensaje en la clase Texto
+		txtpnInfo.setText(t.getPanelServiciosEmergenteMinibarTxt());
 		txtpnInfo.setBounds(45, 63, 593, 75);
 		panelPrincipal.add(txtpnInfo);
 

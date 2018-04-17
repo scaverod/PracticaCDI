@@ -66,7 +66,15 @@ public abstract class Texto {
 
 	// Panel Emergente Taxi
 	private String panelServiciosEmergenteTaxiTxt;
+	
+	//Panel Emergente Comida
+	private String panelServiciosEmergenteComidaTxt;
 
+	//Panel Emergente Toallas
+	private String panelServiciosEmergenteToallasTxt;
+	//Panel Emergente Minibar
+	private String panelServiciosEmergenteMinibarTxt;
+	
 	// Panel Usuario
 	private String lblCuentaHabitacion;
 	private String lblElegirIdioma;
@@ -527,5 +535,29 @@ public abstract class Texto {
 
 	public void setPanelServiciosEmergentealmohadaGel(String panelServiciosEmergentealmohadaGel) {
 		this.panelServiciosEmergentealmohadaGel = panelServiciosEmergentealmohadaGel;
+	}
+
+	public String getPanelServiciosEmergenteComidaTxt() {
+		return panelServiciosEmergenteComidaTxt;
+	}
+
+	public void setPanelServiciosEmergenteComidaTxt(String panelServiciosEmergenteComidaTxt) {
+		this.panelServiciosEmergenteComidaTxt = panelServiciosEmergenteComidaTxt;
+	}
+
+	public String getPanelServiciosEmergenteToallasTxt() {
+		return panelServiciosEmergenteToallasTxt;
+	}
+
+	public void setPanelServiciosEmergenteToallasTxt(String panelServiciosEmergenteToallasTxt) {
+		this.panelServiciosEmergenteToallasTxt = panelServiciosEmergenteToallasTxt;
+	}
+
+	public String getPanelServiciosEmergenteMinibarTxt() {
+		return panelServiciosEmergenteMinibarTxt;
+	}
+
+	public void setPanelServiciosEmergenteMinibarTxt(String panelServiciosEmergenteMinibarTxt) {
+		this.panelServiciosEmergenteMinibarTxt = panelServiciosEmergenteMinibarTxt;
 	}
 }
