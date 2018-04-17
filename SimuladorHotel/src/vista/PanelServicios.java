@@ -10,7 +10,6 @@ import javax.swing.SwingConstants;
 import controlador.Controlador;
 import controlador.MicroControladorPanelesPadreHijo;
 import idiomas.Texto;
-import idiomas.TextoManager;
 
 import javax.swing.ImageIcon;
 import java.awt.CardLayout;
@@ -26,7 +25,7 @@ public class PanelServicios extends JPanel {
 
 	// FIXME: temporal para que salga el texto en vez de "<dynamic>"
 	// Habría que mandarlo desde el Main, por ejemplo
-	private Texto t = new TextoManager(TextoManager.español).getTexto();
+	private Texto t;
 	private MicroControladorPanelesPadreHijo microControlador;
 
 	private JPanel panelServicios;
@@ -50,7 +49,7 @@ public class PanelServicios extends JPanel {
 
 	public PanelServicios(Controlador controlador) {
 		s = new Semaphore(0);
-
+		t = controlador.getTexto();
 		this.setSize(new Dimension(931, 483));
 		this.setName("p" + this.getClass().getSimpleName().substring(1));
 		setLayout(new CardLayout(0, 0));

@@ -31,7 +31,7 @@ import java.awt.event.MouseEvent;
 
 public class PanelCuenta extends JPanel {
 	private static final long serialVersionUID = 1L;
-	private Texto t = new TextoManager(TextoManager.español).getTexto();
+	private Texto t;
 	private final ButtonGroup grupoBtnIdiomas = new ButtonGroup();
 	private JPanel panelPrincipal;
 	private JLayeredPane layeredPane;
@@ -42,7 +42,7 @@ public class PanelCuenta extends JPanel {
 
 		this.setSize(new Dimension(931, 483));
 		this.setName("panelCuenta");
-
+		t = controlador.getTexto();
 		JLabel lblHabitacion = new JLabel(t.getLblCuentaHabitacion() + ": " + controlador.getCuenta().getUsuario());
 		lblHabitacion.setBounds(10, 11, 829, 47);
 		lblHabitacion.setHorizontalAlignment(SwingConstants.CENTER);
@@ -74,6 +74,7 @@ public class PanelCuenta extends JPanel {
 		btnESP.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controlador.getCuenta().setIdioma(Idioma.Castellano);
+				controlador.setTexto(new TextoManager(TextoManager.español).getTexto());
 			}
 		});
 		grupoBtnIdiomas.add(btnESP);
@@ -84,6 +85,7 @@ public class PanelCuenta extends JPanel {
 		btnUK.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controlador.getCuenta().setIdioma(Idioma.Ingles);
+				controlador.setTexto(new TextoManager(TextoManager.english).getTexto());
 			}
 		});
 		btnUK.setBounds(170, 44, 108, 69);
@@ -97,6 +99,7 @@ public class PanelCuenta extends JPanel {
 		btnRU.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controlador.getCuenta().setIdioma(Idioma.Rumano);
+				controlador.setTexto(new TextoManager(TextoManager.romana).getTexto());
 			}
 		});
 		btnRU.setBounds(309, 44, 108, 69);

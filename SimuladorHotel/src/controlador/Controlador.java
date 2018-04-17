@@ -1,5 +1,7 @@
 package controlador;
 
+import idiomas.Texto;
+import idiomas.TextoManager;
 import modelo.Cuenta;
 import modelo.Habitacion;
 import modelo.Servicios;
@@ -9,6 +11,7 @@ public class Controlador {
 	private Servicios servicios;
 	private Cuenta cuenta;
 	private Habitacion habitacion;
+	private Texto texto;
 	
 	
 
@@ -17,6 +20,7 @@ public class Controlador {
 		this.servicios = new Servicios();
 		this.cuenta = new Cuenta("101", "contr12");
 		this.habitacion =  new Habitacion();
+		this.setTexto(new TextoManager(TextoManager.español).getTexto());
 	}
 
 	public Servicios getServicios() {
@@ -41,6 +45,14 @@ public class Controlador {
 
 	public void setHabitacion(Habitacion habitacion) {
 		this.habitacion = habitacion;
+	}
+
+	public Texto getTexto() {
+		return texto;
+	}
+
+	public void setTexto(Texto texto) {
+		this.texto = texto;
 	}
 
 }
