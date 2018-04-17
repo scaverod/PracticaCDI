@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLayeredPane;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.beans.PropertyChangeListener;
 import java.util.concurrent.Semaphore;
 import java.beans.PropertyChangeEvent;
@@ -19,6 +20,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.LineBorder;
 
 public class PanelSpa extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -54,44 +59,54 @@ public class PanelSpa extends JPanel {
 		panelPrincipal.setBounds(0, 0, 931, 483);
 		layeredPane.add(panelPrincipal);
 		panelPrincipal.setLayout(null);
+		
+		JPanel panel = new JPanel();
+		panel.setBorder(new LineBorder(Color.decode("#006df0"), 5, true));
+		panel.setBounds(10, 11, 450, 461);
+		panelPrincipal.add(panel);
+		panel.setLayout(null);
 
 		JButton btnConEstoSaco = new JButton("Con esto saco UN DETERMINADO panel emergente");
+		btnConEstoSaco.setBounds(10, 409, 277, 41);
+		panel.add(btnConEstoSaco);
+
+		JPanel panel_1 = new JPanel();
+		panel_1.setBorder(new LineBorder(Color.decode("#006df0"), 5, true));
+		panel_1.setLayout(null);
+		panel_1.setBounds(471, 11, 450, 461);
+		panelPrincipal.add(panel_1);
+		
+				JButton btnOtroBoton = new JButton("Con este saco OTRO");
+				btnOtroBoton.setBounds(10, 409, 169, 41);
+				panel_1.add(btnOtroBoton);
+				btnOtroBoton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						changeToVentanaEmergente(panelOtro);
+					}
+				});
+				btnOtroBoton.setIcon(new ImageIcon(PanelSpa.class.getResource("/iconos/tick.png")));
 		btnConEstoSaco.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				changeToVentanaEmergente(panelBase);
 			}
 		});
-		btnConEstoSaco.setBounds(290, 160, 351, 162);
-		panelPrincipal.add(btnConEstoSaco);
-
-		JButton btnOtroBoton = new JButton("Con este saco OTRO");
-		btnOtroBoton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				changeToVentanaEmergente(panelOtro);
-			}
-		});
-		btnOtroBoton.setIcon(new ImageIcon(PanelSpa.class.getResource("/iconos/tick.png")));
-		btnOtroBoton.setBounds(31, 36, 211, 109);
-		panelPrincipal.add(btnOtroBoton);
-
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(PanelSpa.class.getResource("/iconos/espa\u00F1a.png")));
-		lblNewLabel.setBounds(54, 335, 311, 109);
-		panelPrincipal.add(lblNewLabel);
 
 		panelEmergenteContenedor = new JPanel();
+		panelEmergenteContenedor.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
 		panelEmergenteContenedor.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent evt) {
 				if (evt.getNewValue().equals(0)) {
 					// TODO: reactivar elementos del panelPrincipal (ahora panel al frente)
 					btnConEstoSaco.setEnabled(true);
 					btnOtroBoton.setEnabled(true);
-					lblNewLabel.setEnabled(true);
 				} else if (evt.getNewValue().equals(2)) {
 					// TODO: desactivar elementos del panelPrincipal (ahora panel al fondo)
 					btnConEstoSaco.setEnabled(false);
 					btnOtroBoton.setEnabled(false);
-					lblNewLabel.setEnabled(false);
 				}
 			}
 		});
