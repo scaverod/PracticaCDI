@@ -81,7 +81,6 @@ public abstract class Texto {
 	private String lblCastellano;
 	private String lblIngles;
 	private String lblRumano;
-	// Voy por aquí
 	private String lblGasto;
 	private String btnMsDetalles;
 	private String lblGastoTotal;
@@ -90,6 +89,7 @@ public abstract class Texto {
 	private String lblInvertirColores;
 	private String lblSalidaTexto;
 	private String lblAumentarTexto;
+	private String lblListaDeGastos;
 
 	// Panel confirmacion
 	private String lblConfirmacion;
@@ -559,5 +559,13 @@ public abstract class Texto {
 
 	public void setPanelServiciosEmergenteMinibarTxt(String panelServiciosEmergenteMinibarTxt) {
 		this.panelServiciosEmergenteMinibarTxt = panelServiciosEmergenteMinibarTxt;
+	}
+
+	public String getLblListaDeGastos() {
+		return lblListaDeGastos;
+	}
+
+	public void setLblListaDeGastos(String lblListaDeGastos) {
+		this.lblListaDeGastos = lblListaDeGastos;
 	}
 }

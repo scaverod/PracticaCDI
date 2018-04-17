@@ -71,23 +71,12 @@ public class PanelCuenta extends JPanel {
 		btnESP.setSelected(true);
 		btnESP.setIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/espa\u00F1a.png")));
 		btnESP.setSelectedIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/espa\u00F1aSelected.png")));
-		btnESP.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				controlador.getCuenta().setIdioma(Idioma.Castellano);
-				controlador.setTexto(new TextoManager(TextoManager.español).getTexto());
-			}
-		});
 		grupoBtnIdiomas.add(btnESP);
 		btnESP.setOpaque(false);
 		btnESP.setContentAreaFilled(false);
 
 		JToggleButton btnUK = new JToggleButton("");
-		btnUK.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				controlador.getCuenta().setIdioma(Idioma.Ingles);
-				controlador.setTexto(new TextoManager(TextoManager.english).getTexto());
-			}
-		});
+
 		btnUK.setBounds(170, 44, 108, 69);
 		btnUK.setSelectedIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/ukSelected.png")));
 		grupoBtnIdiomas.add(btnUK);
@@ -96,12 +85,7 @@ public class PanelCuenta extends JPanel {
 		btnUK.setContentAreaFilled(false);
 
 		JToggleButton btnRU = new JToggleButton("");
-		btnRU.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				controlador.getCuenta().setIdioma(Idioma.Rumano);
-				controlador.setTexto(new TextoManager(TextoManager.romana).getTexto());
-			}
-		});
+
 		btnRU.setBounds(309, 44, 108, 69);
 		btnRU.setSelectedIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/rumaniaSelected.png")));
 		grupoBtnIdiomas.add(btnRU);
@@ -363,6 +347,60 @@ public class PanelCuenta extends JPanel {
 		panelDetalles = new PanelCuentaEmergenteDetalles(
 				new MicroControladorLayersPadreHijo(layeredPane, panelEmergenteContenedor), controlador);
 		panelEmergenteContenedor.add(panelDetalles, panelDetalles.getName());
+
+		btnESP.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controlador.getCuenta().setIdioma(Idioma.Castellano);
+				controlador.setTexto(new TextoManager(TextoManager.español).getTexto());
+				t = controlador.getTexto();
+				lblHabitacion.setText(t.getLblCuentaHabitacion() + ": " + controlador.getCuenta().getUsuario());
+				lblElegirIdioma.setText(t.getLblElegirIdioma());
+				lblAumentarTexto.setText(t.getLblAumentarTexto());
+				lblSalidaTexto.setText(t.getLblSalidaTexto());
+				lblInvertirColores.setText(t.getLblInvertirColores());
+				lblModoNocturno.setText(t.getLblModoNocturno());
+				lblPersonalizar.setText(t.getLblPersonalizar());
+				lblGastoTotal.setText(t.getLblGastoTotal());
+				btnMsDetalles.setText(t.getBtnMsDetalles());
+				lblGasto.setText(t.getLblGasto());
+			}
+		});
+
+		btnUK.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controlador.getCuenta().setIdioma(Idioma.Castellano);
+				controlador.setTexto(new TextoManager(TextoManager.english).getTexto());
+				t = controlador.getTexto();
+				lblHabitacion.setText(t.getLblCuentaHabitacion() + ": " + controlador.getCuenta().getUsuario());
+				lblElegirIdioma.setText(t.getLblElegirIdioma());
+				lblAumentarTexto.setText(t.getLblAumentarTexto());
+				lblSalidaTexto.setText(t.getLblSalidaTexto());
+				lblInvertirColores.setText(t.getLblInvertirColores());
+				lblModoNocturno.setText(t.getLblModoNocturno());
+				lblPersonalizar.setText(t.getLblPersonalizar());
+				lblGastoTotal.setText(t.getLblGastoTotal());
+				btnMsDetalles.setText(t.getBtnMsDetalles());
+				lblGasto.setText(t.getLblGasto());
+			}
+		});
+
+		btnRU.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controlador.getCuenta().setIdioma(Idioma.Castellano);
+				controlador.setTexto(new TextoManager(TextoManager.romana).getTexto());
+				t = controlador.getTexto();
+				lblHabitacion.setText(t.getLblCuentaHabitacion() + ": " + controlador.getCuenta().getUsuario());
+				lblElegirIdioma.setText(t.getLblElegirIdioma());
+				lblAumentarTexto.setText(t.getLblAumentarTexto());
+				lblSalidaTexto.setText(t.getLblSalidaTexto());
+				lblInvertirColores.setText(t.getLblInvertirColores());
+				lblModoNocturno.setText(t.getLblModoNocturno());
+				lblPersonalizar.setText(t.getLblPersonalizar());
+				lblGastoTotal.setText(t.getLblGastoTotal());
+				btnMsDetalles.setText(t.getBtnMsDetalles());
+				lblGasto.setText(t.getLblGasto());
+			}
+		});
 
 		// Actualizar interfaz
 		if (controlador.getCuenta().getPersonalizacion().isModoNocturno()) {

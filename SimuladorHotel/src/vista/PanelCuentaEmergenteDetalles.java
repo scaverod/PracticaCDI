@@ -5,6 +5,7 @@ import javax.swing.border.BevelBorder;
 
 import controlador.Controlador;
 import controlador.MicroControladorLayersPadreHijo;
+import idiomas.Texto;
 import tiposVariable.StringDouble;
 import tiposVariable.Tabla;
 
@@ -20,8 +21,10 @@ import java.awt.Dimension;
 
 public class PanelCuentaEmergenteDetalles extends JPanel {
 	private static final long serialVersionUID = 1L;
+	private Texto t;
 
 	public PanelCuentaEmergenteDetalles(MicroControladorLayersPadreHijo m, Controlador controlador) {
+		t = controlador.getTexto();
 		setMaximumSize(new Dimension(400, 330));
 		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102),
 				new Color(0, 0, 102)));
@@ -29,7 +32,7 @@ public class PanelCuentaEmergenteDetalles extends JPanel {
 		this.setName("p" + this.getClass().getSimpleName().substring(1));
 		setLayout(null);
 
-		JButton btnCerrar = new JButton("Cerrar");
+		JButton btnCerrar = new JButton(t.getBtnCerrar());
 		btnCerrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Ocultar panel
@@ -51,7 +54,7 @@ public class PanelCuentaEmergenteDetalles extends JPanel {
 		scrollPane.setBounds(10, 49, 380, 255);
 		add(scrollPane);
 
-		JLabel lblListaDeGastos = new JLabel("Lista de Gastos");
+		JLabel lblListaDeGastos = new JLabel(t.getLblListaDeGastos());
 		lblListaDeGastos.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblListaDeGastos.setBounds(135, 16, 130, 25);
 		add(lblListaDeGastos);
