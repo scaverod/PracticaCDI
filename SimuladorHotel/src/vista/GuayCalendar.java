@@ -49,6 +49,11 @@ public class GuayCalendar extends JPanel {
 		add(lblSeparador);
 
 		JButton btnAumentarDia = new JButton("");
+		btnAumentarDia.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnAumentarDia.setContentAreaFilled(false);
 		
 		JLabel lblSeparador2 = new JLabel("/");
@@ -64,12 +69,7 @@ public class GuayCalendar extends JPanel {
 		JButton btnAumentarMes = new JButton("");
 		btnAumentarMes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (fecha.getMonth() < Fecha.MONTH_MAX)
-					fecha.setMonth(fecha.getMonth() + 1);
-				else
-					fecha.setMonth(Fecha.MONTH_MIN);
 				
-				comboMes.setSelectedItem(fecha.getMonth());	
 			}
 		});
 		btnAumentarMes.setContentAreaFilled(false);
@@ -78,15 +78,17 @@ public class GuayCalendar extends JPanel {
 		add(btnAumentarMes);
 
 		JButton btnDisminuirDia = new JButton("");
+		btnDisminuirDia.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnDisminuirDia.setContentAreaFilled(false);
 		
 		JButton btnAumentarAnyo = new JButton("");
 		btnAumentarAnyo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (comboAnyo.getSelectedIndex() == 0)
-					comboAnyo.setSelectedIndex(1);
-				else
-					comboAnyo.setSelectedIndex(0);
+				
 			}
 		});
 		btnAumentarAnyo.setIcon(new ImageIcon(GuayCalendar.class.getResource("/iconos/flechaArriba_x32_blue.png")));
@@ -100,12 +102,7 @@ public class GuayCalendar extends JPanel {
 		JButton btnDisminuirMes = new JButton("");
 		btnDisminuirMes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (fecha.getMonth() > Fecha.DAY_MIN)
-					fecha.setMonth(fecha.getMonth() - 1);
-				else
-					fecha.setMonth(Fecha.MONTH_MAX);
 				
-				comboMes.setSelectedItem(fecha.getMonth());
 			}
 		});
 		btnDisminuirMes.setContentAreaFilled(false);
@@ -114,14 +111,16 @@ public class GuayCalendar extends JPanel {
 		add(btnDisminuirMes);
 
 		comboDia = new JComboBox<Integer>();
+		comboDia.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		
 		JButton btnDisminuirAnyo = new JButton("");
 		btnDisminuirAnyo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (comboAnyo.getSelectedIndex() == 0)
-					comboAnyo.setSelectedIndex(1);
-				else
-					comboAnyo.setSelectedIndex(0);
+				
 			}
 		});
 		btnDisminuirAnyo.setIcon(new ImageIcon(GuayCalendar.class.getResource("/iconos/flechaAbajo_x32_blue.png")));
@@ -136,6 +135,10 @@ public class GuayCalendar extends JPanel {
 		add(comboDia);
 
 		comboMes = new JComboBox<Integer>();
+		comboMes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		comboMes.setForeground(new Color(0, 109, 240));
 		comboMes.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		comboMes.setModel(new DefaultComboBoxModel<Integer>(new Integer[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}));
@@ -144,6 +147,10 @@ public class GuayCalendar extends JPanel {
 		add(comboMes);
 		
 		comboAnyo = new JComboBox<Integer>();
+		comboAnyo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		comboAnyo.setForeground(new Color(0, 109, 240));
 		comboAnyo.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		comboAnyo.setModel(new DefaultComboBoxModel<Integer>(new Integer[] {fecha.getYear(), fecha.getYear() + 1}));
@@ -152,7 +159,48 @@ public class GuayCalendar extends JPanel {
 		add(comboAnyo);
 
 	}
-
+	
+//	private void cambiarDia(int day) {
+//		fecha.setDay(day);
+//		comboDia.setSelectedItem(fecha.getDay());
+//	}
+//	
+//	private boolean validarDia() {
+//		boolean b = otroMetodo();
+//		System.out.println(b);
+//		
+//		return b;
+//	}
+//	
+//	private boolean otroMetodo() {
+//		int day = fecha.getDay();
+//		int month = fecha.getMonth();
+//		int year = fecha.getYear();
+//		
+//		if (month == 4 || month == 6 || month == 9 || month == 11) { // Meses con 30 dias
+//			if (day <= 30)
+//				return true;
+//			else
+//				return false;
+//		}
+//		else if (month == 2) { // Febrero
+//			if ((year % 4 == 0) && (day <= 28)) // Con 28 dias (año bisiesto)
+//				return true;
+//			else if ((year % 4 != 0) && (day <= 27)) // Con 27 dias (año no bisiesto)
+//				return true;
+//			else
+//				return false;
+//		}
+//		else if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) { // Meses con 30 dias
+//			if (day <= 31)
+//				return true;
+//			else
+//				return false;
+//		}
+//		else
+//			return false;
+//	}
+	
 	public Fecha getFecha() {
 		return fecha;
 	}
