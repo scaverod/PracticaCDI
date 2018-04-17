@@ -13,22 +13,28 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLayeredPane;
 import java.awt.CardLayout;
 import java.beans.PropertyChangeListener;
+import java.util.concurrent.Semaphore;
 import java.beans.PropertyChangeEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PanelSpa extends JPanel {
 	private static final long serialVersionUID = 1L;
-
+	
+	private MicroControladorLayersPadreHijo microControlador;
+	
 	private JPanel panelEmergenteContenedor;
 	private JPanel panelPrincipal;
 	private JPanel panelBase;
-	private JButton btnOtroBoton;
-	private JLabel lblNewLabel;
 	private JLayeredPane layeredPane;
 	private JPanel panelOtro;
+	
+	private Semaphore s;
 
 	public PanelSpa(Controlador controlador) {
+		this.s = new Semaphore(0);
 		this.setSize(new Dimension(931, 483));
 		this.setName("p" + this.getClass().getSimpleName().substring(1));
 		setLayout(null);
@@ -38,6 +44,12 @@ public class PanelSpa extends JPanel {
 		add(layeredPane);
 
 		panelPrincipal = new JPanel();
+		panelPrincipal.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				mostrarVentanaServicios();
+			}
+		});
 		layeredPane.setLayer(panelPrincipal, 1);
 		panelPrincipal.setBounds(0, 0, 931, 483);
 		layeredPane.add(panelPrincipal);
@@ -46,23 +58,23 @@ public class PanelSpa extends JPanel {
 		JButton btnConEstoSaco = new JButton("Con esto saco UN DETERMINADO panel emergente");
 		btnConEstoSaco.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				changeToPanelEmergente(panelBase);
+				changeToVentanaEmergente(panelBase);
 			}
 		});
 		btnConEstoSaco.setBounds(290, 160, 351, 162);
 		panelPrincipal.add(btnConEstoSaco);
 
-		btnOtroBoton = new JButton("Con este saco OTRO");
+		JButton btnOtroBoton = new JButton("Con este saco OTRO");
 		btnOtroBoton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				changeToPanelEmergente(panelOtro);
+				changeToVentanaEmergente(panelOtro);
 			}
 		});
 		btnOtroBoton.setIcon(new ImageIcon(PanelSpa.class.getResource("/iconos/tick.png")));
 		btnOtroBoton.setBounds(31, 36, 211, 109);
 		panelPrincipal.add(btnOtroBoton);
 
-		lblNewLabel = new JLabel("New label");
+		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon(PanelSpa.class.getResource("/iconos/espa\u00F1a.png")));
 		lblNewLabel.setBounds(54, 335, 311, 109);
 		panelPrincipal.add(lblNewLabel);
@@ -87,22 +99,34 @@ public class PanelSpa extends JPanel {
 		panelEmergenteContenedor.setBounds(118, 84, 695, 315);
 		layeredPane.add(panelEmergenteContenedor);
 		panelEmergenteContenedor.setLayout(new CardLayout(0, 0));
-
-		panelBase = new PanelSpaEmergenteBase(
-				new MicroControladorLayersPadreHijo(layeredPane, panelEmergenteContenedor));
+		
+		
+		
+		/* SEPARADOR */
+		microControlador = new MicroControladorLayersPadreHijo(layeredPane, panelEmergenteContenedor);
+		
+		panelBase = new PanelSpaEmergenteBase(microControlador, this.getName(), controlador, s);
 		panelEmergenteContenedor.add(panelBase, panelBase.getName());
 
-		panelOtro = new PanelSpaEmergenteOtro(
-				new MicroControladorLayersPadreHijo(layeredPane, panelEmergenteContenedor));
+		panelOtro = new PanelSpaEmergenteOtro(microControlador, this.getName(), controlador, s);
 		panelEmergenteContenedor.add(panelOtro, panelOtro.getName());
 	}
-
-	private void changeToPanelEmergente(JPanel subPanel) {
-		// Cambio el panel activo dentro del panel emergente
+	
+	private void establecerVentanaServicio(String panel) {
 		CardLayout l = (CardLayout) panelEmergenteContenedor.getLayout();
-		l.show(panelEmergenteContenedor, subPanel.getName());
+		l.show(panelEmergenteContenedor, panel);
+	}
 
-		// Pongo el panel emergente por encima del principal
+	private void mostrarVentanaEmergente() {
 		layeredPane.setLayer(panelEmergenteContenedor, 2);
+	}
+
+	private void mostrarVentanaServicios() {
+		layeredPane.setLayer(panelEmergenteContenedor, 0);
+	}
+
+	private void changeToVentanaEmergente(JPanel panel) {
+		establecerVentanaServicio(panel.getName());
+		mostrarVentanaEmergente();
 	}
 }
