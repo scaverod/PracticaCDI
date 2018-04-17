@@ -1,5 +1,7 @@
 package tiposVariable;
 
+import java.util.Date;
+
 public class Tiempo {
 
 	private int hora;
@@ -8,6 +10,14 @@ public class Tiempo {
 	public Tiempo(int hora, int minutos) {
 		this.hora = hora;
 		this.minutos = minutos;
+	}
+	
+	@SuppressWarnings("deprecation")
+	public Tiempo(long date) {
+		Date d = new Date(date);
+		
+		hora = d.getHours();
+		minutos = d.getMinutes();
 	}
 
 	public int getHora() {
@@ -25,9 +35,13 @@ public class Tiempo {
 	public void setMinutos(int minutos) {
 		this.minutos = minutos;
 	}
-
+	
 	public String toString() {
 		return hora + ":" + minutos;
 
+	}
+	
+	public static Tiempo getTiempoActual() {
+		return new Tiempo(System.currentTimeMillis());
 	}
 }
