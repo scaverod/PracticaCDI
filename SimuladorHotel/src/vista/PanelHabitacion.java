@@ -12,6 +12,7 @@ import java.awt.Color;
 import javax.swing.JToggleButton;
 
 import controlador.Controlador;
+import controlador.MicroControladorLayersPadreHijo;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -21,12 +22,14 @@ import javax.swing.SwingConstants;
 public class PanelHabitacion extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
+	private MicroControladorLayersPadreHijo microControlador;
+	
 	private int encendidas;
 	private JLayeredPane layeredPane;
 	private JPanel panelPrincipal;
 	private JPanel panelEmergenteContenedor;
-	private JPanel panelEmergente1;
-	private JPanel panelEmergente2;
+	private JPanel panelBase;
+	private JPanel panelOtro;
 
 	public PanelHabitacion(Controlador controlador) {
 		this.setSize(new Dimension(931, 483));
@@ -99,14 +102,6 @@ public class PanelHabitacion extends JPanel {
 		panelEmergenteContenedor.setBounds(118, 84, 695, 315);
 		layeredPane.add(panelEmergenteContenedor);
 		panelEmergenteContenedor.setLayout(new CardLayout(0, 0));
-		
-		panelEmergente1 = new JPanel();
-		panelEmergenteContenedor.add(panelEmergente1, "name_9164077998213"); //FIXME
-		panelEmergente1.setLayout(null);
-		
-		panelEmergente2 = new JPanel();
-		panelEmergenteContenedor.add(panelEmergente2, "name_9171750037097"); //FIXME
-		panelEmergente2.setLayout(null);
 
 		JButton btnCalefaccion = new JButton("");
 		btnCalefaccion.setForeground(Color.WHITE);
@@ -277,6 +272,16 @@ public class PanelHabitacion extends JPanel {
 		lblTemperatura.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblTemperatura.setBounds(10, 80, 97, 27);
 		panelPrincipal.add(lblTemperatura);
-
+		
+		// En principio no tiene que estar al final, pero por seguir la misma estructura que en panelSpa y porque tiene sentido lo voy a poner aquí
+		
+		/* SEPARADOR */
+		microControlador = new MicroControladorLayersPadreHijo(layeredPane, panelEmergenteContenedor);
+		
+		panelBase = new JPanel();
+		panelEmergenteContenedor.add(panelBase, "name_9164077998213");
+		
+		panelOtro = new JPanel();
+		panelEmergenteContenedor.add(panelOtro, "name_9171750037097");
 	}
 }
