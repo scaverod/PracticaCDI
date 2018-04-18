@@ -73,6 +73,23 @@ public class TextoEng extends Texto {
 		setPanelServiciosEmergentealmohadaPluma("Feather");
 		setPanelServiciosEmergentealmohadaTxt("Completar -> Linea 74 TextoEng");
 
+		//Panel Emergente Comida
+		setPanelServiciosEmergenteComidaTxt(
+				"Our hotels have a totally personalized service. With just pressing the button, a bellguy will take the food from our exclusive restaurant directly to your room, so you can enjoy our gourmet meal in total comfort. Service available from 7 am to midnight");
+				
+		//Panel Emergente Toallas
+		setPanelServiciosEmergenteToallasTxt(
+				"Our hotels have a totally personalized service. With just pressing the button, our cleaning service will go to your room with a set of clean towels. Service available 24 hours a day.");
+		
+		//Panel Emergente Minibar
+		setPanelServiciosEmergenteMinibarTxt(
+				"Our hotels have a totally personalized service. With just pressing the button, a bellguy will go to your room and replace all the items in the minibar, so you can always enjoy the best drinks and snaks we have at your disposal.");
+		
+				//Panel Emergente Sabanas
+		setPanelServiciosEmergenteSabanasTxt(
+				"Our hotels have a totally personalized service. With just pressing the button, our cleaning service will go to your room with a set of clean bed sheets. Service available 24 hours a day.");
+		
+		
 		// TODO: panel usuario
 		setLblCuentaHabitacion("Room");
 		setLblElegirIdioma("Choose Language");
