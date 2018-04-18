@@ -36,10 +36,11 @@ public class GuayCalendar extends JPanel {
 	private final DefaultComboBoxModel<Integer> modelDias30 = new DefaultComboBoxModel<Integer>(dias30);
 	private final DefaultComboBoxModel<Integer> modelDias31 = new DefaultComboBoxModel<Integer>(dias31);
 	
-	
 	private Fecha fecha;
 
 	public GuayCalendar() {
+		fecha = new Fecha();
+		
 		setSize(new Dimension(398, 205));
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -47,10 +48,7 @@ public class GuayCalendar extends JPanel {
 				| UnsupportedLookAndFeelException e) {
 			e.printStackTrace();
 		}
-
 		setLayout(null);
-		
-		fecha = new Fecha();
 
 		JLabel lblSeparador = new JLabel("/");
 		lblSeparador.setForeground(new Color(0, 109, 240));
@@ -58,15 +56,6 @@ public class GuayCalendar extends JPanel {
 		lblSeparador.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSeparador.setBounds(99, 66, 30, 72);
 		add(lblSeparador);
-
-		JButton btnAumentarDia = new JButton("");
-		btnAumentarDia.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				fecha.addDay();
-				updateAllViews();
-			}
-		});
-		btnAumentarDia.setContentAreaFilled(false);
 		
 		JLabel lblSeparador2 = new JLabel("/");
 		lblSeparador2.setHorizontalAlignment(SwingConstants.CENTER);
@@ -74,52 +63,56 @@ public class GuayCalendar extends JPanel {
 		lblSeparador2.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		lblSeparador2.setBounds(238, 66, 30, 72);
 		add(lblSeparador2);
+
+		JButton btnAumentarDia = new JButton("");
+		btnAumentarDia.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!(fecha.getDay() == fecha.getMaxDay() && fecha.getMonth() == fecha.getMaxMonth() && (fecha.getYear() == (int) comboAnyo.getItemAt(comboAnyo.getItemCount() - 1)))) {
+					fecha.addDay();
+					updateAllViews();
+				}
+			}
+		});
+		btnAumentarDia.setContentAreaFilled(false);
 		btnAumentarDia.setIcon(new ImageIcon(GuayCalendar.class.getResource("/iconos/flechaArriba_x32_blue.png")));
 		btnAumentarDia.setBounds(0, 0, 89, 41);
 		add(btnAumentarDia);
+		
+		JButton btnDisminuirDia = new JButton("");
+		btnDisminuirDia.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!(fecha.getDay() == fecha.getMinDay() && fecha.getMonth() == fecha.getMinMonth() && (fecha.getYear() == (int) comboAnyo.getItemAt(0)))) {
+					fecha.substractDay();
+					updateAllViews();
+				}
+			}
+		});
+		btnDisminuirDia.setContentAreaFilled(false);
+		btnDisminuirDia.setIcon(new ImageIcon(GuayCalendar.class.getResource("/iconos/flechaAbajo_x32_blue.png")));
+		btnDisminuirDia.setBounds(0, 164, 89, 41);
+		add(btnDisminuirDia);
 
 		JButton btnAumentarMes = new JButton("");
 		btnAumentarMes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				fecha.addMonth();
-				updateMonthAndYearView();
+				if (!(fecha.getMonth() == fecha.getMaxMonth() && (fecha.getYear() == (int) comboAnyo.getItemAt(comboAnyo.getItemCount() - 1)))) {
+					fecha.addMonth();
+					updateMonthAndYearView();
+				}
 			}
 		});
 		btnAumentarMes.setContentAreaFilled(false);
 		btnAumentarMes.setIcon(new ImageIcon(GuayCalendar.class.getResource("/iconos/flechaArriba_x32_blue.png")));
 		btnAumentarMes.setBounds(139, 0, 89, 41);
 		add(btnAumentarMes);
-
-		JButton btnDisminuirDia = new JButton("");
-		btnDisminuirDia.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				fecha.substractDay();
-				updateAllViews();
-			}
-		});
-		btnDisminuirDia.setContentAreaFilled(false);
 		
-		JButton btnAumentarAnyo = new JButton("");
-		btnAumentarAnyo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				fecha.addYear();
-				comboAnyo.setSelectedItem(fecha.getYear());
-				fixDayModel();
-			}
-		});
-		btnAumentarAnyo.setIcon(new ImageIcon(GuayCalendar.class.getResource("/iconos/flechaArriba_x32_blue.png")));
-		btnAumentarAnyo.setContentAreaFilled(false);
-		btnAumentarAnyo.setBounds(278, 0, 120, 41);
-		add(btnAumentarAnyo);
-		btnDisminuirDia.setIcon(new ImageIcon(GuayCalendar.class.getResource("/iconos/flechaAbajo_x32_blue.png")));
-		btnDisminuirDia.setBounds(0, 164, 89, 41);
-		add(btnDisminuirDia);
-
 		JButton btnDisminuirMes = new JButton("");
 		btnDisminuirMes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				fecha.substractMonth();
-				updateMonthAndYearView();
+				if (!(fecha.getMonth() == fecha.getMinMonth() && (fecha.getYear() == (int) comboAnyo.getItemAt(0)))) {
+					fecha.substractMonth();
+					updateMonthAndYearView();
+				}
 			}
 		});
 		btnDisminuirMes.setContentAreaFilled(false);
@@ -127,12 +120,29 @@ public class GuayCalendar extends JPanel {
 		btnDisminuirMes.setBounds(139, 164, 89, 41);
 		add(btnDisminuirMes);
 		
+		JButton btnAumentarAnyo = new JButton("");
+		btnAumentarAnyo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (fecha.getYear() < (int) comboAnyo.getItemAt(comboAnyo.getItemCount() - 1)) {
+					fecha.addYear();
+					comboAnyo.setSelectedItem(fecha.getYear());
+					fixDayModel();
+				}
+			}
+		});
+		btnAumentarAnyo.setIcon(new ImageIcon(GuayCalendar.class.getResource("/iconos/flechaArriba_x32_blue.png")));
+		btnAumentarAnyo.setContentAreaFilled(false);
+		btnAumentarAnyo.setBounds(278, 0, 120, 41);
+		add(btnAumentarAnyo);
+		
 		JButton btnDisminuirAnyo = new JButton("");
 		btnDisminuirAnyo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				fecha.substractYear();
-				comboAnyo.setSelectedItem(fecha.getYear());
-				fixDayModel();
+				if (fecha.getYear() > (int) comboAnyo.getItemAt(0)) {
+					fecha.substractYear();
+					comboAnyo.setSelectedItem(fecha.getYear());
+					fixDayModel();
+				}
 			}
 		});
 		btnDisminuirAnyo.setIcon(new ImageIcon(GuayCalendar.class.getResource("/iconos/flechaAbajo_x32_blue.png")));
@@ -175,12 +185,12 @@ public class GuayCalendar extends JPanel {
 		});
 		comboAnyo.setForeground(new Color(0, 109, 240));
 		comboAnyo.setFont(new Font("Tahoma", Font.PLAIN, 40));
-//		comboAnyo.setModel(new DefaultComboBoxModel<Integer>(new Integer[] { fecha.getYear(), fecha.getYear() + 1 }));
-		comboAnyo.setModel(new DefaultComboBoxModel<Integer>(new Integer[] { 2016, 2017, 2018, 2019, 2020 }));
+		comboAnyo.setModel(new DefaultComboBoxModel<Integer>(new Integer[] { fecha.getYear(), fecha.getYear() + 1 }));
 		comboAnyo.setSelectedItem(fecha.getYear());
 		comboAnyo.setBounds(278, 52, 120, 101);
 		add(comboAnyo);
 		
+		// Siempre al final
 		fixDayModel();
 	}
 	
@@ -199,6 +209,8 @@ public class GuayCalendar extends JPanel {
 	private void fixDayModel() {
 		setMaxDayComboDay();
 		comboDia.setSelectedItem(fecha.getDay());
+		
+		System.out.println("Año actual: " + fecha.getYear());
 	}
 	
 	private void setMaxDayComboDay() {

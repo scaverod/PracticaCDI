@@ -55,28 +55,33 @@ public class Fecha {
 	}
 	
 	private boolean correctDay() {
-		if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) { // Meses con 31 dias
-			if (day <= 31)
-				return true;
-			else
-				return false;
-		}
-		else if (month == 4 || month == 6 || month == 9 || month == 11) { // Meses con 30 dias
-			if (day <= 30)
-				return true;
-			else
-				return false;
-		}
-		else if (month == 2) { // Febrero
-			if ((year % 4 == 0) && (day <= 28)) // Con 28 dias (año bisiesto)
-				return true;
-			else if ((year % 4 != 0) && (day <= 27)) // Con 27 dias (año no bisiesto)
-				return true;
-			else
-				return false;
-		}
+		if (day >= DAY_MIN && day <= getMaxDay())
+			return true;
 		else
 			return false;
+		
+//		if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) { // Meses con 31 dias
+//			if (day <= 31)
+//				return true;
+//			else
+//				return false;
+//		}
+//		else if (month == 4 || month == 6 || month == 9 || month == 11) { // Meses con 30 dias
+//			if (day <= 30)
+//				return true;
+//			else
+//				return false;
+//		}
+//		else if (month == 2) { // Febrero
+//			if ((year % 4 == 0) && (day <= 28)) // Con 28 dias (año bisiesto)
+//				return true;
+//			else if ((year % 4 != 0) && (day <= 27)) // Con 27 dias (año no bisiesto)
+//				return true;
+//			else
+//				return false;
+//		}
+//		else
+//			return false;
 	}
 	
 	private void checkAndFixMaxDay() {
@@ -92,8 +97,8 @@ public class Fecha {
 		if (day < getMaxDay())
 			day++;
 		else {
-			day = DAY_MIN;
 			addMonth();
+			day = DAY_MIN;
 		}
 	}
 	
@@ -101,8 +106,8 @@ public class Fecha {
 		if (day > DAY_MIN)
 			day--;
 		else {
-			day = getMaxDay();
 			substractMonth();
+			day = getMaxDay();
 		}
 	}
 	
@@ -114,8 +119,8 @@ public class Fecha {
 			checkAndFixMaxDay();
 		}
 		else {
-			month = MONTH_MIN;
 			addYear();
+			month = MONTH_MIN;
 		}
 	}
 	
@@ -125,8 +130,8 @@ public class Fecha {
 			checkAndFixMaxDay();
 		}
 		else {
-			month = MONTH_MAX;
 			substractYear();
+			month = MONTH_MAX;
 		}
 	}
 	
