@@ -62,7 +62,8 @@ public class GuayCalendar extends JPanel {
 		JButton btnAumentarDia = new JButton("");
 		btnAumentarDia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				fecha.addDay();
+				updateAllViews();
 			}
 		});
 		btnAumentarDia.setContentAreaFilled(false);
@@ -80,7 +81,8 @@ public class GuayCalendar extends JPanel {
 		JButton btnAumentarMes = new JButton("");
 		btnAumentarMes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				fecha.addMonth();
+				updateMonthAndYearView();
 			}
 		});
 		btnAumentarMes.setContentAreaFilled(false);
@@ -91,7 +93,8 @@ public class GuayCalendar extends JPanel {
 		JButton btnDisminuirDia = new JButton("");
 		btnDisminuirDia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				fecha.substractDay();
+				updateAllViews();
 			}
 		});
 		btnDisminuirDia.setContentAreaFilled(false);
@@ -99,7 +102,9 @@ public class GuayCalendar extends JPanel {
 		JButton btnAumentarAnyo = new JButton("");
 		btnAumentarAnyo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				fecha.addYear();
+				comboAnyo.setSelectedItem(fecha.getYear());
+				fixDayModel();
 			}
 		});
 		btnAumentarAnyo.setIcon(new ImageIcon(GuayCalendar.class.getResource("/iconos/flechaArriba_x32_blue.png")));
@@ -113,7 +118,8 @@ public class GuayCalendar extends JPanel {
 		JButton btnDisminuirMes = new JButton("");
 		btnDisminuirMes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				fecha.substractMonth();
+				updateMonthAndYearView();
 			}
 		});
 		btnDisminuirMes.setContentAreaFilled(false);
@@ -124,7 +130,9 @@ public class GuayCalendar extends JPanel {
 		JButton btnDisminuirAnyo = new JButton("");
 		btnDisminuirAnyo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				fecha.substractYear();
+				comboAnyo.setSelectedItem(fecha.getYear());
+				fixDayModel();
 			}
 		});
 		btnDisminuirAnyo.setIcon(new ImageIcon(GuayCalendar.class.getResource("/iconos/flechaAbajo_x32_blue.png")));
@@ -135,7 +143,7 @@ public class GuayCalendar extends JPanel {
 		comboDia = new JComboBox<Integer>();
 		comboDia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				fecha.setDay((int) comboDia.getSelectedItem());
 			}
 		});
 		comboDia.setForeground(new Color(0, 109, 240));
@@ -147,9 +155,8 @@ public class GuayCalendar extends JPanel {
 		comboMes = new JComboBox<Integer>();
 		comboMes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//TODO: guardar localmente el dia para no perderlo
 				fecha.setMonth((int) comboMes.getSelectedItem());
-				setMaxDayComboDay();
+				fixDayModel();
 			}
 		});
 		comboMes.setForeground(new Color(0, 109, 240));
@@ -162,18 +169,36 @@ public class GuayCalendar extends JPanel {
 		comboAnyo = new JComboBox<Integer>();
 		comboAnyo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// TODO: guardar localmente el dia 
 				fecha.setYear((int) comboAnyo.getSelectedItem());
-				setMaxDayComboDay();
+				fixDayModel();
 			}
 		});
 		comboAnyo.setForeground(new Color(0, 109, 240));
 		comboAnyo.setFont(new Font("Tahoma", Font.PLAIN, 40));
-		comboAnyo.setModel(new DefaultComboBoxModel<Integer>(new Integer[] { fecha.getYear(), fecha.getYear() + 1 }));
+//		comboAnyo.setModel(new DefaultComboBoxModel<Integer>(new Integer[] { fecha.getYear(), fecha.getYear() + 1 }));
+		comboAnyo.setModel(new DefaultComboBoxModel<Integer>(new Integer[] { 2016, 2017, 2018, 2019, 2020 }));
 		comboAnyo.setSelectedItem(fecha.getYear());
 		comboAnyo.setBounds(278, 52, 120, 101);
 		add(comboAnyo);
+		
+		fixDayModel();
+	}
+	
+	private void updateAllViews() {
+		comboDia.setSelectedItem(fecha.getDay());
+		comboMes.setSelectedItem(fecha.getMonth());
+		comboAnyo.setSelectedItem(fecha.getYear());
+	}
+	
+	private void updateMonthAndYearView() {
+		comboMes.setSelectedItem(fecha.getMonth());
+		comboAnyo.setSelectedItem(fecha.getYear());
+		fixDayModel();
+	}
+	
+	private void fixDayModel() {
 		setMaxDayComboDay();
+		comboDia.setSelectedItem(fecha.getDay());
 	}
 	
 	private void setMaxDayComboDay() {
