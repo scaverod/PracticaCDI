@@ -26,6 +26,17 @@ public class GuayCalendar extends JPanel {
 	private JComboBox<Integer> comboMes;
 	private JComboBox<Integer> comboAnyo;
 	
+	private final Integer[] dias27 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27};
+	private final Integer[] dias28 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28};
+	private final Integer[] dias30 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30};
+	private final Integer[] dias31 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31};
+	
+	private final DefaultComboBoxModel<Integer> modelDias27 = new DefaultComboBoxModel<Integer>(dias27);
+	private final DefaultComboBoxModel<Integer> modelDias28 = new DefaultComboBoxModel<Integer>(dias28);
+	private final DefaultComboBoxModel<Integer> modelDias30 = new DefaultComboBoxModel<Integer>(dias30);
+	private final DefaultComboBoxModel<Integer> modelDias31 = new DefaultComboBoxModel<Integer>(dias31);
+	
+	
 	private Fecha fecha;
 
 	public GuayCalendar() {
@@ -109,13 +120,6 @@ public class GuayCalendar extends JPanel {
 		btnDisminuirMes.setIcon(new ImageIcon(GuayCalendar.class.getResource("/iconos/flechaAbajo_x32_blue.png")));
 		btnDisminuirMes.setBounds(139, 164, 89, 41);
 		add(btnDisminuirMes);
-
-		comboDia = new JComboBox<Integer>();
-		comboDia.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
 		
 		JButton btnDisminuirAnyo = new JButton("");
 		btnDisminuirAnyo.addActionListener(new ActionListener() {
@@ -127,79 +131,67 @@ public class GuayCalendar extends JPanel {
 		btnDisminuirAnyo.setContentAreaFilled(false);
 		btnDisminuirAnyo.setBounds(278, 164, 120, 41);
 		add(btnDisminuirAnyo);
+		
+		comboDia = new JComboBox<Integer>();
+		comboDia.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+			}
+		});
 		comboDia.setForeground(new Color(0, 109, 240));
 		comboDia.setFont(new Font("Tahoma", Font.PLAIN, 40));
-		comboDia.setModel(new DefaultComboBoxModel<Integer>(new Integer[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31 }));
 		comboDia.setSelectedItem(fecha.getDay());
 		comboDia.setBounds(0, 52, 89, 101);
 		add(comboDia);
-
+		
 		comboMes = new JComboBox<Integer>();
 		comboMes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//TODO: guardar localmente el dia para no perderlo
+				fecha.setMonth((int) comboMes.getSelectedItem());
+				setMaxDayComboDay();
 			}
 		});
 		comboMes.setForeground(new Color(0, 109, 240));
 		comboMes.setFont(new Font("Tahoma", Font.PLAIN, 40));
-		comboMes.setModel(new DefaultComboBoxModel<Integer>(new Integer[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}));
+		comboMes.setModel(new DefaultComboBoxModel<Integer>(new Integer[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 }));
 		comboMes.setSelectedItem(fecha.getMonth());
 		comboMes.setBounds(139, 52, 89, 101);
 		add(comboMes);
-		
+
 		comboAnyo = new JComboBox<Integer>();
 		comboAnyo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// TODO: guardar localmente el dia 
+				fecha.setYear((int) comboAnyo.getSelectedItem());
+				setMaxDayComboDay();
 			}
 		});
 		comboAnyo.setForeground(new Color(0, 109, 240));
 		comboAnyo.setFont(new Font("Tahoma", Font.PLAIN, 40));
-		comboAnyo.setModel(new DefaultComboBoxModel<Integer>(new Integer[] {fecha.getYear(), fecha.getYear() + 1}));
+		comboAnyo.setModel(new DefaultComboBoxModel<Integer>(new Integer[] { fecha.getYear(), fecha.getYear() + 1 }));
 		comboAnyo.setSelectedItem(fecha.getYear());
 		comboAnyo.setBounds(278, 52, 120, 101);
 		add(comboAnyo);
-
+		setMaxDayComboDay();
 	}
 	
-//	private void cambiarDia(int day) {
-//		fecha.setDay(day);
-//		comboDia.setSelectedItem(fecha.getDay());
-//	}
-//	
-//	private boolean validarDia() {
-//		boolean b = otroMetodo();
-//		System.out.println(b);
-//		
-//		return b;
-//	}
-//	
-//	private boolean otroMetodo() {
-//		int day = fecha.getDay();
-//		int month = fecha.getMonth();
-//		int year = fecha.getYear();
-//		
-//		if (month == 4 || month == 6 || month == 9 || month == 11) { // Meses con 30 dias
-//			if (day <= 30)
-//				return true;
-//			else
-//				return false;
-//		}
-//		else if (month == 2) { // Febrero
-//			if ((year % 4 == 0) && (day <= 28)) // Con 28 dias (año bisiesto)
-//				return true;
-//			else if ((year % 4 != 0) && (day <= 27)) // Con 27 dias (año no bisiesto)
-//				return true;
-//			else
-//				return false;
-//		}
-//		else if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) { // Meses con 30 dias
-//			if (day <= 31)
-//				return true;
-//			else
-//				return false;
-//		}
-//		else
-//			return false;
-//	}
+	private void setMaxDayComboDay() {
+		switch (fecha.getMaxDay()) {
+			case 27:
+				comboDia.setModel(modelDias27);
+				break;
+			case 28:
+				comboDia.setModel(modelDias28);
+				break;
+			case 30:
+				comboDia.setModel(modelDias30);
+				break;
+			case 31:
+				comboDia.setModel(modelDias31);
+				break;
+		}
+	}
 	
 	public Fecha getFecha() {
 		return fecha;
