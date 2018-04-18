@@ -56,25 +56,25 @@ public class PanelSpa extends JPanel {
 		layeredPane.add(panelPrincipal);
 		panelPrincipal.setLayout(null);
 		
-		JPanel panel = new JPanel();
-		panel.setBorder(new LineBorder(Color.decode("#006df0"), 5, true));
-		panel.setBounds(10, 11, 450, 461);
-		panelPrincipal.add(panel);
-		panel.setLayout(null);
+		JPanel panelIzquierdo = new JPanel();
+		panelIzquierdo.setBorder(new LineBorder(Color.decode("#006df0"), 5, true));
+		panelIzquierdo.setBounds(10, 11, 450, 461);
+		panelPrincipal.add(panelIzquierdo);
+		panelIzquierdo.setLayout(null);
 
 		JButton btnConEstoSaco = new JButton("Con esto saco UN DETERMINADO panel emergente");
 		btnConEstoSaco.setBounds(10, 409, 277, 41);
-		panel.add(btnConEstoSaco);
+		panelIzquierdo.add(btnConEstoSaco);
 
-		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new LineBorder(Color.decode("#006df0"), 5, true));
-		panel_1.setLayout(null);
-		panel_1.setBounds(471, 11, 450, 461);
-		panelPrincipal.add(panel_1);
+		JPanel panelDerecho = new JPanel();
+		panelDerecho.setBorder(new LineBorder(Color.decode("#006df0"), 5, true));
+		panelDerecho.setLayout(null);
+		panelDerecho.setBounds(471, 11, 450, 461);
+		panelPrincipal.add(panelDerecho);
 		
 				JButton btnOtroBoton = new JButton("Con este saco OTRO");
 				btnOtroBoton.setBounds(10, 409, 169, 41);
-				panel_1.add(btnOtroBoton);
+				panelDerecho.add(btnOtroBoton);
 				btnOtroBoton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						changeToVentanaEmergente(panelOtro);

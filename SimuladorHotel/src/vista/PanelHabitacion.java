@@ -15,20 +15,18 @@ import controlador.Controlador;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.CardLayout;
+import javax.swing.SwingConstants;
 
 public class PanelHabitacion extends JPanel {
-
-	/**
-	 * 
-	 */
-
 	private static final long serialVersionUID = 1L;
-
-	/**
-	 * Create the panel.
-	 */
-
+	
 	private int encendidas;
+	private JLayeredPane layeredPane;
+	private JPanel panelPrincipal;
+	private JPanel panelEmergenteContenedor;
+	private JPanel panelEmergente1;
+	private JPanel panelEmergente2;
 
 	public PanelHabitacion(Controlador controlador) {
 		this.setSize(new Dimension(931, 483));
@@ -36,14 +34,20 @@ public class PanelHabitacion extends JPanel {
 		setLayout(null);
 		encendidas = 0;
 
-		JLayeredPane layeredPane = new JLayeredPane();
+		layeredPane = new JLayeredPane();
 		layeredPane.setBounds(0, 0, 931, 483);
 		add(layeredPane);
+		
+		JPanel panelFondo = new JPanel();
+		layeredPane.setLayer(panelFondo, 1);
+		panelFondo.setBounds(0, 0, 931, 483);
+		layeredPane.add(panelFondo);
+		panelFondo.setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/habitacion.jpg")));
-		lblNewLabel.setBounds(0, 0, 931, 483);
-		layeredPane.add(lblNewLabel);
+		JLabel lblImagenHabitacion = new JLabel("");
+		lblImagenHabitacion.setBounds(0, 0, 931, 483);
+		panelFondo.add(lblImagenHabitacion);
+		lblImagenHabitacion.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/habitacion.jpg")));
 
 		// Luces
 		JToggleButton tglbtnLuz = new JToggleButton("");
@@ -82,13 +86,33 @@ public class PanelHabitacion extends JPanel {
 				}
 			}
 		});
+		
+		panelPrincipal = new JPanel();
+		panelPrincipal.setOpaque(false);
+		layeredPane.setLayer(panelPrincipal, 2);
+		panelPrincipal.setBounds(0, 0, 931, 483);
+		layeredPane.add(panelPrincipal);
+		panelPrincipal.setLayout(null);
+		
+		panelEmergenteContenedor = new JPanel();
+		layeredPane.setLayer(panelEmergenteContenedor, 0);
+		panelEmergenteContenedor.setBounds(118, 84, 695, 315);
+		layeredPane.add(panelEmergenteContenedor);
+		panelEmergenteContenedor.setLayout(new CardLayout(0, 0));
+		
+		panelEmergente1 = new JPanel();
+		panelEmergenteContenedor.add(panelEmergente1, "name_9164077998213"); //FIXME
+		panelEmergente1.setLayout(null);
+		
+		panelEmergente2 = new JPanel();
+		panelEmergenteContenedor.add(panelEmergente2, "name_9171750037097"); //FIXME
+		panelEmergente2.setLayout(null);
 
 		JButton btnCalefaccion = new JButton("");
 		btnCalefaccion.setForeground(Color.WHITE);
 		btnCalefaccion.setContentAreaFilled(false);
-		layeredPane.setLayer(btnCalefaccion, 1);
 		btnCalefaccion.setBounds(10, 305, 101, 69);
-		layeredPane.add(btnCalefaccion);
+		panelPrincipal.add(btnCalefaccion);
 
 		btnLuzTechoCentro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -108,11 +132,10 @@ public class PanelHabitacion extends JPanel {
 				}
 			}
 		});
-		layeredPane.setLayer(btnLuzTechoCentro, 1);
 		btnLuzTechoCentro.setForeground(Color.WHITE);
 		btnLuzTechoCentro.setContentAreaFilled(false);
 		btnLuzTechoCentro.setBounds(144, 11, 426, 156);
-		layeredPane.add(btnLuzTechoCentro);
+		panelPrincipal.add(btnLuzTechoCentro);
 
 		btnLuzBanyo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -131,18 +154,15 @@ public class PanelHabitacion extends JPanel {
 				}
 			}
 		});
-
-		layeredPane.setLayer(btnLuzBanyo, 1);
 		btnLuzBanyo.setForeground(Color.WHITE);
 		btnLuzBanyo.setContentAreaFilled(false);
 		btnLuzBanyo.setBounds(609, 11, 284, 114);
-		layeredPane.add(btnLuzBanyo);
+		panelPrincipal.add(btnLuzBanyo);
 
 		JButton btnVentana = new JButton("");
 		btnVentana.setContentAreaFilled(false);
-		layeredPane.setLayer(btnVentana, 1);
 		btnVentana.setBounds(480, 185, 75, 90);
-		layeredPane.add(btnVentana);
+		panelPrincipal.add(btnVentana);
 
 		btnLuzMesillaIzquierda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -162,11 +182,10 @@ public class PanelHabitacion extends JPanel {
 				}
 			}
 		});
-		layeredPane.setLayer(btnLuzMesillaIzquierda, 1);
 		btnLuzMesillaIzquierda.setForeground(Color.WHITE);
 		btnLuzMesillaIzquierda.setContentAreaFilled(false);
 		btnLuzMesillaIzquierda.setBounds(319, 255, 50, 50);
-		layeredPane.add(btnLuzMesillaIzquierda);
+		panelPrincipal.add(btnLuzMesillaIzquierda);
 
 		btnLuzMesillaDerecha.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -186,26 +205,22 @@ public class PanelHabitacion extends JPanel {
 				}
 			}
 		});
-
-		layeredPane.setLayer(btnLuzMesillaDerecha, 1);
 		btnLuzMesillaDerecha.setForeground(Color.WHITE);
 		btnLuzMesillaDerecha.setContentAreaFilled(false);
 		btnLuzMesillaDerecha.setBounds(421, 255, 50, 50);
-		layeredPane.add(btnLuzMesillaDerecha);
+		panelPrincipal.add(btnLuzMesillaDerecha);
 
 		JButton btnJacuzzi = new JButton("");
 		btnJacuzzi.setForeground(Color.WHITE);
 		btnJacuzzi.setContentAreaFilled(false);
-		layeredPane.setLayer(btnJacuzzi, 1);
 		btnJacuzzi.setBounds(589, 294, 95, 80);
-		layeredPane.add(btnJacuzzi);
+		panelPrincipal.add(btnJacuzzi);
 
 		JButton btnVentanaGrande = new JButton("");
 		btnVentanaGrande.setForeground(Color.WHITE);
-		layeredPane.setLayer(btnVentanaGrande, 1);
 		btnVentanaGrande.setContentAreaFilled(false);
 		btnVentanaGrande.setBounds(111, 178, 120, 190);
-		layeredPane.add(btnVentanaGrande);
+		panelPrincipal.add(btnVentanaGrande);
 
 		JToggleButton tglbtnPuerta = new JToggleButton("");
 		tglbtnPuerta.setToolTipText("Abrir o cerrar la puerta principal.");
@@ -216,52 +231,52 @@ public class PanelHabitacion extends JPanel {
 		});
 		tglbtnPuerta.setSelectedIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/puertaAbierta.png")));
 		tglbtnPuerta.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/puertaCerrada.png")));
-		layeredPane.setLayer(tglbtnPuerta, 1);
 		tglbtnPuerta.setBounds(10, 403, 75, 69);
 		tglbtnPuerta.setOpaque(false);
 		tglbtnPuerta.setContentAreaFilled(false);
-		layeredPane.add(tglbtnPuerta);
+		panelPrincipal.add(tglbtnPuerta);
 
 		JButton btnAlarma = new JButton("");
 		btnAlarma.setToolTipText("Programar una alarma.");
 		btnAlarma.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/alarm.png")));
-		layeredPane.setLayer(btnAlarma, 1);
 		btnAlarma.setBounds(174, 403, 89, 69);
 		btnAlarma.setContentAreaFilled(false);
-		layeredPane.add(btnAlarma);
+		panelPrincipal.add(btnAlarma);
 
 		tglbtnLuz.setToolTipText("Encender o apagar todas las luces.");
 		tglbtnLuz.setSelectedIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/lucesON.png")));
 		tglbtnLuz.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/lucesOFF.png")));
-		layeredPane.setLayer(tglbtnLuz, 1);
 		tglbtnLuz.setOpaque(false);
 		tglbtnLuz.setContentAreaFilled(false);
 		tglbtnLuz.setBounds(91, 403, 75, 69);
-		layeredPane.add(tglbtnLuz);
+		panelPrincipal.add(tglbtnLuz);
 
 		JButton btnAyuda = new JButton("");
+		btnAyuda.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnAyuda.setToolTipText("<consejos>");
 		btnAyuda.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/help.png")));
-		layeredPane.setLayer(btnAyuda, 1);
 		btnAyuda.setBounds(881, 0, 50, 50);
 		btnAyuda.setOpaque(false);
 		btnAyuda.setContentAreaFilled(false);
-		layeredPane.add(btnAyuda);
+		panelPrincipal.add(btnAyuda);
 
 		JButton btnTemperatura = new JButton("");
 		btnTemperatura.setToolTipText("Ajustar la temperatura de la habitaci\u00F3n.");
-		layeredPane.setLayer(btnTemperatura, 1);
 		btnTemperatura.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/thermometer.png")));
 		btnTemperatura.setBounds(10, 11, 97, 73);
 		btnTemperatura.setContentAreaFilled(false);
-		layeredPane.add(btnTemperatura);
+		panelPrincipal.add(btnTemperatura);
 
 		JLabel lblTemperatura = new JLabel("23\u00BA");
+		lblTemperatura.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTemperatura.setForeground(Color.WHITE);
-		layeredPane.setLayer(lblTemperatura, 2);
 		lblTemperatura.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblTemperatura.setBounds(65, 33, 46, 27);
-		layeredPane.add(lblTemperatura);
+		lblTemperatura.setBounds(10, 80, 97, 27);
+		panelPrincipal.add(lblTemperatura);
 
 	}
 }
