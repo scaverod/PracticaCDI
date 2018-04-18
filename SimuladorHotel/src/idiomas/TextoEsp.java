@@ -72,11 +72,11 @@ public class TextoEsp extends Texto {
 		setPanelServiciosEmergentealmohadaVisco("Viscoelástica");
 		setPanelServiciosEmergentealmohadaGel("Gel");
 		setPanelServiciosEmergentealmohadaPluma("Pluma");
-		setPanelServiciosEmergentealmohadaTxt("Completar -> Linea 75 TextoESP");
+		setPanelServiciosEmergentealmohadaTxt("Queremos que descanse todo lo posible durante su estancia. Seleccione el tipo de almohada que desee y en unos minutos un botones se la subirá a la habitación");
 		
 		//Panel Emergente Comida
 		setPanelServiciosEmergenteComidaTxt(
-				"Nuestros hoteles cuentan con una atenci\u00F3n totalmente personalizada. Con solo pulsar el bot\u00F3n, un botones le llevará la comida desde nuestro exclusivo restaurante directamente a su habitación, para que pueda disfrutar de nuestra comida gourmet con total comodidad");
+				"Nuestros hoteles cuentan con una atenci\u00F3n totalmente personalizada. Con solo pulsar el bot\u00F3n, un botones le llevará la comida desde nuestro exclusivo restaurante directamente a su habitación, para que pueda disfrutar de nuestra comida gourmet con total comodidad. Servicio disponible de 7:00 a 00:00");
 		
 		//Panel Emergente Toallas
 		setPanelServiciosEmergenteToallasTxt(
@@ -85,6 +85,10 @@ public class TextoEsp extends Texto {
 		//Panel Emergente Minibar
 		setPanelServiciosEmergenteMinibarTxt(
 				"Nuestros hoteles cuentan con una atenci\u00F3n totalmente personalizada. Con solo pulsar el bot\u00F3n, un botones repondrá todos los artículos del minibar, para que siempre pueda disfrutar de las mejores bebidas y snacks que tenemos a su disposición");
+		
+		//Panel Emergente Sabanas
+		setPanelServiciosEmergenteSabanasTxt(
+				"Nuestros hoteles cuentan con una atenci\u00F3n totalmente personalizada. Con solo pulsar el bot\u00F3n, nuestro servicio de limpieza subirá a su habitación con un juego de sábanas limpias. Servicio disponible las 24 horas del día");
 		
 		// Panel usuario
 		setLblCuentaHabitacion("Habitación");

@@ -115,7 +115,7 @@ public class PanelServiciosEmergenteToallas extends JPanel {
 		txtpnInfo.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		txtpnInfo.setEditable(false);
 		txtpnInfo.setOpaque(false);
-		txtpnInfo.setText("Cambiar Texto");
+		txtpnInfo.setText(t.getPanelServiciosEmergenteToallasTxt());
 		txtpnInfo.setBounds(45, 63, 593, 75);
 		panelPrincipal.add(txtpnInfo);
 
