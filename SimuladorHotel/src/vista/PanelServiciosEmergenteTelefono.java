@@ -60,6 +60,13 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 		panelContenedor.add(panelPrincipal);
 		panelPrincipal.setLayout(null);
 
+		JLabel lblImagen = new JLabel("");
+		ImageIcon mapa = new ImageIcon(PanelServiciosEmergenteTelefono.class.getResource("/iconos/continente.png"));
+		ImageIcon europa = new ImageIcon(PanelServiciosEmergenteTelefono.class.getResource("/iconos/europa.jpg"));
+		ImageIcon asia = new ImageIcon(PanelServiciosEmergenteTelefono.class.getResource("/iconos/asia.jpg"));
+		ImageIcon america = new ImageIcon(PanelServiciosEmergenteTelefono.class.getResource("/iconos/america.jpg"));
+		ImageIcon africa = new ImageIcon(PanelServiciosEmergenteTelefono.class.getResource("/iconos/africa.jpg"));
+
 		JTextPane txtpnInfo = new JTextPane();
 		txtpnInfo.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		txtpnInfo.setEditable(false);
@@ -178,7 +185,7 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 								}
 								break;
 							}
-
+							lblImagen.setIcon(mapa);
 						} catch (InterruptedException e1) {
 							e1.printStackTrace();
 						}
@@ -195,6 +202,8 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 				continente = 1;
 				btnConfirmarLLamada.setEnabled(true);
 				btnConfirmarLLamada.setText("Llamar a América");
+				lblImagen.setIcon(america);
+
 			}
 		});
 		btnAmerica.setContentAreaFilled(false);
@@ -207,6 +216,7 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 				continente = 2;
 				btnConfirmarLLamada.setEnabled(true);
 				btnConfirmarLLamada.setText("Llamar a Asia");
+				lblImagen.setIcon(asia);
 			}
 		});
 		btnAsia.setContentAreaFilled(false);
@@ -219,6 +229,7 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 				continente = 3;
 				btnConfirmarLLamada.setEnabled(true);
 				btnConfirmarLLamada.setText("Llamar a Europa");
+				lblImagen.setIcon(europa);
 			}
 		});
 		btnEuropa.setContentAreaFilled(false);
@@ -231,16 +242,16 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 				continente = 4;
 				btnConfirmarLLamada.setEnabled(true);
 				btnConfirmarLLamada.setText("Llamar a África");
+				lblImagen.setIcon(africa);
 			}
 		});
 		btnAfrica.setContentAreaFilled(false);
 		btnAfrica.setBounds(287, 136, 94, 124);
 		panelPrincipal.add(btnAfrica);
 
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(PanelServiciosEmergenteTelefono.class.getResource("/iconos/continente.png")));
-		lblNewLabel.setBounds(111, 45, 472, 259);
-		panelPrincipal.add(lblNewLabel);
+		lblImagen.setIcon(new ImageIcon(PanelServiciosEmergenteTelefono.class.getResource("/iconos/continente.png")));
+		lblImagen.setBounds(111, 45, 472, 259);
+		panelPrincipal.add(lblImagen);
 	}
 
 	public void cerrarPanelConfirmacion() {
