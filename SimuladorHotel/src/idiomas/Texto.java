@@ -27,6 +27,17 @@ public abstract class Texto {
 
 	// Panel Spa
 	// TODO: pendiente de que se haga aprimero el panel spa
+	private String lblTratamiento;
+	private String lblSeleccionTratamiento;
+	private String lblDuracion;
+	private String lblLugar;
+	private String lblEmpleado;
+	private String btnFecha;
+	private String btnHora;
+	private String lblPlazas;
+	private String lblSpa;
+	private String lblSeleccionServicio;
+	
 
 	// Panel Servicios
 	private String panelServiciosBtnMinibar;
@@ -579,5 +590,85 @@ public abstract class Texto {
 
 	public void setPanelServiciosEmergenteSabanasTxt(String panelServiciosEmergenteSabanasTxt) {
 		this.panelServiciosEmergenteSabanasTxt = panelServiciosEmergenteSabanasTxt;
+	}
+
+	public String getLblTratamiento() {
+		return lblTratamiento;
+	}
+
+	public void setLblTratamiento(String lblTratamiento) {
+		this.lblTratamiento = lblTratamiento;
+	}
+
+	public String getLblSeleccionTratamiento() {
+		return lblSeleccionTratamiento;
+	}
+
+	public void setLblSeleccionTratamiento(String lblSeleccionTratamiento) {
+		this.lblSeleccionTratamiento = lblSeleccionTratamiento;
+	}
+
+	public String getLblDuracion() {
+		return lblDuracion;
+	}
+
+	public void setLblDuracion(String lblDuracion) {
+		this.lblDuracion = lblDuracion;
+	}
+
+	public String getLblLugar() {
+		return lblLugar;
+	}
+
+	public void setLblLugar(String lblLugar) {
+		this.lblLugar = lblLugar;
+	}
+
+	public String getLblEmpleado() {
+		return lblEmpleado;
+	}
+
+	public void setLblEmpleado(String lblEmpleado) {
+		this.lblEmpleado = lblEmpleado;
+	}
+
+	public String getLblPlazas() {
+		return lblPlazas;
+	}
+
+	public void setLblPlazas(String lblPlazas) {
+		this.lblPlazas = lblPlazas;
+	}
+
+	public String getBtnFecha() {
+		return btnFecha;
+	}
+
+	public void setBtnFecha(String btnFecha) {
+		this.btnFecha = btnFecha;
+	}
+
+	public String getBtnHora() {
+		return btnHora;
+	}
+
+	public void setBtnHora(String btnHora) {
+		this.btnHora = btnHora;
+	}
+
+	public String getLblSpa() {
+		return lblSpa;
+	}
+
+	public void setLblSpa(String lblSpa) {
+		this.lblSpa = lblSpa;
+	}
+
+	public String getLblSeleccionServicio() {
+		return lblSeleccionServicio;
+	}
+
+	public void setLblSeleccionServicio(String lblSeleccionServicio) {
+		this.lblSeleccionServicio = lblSeleccionServicio;
 	}
 }

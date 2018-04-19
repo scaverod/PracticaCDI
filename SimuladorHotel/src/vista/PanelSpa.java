@@ -6,6 +6,8 @@ import javax.swing.JPanel;
 
 import controlador.Controlador;
 import controlador.MicroControladorLayersPadreHijo;
+import idiomas.Texto;
+import idiomas.TextoManager;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -28,6 +30,7 @@ import javax.swing.DefaultComboBoxModel;
 
 public class PanelSpa extends JPanel {
 	private static final long serialVersionUID = 1L;
+	private Texto t;
 	
 	private MicroControladorLayersPadreHijo microControlador;
 	
@@ -40,6 +43,7 @@ public class PanelSpa extends JPanel {
 	private Semaphore s;
 
 	public PanelSpa(Controlador controlador) {
+		t = controlador.getTexto();
 		this.s = new Semaphore(0);
 		this.setSize(new Dimension(931, 483));
 		this.setName("p" + this.getClass().getSimpleName().substring(1));
@@ -67,7 +71,7 @@ public class PanelSpa extends JPanel {
 		panelPrincipal.add(panelIzquierdo);
 		panelIzquierdo.setLayout(null);
 
-		JButton btnAdquirirIzq = new JButton("Adquirir");
+		JButton btnAdquirirIzq = new JButton(t.getBtnAdquirir());
 		btnAdquirirIzq.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnAdquirirIzq.setBounds(315, 425, 125, 25);
 		panelIzquierdo.add(btnAdquirirIzq);
@@ -79,7 +83,7 @@ public class PanelSpa extends JPanel {
 		panel.setBounds(0, 0, 450, 60);
 		panelIzquierdo.add(panel);
 		
-		JLabel lblTratamiento = new JLabel("Tratamiento");
+		JLabel lblTratamiento = new JLabel(t.getLblTratamiento());
 		lblTratamiento.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTratamiento.setFont(new Font("Tahoma", Font.PLAIN, 27));
 		lblTratamiento.setBounds(10, 10, 430, 39);
@@ -92,7 +96,7 @@ public class PanelSpa extends JPanel {
 		comboBoxTratamiento.setBounds(55, 110, 221, 25);
 		panelIzquierdo.add(comboBoxTratamiento);
 		
-		JLabel lblSeleccionTratamiento = new JLabel("Seleccione el tratamiento deseado");
+		JLabel lblSeleccionTratamiento = new JLabel(t.getLblSeleccionTratamiento());
 		lblSeleccionTratamiento.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblSeleccionTratamiento.setBounds(55, 71, 221, 41);
 		panelIzquierdo.add(lblSeleccionTratamiento);
@@ -120,7 +124,7 @@ public class PanelSpa extends JPanel {
 		iconoDuracion.setBounds(331, 146, 64, 64);
 		panelIzquierdo.add(iconoDuracion);
 		
-		JLabel lblLugar = new JLabel("Lugar");
+		JLabel lblLugar = new JLabel(t.getLblLugar());
 		lblLugar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLugar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblLugar.setBounds(55, 221, 221, 41);
@@ -138,12 +142,12 @@ public class PanelSpa extends JPanel {
 		iconoLugar.setBounds(331, 221, 64, 64);
 		panelIzquierdo.add(iconoLugar);
 		
-		JButton btnFechaIzq = new JButton("Fecha");
+		JButton btnFechaIzq = new JButton(t.getBtnFecha());
 		btnFechaIzq.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnFechaIzq.setBounds(49, 394, 94, 31);
 		panelIzquierdo.add(btnFechaIzq);
 		
-		JButton btnHoraIzq = new JButton("Hora");
+		JButton btnHoraIzq = new JButton(t.getBtnHora());
 		btnHoraIzq.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnHoraIzq.setBounds(182, 394, 94, 31);
 		panelIzquierdo.add(btnHoraIzq);
@@ -155,7 +159,7 @@ public class PanelSpa extends JPanel {
 		comboBoxEmpleado.setBounds(55, 335, 221, 25);
 		panelIzquierdo.add(comboBoxEmpleado);
 		
-		JLabel lblEmpleado = new JLabel("Empleado");
+		JLabel lblEmpleado = new JLabel(t.getLblEmpleado());
 		lblEmpleado.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEmpleado.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblEmpleado.setBounds(55, 296, 221, 41);
@@ -179,13 +183,13 @@ public class PanelSpa extends JPanel {
 				panelDerecho.add(panelTituloSpa);
 				panelTituloSpa.setLayout(null);
 				
-				JLabel lblSpa = new JLabel("SPA");
+				JLabel lblSpa = new JLabel(t.getLblSpa());
 				lblSpa.setHorizontalAlignment(SwingConstants.CENTER);
 				lblSpa.setBounds(10, 10, 430, 39);
 				lblSpa.setFont(new Font("Tahoma", Font.PLAIN, 27));
 				panelTituloSpa.add(lblSpa);
 				
-				JLabel lblSeleccioneElServicio = new JLabel("Seleccione el servicio deseado");
+				JLabel lblSeleccioneElServicio = new JLabel(t.getLblSeleccionServicio());
 				lblSeleccioneElServicio.setFont(new Font("Tahoma", Font.PLAIN, 15));
 				lblSeleccioneElServicio.setBounds(61, 136, 221, 41);
 				panelDerecho.add(lblSeleccioneElServicio);
@@ -214,7 +218,7 @@ public class PanelSpa extends JPanel {
 				panelDerecho.add(panelPlazas);
 				panelPlazas.setLayout(null);
 				
-				JLabel lblPlazasDisponibles = new JLabel("Plazas disponibles:");
+				JLabel lblPlazasDisponibles = new JLabel(t.getLblPlazas());
 				lblPlazasDisponibles.setBounds(45, 0, 118, 31);
 				lblPlazasDisponibles.setFont(new Font("Tahoma", Font.PLAIN, 15));
 				panelPlazas.add(lblPlazasDisponibles);
@@ -224,17 +228,17 @@ public class PanelSpa extends JPanel {
 				labelNumPlazas.setFont(new Font("Tahoma", Font.PLAIN, 15));
 				panelPlazas.add(labelNumPlazas);
 				
-				JButton btnFechaDcha = new JButton("Fecha");
+				JButton btnFechaDcha = new JButton(t.getBtnFecha());
 				btnFechaDcha.setFont(new Font("Tahoma", Font.PLAIN, 15));
 				btnFechaDcha.setBounds(61, 226, 94, 31);
 				panelDerecho.add(btnFechaDcha);
 				
-				JButton btnHoraDcha = new JButton("Hora");
+				JButton btnHoraDcha = new JButton(t.getBtnHora());
 				btnHoraDcha.setFont(new Font("Tahoma", Font.PLAIN, 15));
 				btnHoraDcha.setBounds(188, 226, 94, 31);
 				panelDerecho.add(btnHoraDcha);
 				
-				JButton btnAdquirirDcha = new JButton("Adquirir");
+				JButton btnAdquirirDcha = new JButton(t.getBtnAdquirir());
 				btnAdquirirDcha.setFont(new Font("Tahoma", Font.PLAIN, 15));
 				btnAdquirirDcha.setBounds(315, 425, 125, 25);
 				panelDerecho.add(btnAdquirirDcha);

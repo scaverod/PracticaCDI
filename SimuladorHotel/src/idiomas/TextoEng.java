@@ -25,6 +25,16 @@ public class TextoEng extends Texto {
 
 		// TODO: panel habitacion
 		// TODO: panel spa
+		setLblTratamiento("Treatment");
+		setLblSeleccionTratamiento("Select the treatment");
+		setLblDuracion("Duration");
+		setLblLugar("Place");
+		setLblEmpleado("Massage Therapist");
+		setBtnFecha("Date");
+		setBtnHora("Hour");
+		setLblPlazas("Available places:");
+		setLblSpa("SPA");
+		setLblSeleccionServicio("Select the service");
 
 		// Panel Servicios
 		setPanelServiciosBtnMinibar("Replenish minibar");
