@@ -67,9 +67,10 @@ public class PanelSpa extends JPanel {
 		panelPrincipal.add(panelIzquierdo);
 		panelIzquierdo.setLayout(null);
 
-		JButton btnConEstoSaco = new JButton("Adquirir");
-		btnConEstoSaco.setBounds(315, 425, 125, 25);
-		panelIzquierdo.add(btnConEstoSaco);
+		JButton btnAdquirirIzq = new JButton("Adquirir");
+		btnAdquirirIzq.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnAdquirirIzq.setBounds(315, 425, 125, 25);
+		panelIzquierdo.add(btnAdquirirIzq);
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
@@ -137,13 +138,15 @@ public class PanelSpa extends JPanel {
 		iconoLugar.setBounds(331, 221, 64, 64);
 		panelIzquierdo.add(iconoLugar);
 		
-		JButton btnFecha = new JButton("Fecha");
-		btnFecha.setBounds(49, 394, 94, 31);
-		panelIzquierdo.add(btnFecha);
+		JButton btnFechaIzq = new JButton("Fecha");
+		btnFechaIzq.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnFechaIzq.setBounds(49, 394, 94, 31);
+		panelIzquierdo.add(btnFechaIzq);
 		
-		JButton btnHora = new JButton("Hora");
-		btnHora.setBounds(182, 394, 94, 31);
-		panelIzquierdo.add(btnHora);
+		JButton btnHoraIzq = new JButton("Hora");
+		btnHoraIzq.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnHoraIzq.setBounds(182, 394, 94, 31);
+		panelIzquierdo.add(btnHoraIzq);
 		
 		JComboBox comboBoxEmpleado = new JComboBox();
 		comboBoxEmpleado.setModel(new DefaultComboBoxModel(new String[] {"Angelina Jolie", "Brad Pitt", "Michael Fassbender", "Alicia Vikander", "Falete"}));
@@ -168,16 +171,6 @@ public class PanelSpa extends JPanel {
 		panelDerecho.setLayout(null);
 		panelDerecho.setBounds(471, 11, 450, 461);
 		panelPrincipal.add(panelDerecho);
-		
-				JButton btnOtroBoton = new JButton("Con este saco OTRO");
-				btnOtroBoton.setBounds(10, 409, 169, 41);
-				panelDerecho.add(btnOtroBoton);
-				btnOtroBoton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						changeToVentanaEmergente(panelOtro);
-					}
-				});
-				btnOtroBoton.setIcon(new ImageIcon(PanelSpa.class.getResource("/iconos/tick.png")));
 				
 				JPanel panelTituloSpa = new JPanel();
 				panelTituloSpa.setBounds(0, 0, 450, 60);
@@ -194,25 +187,58 @@ public class PanelSpa extends JPanel {
 				
 				JLabel lblSeleccioneElServicio = new JLabel("Seleccione el servicio deseado");
 				lblSeleccioneElServicio.setFont(new Font("Tahoma", Font.PLAIN, 15));
-				lblSeleccioneElServicio.setBounds(55, 71, 221, 41);
+				lblSeleccioneElServicio.setBounds(61, 136, 221, 41);
 				panelDerecho.add(lblSeleccioneElServicio);
 				
-				JComboBox comboBox = new JComboBox();
-				comboBox.setModel(new DefaultComboBoxModel(new String[] {"Piscina", "Sauna", "Ba\u00F1o Turco"}));
-				comboBox.setToolTipText("");
-				comboBox.setFont(new Font("Tahoma", Font.PLAIN, 15));
-				comboBox.setBounds(55, 110, 221, 25);
-				panelDerecho.add(comboBox);
+				JComboBox comboBoxPiscina = new JComboBox();
+				comboBoxPiscina.setModel(new DefaultComboBoxModel(new String[] {"Piscina", "Sauna", "Ba\u00F1o Turco"}));
+				comboBoxPiscina.setToolTipText("");
+				comboBoxPiscina.setFont(new Font("Tahoma", Font.PLAIN, 15));
+				comboBoxPiscina.setBounds(61, 175, 221, 25);
+				panelDerecho.add(comboBoxPiscina);
 				
 				JLabel label_1 = new JLabel("");
 				label_1.setIcon(new ImageIcon(PanelSpa.class.getResource("/iconos/jacuzzi.png")));
-				label_1.setBounds(331, 71, 64, 64);
+				label_1.setBounds(324, 193, 64, 64);
 				panelDerecho.add(label_1);
 				
 				JLabel label = new JLabel("");
 				label.setBounds(324, 71, 64, 64);
 				panelDerecho.add(label);
-		btnConEstoSaco.addActionListener(new ActionListener() {
+				
+				JPanel panelPlazas = new JPanel();
+				panelPlazas.setBackground(new Color(255, 255, 153));
+				panelPlazas.setBorder(new LineBorder(Color.ORANGE, 3));
+				panelPlazas.setForeground(Color.ORANGE);
+				panelPlazas.setBounds(61, 287, 221, 31);
+				panelDerecho.add(panelPlazas);
+				panelPlazas.setLayout(null);
+				
+				JLabel lblPlazasDisponibles = new JLabel("Plazas disponibles:");
+				lblPlazasDisponibles.setBounds(45, 0, 118, 31);
+				lblPlazasDisponibles.setFont(new Font("Tahoma", Font.PLAIN, 15));
+				panelPlazas.add(lblPlazasDisponibles);
+				
+				JLabel labelNumPlazas = new JLabel("0");
+				labelNumPlazas.setBounds(168, 0, 8, 31);
+				labelNumPlazas.setFont(new Font("Tahoma", Font.PLAIN, 15));
+				panelPlazas.add(labelNumPlazas);
+				
+				JButton btnFechaDcha = new JButton("Fecha");
+				btnFechaDcha.setFont(new Font("Tahoma", Font.PLAIN, 15));
+				btnFechaDcha.setBounds(61, 226, 94, 31);
+				panelDerecho.add(btnFechaDcha);
+				
+				JButton btnHoraDcha = new JButton("Hora");
+				btnHoraDcha.setFont(new Font("Tahoma", Font.PLAIN, 15));
+				btnHoraDcha.setBounds(188, 226, 94, 31);
+				panelDerecho.add(btnHoraDcha);
+				
+				JButton btnAdquirirDcha = new JButton("Adquirir");
+				btnAdquirirDcha.setFont(new Font("Tahoma", Font.PLAIN, 15));
+				btnAdquirirDcha.setBounds(315, 425, 125, 25);
+				panelDerecho.add(btnAdquirirDcha);
+		btnAdquirirIzq.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				changeToVentanaEmergente(panelBase);
 			}
@@ -225,19 +251,46 @@ public class PanelSpa extends JPanel {
 				//NO BORRAR
 			}
 		});
+		
+		btnAdquirirDcha.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				changeToVentanaEmergente(panelOtro);
+			}
+		});
+		
 		panelEmergenteContenedor.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent evt) {
 				if (evt.getNewValue().equals(0)) {
 					// TODO: reactivar elementos del panelPrincipal (ahora panel al frente)
-					btnConEstoSaco.setEnabled(true);
-					btnOtroBoton.setEnabled(true);
+					btnAdquirirDcha.setEnabled(true);
+					btnAdquirirIzq.setEnabled(true);
+					btnFechaIzq.setEnabled(true);
+					btnFechaDcha.setEnabled(true);
+					btnHoraDcha.setEnabled(true);
+					btnHoraIzq.setEnabled(true);
+					comboBoxDuracion.setEnabled(true);
+					comboBoxEmpleado.setEnabled(true);
+					comboBoxLugar.setEnabled(true);
+					comboBoxTratamiento.setEnabled(true);
+					comboBoxPiscina.setEnabled(true);
 				} else if (evt.getNewValue().equals(2)) {
 					// TODO: desactivar elementos del panelPrincipal (ahora panel al fondo)
-					btnConEstoSaco.setEnabled(false);
-					btnOtroBoton.setEnabled(false);
+					btnAdquirirDcha.setEnabled(false);
+					btnAdquirirIzq.setEnabled(false);
+					btnFechaIzq.setEnabled(false);
+					btnFechaDcha.setEnabled(false);
+					btnHoraDcha.setEnabled(false);
+					btnHoraIzq.setEnabled(false);
+					comboBoxDuracion.setEnabled(false);
+					comboBoxEmpleado.setEnabled(false);
+					comboBoxLugar.setEnabled(false);
+					comboBoxTratamiento.setEnabled(false);
+					comboBoxPiscina.setEnabled(false);
 				}
 			}
 		});
+		
+		
 		layeredPane.setLayer(panelEmergenteContenedor, 0);
 		panelEmergenteContenedor.setBounds(118, 84, 695, 315);
 		layeredPane.add(panelEmergenteContenedor);
