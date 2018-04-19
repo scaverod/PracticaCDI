@@ -5,6 +5,7 @@ import idiomas.TextoManager;
 import modelo.Cuenta;
 import modelo.Habitacion;
 import modelo.Servicios;
+import modelo.ServiciosSpa;
 
 public class Controlador {
 
@@ -12,15 +13,23 @@ public class Controlador {
 	private Cuenta cuenta;
 	private Habitacion habitacion;
 	private Texto texto;
-	
-	
+	private ServiciosSpa serviciosSpa;
 
 	public Controlador() {
 		super();
 		this.servicios = new Servicios();
 		this.cuenta = new Cuenta("101", "contr12");
-		this.habitacion =  new Habitacion();
+		this.habitacion = new Habitacion();
 		this.setTexto(new TextoManager(TextoManager.español).getTexto());
+		this.serviciosSpa = new ServiciosSpa();
+	}
+
+	public ServiciosSpa getServiciosSpa() {
+		return serviciosSpa;
+	}
+
+	public void setServiciosSpa(ServiciosSpa serviciosSpa) {
+		this.serviciosSpa = serviciosSpa;
 	}
 
 	public Servicios getServicios() {
