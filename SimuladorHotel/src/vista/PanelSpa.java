@@ -371,7 +371,7 @@ public class PanelSpa extends JPanel {
 			}
 		});
 		btnAdquirirDch.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnAdquirirDch.setBounds(33, 398, 221, 41);
+		btnAdquirirDch.setBounds(34, 398, 221, 41);
 		panelDerecho.add(btnAdquirirDch);
 		btnAdquirirIzq.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -420,8 +420,8 @@ public class PanelSpa extends JPanel {
 		panelBase = new PanelSpaEmergenteBase(microControlador, this.getName(), controlador, s);
 		panelEmergenteContenedor.add(panelBase, panelBase.getName());
 
-		panelOtro = new PanelSpaEmergenteOtro(microControlador, this.getName(), controlador, s);
-		panelEmergenteContenedor.add(panelOtro, panelOtro.getName());
+//		panelOtro = new PanelSpaEmergenteOtro(microControlador, this.getName(), controlador, s);
+//		panelEmergenteContenedor.add(panelOtro, panelOtro.getName());
 	}
 
 	private void establecerVentanaServicio(String panel) {
