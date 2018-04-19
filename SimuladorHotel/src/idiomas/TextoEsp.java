@@ -24,7 +24,18 @@ public class TextoEsp extends Texto {
 		setMenuPrincipalBtnCuenta("Cuenta");
 
 		// TODO: panel habitacion
+		
 		// TODO: panel spa
+		setLblTratamiento("Tratamiento");
+		setLblSeleccionTratamiento("Seleccione el tratamiento deseado");
+		setLblDuracion("Duración");
+		setLblLugar("Lugar");
+		setLblEmpleado("Empleado");
+		setBtnFecha("Fecha");
+		setBtnHora("Hora");
+		setLblPlazas("Plazas disponibles:");
+		setLblSpa("SPA");
+		setLblSeleccionServicio("Seleccione el servicio deseado");
 
 		// Panel Servicios
 		setPanelServiciosBtnMinibar("Reponer minibar");
