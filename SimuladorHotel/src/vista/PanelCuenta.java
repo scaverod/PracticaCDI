@@ -368,7 +368,7 @@ public class PanelCuenta extends JPanel {
 
 		btnUK.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				controlador.getCuenta().setIdioma(Idioma.Castellano);
+				controlador.getCuenta().setIdioma(Idioma.Ingles);
 				controlador.setTexto(new TextoManager(TextoManager.english).getTexto());
 				t = controlador.getTexto();
 				lblHabitacion.setText(t.getLblCuentaHabitacion() + ": " + controlador.getCuenta().getUsuario());
@@ -386,7 +386,7 @@ public class PanelCuenta extends JPanel {
 
 		btnRU.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				controlador.getCuenta().setIdioma(Idioma.Castellano);
+				controlador.getCuenta().setIdioma(Idioma.Rumano);
 				controlador.setTexto(new TextoManager(TextoManager.romana).getTexto());
 				t = controlador.getTexto();
 				lblHabitacion.setText(t.getLblCuentaHabitacion() + ": " + controlador.getCuenta().getUsuario());
@@ -415,6 +415,7 @@ public class PanelCuenta extends JPanel {
 		if (controlador.getCuenta().getPersonalizacion().isAumentoTexto()) {
 			tglbtnAumentarTexto.setSelected(true);
 		}
+		System.out.println();
 		if (controlador.getCuenta().getIdioma() == Idioma.Castellano) {
 			btnESP.setSelected(true);
 		} else if (controlador.getCuenta().getIdioma() == Idioma.Ingles) {
