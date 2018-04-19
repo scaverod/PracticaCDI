@@ -25,6 +25,8 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 public class PanelSpa extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -69,7 +71,7 @@ public class PanelSpa extends JPanel {
 
 		JButton btnAdquirirIzq = new JButton("Adquirir");
 		btnAdquirirIzq.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnAdquirirIzq.setBounds(315, 425, 125, 25);
+		btnAdquirirIzq.setBounds(301, 425, 125, 25);
 		panelIzquierdo.add(btnAdquirirIzq);
 		
 		JPanel panel = new JPanel();
@@ -85,10 +87,14 @@ public class PanelSpa extends JPanel {
 		lblTratamiento.setBounds(10, 10, 430, 39);
 		panel.add(lblTratamiento);
 		
-		JComboBox comboBoxTratamiento = new JComboBox();
+		JComboBox<String> comboBoxTratamiento = new JComboBox<String>();
+		comboBoxTratamiento.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent arg0) {
+			}
+		});
 		comboBoxTratamiento.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		comboBoxTratamiento.setToolTipText("");
-		comboBoxTratamiento.setModel(new DefaultComboBoxModel(new String[] {"Limpieza de cutis", "Manicura", "Pedicura", "Lifting", "Eliminaci\u00F3n de grasa", "Anti flacidez", "Anti manchas"}));
+		comboBoxTratamiento.setModel(new DefaultComboBoxModel(controlador.getServiciosSpa().getNombresTratamientos()));
 		comboBoxTratamiento.setBounds(55, 110, 221, 25);
 		panelIzquierdo.add(comboBoxTratamiento);
 		
@@ -112,7 +118,7 @@ public class PanelSpa extends JPanel {
 		JLabel lblDuracion = new JLabel("Duraci\u00F3n");
 		lblDuracion.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDuracion.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblDuracion.setBounds(49, 146, 221, 41);
+		lblDuracion.setBounds(55, 146, 221, 41);
 		panelIzquierdo.add(lblDuracion);
 		
 		JLabel iconoDuracion = new JLabel("");
@@ -165,6 +171,25 @@ public class PanelSpa extends JPanel {
 		iconoEmpleado.setIcon(new ImageIcon(PanelSpa.class.getResource("/iconos/users.png")));
 		iconoEmpleado.setBounds(331, 300, 64, 60);
 		panelIzquierdo.add(iconoEmpleado);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(301, 381, 125, 31);
+		panelIzquierdo.add(panel_1);
+		panel_1.setLayout(null);
+		panel_1.setForeground(Color.ORANGE);
+		panel_1.setBorder(new LineBorder(Color.ORANGE, 3));
+		panel_1.setBackground(new Color(255, 255, 153));
+		
+		JLabel lblCoste = new JLabel("Coste:");
+		lblCoste.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblCoste.setBounds(14, 0, 47, 31);
+		panel_1.add(lblCoste);
+		
+		JLabel label_3 = new JLabel("0 \u20AC");
+		label_3.setHorizontalAlignment(SwingConstants.CENTER);
+		label_3.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		label_3.setBounds(60, 0, 65, 31);
+		panel_1.add(label_3);
 
 		JPanel panelDerecho = new JPanel();
 		panelDerecho.setBorder(new LineBorder(Color.decode("#006df0"), 5, true));

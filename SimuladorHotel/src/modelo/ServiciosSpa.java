@@ -43,5 +43,13 @@ public class ServiciosSpa {
 						new String[] { "Irina Boboia", "Maria Roca" }, 18, 20, new double[] { 30, 47.99 }));
 
 	}
+	
+	public String [] getNombresTratamientos (){
+		String [] aux = new String [3];
+		for(int i = 0; i< 3; i++) {
+			aux[i] = tratamientos.get(i).getNombre();
+		}
+		return aux;
+	}
 
 }
