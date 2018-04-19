@@ -15,11 +15,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 
-public class PanelEmergenteBasicoBase extends JPanel {
+public class PanelHabitacionEmergenteJacuzzi extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private Texto t;
 
-	public PanelEmergenteBasicoBase(MicroControladorLayersPadreHijo m, Controlador controlador) {
+	public PanelHabitacionEmergenteJacuzzi(MicroControladorLayersPadreHijo m, Controlador controlador) {
 		t = controlador.getTexto();
 		
 		this.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 109, 240), new Color(0, 109, 240), new Color(0, 109, 240), new Color(0, 109, 240)));

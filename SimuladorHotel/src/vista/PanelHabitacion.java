@@ -13,14 +13,19 @@ import javax.swing.JToggleButton;
 
 import controlador.Controlador;
 import controlador.MicroControladorLayersPadreHijo;
+import idiomas.Texto;
+import idiomas.TextoManager;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.CardLayout;
 import javax.swing.SwingConstants;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PanelHabitacion extends JPanel {
 	private static final long serialVersionUID = 1L;
+	private Texto t = new TextoManager(TextoManager.español).getTexto();
 	
 	private MicroControladorLayersPadreHijo microControlador;
 	
@@ -33,7 +38,7 @@ public class PanelHabitacion extends JPanel {
 
 	public PanelHabitacion(Controlador controlador) {
 		this.setSize(new Dimension(931, 483));
-		this.setName("panelHabitacion");
+		this.setName("p" + this.getClass().getSimpleName().substring(1));
 		setLayout(null);
 		encendidas = 0;
 
@@ -91,6 +96,12 @@ public class PanelHabitacion extends JPanel {
 		});
 		
 		panelPrincipal = new JPanel();
+		panelPrincipal.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				mostrarVentanaServicios();
+			}
+		});
 		panelPrincipal.setOpaque(false);
 		layeredPane.setLayer(panelPrincipal, 2);
 		panelPrincipal.setBounds(0, 0, 931, 483);
@@ -98,6 +109,12 @@ public class PanelHabitacion extends JPanel {
 		panelPrincipal.setLayout(null);
 		
 		panelEmergenteContenedor = new JPanel();
+		panelEmergenteContenedor.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// No borrar
+			}
+		});
 		layeredPane.setLayer(panelEmergenteContenedor, 0);
 		panelEmergenteContenedor.setBounds(118, 84, 695, 315);
 		layeredPane.add(panelEmergenteContenedor);
@@ -129,7 +146,7 @@ public class PanelHabitacion extends JPanel {
 		});
 		btnLuzTechoCentro.setForeground(Color.WHITE);
 		btnLuzTechoCentro.setContentAreaFilled(false);
-		btnLuzTechoCentro.setBounds(144, 11, 426, 156);
+		btnLuzTechoCentro.setBounds(130, 80, 404, 94);
 		panelPrincipal.add(btnLuzTechoCentro);
 
 		btnLuzBanyo.addActionListener(new ActionListener() {
@@ -151,7 +168,7 @@ public class PanelHabitacion extends JPanel {
 		});
 		btnLuzBanyo.setForeground(Color.WHITE);
 		btnLuzBanyo.setContentAreaFilled(false);
-		btnLuzBanyo.setBounds(609, 11, 284, 114);
+		btnLuzBanyo.setBounds(673, 31, 198, 94);
 		panelPrincipal.add(btnLuzBanyo);
 
 		JButton btnVentana = new JButton("");
@@ -249,7 +266,7 @@ public class PanelHabitacion extends JPanel {
 		JButton btnAyuda = new JButton("");
 		btnAyuda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				changeToVentanaEmergente(panelBase);
 			}
 		});
 		btnAyuda.setToolTipText("<consejos>");
@@ -278,10 +295,28 @@ public class PanelHabitacion extends JPanel {
 		/* SEPARADOR */
 		microControlador = new MicroControladorLayersPadreHijo(layeredPane, panelEmergenteContenedor);
 		
-		panelBase = new JPanel();
-		panelEmergenteContenedor.add(panelBase, "name_9164077998213");
+		panelBase = new PanelHabitacionEmergenteAyuda(microControlador, controlador);
+		panelEmergenteContenedor.add(panelBase, panelBase.getName());
 		
 		panelOtro = new JPanel();
-		panelEmergenteContenedor.add(panelOtro, "name_9171750037097");
+		panelEmergenteContenedor.add(panelOtro, panelOtro.getName());
+	}
+	
+	private void establecerVentanaServicio(String panel) {
+		CardLayout l = (CardLayout) panelEmergenteContenedor.getLayout();
+		l.show(panelEmergenteContenedor, panel);
+	}
+
+	private void mostrarVentanaEmergente() {
+		layeredPane.setLayer(panelEmergenteContenedor, 3);
+	}
+
+	private void mostrarVentanaServicios() {
+		layeredPane.setLayer(panelEmergenteContenedor, 0);
+	}
+
+	private void changeToVentanaEmergente(JPanel panel) {
+		establecerVentanaServicio(panel.getName());
+		mostrarVentanaEmergente();
 	}
 }

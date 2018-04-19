@@ -41,7 +41,7 @@ public class PanelCuenta extends JPanel {
 	public PanelCuenta(Controlador controlador) {
 
 		this.setSize(new Dimension(931, 483));
-		this.setName("panelCuenta");
+		this.setName("p" + this.getClass().getSimpleName().substring(1));
 		t = controlador.getTexto();
 		JLabel lblHabitacion = new JLabel(t.getLblCuentaHabitacion() + ": " + controlador.getCuenta().getUsuario());
 		lblHabitacion.setBounds(10, 11, 829, 47);
@@ -120,7 +120,7 @@ public class PanelCuenta extends JPanel {
 		panelPrincipal.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// System.out.println("Me han pinchado :o");
+				mostrarVentanaServicios();
 			}
 		});
 		layeredPane.setLayer(panelPrincipal, 1);
@@ -155,7 +155,7 @@ public class PanelCuenta extends JPanel {
 		JButton btnMsDetalles = new JButton(t.getBtnMsDetalles());
 		btnMsDetalles.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				changeToPanelEmergente(panelDetalles);
+				changeToVentanaEmergente(panelDetalles);
 			}
 		});
 		btnMsDetalles.setBorder(new LineBorder(Color.decode("#9bbfe3"), 3, true));
@@ -344,8 +344,7 @@ public class PanelCuenta extends JPanel {
 		layeredPane.add(panelEmergenteContenedor);
 		panelEmergenteContenedor.setLayout(new CardLayout(0, 0));
 
-		panelDetalles = new PanelCuentaEmergenteDetalles(
-				new MicroControladorLayersPadreHijo(layeredPane, panelEmergenteContenedor), controlador);
+		panelDetalles = new PanelCuentaEmergenteDetalles(new MicroControladorLayersPadreHijo(layeredPane, panelEmergenteContenedor), controlador);
 		panelEmergenteContenedor.add(panelDetalles, panelDetalles.getName());
 
 		btnESP.addActionListener(new ActionListener() {
@@ -425,12 +424,30 @@ public class PanelCuenta extends JPanel {
 		}
 	}
 
-	private void changeToPanelEmergente(JPanel subPanel) {
-		// Cambio el panel activo dentro del panel emergente
+//	private void changeToPanelEmergente(JPanel subPanel) {
+//		// Cambio el panel activo dentro del panel emergente
+//		CardLayout l = (CardLayout) panelEmergenteContenedor.getLayout();
+//		l.show(panelEmergenteContenedor, subPanel.getName());
+//
+//		// Pongo el panel emergente por encima del principal
+//		layeredPane.setLayer(panelEmergenteContenedor, 2);
+//	}
+	
+	private void establecerVentanaServicio(String panel) {
 		CardLayout l = (CardLayout) panelEmergenteContenedor.getLayout();
-		l.show(panelEmergenteContenedor, subPanel.getName());
+		l.show(panelEmergenteContenedor, panel);
+	}
 
-		// Pongo el panel emergente por encima del principal
+	private void mostrarVentanaEmergente() {
 		layeredPane.setLayer(panelEmergenteContenedor, 2);
+	}
+
+	private void mostrarVentanaServicios() {
+		layeredPane.setLayer(panelEmergenteContenedor, 0);
+	}
+
+	private void changeToVentanaEmergente(JPanel panel) {
+		establecerVentanaServicio(panel.getName());
+		mostrarVentanaEmergente();
 	}
 }

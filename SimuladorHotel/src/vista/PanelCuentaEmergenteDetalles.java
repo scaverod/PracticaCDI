@@ -26,8 +26,7 @@ public class PanelCuentaEmergenteDetalles extends JPanel {
 	public PanelCuentaEmergenteDetalles(MicroControladorLayersPadreHijo m, Controlador controlador) {
 		t = controlador.getTexto();
 		setMaximumSize(new Dimension(400, 330));
-		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102),
-				new Color(0, 0, 102)));
+		this.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 109, 240), new Color(0, 109, 240), new Color(0, 109, 240), new Color(0, 109, 240)));
 		this.setSize(400, 315);
 		this.setName("p" + this.getClass().getSimpleName().substring(1));
 		setLayout(null);

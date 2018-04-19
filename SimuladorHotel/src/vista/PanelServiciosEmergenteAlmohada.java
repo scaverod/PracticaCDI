@@ -39,7 +39,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 		this.s = s;
 
 		this.setSize(new Dimension(695, 315));
-		this.setName("p" + this.getClass().getSimpleName().substring(1)); // No modificar
+		this.setName("p" + this.getClass().getSimpleName().substring(1));
 		setLayout(null);
 
 		panelContenedor = new JLayeredPane();
