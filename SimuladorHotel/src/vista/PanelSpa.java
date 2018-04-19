@@ -365,10 +365,14 @@ public class PanelSpa extends JPanel {
 		lblImagenUsers.setBounds(345, 223, 64, 60);
 		panelDerecho.add(lblImagenUsers);
 
-		JButton button = new JButton((String) null);
-		button.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		button.setBounds(33, 398, 221, 41);
-		panelDerecho.add(button);
+		JButton btnAdquirirDch = new JButton(t.getBtnAdquirir());
+		btnAdquirirDch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnAdquirirDch.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnAdquirirDch.setBounds(33, 398, 221, 41);
+		panelDerecho.add(btnAdquirirDch);
 		btnAdquirirIzq.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				changeToVentanaEmergente(panelBase);
