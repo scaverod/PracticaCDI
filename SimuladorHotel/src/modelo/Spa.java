@@ -3,14 +3,14 @@ package modelo;
 public class Spa {
 
 	private String nombre;
-	private int[] duracion;
+	private String[] duracion;
 	private int aforoMax;
 	private int asistentes;
 	private double[] precio;
 	private int horaIni;
 	private int horaFin;
 
-	public Spa(String nombre, int[] duracion, int aforoMax, int asistentes, double[] precio, int horaIni, int horaFin) {
+	public Spa(String nombre, String[] duracion, int aforoMax, int asistentes, double[] precio, int horaIni, int horaFin) {
 		super();
 		this.nombre = nombre;
 		this.duracion = duracion;
@@ -53,11 +53,11 @@ public class Spa {
 		this.nombre = nombre;
 	}
 
-	public int[] getDuracion() {
+	public String[] getDuracion() {
 		return duracion;
 	}
 
-	public void setDuracion(int[] duracion) {
+	public void setDuracion(String[] duracion) {
 		this.duracion = duracion;
 	}
 

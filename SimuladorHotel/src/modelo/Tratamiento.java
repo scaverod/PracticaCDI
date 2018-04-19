@@ -3,14 +3,14 @@ package modelo;
 public class Tratamiento {
 
 	private String nombre;
-	private int[] duracion;
+	private String[] duracion;
 	private String[] lugares;
 	private String[] trabajadores;
 	private double[] precio;
 	private int horaIni;
 	private int horaFin;
 
-	public Tratamiento(String nombre, int[] duracion, String[] lugares, String[] trabajadores, int horaIni, int horaFin,
+	public Tratamiento(String nombre, String[] duracion, String[] lugares, String[] trabajadores, int horaIni, int horaFin,
 			double[] precio) {
 		this.nombre = nombre;
 		this.duracion = duracion;
@@ -37,11 +37,11 @@ public class Tratamiento {
 		this.nombre = nombre;
 	}
 
-	public int[] getDuracion() {
+	public String[] getDuracion() {
 		return duracion;
 	}
 
-	public void setDuracion(int[] duracion) {
+	public void setDuracion(String[] duracion) {
 		this.duracion = duracion;
 	}
 

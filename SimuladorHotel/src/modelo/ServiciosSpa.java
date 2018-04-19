@@ -31,15 +31,15 @@ public class ServiciosSpa {
 
 	public void inicializar() {
 		spas.add(
-				new Spa("Circuito termal", new int[] { 30, 60, 90 }, 30, 0, new double[] { 22.50, 30, 37.99 }, 16, 21));
-		spas.add(new Spa("Baño Turco", new int[] { 30, 60 }, 10, 0, new double[] { 15, 25.99 }, 9, 13));
-		spas.add(new Spa("Termas Romanas", new int[] { 30, 60 }, 10, 0, new double[] { 15, 28.99 }, 9, 13));
-		tratamientos.add(new Tratamiento("Masaje facial", new int[] { 15, 30 }, new String[] { "Cabina, Habitación" },
-				new String[] { "Raquel Perez" }, 9, 13, new double[] { 15, 25.99 }));
-		tratamientos.add(new Tratamiento("Masaje corporal", new int[] { 15, 30 }, new String[] { "Cabina, Habitación" },
+				new Spa("Circuito termal", new String[] { "30 min.", "60 min.", "90 min." }, 30, 0, new double[] { 22.50, 30, 37.99 }, 16, 21));
+		spas.add(new Spa("Baño Turco", new String[] { "30 min.", "60 min." }, 10, 0, new double[] { 15, 25.99 }, 9, 13));
+		spas.add(new Spa("Termas Romanas", new String[] { "30 min.", "60 min." }, 10, 0, new double[] { 15, 28.99 }, 9, 13));
+		tratamientos.add(new Tratamiento("Masaje facial", new String[] { "15 min.", "30 min." }, new String[] { "Cabina", "Habitación" },
+				new String[] { "Raquel Perez" }, 9, 13, new double[] { 15.99, 25.99 }));
+		tratamientos.add(new Tratamiento("Masaje corporal", new String[] { "15 min.", "30 min." }, new String[] { "Cabina" , "Habitación" },
 				new String[] { "Antonio Castro" }, 9, 13, new double[] { 20, 27.99 }));
 		tratamientos.add(
-				new Tratamiento("Masaje con chocolate", new int[] { 30, 60 }, new String[] { "Cabina, Habitación" },
+				new Tratamiento("Masaje con chocolate", new String[] { "30 min.","60 min." }, new String[] { "Cabina", "Habitación" },
 						new String[] { "Irina Boboia", "Maria Roca" }, 18, 20, new double[] { 30, 47.99 }));
 
 	}
