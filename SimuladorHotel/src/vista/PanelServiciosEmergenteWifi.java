@@ -62,6 +62,7 @@ public class PanelServiciosEmergenteWifi extends JPanel {
 		crearPanelConfirmacion("<precio>");
 
 		JButton btnCerrar = new JButton(t.getBtnCerrar());
+		btnCerrar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnCerrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { // No modificar
 				// Devuelve control al padre
@@ -69,7 +70,7 @@ public class PanelServiciosEmergenteWifi extends JPanel {
 				s.release(s.getQueueLength());
 			}
 		});
-		btnCerrar.setBounds(596, 11, 89, 23);
+		btnCerrar.setBounds(610, 11, 75, 50);
 		panelPrincipal.add(btnCerrar);
 
 		JTextPane txtpnInfo = new JTextPane();

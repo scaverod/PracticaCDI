@@ -72,8 +72,12 @@ public abstract class Texto {
 
 	//Panel Emergente Toallas
 	private String panelServiciosEmergenteToallasTxt;
+	
 	//Panel Emergente Minibar
 	private String panelServiciosEmergenteMinibarTxt;
+	
+	//Panel Emergente Sabanas
+	private String panelServiciosEmergenteSabanasTxt;
 	
 	// Panel Usuario
 	private String lblCuentaHabitacion;
@@ -567,5 +571,13 @@ public abstract class Texto {
 
 	public void setLblListaDeGastos(String lblListaDeGastos) {
 		this.lblListaDeGastos = lblListaDeGastos;
+	}
+
+	public String getPanelServiciosEmergenteSabanasTxt() {
+		return panelServiciosEmergenteSabanasTxt;
+	}
+
+	public void setPanelServiciosEmergenteSabanasTxt(String panelServiciosEmergenteSabanasTxt) {
+		this.panelServiciosEmergenteSabanasTxt = panelServiciosEmergenteSabanasTxt;
 	}
 }
