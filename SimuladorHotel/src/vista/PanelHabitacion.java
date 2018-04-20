@@ -59,10 +59,16 @@ public class PanelHabitacion extends JPanel {
 
 		// Luces
 		JToggleButton tglbtnLuz = new JToggleButton("");
+		tglbtnLuz.setFocusPainted(false);
 		JButton btnLuzTechoCentro = new JButton("");
+		btnLuzTechoCentro.setFocusPainted(false);
+		btnLuzTechoCentro.setContentAreaFilled(false);
 		JButton btnLuzMesillaIzquierda = new JButton("");
+		btnLuzMesillaIzquierda.setFocusPainted(false);
 		JButton btnLuzBanyo = new JButton("");
+		btnLuzBanyo.setFocusPainted(false);
 		JButton btnLuzMesillaDerecha = new JButton("");
+		btnLuzMesillaDerecha.setFocusPainted(false);
 
 		tglbtnLuz.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -81,15 +87,15 @@ public class PanelHabitacion extends JPanel {
 					encendidas = 4;
 					tglbtnLuz.setSelected(true);
 					btnLuzTechoCentro
-							.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/luztechocentro.png")));
+							.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/btnLucesCuarto.png")));
 					controlador.getHabitacion().setLuzTechoHab(true);
 					btnLuzMesillaIzquierda
-							.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/luzmesilla.png")));
+							.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/btnLucesMesa.png")));
 					controlador.getHabitacion().setLuzMesaIzq(true);
 					btnLuzMesillaDerecha
-							.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/luzmesilla.png")));
+							.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/btnLucesMesa.png")));
 					controlador.getHabitacion().setLuzMesaDer(true);
-					btnLuzBanyo.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/luzbanyo.png")));
+					btnLuzBanyo.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/btnLucesBanyo.png")));
 					controlador.getHabitacion().setLuzTechoBan(true);
 				}
 			}
@@ -121,6 +127,7 @@ public class PanelHabitacion extends JPanel {
 		panelEmergenteContenedor.setLayout(new CardLayout(0, 0));
 
 		JButton btnCalefaccion = new JButton("");
+		btnCalefaccion.setFocusPainted(false);
 		btnCalefaccion.setForeground(Color.WHITE);
 		btnCalefaccion.setContentAreaFilled(false);
 		btnCalefaccion.setBounds(10, 305, 101, 69);
@@ -130,7 +137,7 @@ public class PanelHabitacion extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				if (!controlador.getHabitacion().isLuzTechoHab()) {
 					btnLuzTechoCentro
-							.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/luztechocentro.png")));
+							.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/btnLucesCuarto.png")));
 					controlador.getHabitacion().setLuzTechoHab(true);
 					tglbtnLuz.setSelected(true);
 					encendidas++;
@@ -145,14 +152,13 @@ public class PanelHabitacion extends JPanel {
 			}
 		});
 		btnLuzTechoCentro.setForeground(Color.WHITE);
-		btnLuzTechoCentro.setContentAreaFilled(false);
-		btnLuzTechoCentro.setBounds(130, 80, 404, 94);
+		btnLuzTechoCentro.setBounds(130, 80, 405, 105);
 		panelPrincipal.add(btnLuzTechoCentro);
 
 		btnLuzBanyo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!controlador.getHabitacion().isLuzTechoBan()) {
-					btnLuzBanyo.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/luzbanyo.png")));
+					btnLuzBanyo.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/btnLucesBanyo.png")));
 					controlador.getHabitacion().setLuzTechoBan(true);
 					tglbtnLuz.setSelected(true);
 					encendidas++;
@@ -168,10 +174,11 @@ public class PanelHabitacion extends JPanel {
 		});
 		btnLuzBanyo.setForeground(Color.WHITE);
 		btnLuzBanyo.setContentAreaFilled(false);
-		btnLuzBanyo.setBounds(673, 31, 198, 94);
+		btnLuzBanyo.setBounds(675, 31, 200, 95);
 		panelPrincipal.add(btnLuzBanyo);
 
 		JButton btnVentana = new JButton("");
+		btnVentana.setFocusPainted(false);
 		btnVentana.setContentAreaFilled(false);
 		btnVentana.setBounds(480, 185, 75, 90);
 		panelPrincipal.add(btnVentana);
@@ -180,7 +187,7 @@ public class PanelHabitacion extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				if (!controlador.getHabitacion().isLuzMesaIzq()) {
 					btnLuzMesillaIzquierda
-							.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/luzmesilla.png")));
+							.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/btnLucesMesa.png")));
 					controlador.getHabitacion().setLuzMesaIzq(true);
 					tglbtnLuz.setSelected(true);
 					encendidas++;
@@ -203,7 +210,7 @@ public class PanelHabitacion extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				if (!controlador.getHabitacion().isLuzMesaDer()) {
 					btnLuzMesillaDerecha
-							.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/luzmesilla.png")));
+							.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/btnLucesMesa.png")));
 					controlador.getHabitacion().setLuzMesaDer(true);
 					tglbtnLuz.setSelected(true);
 					encendidas++;
@@ -223,18 +230,21 @@ public class PanelHabitacion extends JPanel {
 		panelPrincipal.add(btnLuzMesillaDerecha);
 
 		JButton btnJacuzzi = new JButton("");
+		btnJacuzzi.setFocusPainted(false);
 		btnJacuzzi.setForeground(Color.WHITE);
 		btnJacuzzi.setContentAreaFilled(false);
-		btnJacuzzi.setBounds(589, 294, 95, 80);
+		btnJacuzzi.setBounds(586, 284, 100, 100);
 		panelPrincipal.add(btnJacuzzi);
 
 		JButton btnVentanaGrande = new JButton("");
+		btnVentanaGrande.setFocusPainted(false);
 		btnVentanaGrande.setForeground(Color.WHITE);
 		btnVentanaGrande.setContentAreaFilled(false);
 		btnVentanaGrande.setBounds(111, 178, 120, 190);
 		panelPrincipal.add(btnVentanaGrande);
 
 		JToggleButton tglbtnPuerta = new JToggleButton("");
+		tglbtnPuerta.setFocusPainted(false);
 		tglbtnPuerta.setToolTipText("Abrir o cerrar la puerta principal.");
 		tglbtnPuerta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -249,6 +259,7 @@ public class PanelHabitacion extends JPanel {
 		panelPrincipal.add(tglbtnPuerta);
 
 		JButton btnAlarma = new JButton("");
+		btnAlarma.setFocusPainted(false);
 		btnAlarma.setToolTipText("Programar una alarma.");
 		btnAlarma.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/alarm.png")));
 		btnAlarma.setBounds(174, 403, 89, 69);
@@ -264,6 +275,7 @@ public class PanelHabitacion extends JPanel {
 		panelPrincipal.add(tglbtnLuz);
 
 		JButton btnAyuda = new JButton("");
+		btnAyuda.setFocusPainted(false);
 		btnAyuda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				changeToVentanaEmergente(panelBase);
@@ -277,9 +289,10 @@ public class PanelHabitacion extends JPanel {
 		panelPrincipal.add(btnAyuda);
 
 		JButton btnTemperatura = new JButton("");
+		btnTemperatura.setFocusPainted(false);
 		btnTemperatura.setToolTipText("Ajustar la temperatura de la habitaci\u00F3n.");
 		btnTemperatura.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/thermometer.png")));
-		btnTemperatura.setBounds(10, 11, 97, 73);
+		btnTemperatura.setBounds(10, 11, 80, 80);
 		btnTemperatura.setContentAreaFilled(false);
 		panelPrincipal.add(btnTemperatura);
 
@@ -287,7 +300,7 @@ public class PanelHabitacion extends JPanel {
 		lblTemperatura.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTemperatura.setForeground(Color.WHITE);
 		lblTemperatura.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblTemperatura.setBounds(10, 80, 97, 27);
+		lblTemperatura.setBounds(10, 80, 80, 27);
 		panelPrincipal.add(lblTemperatura);
 		
 		// En principio no tiene que estar al final, pero por seguir la misma estructura que en panelSpa y porque tiene sentido lo voy a poner aquí

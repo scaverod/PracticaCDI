@@ -414,7 +414,7 @@ public class PanelCuenta extends JPanel {
 		if (controlador.getCuenta().getPersonalizacion().isAumentoTexto()) {
 			tglbtnAumentarTexto.setSelected(true);
 		}
-		System.out.println();
+//		FIXME: System.out.println();
 		if (controlador.getCuenta().getIdioma() == Idioma.Castellano) {
 			btnESP.setSelected(true);
 		} else if (controlador.getCuenta().getIdioma() == Idioma.Ingles) {

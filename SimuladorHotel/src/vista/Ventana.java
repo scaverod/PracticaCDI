@@ -219,6 +219,7 @@ public class Ventana extends JFrame {
 		pantallaMenu.add(panelCuenta, panelCuenta.getName());
 
 		btnSpa = new JToggleButton(t.getMenuPrincipalBtnSpa());
+		btnSpa.setFocusPainted(false);
 		btnSpa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				changeToSpa();
@@ -230,6 +231,7 @@ public class Ventana extends JFrame {
 		buttonGroup.add(btnSpa);
 
 		btnHabitacion = new JToggleButton(t.getMenuPrincipalBtnHabitacion());
+		btnHabitacion.setFocusPainted(false);
 		btnHabitacion.setSelected(true);
 		btnHabitacion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -242,6 +244,7 @@ public class Ventana extends JFrame {
 		buttonGroup.add(btnHabitacion);
 
 		btnCuenta = new JToggleButton(t.getMenuPrincipalBtnCuenta());
+		btnCuenta.setFocusPainted(false);
 		btnCuenta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// TODO: Controlar esto para que se guarde el estado del resto de las cosas
@@ -256,6 +259,7 @@ public class Ventana extends JFrame {
 		btnCuenta.setIcon(new ImageIcon(Ventana.class.getResource("/iconos/usuario_x32_blue.png")));
 
 		btnServicios = new JToggleButton(t.getMenuPrincipalBtnServicios());
+		btnServicios.setFocusPainted(false);
 		btnServicios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				changeToServicios();

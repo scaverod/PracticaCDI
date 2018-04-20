@@ -197,6 +197,7 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 		panelPrincipal.add(btnConfirmarLLamada);
 
 		JButton btnAmerica = new JButton("");
+		btnAmerica.setFocusPainted(false);
 		btnAmerica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				continente = 1;
@@ -207,10 +208,11 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 			}
 		});
 		btnAmerica.setContentAreaFilled(false);
-		btnAmerica.setBounds(108, 55, 168, 219);
+		btnAmerica.setBounds(111, 55, 166, 210);
 		panelPrincipal.add(btnAmerica);
 
 		JButton btnAsia = new JButton("");
+		btnAsia.setFocusPainted(false);
 		btnAsia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				continente = 2;
@@ -220,10 +222,11 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 			}
 		});
 		btnAsia.setContentAreaFilled(false);
-		btnAsia.setBounds(383, 55, 200, 206);
+		btnAsia.setBounds(383, 55, 190, 210);
 		panelPrincipal.add(btnAsia);
 
 		JButton btnEuropa = new JButton("");
+		btnEuropa.setFocusPainted(false);
 		btnEuropa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				continente = 3;
@@ -237,6 +240,7 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 		panelPrincipal.add(btnEuropa);
 
 		JButton btnAfrica = new JButton("");
+		btnAfrica.setFocusPainted(false);
 		btnAfrica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				continente = 4;
