@@ -33,8 +33,11 @@ public class PanelHabitacion extends JPanel {
 	private JLayeredPane layeredPane;
 	private JPanel panelPrincipal;
 	private JPanel panelEmergenteContenedor;
-	private JPanel panelBase;
-	private JPanel panelOtro;
+	private JPanel panelAyuda;
+	private JPanel panelAlarma;
+	private JPanel panelVentana;
+	private JPanel panelJacuzzi;
+	private JPanel panelCalefaccion;
 
 	public PanelHabitacion(Controlador controlador) {
 		this.setSize(new Dimension(931, 483));
@@ -56,10 +59,6 @@ public class PanelHabitacion extends JPanel {
 		lblImagenHabitacion.setBounds(0, 0, 931, 483);
 		panelFondo.add(lblImagenHabitacion);
 		lblImagenHabitacion.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/habitacion.jpg")));
-
-		// Luces
-		JToggleButton tglbtnLuz = new JToggleButton("");
-		tglbtnLuz.setFocusPainted(false);
 		JButton btnLuzTechoCentro = new JButton("");
 		btnLuzTechoCentro.setFocusPainted(false);
 		btnLuzTechoCentro.setContentAreaFilled(false);
@@ -69,6 +68,42 @@ public class PanelHabitacion extends JPanel {
 		btnLuzBanyo.setFocusPainted(false);
 		JButton btnLuzMesillaDerecha = new JButton("");
 		btnLuzMesillaDerecha.setFocusPainted(false);
+		
+		panelPrincipal = new JPanel();
+		panelPrincipal.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				mostrarVentanaServicios();
+			}
+		});
+		panelPrincipal.setOpaque(false);
+		layeredPane.setLayer(panelPrincipal, 2);
+		panelPrincipal.setBounds(0, 0, 931, 483);
+		layeredPane.add(panelPrincipal);
+		panelPrincipal.setLayout(null);
+		
+		panelEmergenteContenedor = new JPanel();
+		panelEmergenteContenedor.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// No borrar
+			}
+		});
+		layeredPane.setLayer(panelEmergenteContenedor, 0);
+		panelEmergenteContenedor.setBounds(118, 84, 695, 315);
+		layeredPane.add(panelEmergenteContenedor);
+		panelEmergenteContenedor.setLayout(new CardLayout(0, 0));
+
+		JButton btnCalefaccion = new JButton("");
+		btnCalefaccion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				changeToVentanaEmergente(panelCalefaccion);
+			}
+		});
+
+		// Luces
+		JToggleButton tglbtnLuz = new JToggleButton("");
+		tglbtnLuz.setFocusPainted(false);
 
 		tglbtnLuz.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -100,33 +135,30 @@ public class PanelHabitacion extends JPanel {
 				}
 			}
 		});
-		
-		panelPrincipal = new JPanel();
-		panelPrincipal.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				mostrarVentanaServicios();
-			}
-		});
-		panelPrincipal.setOpaque(false);
-		layeredPane.setLayer(panelPrincipal, 2);
-		panelPrincipal.setBounds(0, 0, 931, 483);
-		layeredPane.add(panelPrincipal);
-		panelPrincipal.setLayout(null);
-		
-		panelEmergenteContenedor = new JPanel();
-		panelEmergenteContenedor.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// No borrar
-			}
-		});
-		layeredPane.setLayer(panelEmergenteContenedor, 0);
-		panelEmergenteContenedor.setBounds(118, 84, 695, 315);
-		layeredPane.add(panelEmergenteContenedor);
-		panelEmergenteContenedor.setLayout(new CardLayout(0, 0));
 
-		JButton btnCalefaccion = new JButton("");
+		tglbtnLuz.setToolTipText("Encender o apagar todas las luces.");
+		tglbtnLuz.setSelectedIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/lucesON.png")));
+		tglbtnLuz.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/lucesOFF.png")));
+		tglbtnLuz.setOpaque(false);
+		tglbtnLuz.setContentAreaFilled(false);
+		tglbtnLuz.setBounds(91, 403, 75, 69);
+		panelPrincipal.add(tglbtnLuz);
+
+		JToggleButton tglbtnPuerta = new JToggleButton("");
+		tglbtnPuerta.setFocusPainted(false);
+		tglbtnPuerta.setToolTipText("Abrir o cerrar la puerta principal.");
+		tglbtnPuerta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// TODO:
+			}
+		});
+		tglbtnPuerta.setSelectedIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/puertaAbierta.png")));
+		tglbtnPuerta.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/puertaCerrada.png")));
+		tglbtnPuerta.setBounds(10, 403, 75, 69);
+		tglbtnPuerta.setOpaque(false);
+		tglbtnPuerta.setContentAreaFilled(false);
+		panelPrincipal.add(tglbtnPuerta);
+		
 		btnCalefaccion.setFocusPainted(false);
 		btnCalefaccion.setForeground(Color.WHITE);
 		btnCalefaccion.setContentAreaFilled(false);
@@ -178,6 +210,11 @@ public class PanelHabitacion extends JPanel {
 		panelPrincipal.add(btnLuzBanyo);
 
 		JButton btnVentana = new JButton("");
+		btnVentana.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				changeToVentanaEmergente(panelVentana);
+			}
+		});
 		btnVentana.setFocusPainted(false);
 		btnVentana.setContentAreaFilled(false);
 		btnVentana.setBounds(480, 185, 75, 90);
@@ -230,6 +267,11 @@ public class PanelHabitacion extends JPanel {
 		panelPrincipal.add(btnLuzMesillaDerecha);
 
 		JButton btnJacuzzi = new JButton("");
+		btnJacuzzi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				changeToVentanaEmergente(panelJacuzzi);
+			}
+		});
 		btnJacuzzi.setFocusPainted(false);
 		btnJacuzzi.setForeground(Color.WHITE);
 		btnJacuzzi.setContentAreaFilled(false);
@@ -237,53 +279,40 @@ public class PanelHabitacion extends JPanel {
 		panelPrincipal.add(btnJacuzzi);
 
 		JButton btnVentanaGrande = new JButton("");
+		btnVentanaGrande.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// TODO
+			}
+		});
 		btnVentanaGrande.setFocusPainted(false);
 		btnVentanaGrande.setForeground(Color.WHITE);
 		btnVentanaGrande.setContentAreaFilled(false);
 		btnVentanaGrande.setBounds(111, 178, 120, 190);
 		panelPrincipal.add(btnVentanaGrande);
 
-		JToggleButton tglbtnPuerta = new JToggleButton("");
-		tglbtnPuerta.setFocusPainted(false);
-		tglbtnPuerta.setToolTipText("Abrir o cerrar la puerta principal.");
-		tglbtnPuerta.addActionListener(new ActionListener() {
+		JButton btnAlarma = new JButton("");
+		btnAlarma.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// TODO:
+				changeToVentanaEmergente(panelAlarma);
 			}
 		});
-		tglbtnPuerta.setSelectedIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/puertaAbierta.png")));
-		tglbtnPuerta.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/puertaCerrada.png")));
-		tglbtnPuerta.setBounds(10, 403, 75, 69);
-		tglbtnPuerta.setOpaque(false);
-		tglbtnPuerta.setContentAreaFilled(false);
-		panelPrincipal.add(tglbtnPuerta);
-
-		JButton btnAlarma = new JButton("");
 		btnAlarma.setFocusPainted(false);
 		btnAlarma.setToolTipText("Programar una alarma.");
 		btnAlarma.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/alarm.png")));
-		btnAlarma.setBounds(174, 403, 89, 69);
+		btnAlarma.setBounds(772, 403, 89, 69);
 		btnAlarma.setContentAreaFilled(false);
 		panelPrincipal.add(btnAlarma);
-
-		tglbtnLuz.setToolTipText("Encender o apagar todas las luces.");
-		tglbtnLuz.setSelectedIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/lucesON.png")));
-		tglbtnLuz.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/lucesOFF.png")));
-		tglbtnLuz.setOpaque(false);
-		tglbtnLuz.setContentAreaFilled(false);
-		tglbtnLuz.setBounds(91, 403, 75, 69);
-		panelPrincipal.add(tglbtnLuz);
 
 		JButton btnAyuda = new JButton("");
 		btnAyuda.setFocusPainted(false);
 		btnAyuda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				changeToVentanaEmergente(panelBase);
+				changeToVentanaEmergente(panelAyuda);
 			}
 		});
 		btnAyuda.setToolTipText("<consejos>");
 		btnAyuda.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/help.png")));
-		btnAyuda.setBounds(881, 0, 50, 50);
+		btnAyuda.setBounds(871, 411, 50, 50);
 		btnAyuda.setOpaque(false);
 		btnAyuda.setContentAreaFilled(false);
 		panelPrincipal.add(btnAyuda);
@@ -308,11 +337,20 @@ public class PanelHabitacion extends JPanel {
 		/* SEPARADOR */
 		microControlador = new MicroControladorLayersPadreHijo(layeredPane, panelEmergenteContenedor);
 		
-		panelBase = new PanelHabitacionEmergenteAyuda(microControlador, controlador);
-		panelEmergenteContenedor.add(panelBase, panelBase.getName());
+		panelAlarma = new PanelHabitacionEmergenteAlarma(microControlador, controlador);
+		panelEmergenteContenedor.add(panelAlarma, panelAlarma.getName());
 		
-		panelOtro = new JPanel();
-		panelEmergenteContenedor.add(panelOtro, panelOtro.getName());
+		panelAyuda = new PanelHabitacionEmergenteAyuda(microControlador, controlador);
+		panelEmergenteContenedor.add(panelAyuda, panelAyuda.getName());
+		
+		panelCalefaccion = new PanelHabitacionEmergenteCalefaccion(microControlador, controlador);
+		panelEmergenteContenedor.add(panelCalefaccion, panelCalefaccion.getName());
+		
+		panelJacuzzi = new PanelHabitacionEmergenteJacuzzi(microControlador, controlador);
+		panelEmergenteContenedor.add(panelJacuzzi, panelJacuzzi.getName());
+		
+		panelVentana = new PanelHabitacionEmergenteVentana(microControlador, controlador);
+		panelEmergenteContenedor.add(panelVentana, panelVentana.getName());
 	}
 	
 	private void establecerVentanaServicio(String panel) {
