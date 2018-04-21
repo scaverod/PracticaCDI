@@ -14,8 +14,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JCheckBox;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JTextPane;
 import javax.swing.JTextArea;
 
 public class PanelHabitacionEmergenteAlarma extends JPanel {
@@ -43,8 +41,11 @@ public class PanelHabitacionEmergenteAlarma extends JPanel {
 		estado = 0;
 
 		JButton btnDescativar = new JButton("");
+		btnDescativar.setFocusPainted(false);
 		JButton btnAceptar = new JButton("");
+		btnAceptar.setFocusPainted(false);
 		SelectorHora panelHora = new SelectorHora(0, 23);
+
 		JTextArea txtrParaEmpezarA = new JTextArea();
 
 		btnAceptar.addActionListener(new ActionListener() {
@@ -56,6 +57,8 @@ public class PanelHabitacionEmergenteAlarma extends JPanel {
 					btnAceptar.setIcon(aceptIcon);
 					estado = 1;
 					txtrParaEmpezarA.setVisible(false);
+					controlador.getHabitacion().getDespertador().setHora(panelHora.getTiempo());
+					controlador.getHabitacion().getDespertador().setDia(guardarDias());
 					break;
 				case 1:
 					btnAceptar.setIcon(editIcon);
@@ -70,6 +73,8 @@ public class PanelHabitacionEmergenteAlarma extends JPanel {
 					activarChckbox();
 					btnDescativar.setVisible(false);
 					estado = 1;
+					controlador.getHabitacion().getDespertador().setHora(panelHora.getTiempo());
+					controlador.getHabitacion().getDespertador().setDia(guardarDias());
 					break;
 				}
 
@@ -93,10 +98,10 @@ public class PanelHabitacionEmergenteAlarma extends JPanel {
 
 		txtrParaEmpezarA.setOpaque(false);
 		txtrParaEmpezarA.setEditable(false);
-		
-		
+
 		txtrParaEmpezarA.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		txtrParaEmpezarA.setText("Para empezar a utilizar nuestro sistema de despertador a\u00F1ada una alarma pulsando en el bot\u00F3n inferior derecho");
+		txtrParaEmpezarA.setText(
+				"Para empezar a utilizar nuestro sistema de despertador a\u00F1ada una alarma pulsando en el bot\u00F3n inferior derecho");
 		txtrParaEmpezarA.setLineWrap(true);
 		txtrParaEmpezarA.setRequestFocusEnabled(false);
 		txtrParaEmpezarA.setBounds(139, 136, 416, 42);
@@ -109,7 +114,7 @@ public class PanelHabitacionEmergenteAlarma extends JPanel {
 		chckbxLunes.setBounds(23, 19, 75, 23);
 		add(chckbxLunes);
 
-		panelHora.setBounds(232, 57, 231, 201);
+		panelHora.setLocation(247, 57);
 		panelHora.noVisible();
 		add(panelHora);
 
@@ -156,14 +161,17 @@ public class PanelHabitacionEmergenteAlarma extends JPanel {
 				btnDescativar.setVisible(false);
 				btnAceptar.setIcon(addIcon);
 				txtrParaEmpezarA.setVisible(true);
+				activarChckbox();
+				panelHora.activar();
 				estado = 0;
+				controlador.getHabitacion().getDespertador().eliminar();
 			}
 		});
 		btnDescativar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnDescativar.setBounds(525, 254, 75, 50);
 		btnDescativar.setVisible(false);
 		add(btnDescativar);
-		
+
 		noVisibleChckbox();
 	}
 
@@ -186,14 +194,15 @@ public class PanelHabitacionEmergenteAlarma extends JPanel {
 		chckbxSbado.setEnabled(true);
 		chckbxDomingo.setEnabled(true);
 	}
-	
+
 	public void noVisibleChckbox() {
 		chckbxLunes.setVisible(false);
 		chckbxMartes.setVisible(false);
 		chckbxMiercoles.setVisible(false);
 		chckbxJueves.setVisible(false);
 		chckbxViernes.setVisible(false);
-		chckbxSbado.setVisible(false);;
+		chckbxSbado.setVisible(false);
+		;
 		chckbxDomingo.setVisible(false);
 	}
 
@@ -203,7 +212,19 @@ public class PanelHabitacionEmergenteAlarma extends JPanel {
 		chckbxMiercoles.setVisible(true);
 		chckbxJueves.setVisible(true);
 		chckbxViernes.setVisible(true);
-		chckbxSbado.setVisible(true);;
+		chckbxSbado.setVisible(true);
 		chckbxDomingo.setVisible(true);
+	}
+
+	public boolean[] guardarDias() {
+		boolean[] aux = new boolean[7];
+		aux[0] = chckbxLunes.isSelected();
+		aux[1] = chckbxMartes.isSelected();
+		aux[2] = chckbxMiercoles.isSelected();
+		aux[3] = chckbxJueves.isSelected();
+		aux[4] = chckbxViernes.isSelected();
+		aux[5] = chckbxSbado.isSelected();
+		aux[6] = chckbxDomingo.isSelected();
+		return aux;
 	}
 }

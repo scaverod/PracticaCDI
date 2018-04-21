@@ -7,12 +7,16 @@ public class Alarma {
 
 
 	public Tiempo hora;
-	private boolean [] dia;
+	private boolean [] dia = new boolean [7];
 
 	public Alarma(Tiempo hora, boolean [] dia) {
-		super();
 		this.hora = hora;
 		this.dia = dia;
+	}
+	
+	public Alarma() {
+		this.hora = null;
+		this.dia = inicializar();
 	}
 
 	public Tiempo getHora() {
@@ -29,6 +33,21 @@ public class Alarma {
 
 	public void setDia(boolean [] dia) {
 		this.dia = dia;
+	}
+
+	public void eliminar() {
+		for(int i = 0; i<7; i++) {
+			dia [i] = false;
+		}
+		hora = null;
+	}
+	
+	public boolean [] inicializar () {
+		 boolean [] aux  = new boolean [7];
+		for(int i = 0; i<7; i++) {
+			aux [i] = false;
+		}
+		return aux;
 	}
 
 }
