@@ -21,6 +21,7 @@ public class PanelHabitacionEmergenteVentana extends JPanel {
 	private Texto t;
 	// Valores de la posicion de las persianas del 0 al 4
 	private int persianas;
+	private int ventanas;
 	private ImageIcon[] persianasIcon = {
 			new ImageIcon(PanelHabitacionEmergenteVentana.class.getResource("/iconos/persiana0.png")),
 			new ImageIcon(PanelHabitacionEmergenteVentana.class.getResource("/iconos/persiana1.png")),
@@ -76,9 +77,7 @@ public class PanelHabitacionEmergenteVentana extends JPanel {
 
 		btnAbrir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				btnAbrir.setEnabled(false);
-				btnCerrarV.setEnabled(true);
-				lblVentana.setIcon(ventanasIcon[1]);
+				//COOMPLETAR
 			}
 		});
 		btnAbrir.setBounds(59, 185, 78, 44);
@@ -86,9 +85,7 @@ public class PanelHabitacionEmergenteVentana extends JPanel {
 
 		btnCerrarV.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				btnCerrarV.setEnabled(false);
-				btnAbrir.setEnabled(true);
-				lblVentana.setIcon(ventanasIcon[0]);
+				//COMPLETAR
 			}
 		});
 		btnCerrarV.setBounds(196, 185, 78, 44);

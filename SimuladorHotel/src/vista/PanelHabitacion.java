@@ -213,7 +213,7 @@ public class PanelHabitacion extends JPanel {
 		JButton btnVentana = new JButton("");
 		btnVentana.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				changeToVentanaEmergente(panelVentana);
+				changeToVentanaEmergente(panelVentana2);
 			}
 		});
 		btnVentana.setFocusPainted(false);
@@ -282,7 +282,7 @@ public class PanelHabitacion extends JPanel {
 		JButton btnVentanaGrande = new JButton("");
 		btnVentanaGrande.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				changeToVentanaEmergente(panelVentana2);
+				changeToVentanaEmergente(panelVentana);
 			}
 		});
 		btnVentanaGrande.setFocusPainted(false);
