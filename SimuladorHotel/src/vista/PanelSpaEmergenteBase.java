@@ -53,12 +53,6 @@ public class PanelSpaEmergenteBase extends JPanel {
 
 		crearPanelConfirmacion("<precio>");
 
-		JLabel lblPanelEmergente = new JLabel(this.getName());
-		lblPanelEmergente.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPanelEmergente.setFont(new Font("Tahoma", Font.PLAIN, 32));
-		lblPanelEmergente.setBounds(10, 138, 675, 39);
-		panelPrincipal.add(lblPanelEmergente);
-
 		JButton btnCerrar = new JButton(t.getBtnCerrar());
 		btnCerrar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnCerrar.addActionListener(new ActionListener() {
@@ -94,8 +88,16 @@ public class PanelSpaEmergenteBase extends JPanel {
 				}.start();
 			}
 		});
-		btnNewButton.setBounds(253, 230, 189, 23);
+		btnNewButton.setBounds(253, 263, 189, 23);
 		panelPrincipal.add(btnNewButton);
+		
+		GuayCalendar panelFecha = new GuayCalendar();
+		panelFecha.setBounds(21, 50, 402, 202);
+		panelPrincipal.add(panelFecha);
+		//Pasarle los parametor para poner la hora
+		SelectorHora panelTiempo = new SelectorHora(5, 20);
+		panelTiempo.setBounds(444, 50, 229, 202);
+		panelPrincipal.add(panelTiempo);
 	}
 
 	public void cerrarPanelConfirmacion() {

@@ -364,10 +364,13 @@ public class PanelSpa extends JPanel {
 		lblImagenUsers.setIcon(new ImageIcon(PanelSpa.class.getResource("/iconos/users.png")));
 		lblImagenUsers.setBounds(345, 223, 64, 60);
 		panelDerecho.add(lblImagenUsers);
+		
+
 
 		JButton btnAdquirirDch = new JButton(t.getBtnAdquirir());
 		btnAdquirirDch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				changeToVentanaEmergente(panelBase);
 			}
 		});
 		btnAdquirirDch.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -417,11 +420,12 @@ public class PanelSpa extends JPanel {
 		/* SEPARADOR */
 		microControlador = new MicroControladorLayersPadreHijo(layeredPane, panelEmergenteContenedor);
 
+		//Esto es lo que hay que coger para modificarlo
 		panelBase = new PanelSpaEmergenteBase(microControlador, this.getName(), controlador, s);
 		panelEmergenteContenedor.add(panelBase, panelBase.getName());
 
-//		panelOtro = new PanelSpaEmergenteOtro(microControlador, this.getName(), controlador, s);
-//		panelEmergenteContenedor.add(panelOtro, panelOtro.getName());
+		panelOtro = new PanelSpaEmergenteOtro(microControlador, this.getName(), controlador, s);
+		panelEmergenteContenedor.add(panelOtro, panelOtro.getName());
 	}
 
 	private void establecerVentanaServicio(String panel) {
