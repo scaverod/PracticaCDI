@@ -171,7 +171,7 @@ public class PanelCuenta extends JPanel {
 		panelGasto.add(panelBorde);
 		panelBorde.setLayout(null);
 
-		JLabel lblGastoNumero = new JLabel(controlador.getCuenta().getGasto().getGastoTotal() + " \u20AC");
+		JLabel lblGastoNumero = new JLabel(String.format("%.2f", controlador.getCuenta().getGasto().getGastoTotal()) + " \u20AC");
 		lblGastoNumero.setBackground(Color.ORANGE);
 		lblGastoNumero.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGastoNumero.setBounds(122, 0, 103, 49);

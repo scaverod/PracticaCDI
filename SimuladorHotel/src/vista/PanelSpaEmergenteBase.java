@@ -50,7 +50,6 @@ public class PanelSpaEmergenteBase extends JPanel {
 		panelContenedor.setLayout(null);
 
 		panelPrincipal = new JPanel();
-		panelPrincipal.setBackground(Color.WHITE);
 		panelPrincipal.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 109, 240), new Color(0, 109, 240), new Color(0, 109, 240), new Color(0, 109, 240)));
 		panelPrincipal.setBounds(0, 0, 695, 315);
 		panelContenedor.setLayer(panelPrincipal, 1);

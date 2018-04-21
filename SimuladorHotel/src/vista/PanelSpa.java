@@ -99,18 +99,17 @@ public class PanelSpa extends JPanel {
 		lblTratamiento.setBounds(10, 10, 430, 39);
 		panelTituloTrat.add(lblTratamiento);
 
-		JLabel lblPrecioTrat = new JLabel(
-				controlador.getServiciosSpa().getTratamientos().get(0).getPrecio()[0] + " \u20AC");
+		JLabel lblPrecioTrat = new JLabel(controlador.getServiciosSpa().getTratamientos().get(0).getPrecio()[0] + " \u20AC");
 		costeSPA = controlador.getServiciosSpa().getSpas().get(spa).getPrecio()[0];
 		JLabel lblPrecioSpa = new JLabel(String.valueOf(costeSPA + " \u20AC"));
-		JLabel lblNumPlazas = new JLabel(
-				String.valueOf(controlador.getServiciosSpa().getSpas().get(spa).getAforoMax()));
+		JLabel lblNumPlazas = new JLabel(String.valueOf(controlador.getServiciosSpa().getSpas().get(spa).getAforoMax()));
 		JComboBox<String> comboBoxDuracionTrat = new JComboBox<String>();
 		JComboBox<String> comboBoxLugar = new JComboBox<String>();
 		JComboBox<String> comboBoxEmpleado = new JComboBox<String>();
 		JComboBox<String> comboBoxPiscina = new JComboBox<String>();
 		JComboBox<String> comboBoxNumPersonas = new JComboBox<String>();
 		JComboBox<String> comboBoxDuracionSpa = new JComboBox<String>();
+		JComboBox<String> comboBoxTratamiento = new JComboBox<String>();
 
 		comboBoxPiscina.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
@@ -126,7 +125,6 @@ public class PanelSpa extends JPanel {
 			}
 		});
 
-		JComboBox<String> comboBoxTratamiento = new JComboBox<String>();
 		comboBoxTratamiento.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {
 				tratamiento = comboBoxTratamiento.getSelectedIndex();
@@ -413,7 +411,9 @@ public class PanelSpa extends JPanel {
 				if (evt.getNewValue().equals(0)) {
 					// TODO: reactivar elementos del panelPrincipal (ahora panel al frente)
 					btnAdquirirIzq.setEnabled(true);
+					btnAdquirirDch.setEnabled(true);
 					comboBoxDuracionTrat.setEnabled(true);
+					comboBoxDuracionSpa.setEnabled(true);
 					comboBoxEmpleado.setEnabled(true);
 					comboBoxLugar.setEnabled(true);
 					comboBoxTratamiento.setEnabled(true);
@@ -421,7 +421,9 @@ public class PanelSpa extends JPanel {
 				} else if (evt.getNewValue().equals(2)) {
 					// TODO: desactivar elementos del panelPrincipal (ahora panel al fondo)
 					btnAdquirirIzq.setEnabled(false);
+					btnAdquirirDch.setEnabled(false);
 					comboBoxDuracionTrat.setEnabled(false);
+					comboBoxDuracionSpa.setEnabled(false);
 					comboBoxEmpleado.setEnabled(false);
 					comboBoxLugar.setEnabled(false);
 					comboBoxTratamiento.setEnabled(false);
@@ -442,8 +444,6 @@ public class PanelSpa extends JPanel {
 		panelBase = new PanelSpaEmergenteBase(microControlador, this.getName(), controlador, s, info);
 		panelEmergenteContenedor.add(panelBase, panelBase.getName());
 
-		panelOtro = new PanelSpaEmergenteOtro(microControlador, this.getName(), controlador, s);
-		panelEmergenteContenedor.add(panelOtro, panelOtro.getName());
 	}
 
 	private void establecerVentanaServicio(String panel) {
