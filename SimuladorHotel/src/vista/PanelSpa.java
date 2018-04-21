@@ -375,7 +375,7 @@ public class PanelSpa extends JPanel {
 				info.setMin(controlador.getServiciosSpa().getSpas().get(spa).getHoraIni());
 				info.setFactura(
 						new StringDouble(controlador.getServiciosSpa().getSpas().get(spa).getNombre(), costeSPA));
-				panelBase = new PanelSpaEmergenteBase(microControlador, PanelSpa.this.getName(), controlador, s, info);
+				panelBase = new PanelSpaEmergente(microControlador, PanelSpa.this.getName(), controlador, s, info);
 				panelEmergenteContenedor.add(panelBase, panelBase.getName());
 				changeToVentanaEmergente(panelBase);
 			}
@@ -391,7 +391,7 @@ public class PanelSpa extends JPanel {
 				info.setFactura(new StringDouble(controlador.getServiciosSpa().getNombresTratamientos()[tratamiento],
 						controlador.getServiciosSpa().getTratamientos().get(tratamiento)
 								.getPrecio()[comboBoxDuracionTrat.getSelectedIndex()]));
-				panelBase = new PanelSpaEmergenteBase(microControlador, PanelSpa.this.getName(), controlador, s, info);
+				panelBase = new PanelSpaEmergente(microControlador, PanelSpa.this.getName(), controlador, s, info);
 				panelEmergenteContenedor.add(panelBase, panelBase.getName());
 				changeToVentanaEmergente(panelBase);
 			}
@@ -442,7 +442,7 @@ public class PanelSpa extends JPanel {
 		microControlador = new MicroControladorLayersPadreHijo(layeredPane, panelEmergenteContenedor);
 
 		info = new InformacionSpaTratamiento(0, 1, new StringDouble("", 0));
-		panelBase = new PanelSpaEmergenteBase(microControlador, this.getName(), controlador, s, info);
+		panelBase = new PanelSpaEmergente(microControlador, this.getName(), controlador, s, info);
 		panelEmergenteContenedor.add(panelBase, panelBase.getName());
 
 	}

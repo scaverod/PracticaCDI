@@ -24,8 +24,10 @@ import java.awt.event.ActionListener;
 import java.util.concurrent.Semaphore;
 import java.awt.event.ActionEvent;
 import javax.swing.JLayeredPane;
+import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
 
-public class PanelSpaEmergenteBase extends JPanel {
+public class PanelSpaEmergente extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JLayeredPane panelContenedor;
 	private JPanel panelPrincipal;
@@ -36,7 +38,7 @@ public class PanelSpaEmergenteBase extends JPanel {
 	// Habría que mandarlo desde el Main, por ejemplo
 	private Texto t = new TextoManager(TextoManager.español).getTexto();
 
-	public PanelSpaEmergenteBase(MicroControladorLayersPadreHijo microControlador, String padre, Controlador controlador, Semaphore s, InformacionSpaTratamiento info) {
+	public PanelSpaEmergente(MicroControladorLayersPadreHijo microControlador, String padre, Controlador controlador, Semaphore s, InformacionSpaTratamiento info) {
 		this.s = s;
 
 		this.setSize(new Dimension(695, 315));
@@ -56,7 +58,9 @@ public class PanelSpaEmergenteBase extends JPanel {
 		panelPrincipal.setLayout(null);
 		
 		GuayCalendar panelFecha = new GuayCalendar();
+		panelFecha.setLocation(307, 48);
 		SelectorHora panelTiempo = new SelectorHora(info.getMin(), info.getMax());
+		panelTiempo.setLocation(35, 48);
 
 		crearPanelConfirmacion("<precio>");
 
@@ -114,18 +118,19 @@ public class PanelSpaEmergenteBase extends JPanel {
 		btnConfirmar.setBounds(115, 254, 175, 53);
 		panelPrincipal.add(btnConfirmar);
 		
-
-		panelFecha.setBounds(273, 46, 398, 202);
 		panelPrincipal.add(panelFecha);
 
-
-		panelTiempo.setBounds(22, 46, 229, 202);
 		panelPrincipal.add(panelTiempo);
 		
 		JLabel lblTxt = new JLabel("Seleccione el dia y la hora");
 		lblTxt.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblTxt.setBounds(21, 6, 175, 34);
 		panelPrincipal.add(lblTxt);
+		
+		JSeparator separator = new JSeparator();
+		separator.setOrientation(SwingConstants.VERTICAL);
+		separator.setBounds(270, 48, 2, 200);
+		panelPrincipal.add(separator);
 	}
 
 	public void cerrarPanelConfirmacion() {
