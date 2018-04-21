@@ -71,7 +71,7 @@ public class PanelHabitacionEmergenteAlarma extends JPanel {
 					btnAceptar.setIcon(aceptIcon);
 					panelHora.activar();
 					activarChckbox();
-					btnDescativar.setVisible(false);
+					btnDescativar.setVisible(true);
 					estado = 1;
 					controlador.getHabitacion().getDespertador().setHora(panelHora.getTiempo());
 					controlador.getHabitacion().getDespertador().setDia(guardarDias());
@@ -202,7 +202,6 @@ public class PanelHabitacionEmergenteAlarma extends JPanel {
 		chckbxJueves.setVisible(false);
 		chckbxViernes.setVisible(false);
 		chckbxSbado.setVisible(false);
-		;
 		chckbxDomingo.setVisible(false);
 	}
 
