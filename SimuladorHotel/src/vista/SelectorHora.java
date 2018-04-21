@@ -36,7 +36,7 @@ public class SelectorHora extends JPanel {
 
 	@SuppressWarnings("deprecation")
 	public SelectorHora(int min, int max) {
-		setSize(new Dimension(229, 205));
+		setSize(new Dimension(200, 200));
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
@@ -62,7 +62,7 @@ public class SelectorHora extends JPanel {
 		label.setForeground(new Color(0, 109, 240));
 		label.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setBounds(99, 66, 30, 72);
+		label.setBounds(85, 65, 30, 70);
 		add(label);
 
 		btnAumentarHoras = new JButton("");
@@ -79,7 +79,7 @@ public class SelectorHora extends JPanel {
 			}
 		});
 		btnAumentarHoras.setIcon(new ImageIcon(SelectorHora.class.getResource("/iconos/flechaArriba_x32_blue.png")));
-		btnAumentarHoras.setBounds(0, 0, 89, 41);
+		btnAumentarHoras.setBounds(0, 0, 85, 50);
 		add(btnAumentarHoras);
 
 		btnAumentarMinutos = new JButton("");
@@ -96,7 +96,7 @@ public class SelectorHora extends JPanel {
 			}
 		});
 		btnAumentarMinutos.setIcon(new ImageIcon(SelectorHora.class.getResource("/iconos/flechaArriba_x32_blue.png")));
-		btnAumentarMinutos.setBounds(139, 0, 89, 41);
+		btnAumentarMinutos.setBounds(115, 0, 85, 50);
 		add(btnAumentarMinutos);
 
 		btnDisminuirHoras = new JButton("");
@@ -113,7 +113,7 @@ public class SelectorHora extends JPanel {
 			}
 		});
 		btnDisminuirHoras.setIcon(new ImageIcon(SelectorHora.class.getResource("/iconos/flechaAbajo_x32_blue.png")));
-		btnDisminuirHoras.setBounds(0, 164, 89, 41);
+		btnDisminuirHoras.setBounds(0, 150, 85, 50);
 		add(btnDisminuirHoras);
 
 		btnDisminuirMinutos = new JButton("");
@@ -130,7 +130,7 @@ public class SelectorHora extends JPanel {
 			}
 		});
 		btnDisminuirMinutos.setIcon(new ImageIcon(SelectorHora.class.getResource("/iconos/flechaAbajo_x32_blue.png")));
-		btnDisminuirMinutos.setBounds(139, 164, 89, 41);
+		btnDisminuirMinutos.setBounds(115, 150, 85, 50);
 		add(btnDisminuirMinutos);
 
 		comboHoras = new JComboBox<Integer>();
@@ -143,7 +143,7 @@ public class SelectorHora extends JPanel {
 		comboHoras.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		this.setRangoHora(minHoras, maxHoras);
 		comboHoras.setSelectedItem(horas);
-		comboHoras.setBounds(0, 52, 89, 101);
+		comboHoras.setBounds(0, 50, 85, 100);
 		add(comboHoras);
 
 		comboMinutos = new JComboBox<Integer>();
@@ -158,7 +158,7 @@ public class SelectorHora extends JPanel {
 				12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
 				38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59 }));
 		comboMinutos.setSelectedItem(minutos);
-		comboMinutos.setBounds(139, 52, 89, 101);
+		comboMinutos.setBounds(115, 50, 85, 100);
 		add(comboMinutos);
 
 	}
