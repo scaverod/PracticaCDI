@@ -35,7 +35,8 @@ public class PanelHabitacionEmergenteVentana extends JPanel {
 
 	public PanelHabitacionEmergenteVentana(MicroControladorLayersPadreHijo m, Controlador controlador) {
 		t = controlador.getTexto();
-
+		ventanas = 0;
+		persianas = 0;
 		this.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 109, 240), new Color(0, 109, 240),
 				new Color(0, 109, 240), new Color(0, 109, 240)));
 		this.setSize(695, 315);
@@ -77,7 +78,15 @@ public class PanelHabitacionEmergenteVentana extends JPanel {
 
 		btnAbrir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//COOMPLETAR
+				btnCerrarV.setEnabled(true);
+				if(ventanas == 0) {
+					ventanas++;
+					lblVentana.setIcon(ventanasIcon[ventanas]);
+				}else if (ventanas == 1) {
+					ventanas++;
+					lblVentana.setIcon(ventanasIcon[ventanas]);
+					btnAbrir.setEnabled(false);
+				}
 			}
 		});
 		btnAbrir.setBounds(59, 185, 78, 44);
@@ -85,7 +94,15 @@ public class PanelHabitacionEmergenteVentana extends JPanel {
 
 		btnCerrarV.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//COMPLETAR
+				btnAbrir.setEnabled(true);
+				if(ventanas==2) {
+					ventanas--;
+					lblVentana.setIcon(ventanasIcon[ventanas]);
+				} else if(ventanas == 1) {
+					ventanas --;
+					lblVentana.setIcon(ventanasIcon[ventanas]);
+					btnCerrarV.setEnabled(false);
+				}
 			}
 		});
 		btnCerrarV.setBounds(196, 185, 78, 44);
