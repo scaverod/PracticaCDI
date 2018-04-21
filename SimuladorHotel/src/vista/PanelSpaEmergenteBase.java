@@ -45,6 +45,7 @@ public class PanelSpaEmergenteBase extends JPanel {
 		panelContenedor.setLayout(null);
 
 		panelPrincipal = new JPanel();
+		panelPrincipal.setBackground(Color.WHITE);
 		panelPrincipal.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 109, 240), new Color(0, 109, 240), new Color(0, 109, 240), new Color(0, 109, 240)));
 		panelPrincipal.setBounds(0, 0, 695, 315);
 		panelContenedor.setLayer(panelPrincipal, 1);
@@ -53,7 +54,7 @@ public class PanelSpaEmergenteBase extends JPanel {
 
 		crearPanelConfirmacion("<precio>");
 
-		JButton btnCerrar = new JButton(t.getBtnCerrar());
+		JButton btnCerrar = new JButton("Cancelar");
 		btnCerrar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnCerrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { // No modificar
@@ -62,11 +63,12 @@ public class PanelSpaEmergenteBase extends JPanel {
 				s.release(s.getQueueLength());
 			}
 		});
-		btnCerrar.setBounds(610, 11, 75, 50);
+		btnCerrar.setBounds(405, 254, 175, 53);
 		panelPrincipal.add(btnCerrar);
 
-		JButton btnNewButton = new JButton("botonEjemploVentanaEmergente");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnConfirmar = new JButton("Confirmar");
+		btnConfirmar.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnConfirmar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new Thread() {
 					public void run() {
@@ -88,16 +90,21 @@ public class PanelSpaEmergenteBase extends JPanel {
 				}.start();
 			}
 		});
-		btnNewButton.setBounds(253, 263, 189, 23);
-		panelPrincipal.add(btnNewButton);
+		btnConfirmar.setBounds(115, 254, 175, 53);
+		panelPrincipal.add(btnConfirmar);
 		
 		GuayCalendar panelFecha = new GuayCalendar();
-		panelFecha.setBounds(21, 50, 402, 202);
+		panelFecha.setBounds(22, 46, 398, 202);
 		panelPrincipal.add(panelFecha);
 		//Pasarle los parametor para poner la hora
 		SelectorHora panelTiempo = new SelectorHora(5, 20);
-		panelTiempo.setBounds(444, 50, 229, 202);
+		panelTiempo.setBounds(442, 46, 229, 202);
 		panelPrincipal.add(panelTiempo);
+		
+		JLabel lblTxt = new JLabel("Seleccione el dia y la hora");
+		lblTxt.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblTxt.setBounds(21, 6, 175, 34);
+		panelPrincipal.add(lblTxt);
 	}
 
 	public void cerrarPanelConfirmacion() {
