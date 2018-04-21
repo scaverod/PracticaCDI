@@ -42,7 +42,6 @@ public class PanelSpa extends JPanel {
 	private JPanel panelPrincipal;
 	private JPanel panelBase;
 	private JLayeredPane layeredPane;
-	private JPanel panelOtro;
 	private int tratamiento;
 	private int spa;
 	private double costeSPA;
