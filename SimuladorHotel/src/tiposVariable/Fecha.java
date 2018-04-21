@@ -13,6 +13,8 @@ public class Fecha {
 	private int month;
 	private int year;
 	
+	private char separator = '/';
+	
 	/* ************ */
 	/* Constructors */
 	/* ************ */
@@ -223,5 +225,15 @@ public class Fecha {
 	
 	public int getMaxYear() {
 		return YEAR_MAX;
+	}
+	
+	
+	
+	public void setSeparator(char separator) {
+		this.separator = separator;
+	}
+	
+	public String toString() {
+		return day + String.valueOf(separator) + month + String.valueOf(separator) + year;
 	}
 }
