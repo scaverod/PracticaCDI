@@ -1,12 +1,11 @@
 package modelo;
 
-import java.util.ArrayList;
 
 public class Habitacion {
 
 	private Temperatura temperatura;
 	private boolean puertaAbierta;
-	private ArrayList<Alarma> despertador;
+	private Alarma despertador;
 	private Jacuzzi jacuzzi;
 	private boolean luzTechoHab;
 	private boolean luzTechoBan;
@@ -17,13 +16,13 @@ public class Habitacion {
 	private int ventanaIzq;
 	private int ventanaDer;
 
-	public Habitacion(Temperatura temperatura, boolean puertaAbierta, ArrayList<Alarma> despertador, Jacuzzi jacuzzi,
+	public Habitacion(Temperatura temperatura, boolean puertaAbierta, Alarma despertador, Jacuzzi jacuzzi,
 			boolean luzTechoHab, boolean luzTechoBan, boolean luzMesaIzq, boolean luzMesaDer, int persianaIzq,
 			int persianaDer, int ventanaIzq, int ventanaDer) {
 
 		this.temperatura = temperatura;
 		this.puertaAbierta = puertaAbierta;
-		this.despertador = despertador;
+		this.setDespertador(despertador);
 		this.jacuzzi = jacuzzi;
 		this.luzTechoHab = luzTechoHab;
 		this.luzTechoBan = luzTechoBan;
@@ -38,7 +37,7 @@ public class Habitacion {
 	public Habitacion() {
 		this.temperatura = new Temperatura(22);
 		this.puertaAbierta = false;
-		this.despertador = new ArrayList<Alarma>();
+		this.setDespertador(new Alarma(null, null));
 		this.jacuzzi = new Jacuzzi(0, 0, false);
 		this.luzTechoHab = false;
 		this.luzTechoBan = false;
@@ -64,14 +63,6 @@ public class Habitacion {
 
 	public void setPuertaAbierta(boolean puertaAbierta) {
 		this.puertaAbierta = puertaAbierta;
-	}
-
-	public ArrayList<Alarma> getDespertador() {
-		return despertador;
-	}
-
-	public void setDespertador(ArrayList<Alarma> despertador) {
-		this.despertador = despertador;
 	}
 
 	public Jacuzzi getJacuzzi() {
@@ -145,15 +136,23 @@ public class Habitacion {
 	public void setVentanaDer(int ventanaDer) {
 		this.ventanaDer = ventanaDer;
 	}
-	
+
 	/**
 	 * Método que apaga todas las luces de la casa
 	 */
-	public void apagarTodasLuces () {
+	public void apagarTodasLuces() {
 		this.luzTechoHab = false;
 		this.luzTechoBan = false;
 		this.luzMesaIzq = false;
 		this.luzMesaDer = false;
+	}
+
+	public Alarma getDespertador() {
+		return despertador;
+	}
+
+	public void setDespertador(Alarma despertador) {
+		this.despertador = despertador;
 	}
 
 }

@@ -4,14 +4,12 @@ import tiposVariable.Tiempo;
 
 public class Alarma {
 
-	public enum DiaSemana {
-		LUNES, MARTES, MIERCOLES, JUEVES, VIERNES, SABADO, DOMINGO
-	}
+
 
 	public Tiempo hora;
-	private DiaSemana dia;
+	private boolean [] dia;
 
-	public Alarma(Tiempo hora, DiaSemana dia) {
+	public Alarma(Tiempo hora, boolean [] dia) {
 		super();
 		this.hora = hora;
 		this.dia = dia;
@@ -25,11 +23,11 @@ public class Alarma {
 		this.hora = hora;
 	}
 
-	public DiaSemana getDia() {
+	public boolean []  getDia() {
 		return dia;
 	}
 
-	public void setDia(DiaSemana dia) {
+	public void setDia(boolean [] dia) {
 		this.dia = dia;
 	}
 

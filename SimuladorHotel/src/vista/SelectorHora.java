@@ -33,6 +33,7 @@ public class SelectorHora extends JPanel {
 	private JButton btnAumentarHoras;
 	private JButton btnDisminuirHoras;
 	private JButton btnDisminuirMinutos;
+	private JLabel label;
 
 	@SuppressWarnings("deprecation")
 	public SelectorHora(int min, int max) {
@@ -58,7 +59,7 @@ public class SelectorHora extends JPanel {
 			horas = minHoras;
 		}
 
-		JLabel label = new JLabel(":");
+		label = new JLabel(":");
 		label.setForeground(new Color(0, 109, 240));
 		label.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		label.setHorizontalAlignment(SwingConstants.CENTER);
@@ -183,6 +184,7 @@ public class SelectorHora extends JPanel {
 		btnAumentarHoras.setEnabled(false);
 		btnDisminuirHoras.setEnabled(false);
 		btnDisminuirMinutos.setEnabled(false);
+		label.setEnabled(false);
 	}
 
 	public void activar() {
@@ -192,7 +194,29 @@ public class SelectorHora extends JPanel {
 		btnAumentarHoras.setEnabled(true);
 		btnDisminuirHoras.setEnabled(true);
 		btnDisminuirMinutos.setEnabled(true);
+		label.setEnabled(true);
 	}
+	
+	public void visible() {
+		comboHoras.setVisible(true);
+		comboMinutos.setVisible(true);
+		btnAumentarMinutos.setVisible(true);
+		btnAumentarHoras.setVisible(true);
+		btnDisminuirHoras.setVisible(true);
+		btnDisminuirMinutos.setVisible(true);
+		label.setVisible(true);
+	}
+
+	public void noVisible() {
+		comboHoras.setVisible(false);
+		comboMinutos.setVisible(false);
+		btnAumentarMinutos.setVisible(false);
+		btnAumentarHoras.setVisible(false);
+		btnDisminuirHoras.setVisible(false);
+		btnDisminuirMinutos.setVisible(false);
+		label.setVisible(false);
+	}
+
 
 	public void setRangoHora(int min, int max) {
 		int numhoras = 1 + max - min;
