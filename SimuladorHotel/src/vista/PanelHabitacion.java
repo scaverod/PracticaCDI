@@ -26,9 +26,9 @@ import java.awt.event.MouseEvent;
 public class PanelHabitacion extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private Texto t = new TextoManager(TextoManager.español).getTexto();
-	
+
 	private MicroControladorLayersPadreHijo microControlador;
-	
+
 	private int encendidas;
 	private JLayeredPane layeredPane;
 	private JPanel panelPrincipal;
@@ -36,6 +36,7 @@ public class PanelHabitacion extends JPanel {
 	private JPanel panelAyuda;
 	private JPanel panelAlarma;
 	private JPanel panelVentana;
+	private JPanel panelVentana2;
 	private JPanel panelJacuzzi;
 	private JPanel panelCalefaccion;
 
@@ -48,7 +49,7 @@ public class PanelHabitacion extends JPanel {
 		layeredPane = new JLayeredPane();
 		layeredPane.setBounds(0, 0, 931, 483);
 		add(layeredPane);
-		
+
 		JPanel panelFondo = new JPanel();
 		layeredPane.setLayer(panelFondo, 1);
 		panelFondo.setBounds(0, 0, 931, 483);
@@ -68,7 +69,7 @@ public class PanelHabitacion extends JPanel {
 		btnLuzBanyo.setFocusPainted(false);
 		JButton btnLuzMesillaDerecha = new JButton("");
 		btnLuzMesillaDerecha.setFocusPainted(false);
-		
+
 		panelPrincipal = new JPanel();
 		panelPrincipal.addMouseListener(new MouseAdapter() {
 			@Override
@@ -81,7 +82,7 @@ public class PanelHabitacion extends JPanel {
 		panelPrincipal.setBounds(0, 0, 931, 483);
 		layeredPane.add(panelPrincipal);
 		panelPrincipal.setLayout(null);
-		
+
 		panelEmergenteContenedor = new JPanel();
 		panelEmergenteContenedor.addMouseListener(new MouseAdapter() {
 			@Override
@@ -158,7 +159,7 @@ public class PanelHabitacion extends JPanel {
 		tglbtnPuerta.setOpaque(false);
 		tglbtnPuerta.setContentAreaFilled(false);
 		panelPrincipal.add(tglbtnPuerta);
-		
+
 		btnCalefaccion.setFocusPainted(false);
 		btnCalefaccion.setForeground(Color.WHITE);
 		btnCalefaccion.setContentAreaFilled(false);
@@ -281,7 +282,7 @@ public class PanelHabitacion extends JPanel {
 		JButton btnVentanaGrande = new JButton("");
 		btnVentanaGrande.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// TODO
+				changeToVentanaEmergente(panelVentana2);
 			}
 		});
 		btnVentanaGrande.setFocusPainted(false);
@@ -331,28 +332,32 @@ public class PanelHabitacion extends JPanel {
 		lblTemperatura.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblTemperatura.setBounds(10, 80, 80, 27);
 		panelPrincipal.add(lblTemperatura);
-		
-		// En principio no tiene que estar al final, pero por seguir la misma estructura que en panelSpa y porque tiene sentido lo voy a poner aquí
-		
+
+		// En principio no tiene que estar al final, pero por seguir la misma estructura
+		// que en panelSpa y porque tiene sentido lo voy a poner aquí
+
 		/* SEPARADOR */
 		microControlador = new MicroControladorLayersPadreHijo(layeredPane, panelEmergenteContenedor);
-		
+
 		panelAlarma = new PanelHabitacionEmergenteAlarma(microControlador, controlador);
 		panelEmergenteContenedor.add(panelAlarma, panelAlarma.getName());
-		
+
 		panelAyuda = new PanelHabitacionEmergenteAyuda(microControlador, controlador);
 		panelEmergenteContenedor.add(panelAyuda, panelAyuda.getName());
-		
+
 		panelCalefaccion = new PanelHabitacionEmergenteCalefaccion(microControlador, controlador);
 		panelEmergenteContenedor.add(panelCalefaccion, panelCalefaccion.getName());
-		
+
 		panelJacuzzi = new PanelHabitacionEmergenteJacuzzi(microControlador, controlador);
 		panelEmergenteContenedor.add(panelJacuzzi, panelJacuzzi.getName());
-		
+
 		panelVentana = new PanelHabitacionEmergenteVentana(microControlador, controlador);
 		panelEmergenteContenedor.add(panelVentana, panelVentana.getName());
+
+		panelVentana2 = new PanelHabitacionEmergenteVentana2(microControlador, controlador);
+		panelEmergenteContenedor.add(panelVentana2, panelVentana2.getName());
 	}
-	
+
 	private void establecerVentanaServicio(String panel) {
 		CardLayout l = (CardLayout) panelEmergenteContenedor.getLayout();
 		l.show(panelEmergenteContenedor, panel);

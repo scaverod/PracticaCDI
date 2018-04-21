@@ -16,23 +16,22 @@ import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import javax.swing.border.TitledBorder;
 
-public class PanelHabitacionEmergenteVentana extends JPanel {
+public class PanelHabitacionEmergenteVentana2 extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private Texto t;
 	// Valores de la posicion de las persianas del 0 al 4
 	private int persianas;
 	private ImageIcon[] persianasIcon = {
-			new ImageIcon(PanelHabitacionEmergenteVentana.class.getResource("/iconos/persiana0.png")),
-			new ImageIcon(PanelHabitacionEmergenteVentana.class.getResource("/iconos/persiana1.png")),
-			new ImageIcon(PanelHabitacionEmergenteVentana.class.getResource("/iconos/persiana2.png")),
-			new ImageIcon(PanelHabitacionEmergenteVentana.class.getResource("/iconos/persiana3.png")),
-			new ImageIcon(PanelHabitacionEmergenteVentana.class.getResource("/iconos/persiana4.png")) };
+			new ImageIcon(PanelHabitacionEmergenteVentana2.class.getResource("/iconos/persiana0.png")),
+			new ImageIcon(PanelHabitacionEmergenteVentana2.class.getResource("/iconos/persiana1.png")),
+			new ImageIcon(PanelHabitacionEmergenteVentana2.class.getResource("/iconos/persiana2.png")),
+			new ImageIcon(PanelHabitacionEmergenteVentana2.class.getResource("/iconos/persiana3.png")),
+			new ImageIcon(PanelHabitacionEmergenteVentana2.class.getResource("/iconos/persiana4.png")) };
 	private ImageIcon[] ventanasIcon = {
-			new ImageIcon(PanelHabitacionEmergenteVentana.class.getResource("/iconos/ventana20.png")),
-			new ImageIcon(PanelHabitacionEmergenteVentana.class.getResource("/iconos/ventana21.png")),
-			new ImageIcon(PanelHabitacionEmergenteVentana.class.getResource("/iconos/ventana22.png")) };
+			new ImageIcon(PanelHabitacionEmergenteVentana2.class.getResource("/iconos/ventana0.png")),
+			new ImageIcon(PanelHabitacionEmergenteVentana2.class.getResource("/iconos/ventana1.png")) };
 
-	public PanelHabitacionEmergenteVentana(MicroControladorLayersPadreHijo m, Controlador controlador) {
+	public PanelHabitacionEmergenteVentana2(MicroControladorLayersPadreHijo m, Controlador controlador) {
 		t = controlador.getTexto();
 
 		this.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 109, 240), new Color(0, 109, 240),
@@ -110,7 +109,7 @@ public class PanelHabitacionEmergenteVentana extends JPanel {
 
 		btnSubir.setEnabled(false);
 		btnSubir.setIcon(
-				new ImageIcon(PanelHabitacionEmergenteVentana.class.getResource("/iconos/flechaArriba_x32_blue.png")));
+				new ImageIcon(PanelHabitacionEmergenteVentana2.class.getResource("/iconos/flechaArriba_x32_blue.png")));
 		btnSubir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (persianas > 1) {
@@ -146,7 +145,7 @@ public class PanelHabitacionEmergenteVentana extends JPanel {
 			}
 		});
 		btnBajar.setIcon(
-				new ImageIcon(PanelHabitacionEmergenteVentana.class.getResource("/iconos/flechaAbajo_x32_blue.png")));
+				new ImageIcon(PanelHabitacionEmergenteVentana2.class.getResource("/iconos/flechaAbajo_x32_blue.png")));
 		btnBajar.setBounds(196, 185, 78, 44);
 		panelPersiana.add(btnBajar);
 
