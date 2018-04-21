@@ -1,3 +1,0 @@
-- Refactorización
-- Clase Texto (internacionalización)
-	+ ¿Guardar los datos en ficheros?

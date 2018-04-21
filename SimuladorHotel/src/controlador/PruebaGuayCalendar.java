@@ -2,6 +2,7 @@ package controlador;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.text.DecimalFormat;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -36,6 +37,10 @@ public class PruebaGuayCalendar extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		
+		double d = 98.999999;
+		String s = String.format("%.2f", d);
+		System.out.println(s);
 	}
 
 }

@@ -66,6 +66,7 @@ public class SelectorHora extends JPanel {
 		add(label);
 
 		btnAumentarHoras = new JButton("");
+		btnAumentarHoras.setFocusPainted(false);
 		btnAumentarHoras.setContentAreaFilled(false);
 		btnAumentarHoras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -82,6 +83,7 @@ public class SelectorHora extends JPanel {
 		add(btnAumentarHoras);
 
 		btnAumentarMinutos = new JButton("");
+		btnAumentarMinutos.setFocusPainted(false);
 		btnAumentarMinutos.setContentAreaFilled(false);
 		btnAumentarMinutos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -98,6 +100,7 @@ public class SelectorHora extends JPanel {
 		add(btnAumentarMinutos);
 
 		btnDisminuirHoras = new JButton("");
+		btnDisminuirHoras.setFocusPainted(false);
 		btnDisminuirHoras.setContentAreaFilled(false);
 		btnDisminuirHoras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -114,6 +117,7 @@ public class SelectorHora extends JPanel {
 		add(btnDisminuirHoras);
 
 		btnDisminuirMinutos = new JButton("");
+		btnDisminuirMinutos.setFocusPainted(false);
 		btnDisminuirMinutos.setContentAreaFilled(false);
 		btnDisminuirMinutos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

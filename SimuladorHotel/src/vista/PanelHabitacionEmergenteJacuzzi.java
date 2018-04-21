@@ -43,5 +43,17 @@ public class PanelHabitacionEmergenteJacuzzi extends JPanel {
 		});
 		btnCerrar.setBounds(610, 11, 75, 50);
 		add(btnCerrar);
+		
+		JLabel lblEncenderapagar = new JLabel("encender/apagar burbujas/chorros");
+		lblEncenderapagar.setBounds(10, 259, 173, 45);
+		add(lblEncenderapagar);
+		
+		JLabel lblRellenar = new JLabel("rellenar");
+		lblRellenar.setBounds(214, 259, 150, 45);
+		add(lblRellenar);
+		
+		JLabel lblTemperatura = new JLabel("temperatura");
+		lblTemperatura.setBounds(395, 259, 143, 45);
+		add(lblTemperatura);
 	}
 }

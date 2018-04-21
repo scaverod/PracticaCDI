@@ -69,6 +69,7 @@ public class GuayCalendar extends JPanel {
 		add(lblSeparador2);
 
 		JButton btnAumentarDia = new JButton("");
+		btnAumentarDia.setFocusPainted(false);
 		btnAumentarDia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!(fecha.getDay() == fecha.getMaxDay() && fecha.getMonth() == fecha.getMaxMonth()
@@ -84,6 +85,7 @@ public class GuayCalendar extends JPanel {
 		add(btnAumentarDia);
 
 		JButton btnDisminuirDia = new JButton("");
+		btnDisminuirDia.setFocusPainted(false);
 		btnDisminuirDia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!(fecha.getDay() == fecha.getMinDay() && fecha.getMonth() == fecha.getMinMonth()
@@ -99,6 +101,7 @@ public class GuayCalendar extends JPanel {
 		add(btnDisminuirDia);
 
 		JButton btnAumentarMes = new JButton("");
+		btnAumentarMes.setFocusPainted(false);
 		btnAumentarMes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!(fecha.getMonth() == fecha.getMaxMonth()
@@ -114,6 +117,7 @@ public class GuayCalendar extends JPanel {
 		add(btnAumentarMes);
 
 		JButton btnDisminuirMes = new JButton("");
+		btnDisminuirMes.setFocusPainted(false);
 		btnDisminuirMes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!(fecha.getMonth() == fecha.getMinMonth() && (fecha.getYear() == (int) comboAnyo.getItemAt(0)))) {
@@ -128,6 +132,7 @@ public class GuayCalendar extends JPanel {
 		add(btnDisminuirMes);
 
 		JButton btnAumentarAnyo = new JButton("");
+		btnAumentarAnyo.setFocusPainted(false);
 		btnAumentarAnyo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (fecha.getYear() < (int) comboAnyo.getItemAt(comboAnyo.getItemCount() - 1)) {
@@ -143,6 +148,7 @@ public class GuayCalendar extends JPanel {
 		add(btnAumentarAnyo);
 
 		JButton btnDisminuirAnyo = new JButton("");
+		btnDisminuirAnyo.setFocusPainted(false);
 		btnDisminuirAnyo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (fecha.getYear() > (int) comboAnyo.getItemAt(0)) {
