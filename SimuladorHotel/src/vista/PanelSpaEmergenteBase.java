@@ -4,16 +4,21 @@ import java.awt.Dimension;
 
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
+import javax.swing.border.LineBorder;
 
 import controlador.Controlador;
 import controlador.MicroControladorLayers;
 import controlador.MicroControladorLayersPadreHijo;
 import idiomas.Texto;
 import idiomas.TextoManager;
+import tiposVariable.InformacionSpaTratamiento;
+import tiposVariable.StringDouble;
 
 import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.Font;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.concurrent.Semaphore;
@@ -32,7 +37,7 @@ public class PanelSpaEmergenteBase extends JPanel {
 	// Habría que mandarlo desde el Main, por ejemplo
 	private Texto t = new TextoManager(TextoManager.español).getTexto();
 
-	public PanelSpaEmergenteBase(MicroControladorLayersPadreHijo microControlador, String padre, Controlador controlador, Semaphore s) {
+	public PanelSpaEmergenteBase(MicroControladorLayersPadreHijo microControlador, String padre, Controlador controlador, Semaphore s, InformacionSpaTratamiento info) {
 		this.s = s;
 
 		this.setSize(new Dimension(695, 315));
@@ -51,20 +56,31 @@ public class PanelSpaEmergenteBase extends JPanel {
 		panelContenedor.setLayer(panelPrincipal, 1);
 		panelContenedor.add(panelPrincipal);
 		panelPrincipal.setLayout(null);
+		
+		GuayCalendar panelFecha = new GuayCalendar();
+		SelectorHora panelTiempo = new SelectorHora(info.getMin(), info.getMax());
 
 		crearPanelConfirmacion("<precio>");
 
-		JButton btnCerrar = new JButton("Cancelar");
-		btnCerrar.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnCerrar.addActionListener(new ActionListener() {
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { // No modificar
 				// Devuelve control al padre
 				microControlador.changeLayer(0);
 				s.release(s.getQueueLength());
 			}
 		});
-		btnCerrar.setBounds(405, 254, 175, 53);
-		panelPrincipal.add(btnCerrar);
+		btnCancelar.setBounds(405, 254, 175, 53);
+		panelPrincipal.add(btnCancelar);
+		
+		JLabel lblGif = new JLabel("");
+		lblGif.setBorder(new LineBorder(Color.GREEN));
+		lblGif.setOpaque(true);
+		lblGif.setVisible(false);
+		lblGif.setIcon(new ImageIcon(PanelServiciosEmergenteWifi.class.getResource("/iconos/check-gif-1.gif")));
+		lblGif.setBounds(287, 103, 120, 109);
+		panelPrincipal.add(lblGif);
 
 		JButton btnConfirmar = new JButton("Confirmar");
 		btnConfirmar.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -73,12 +89,19 @@ public class PanelSpaEmergenteBase extends JPanel {
 				new Thread() {
 					public void run() {
 						try {
-							mostrarPanelConfirmacion("<precio>");
+							mostrarPanelConfirmacion(String.valueOf(info.getFactura().getNumero()) + " \u20AC");
 
 							s.acquire();
 
 							if (((PanelConfirmacionServicios) panelConfirmacion).getConfirmacion() == true) {
 								// Actualizar ventana; en otro caso no hacer nada
+								info.setFactura(new StringDouble(info.getFactura().getCadena() + "  " + panelFecha.getFecha().toString() + " - " + panelTiempo.getTiempo().toString(), info.getFactura().getNumero()));
+								controlador.getCuenta().getGasto().addGasto(info.getFactura());
+								lblGif.setVisible(true);
+								Thread.sleep(2050);
+								lblGif.setVisible(false);
+								microControlador.changeLayer(0);
+								s.release(s.getQueueLength());
 
 								// Tiene que hacerse siempre!
 								((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
@@ -93,11 +116,11 @@ public class PanelSpaEmergenteBase extends JPanel {
 		btnConfirmar.setBounds(115, 254, 175, 53);
 		panelPrincipal.add(btnConfirmar);
 		
-		GuayCalendar panelFecha = new GuayCalendar();
+
 		panelFecha.setBounds(22, 46, 398, 202);
 		panelPrincipal.add(panelFecha);
-		//Pasarle los parametor para poner la hora
-		SelectorHora panelTiempo = new SelectorHora(5, 20);
+
+
 		panelTiempo.setBounds(442, 46, 229, 202);
 		panelPrincipal.add(panelTiempo);
 		

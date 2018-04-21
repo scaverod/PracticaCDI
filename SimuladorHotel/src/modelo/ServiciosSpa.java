@@ -37,13 +37,13 @@ public class ServiciosSpa {
 		spas.add(new Spa("Termas Romanas", new String[] { "30 min.", "60 min." }, 15, 0, new double[] { 17, 28.99 }, 9,
 				13));
 		tratamientos.add(new Tratamiento("Masaje facial", new String[] { "15 min.", "30 min." },
-				new String[] { "Cabina", "Habitación" }, new String[] { "Raquel Perez" }, 9, 13,
+				new String[] { "Cabina", "Habitación" }, new String[] { "Deivid Herrero" }, 9, 13,
 				new double[] { 15.99, 25.99 }));
-		tratamientos.add(new Tratamiento("Masaje corporal", new String[] { "15 min.", "30 min." },
+		tratamientos.add(new Tratamiento("Masaje Thai", new String[] { "15 min.", "30 min." },
 				new String[] { "Cabina", "Habitación" }, new String[] { "Antonio Castro" }, 9, 13,
 				new double[] { 20, 27.99 }));
-		tratamientos.add(new Tratamiento("Masaje con chocolate", new String[] { "30 min.", "60 min." },
-				new String[] { "Cabina", "Habitación" }, new String[] { "Irina Boboia", "Maria Roca" }, 18, 20,
+		tratamientos.add(new Tratamiento("Masaje Sueco", new String[] { "30 min.", "60 min." },
+				new String[] { "Cabina", "Habitación" }, new String[] { "Irina Boboia", "Sergio Cavero" }, 18, 20,
 				new double[] { 30, 47.99 }));
 
 	}

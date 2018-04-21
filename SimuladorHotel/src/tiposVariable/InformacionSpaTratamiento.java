@@ -4,12 +4,12 @@ public class InformacionSpaTratamiento {
 
 	private int max;
 	private int min;
-	private StringDouble Factura;
+	private StringDouble factura;
 
-	public InformacionSpaTratamiento(int max, int min, StringDouble factura) {
+	public InformacionSpaTratamiento(int min, int max, StringDouble factura) {
 		this.max = max;
 		this.min = min;
-		Factura = factura;
+		this.factura = factura;
 	}
 
 	public int getMax() {
@@ -29,11 +29,17 @@ public class InformacionSpaTratamiento {
 	}
 
 	public StringDouble getFactura() {
-		return Factura;
+		return factura;
 	}
 
 	public void setFactura(StringDouble factura) {
-		Factura = factura;
+		this.factura = factura;
+	}
+	
+	public void print () {
+		System.out.println("Hora inicio:" + min);
+		System.out.println("Hora fin:" + max);
+		System.out.println("Hora factura:" + this.factura.getCadena() +  " - " + this.factura.getNumero());
 	}
 
 }

@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 import controlador.Controlador;
 import controlador.MicroControladorLayersPadreHijo;
 import idiomas.Texto;
+import tiposVariable.InformacionSpaTratamiento;
+import tiposVariable.StringDouble;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -44,6 +46,7 @@ public class PanelSpa extends JPanel {
 	private int tratamiento;
 	private int spa;
 	private double costeSPA;
+	private InformacionSpaTratamiento info;
 
 	private Semaphore s;
 
@@ -98,11 +101,11 @@ public class PanelSpa extends JPanel {
 
 		JLabel lblPrecioTrat = new JLabel(
 				controlador.getServiciosSpa().getTratamientos().get(0).getPrecio()[0] + " \u20AC");
-		JLabel lblPrecioSpa = new JLabel(
-				String.valueOf(controlador.getServiciosSpa().getSpas().get(spa).getPrecio()[0]) + " \u20AC");
+		costeSPA = controlador.getServiciosSpa().getSpas().get(spa).getPrecio()[0];
+		JLabel lblPrecioSpa = new JLabel(String.valueOf(costeSPA + " \u20AC"));
 		JLabel lblNumPlazas = new JLabel(
 				String.valueOf(controlador.getServiciosSpa().getSpas().get(spa).getAforoMax()));
-		JComboBox<String> comboBoxDuracion = new JComboBox<String>();
+		JComboBox<String> comboBoxDuracionTrat = new JComboBox<String>();
 		JComboBox<String> comboBoxLugar = new JComboBox<String>();
 		JComboBox<String> comboBoxEmpleado = new JComboBox<String>();
 		JComboBox<String> comboBoxPiscina = new JComboBox<String>();
@@ -127,7 +130,7 @@ public class PanelSpa extends JPanel {
 		comboBoxTratamiento.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {
 				tratamiento = comboBoxTratamiento.getSelectedIndex();
-				comboBoxDuracion.setModel(new DefaultComboBoxModel<String>(
+				comboBoxDuracionTrat.setModel(new DefaultComboBoxModel<String>(
 						controlador.getServiciosSpa().getTratamientos().get(tratamiento).getDuracion()));
 				comboBoxLugar.setModel(new DefaultComboBoxModel<String>(
 						controlador.getServiciosSpa().getTratamientos().get(tratamiento).getLugares()));
@@ -155,18 +158,19 @@ public class PanelSpa extends JPanel {
 		iconoTratamiento.setBounds(331, 71, 64, 64);
 		panelIzquierdo.add(iconoTratamiento);
 
-		comboBoxDuracion.addItemListener(new ItemListener() {
+		comboBoxDuracionTrat.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 				lblPrecioTrat.setText(controlador.getServiciosSpa().getTratamientos().get(tratamiento)
-						.getPrecio()[comboBoxDuracion.getSelectedIndex()] + " \u20AC");
+						.getPrecio()[comboBoxDuracionTrat.getSelectedIndex()] + " \u20AC");
 			}
 		});
-		comboBoxDuracion.setModel(
+		comboBoxDuracionTrat.setModel(
 				new DefaultComboBoxModel<String>(controlador.getServiciosSpa().getTratamientos().get(0).getDuracion()));
-		comboBoxDuracion.setToolTipText("");
-		comboBoxDuracion.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		comboBoxDuracion.setBounds(55, 185, 221, 25);
-		panelIzquierdo.add(comboBoxDuracion);
+		comboBoxDuracionTrat.setToolTipText("");
+		comboBoxDuracionTrat.setSelectedIndex(0);
+		comboBoxDuracionTrat.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		comboBoxDuracionTrat.setBounds(55, 185, 221, 25);
+		panelIzquierdo.add(comboBoxDuracionTrat);
 
 		JLabel lblDuracion = new JLabel("Duraci\u00F3n");
 		lblDuracion.setHorizontalAlignment(SwingConstants.CENTER);
@@ -311,6 +315,7 @@ public class PanelSpa extends JPanel {
 				new DefaultComboBoxModel<String>(controlador.getServiciosSpa().getSpas().get(spa).getDuracion()));
 		comboBoxDuracionSpa.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		comboBoxDuracionSpa.setBounds(61, 185, 221, 25);
+		comboBoxDuracionSpa.setSelectedIndex(0);
 		panelDerecho.add(comboBoxDuracionSpa);
 
 		JLabel label_5 = new JLabel("Duraci\u00F3n");
@@ -333,6 +338,7 @@ public class PanelSpa extends JPanel {
 		comboBoxNumPersonas.setModel(new DefaultComboBoxModel<String>(
 				new String[] { "1 persona", "2 personas", "3 personas", "4 personas" }));
 		comboBoxNumPersonas.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		comboBoxNumPersonas.setSelectedIndex(0);
 		comboBoxNumPersonas.setBounds(61, 259, 221, 25);
 		panelDerecho.add(comboBoxNumPersonas);
 
@@ -364,20 +370,32 @@ public class PanelSpa extends JPanel {
 		lblImagenUsers.setIcon(new ImageIcon(PanelSpa.class.getResource("/iconos/users.png")));
 		lblImagenUsers.setBounds(345, 223, 64, 60);
 		panelDerecho.add(lblImagenUsers);
-		
-
 
 		JButton btnAdquirirDch = new JButton(t.getBtnAdquirir());
 		btnAdquirirDch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				info.setMax(controlador.getServiciosSpa().getSpas().get(spa).getHoraFin());
+				info.setMin(controlador.getServiciosSpa().getSpas().get(spa).getHoraIni());
+				info.setFactura(
+						new StringDouble(controlador.getServiciosSpa().getSpas().get(spa).getNombre(), costeSPA));
+				panelBase = new PanelSpaEmergenteBase(microControlador, PanelSpa.this.getName(), controlador, s, info);
+				panelEmergenteContenedor.add(panelBase, panelBase.getName());
 				changeToVentanaEmergente(panelBase);
 			}
 		});
 		btnAdquirirDch.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnAdquirirDch.setBounds(34, 398, 221, 41);
 		panelDerecho.add(btnAdquirirDch);
+
 		btnAdquirirIzq.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				info.setMax(controlador.getServiciosSpa().getTratamientos().get(tratamiento).getHoraFin());
+				info.setMin(controlador.getServiciosSpa().getTratamientos().get(tratamiento).getHoraIni());
+				info.setFactura(new StringDouble(controlador.getServiciosSpa().getNombresTratamientos()[tratamiento],
+						controlador.getServiciosSpa().getTratamientos().get(tratamiento)
+								.getPrecio()[comboBoxDuracionTrat.getSelectedIndex()]));
+				panelBase = new PanelSpaEmergenteBase(microControlador, PanelSpa.this.getName(), controlador, s, info);
+				panelEmergenteContenedor.add(panelBase, panelBase.getName());
 				changeToVentanaEmergente(panelBase);
 			}
 		});
@@ -395,7 +413,7 @@ public class PanelSpa extends JPanel {
 				if (evt.getNewValue().equals(0)) {
 					// TODO: reactivar elementos del panelPrincipal (ahora panel al frente)
 					btnAdquirirIzq.setEnabled(true);
-					comboBoxDuracion.setEnabled(true);
+					comboBoxDuracionTrat.setEnabled(true);
 					comboBoxEmpleado.setEnabled(true);
 					comboBoxLugar.setEnabled(true);
 					comboBoxTratamiento.setEnabled(true);
@@ -403,7 +421,7 @@ public class PanelSpa extends JPanel {
 				} else if (evt.getNewValue().equals(2)) {
 					// TODO: desactivar elementos del panelPrincipal (ahora panel al fondo)
 					btnAdquirirIzq.setEnabled(false);
-					comboBoxDuracion.setEnabled(false);
+					comboBoxDuracionTrat.setEnabled(false);
 					comboBoxEmpleado.setEnabled(false);
 					comboBoxLugar.setEnabled(false);
 					comboBoxTratamiento.setEnabled(false);
@@ -420,8 +438,8 @@ public class PanelSpa extends JPanel {
 		/* SEPARADOR */
 		microControlador = new MicroControladorLayersPadreHijo(layeredPane, panelEmergenteContenedor);
 
-		//Esto es lo que hay que coger para modificarlo
-		panelBase = new PanelSpaEmergenteBase(microControlador, this.getName(), controlador, s);
+		info = new InformacionSpaTratamiento(0, 1, new StringDouble("", 0));
+		panelBase = new PanelSpaEmergenteBase(microControlador, this.getName(), controlador, s, info);
 		panelEmergenteContenedor.add(panelBase, panelBase.getName());
 
 		panelOtro = new PanelSpaEmergenteOtro(microControlador, this.getName(), controlador, s);
