@@ -70,8 +70,6 @@ public class PanelSpaEmergenteBase extends JPanel {
 				s.release(s.getQueueLength());
 			}
 		});
-		btnCancelar.setBounds(405, 254, 175, 53);
-		panelPrincipal.add(btnCancelar);
 		
 		JLabel lblGif = new JLabel("");
 		lblGif.setBorder(new LineBorder(Color.GREEN));
@@ -80,6 +78,8 @@ public class PanelSpaEmergenteBase extends JPanel {
 		lblGif.setIcon(new ImageIcon(PanelServiciosEmergenteWifi.class.getResource("/iconos/check-gif-1.gif")));
 		lblGif.setBounds(287, 103, 120, 109);
 		panelPrincipal.add(lblGif);
+		btnCancelar.setBounds(405, 254, 175, 53);
+		panelPrincipal.add(btnCancelar);
 
 		JButton btnConfirmar = new JButton("Confirmar");
 		btnConfirmar.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -116,11 +116,11 @@ public class PanelSpaEmergenteBase extends JPanel {
 		panelPrincipal.add(btnConfirmar);
 		
 
-		panelFecha.setBounds(22, 46, 398, 202);
+		panelFecha.setBounds(273, 46, 398, 202);
 		panelPrincipal.add(panelFecha);
 
 
-		panelTiempo.setBounds(442, 46, 229, 202);
+		panelTiempo.setBounds(22, 46, 229, 202);
 		panelPrincipal.add(panelTiempo);
 		
 		JLabel lblTxt = new JLabel("Seleccione el dia y la hora");
