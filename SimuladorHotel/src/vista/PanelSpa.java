@@ -169,11 +169,11 @@ public class PanelSpa extends JPanel {
 		comboBoxDuracionTrat.setBounds(55, 185, 221, 25);
 		panelIzquierdo.add(comboBoxDuracionTrat);
 
-		JLabel lblDuracion = new JLabel("Duraci\u00F3n");
-		lblDuracion.setHorizontalAlignment(SwingConstants.CENTER);
-		lblDuracion.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblDuracion.setBounds(55, 146, 221, 41);
-		panelIzquierdo.add(lblDuracion);
+		JLabel lblDuracionTrat = new JLabel("Duraci\u00F3n");
+		lblDuracionTrat.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDuracionTrat.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblDuracionTrat.setBounds(55, 146, 221, 41);
+		panelIzquierdo.add(lblDuracionTrat);
 
 		JLabel iconoDuracion = new JLabel("");
 		iconoDuracion.setIcon(new ImageIcon(PanelSpa.class.getResource("/iconos/time.png")));
@@ -315,11 +315,11 @@ public class PanelSpa extends JPanel {
 		comboBoxDuracionSpa.setSelectedIndex(0);
 		panelDerecho.add(comboBoxDuracionSpa);
 
-		JLabel label_5 = new JLabel("Duraci\u00F3n");
-		label_5.setHorizontalAlignment(SwingConstants.CENTER);
-		label_5.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		label_5.setBounds(61, 146, 221, 41);
-		panelDerecho.add(label_5);
+		JLabel lblDuracionSpa = new JLabel("Duraci\u00F3n");
+		lblDuracionSpa.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDuracionSpa.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblDuracionSpa.setBounds(61, 146, 221, 41);
+		panelDerecho.add(lblDuracionSpa);
 
 		comboBoxNumPersonas.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
@@ -417,6 +417,7 @@ public class PanelSpa extends JPanel {
 					comboBoxLugar.setEnabled(true);
 					comboBoxTratamiento.setEnabled(true);
 					comboBoxPiscina.setEnabled(true);
+					comboBoxNumPersonas.setEnabled(true);
 				} else if (evt.getNewValue().equals(2)) {
 					// TODO: desactivar elementos del panelPrincipal (ahora panel al fondo)
 					btnAdquirirIzq.setEnabled(false);
@@ -427,6 +428,7 @@ public class PanelSpa extends JPanel {
 					comboBoxLugar.setEnabled(false);
 					comboBoxTratamiento.setEnabled(false);
 					comboBoxPiscina.setEnabled(false);
+					comboBoxNumPersonas.setEnabled(true);
 				}
 			}
 		});
