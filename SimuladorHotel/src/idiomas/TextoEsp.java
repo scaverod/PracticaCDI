@@ -69,9 +69,6 @@ public class TextoEsp extends Texto {
 		setStrPersonas("personas");
 		setStrPersona("persona");
 
-		
-
-
 		// Panel Servicios
 		setPanelServiciosBtnMinibar("Reponer minibar");
 		setPanelServiciosBtnCambioToalla("Cambiar toallas");
@@ -88,8 +85,7 @@ public class TextoEsp extends Texto {
 
 		// Panel Emergen Informacion
 		setBtnAdquirir("Adquirir");
-		setTxtInformacion(
-				"Nuestros hoteles cuentan con una atención totalmente personalizada. Con solo pulsar el botón, le llamaremos al teléfono de la habitación desde la recepción del hotel.\nDisponible las 24 horas al día");
+		setTxtInformacion("Nuestros hoteles cuentan con una atención totalmente personalizada. Con solo pulsar el botón, le llamaremos al teléfono de la habitación desde la recepción del hotel.\nDisponible las 24 horas al día");
 
 		setLblCoste("Coste:");
 
@@ -139,6 +135,8 @@ public class TextoEsp extends Texto {
 		// Panel Emergente Limpieza
 		setPanelServiciosEmergenteLimpiezaTxt("Seleccione la hora más adecuada para que limpiemos la habitación.");
 		setPanelServiciosEmergenteLimpiezaTxtUnaVezHaya("Aviso: Una vez haya adquirido este servicio podr\u00E1 cambiar la hora ilimitadas veces sin coste alguno.");
+		setPanelServiciosEmergenteLimpiezaBtnCambiar("Cambiar");
+		
 		
 		// Panel usuario
 		setLblCuentaHabitacion("Habitación");

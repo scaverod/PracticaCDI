@@ -86,7 +86,6 @@ public class PanelServiciosEmergenteInformacion extends JPanel {
 				new Thread() {
 					public void run() {
 						try {
-
 							mostrarPanelConfirmacion("0 €");
 
 							s.acquire();

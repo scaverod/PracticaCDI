@@ -104,7 +104,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 		panelPrecioLatex.setBounds(272, 157, 175, 35);
 		panelPrincipal.add(panelPrecioLatex);
 
-		JLabel lblLatex = new JLabel("Coste:");
+		JLabel lblLatex = new JLabel(t.getLblCoste());
 		lblLatex.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		panelPrecioLatex.add(lblLatex);
 
@@ -120,7 +120,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 		panelPrecioPluma.setBounds(272, 211, 175, 35);
 		panelPrincipal.add(panelPrecioPluma);
 
-		JLabel lblPluma = new JLabel("Coste:");
+		JLabel lblPluma = new JLabel(t.getLblCoste());
 		lblPluma.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		panelPrecioPluma.add(lblPluma);
 
@@ -136,7 +136,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 		panelPrecioGel.setBounds(272, 265, 175, 35);
 		panelPrincipal.add(panelPrecioGel);
 
-		JLabel lblGel = new JLabel("Coste:");
+		JLabel lblGel = new JLabel(t.getLblCoste());
 		lblGel.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		panelPrecioGel.add(lblGel);
 
@@ -152,11 +152,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 				new Thread() {
 					public void run() {
 						try {
-							// FIXME
-							System.out.println(controlador.getTexto());
-							
-							mostrarPanelConfirmacion(
-									String.valueOf(controlador.getServicios().getAlmohada().getPrecioLatex()) + " €");
+							mostrarPanelConfirmacion(String.valueOf(controlador.getServicios().getAlmohada().getPrecioLatex()) + " €");
 
 							s.acquire();
 
@@ -184,8 +180,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 		btnComprarVisco.setFocusPainted(false);
 		btnComprarVisco.setContentAreaFilled(false);
 		btnComprarVisco.setOpaque(false);
-		btnComprarVisco
-				.setIcon(new ImageIcon(PanelServiciosEmergenteAlmohada.class.getResource("/iconos/comprar.png")));
+		btnComprarVisco.setIcon(new ImageIcon(PanelServiciosEmergenteAlmohada.class.getResource("/iconos/comprar.png")));
 		btnComprarVisco.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new Thread() {
@@ -218,8 +213,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 		btnComprarVisco.setBounds(533, 103, 75, 35);
 		panelPrincipal.add(btnComprarVisco);
 		btnComprarLatex.setContentAreaFilled(false);
-		btnComprarLatex
-				.setIcon(new ImageIcon(PanelServiciosEmergenteAlmohada.class.getResource("/iconos/comprar.png")));
+		btnComprarLatex.setIcon(new ImageIcon(PanelServiciosEmergenteAlmohada.class.getResource("/iconos/comprar.png")));
 		btnComprarLatex.setBounds(533, 157, 75, 35);
 		panelPrincipal.add(btnComprarLatex);
 
@@ -255,8 +249,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 			}
 		});
 		btnComprarPluma.setContentAreaFilled(false);
-		btnComprarPluma
-				.setIcon(new ImageIcon(PanelServiciosEmergenteAlmohada.class.getResource("/iconos/comprar.png")));
+		btnComprarPluma.setIcon(new ImageIcon(PanelServiciosEmergenteAlmohada.class.getResource("/iconos/comprar.png")));
 		btnComprarPluma.setBounds(533, 211, 75, 35);
 		panelPrincipal.add(btnComprarPluma);
 
@@ -267,8 +260,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 				new Thread() {
 					public void run() {
 						try {
-							mostrarPanelConfirmacion(
-									String.valueOf(controlador.getServicios().getAlmohada().getPrecioGel()) + " €");
+							mostrarPanelConfirmacion(String.valueOf(controlador.getServicios().getAlmohada().getPrecioGel()) + " €");
 
 							s.acquire();
 
@@ -305,7 +297,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 		JTextPane textPaneVisco = new JTextPane();
 		textPaneVisco.setBounds(10, 11, 99, 23);
 		panelBordeVisco.add(textPaneVisco);
-		textPaneVisco.setText("Viscoel\u00E1stica");
+		textPaneVisco.setText(t.getPanelServiciosEmergentealmohadaVisco());
 		textPaneVisco.setOpaque(false);
 		textPaneVisco.setFont(new Font("Tahoma", Font.BOLD, 14));
 		textPaneVisco.setEditable(false);
