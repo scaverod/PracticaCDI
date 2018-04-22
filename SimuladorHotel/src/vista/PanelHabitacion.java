@@ -385,7 +385,7 @@ public class PanelHabitacion extends JPanel {
 					controlador.getHabitacion().setPersianaIzq(4);
 					lblPersiana1.setIcon(persianasIcon[4]);
 					lblPersiana2.setIcon(persianasIcon[4]);
-					
+
 					// subir persianas
 				} else {
 					controlador.getHabitacion().setPersianaDer(0);
@@ -415,7 +415,7 @@ public class PanelHabitacion extends JPanel {
 					controlador.getHabitacion().setVentanaIzq(2);
 					lblVentana1.setIcon(ventanasIconIzq[2]);
 					lblVentana2.setIcon(ventanasIconDer[1]);
-					
+
 					// bajo las ventanas
 				} else {
 					controlador.getHabitacion().setVentanaDer(0);
@@ -446,33 +446,63 @@ public class PanelHabitacion extends JPanel {
 					int persianasDer = controlador.getHabitacion().getPersianaDer();
 					int ventanaIzq = controlador.getHabitacion().getVentanaIzq();
 					int ventanaDer = controlador.getHabitacion().getVentanaDer();
-					
-					if(persianasIzq == 4 && persianasDer == 4) {
+
+					if (persianasIzq == 4 && persianasDer == 4) {
 						lblPersiana1.setIcon(persianasIcon[4]);
 						lblPersiana2.setIcon(persianasIcon[4]);
 						tglbtnPersiana.setSelected(true);
-					}else {
+					} else {
 						tglbtnPersiana.setSelected(false);
 						lblPersiana1.setIcon(persianasIcon[persianasIzq]);
 						lblPersiana2.setIcon(persianasIcon[persianasDer]);
 					}
-					
-					if(ventanaIzq == 2 && ventanaDer == 1) {
+
+					if (ventanaIzq == 2 && ventanaDer == 1) {
 						lblVentana1.setIcon(ventanasIconIzq[ventanaIzq]);
 						lblVentana2.setIcon(ventanasIconDer[ventanaDer]);
 						tglbtnVentana.setSelected(true);
-					}else {
+					} else {
 						lblVentana1.setIcon(ventanasIconIzq[ventanaIzq]);
 						lblVentana2.setIcon(ventanasIconDer[ventanaDer]);
 						tglbtnVentana.setSelected(false);
 					}
 
-
-					// TODO: activar, desactivar botones
 					if (evt.getNewValue().equals(0)) {
-						// reactivar botones
-					} else if (evt.getNewValue().equals(2)) {
-						// desactivar botones
+						btnLuzTechoCentro.setEnabled(true);
+						btnLuzMesillaIzquierda.setEnabled(true);
+						btnLuzBanyo.setEnabled(true);
+						btnLuzMesillaDerecha.setEnabled(true);
+						btnCalefaccion.setEnabled(true);
+						tglbtnLuz.setEnabled(true);
+						lblTemperatura.setEnabled(true);
+						tglbtnPuerta.setEnabled(true);
+						btnVentana.setEnabled(true);
+						btnJacuzzi.setEnabled(true);
+						btnVentanaGrande.setEnabled(true);
+						btnAlarma.setEnabled(true);
+						btnAyuda.setEnabled(true);
+						btnTemperatura.setEnabled(true);
+						tglbtnPersiana.setEnabled(true);
+						tglbtnVentana.setEnabled(true);
+						lblImagenHabitacion.setEnabled(true);
+					} else if (evt.getNewValue().equals(3)) {
+						btnLuzTechoCentro.setEnabled(false);
+						btnLuzMesillaIzquierda.setEnabled(false);
+						btnLuzBanyo.setEnabled(false);
+						btnLuzMesillaDerecha.setEnabled(false);
+						btnCalefaccion.setEnabled(false);
+						tglbtnLuz.setEnabled(false);
+						lblTemperatura.setEnabled(false);
+						tglbtnPuerta.setEnabled(false);
+						btnVentana.setEnabled(false);
+						btnJacuzzi.setEnabled(false);
+						btnVentanaGrande.setEnabled(false);
+						btnAlarma.setEnabled(false);
+						btnAyuda.setEnabled(false);
+						btnTemperatura.setEnabled(false);
+						tglbtnPersiana.setEnabled(false);
+						tglbtnVentana.setEnabled(false);
+						lblImagenHabitacion.setEnabled(false);
 					}
 				}
 			}
