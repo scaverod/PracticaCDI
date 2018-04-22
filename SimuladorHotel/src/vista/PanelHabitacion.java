@@ -39,7 +39,27 @@ public class PanelHabitacion extends JPanel {
 	private JPanel panelVentana2;
 	private JPanel panelJacuzzi;
 	private JPanel panelCalefaccion;
-	
+	private JLabel lblPersiana1;
+	private JLabel lblPersiana2;
+	private JLabel lblVentana1;
+	private JLabel lblVentana2;
+
+	private ImageIcon[] persianasIcon = {
+			new ImageIcon(PanelHabitacionEmergenteVentana.class.getResource("/iconos/persiana0min.png")),
+			new ImageIcon(PanelHabitacionEmergenteVentana.class.getResource("/iconos/persiana1min.png")),
+			new ImageIcon(PanelHabitacionEmergenteVentana.class.getResource("/iconos/persiana2min.png")),
+			new ImageIcon(PanelHabitacionEmergenteVentana.class.getResource("/iconos/persiana3min.png")),
+			new ImageIcon(PanelHabitacionEmergenteVentana.class.getResource("/iconos/persiana4min.png")) };
+
+	private ImageIcon[] ventanasIconIzq = {
+			new ImageIcon(PanelHabitacionEmergenteVentana.class.getResource("/iconos/ventana20min.png")),
+			new ImageIcon(PanelHabitacionEmergenteVentana.class.getResource("/iconos/ventana21min.png")),
+			new ImageIcon(PanelHabitacionEmergenteVentana.class.getResource("/iconos/ventana22min.png")) };
+
+	private ImageIcon[] ventanasIconDer = {
+			new ImageIcon(PanelHabitacionEmergenteVentana2.class.getResource("/iconos/ventana0min.png")),
+			new ImageIcon(PanelHabitacionEmergenteVentana2.class.getResource("/iconos/ventana1min.png")) };
+
 	private Texto t;
 
 	public PanelHabitacion(Controlador controlador) {
@@ -139,13 +159,13 @@ public class PanelHabitacion extends JPanel {
 				}
 			}
 		});
-		
-				JLabel lblTemperatura = new JLabel("23\u00BA");
-				lblTemperatura.setHorizontalAlignment(SwingConstants.CENTER);
-				lblTemperatura.setForeground(Color.WHITE);
-				lblTemperatura.setFont(new Font("Tahoma", Font.BOLD, 12));
-				lblTemperatura.setBounds(31, 38, 80, 27);
-				panelPrincipal.add(lblTemperatura);
+
+		JLabel lblTemperatura = new JLabel("23\u00BA");
+		lblTemperatura.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTemperatura.setForeground(Color.WHITE);
+		lblTemperatura.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblTemperatura.setBounds(31, 38, 80, 27);
+		panelPrincipal.add(lblTemperatura);
 
 		tglbtnLuz.setToolTipText("Encender o apagar todas las luces.");
 		tglbtnLuz.setSelectedIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/lucesON.png")));
@@ -335,43 +355,49 @@ public class PanelHabitacion extends JPanel {
 		btnTemperatura.setBounds(10, 11, 80, 80);
 		btnTemperatura.setContentAreaFilled(false);
 		panelPrincipal.add(btnTemperatura);
-		
-		JLabel lblPersiana1 = new JLabel("");
-		lblPersiana1.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/persiana4min.png")));
+
+		lblPersiana1 = new JLabel("");
+		lblPersiana1.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/persiana0min.png")));
 		lblPersiana1.setBounds(179, 196, 32, 32);
 		panelPrincipal.add(lblPersiana1);
-		
-		JLabel lblPersiana2 = new JLabel("");
-		lblPersiana2.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/persiana4min.png")));
+
+		lblPersiana2 = new JLabel("");
+		lblPersiana2.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/persiana0min.png")));
 		lblPersiana2.setBounds(519, 196, 32, 32);
 		panelPrincipal.add(lblPersiana2);
-		
-		JLabel lblVentana1 = new JLabel("");
+
+		lblVentana1 = new JLabel("");
 		lblVentana1.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/ventana20min.png")));
 		lblVentana1.setBounds(134, 196, 32, 32);
 		panelPrincipal.add(lblVentana1);
-		
-		JLabel lblVentana2 = new JLabel("");
+
+		lblVentana2 = new JLabel("");
 		lblVentana2.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/ventana0min.png")));
 		lblVentana2.setBounds(484, 196, 32, 32);
 		panelPrincipal.add(lblVentana2);
-		
+
 		JToggleButton tglbtnPersiana = new JToggleButton("");
 		tglbtnPersiana.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//bajar persianas
-				if(tglbtnPersiana.isSelected()) {
+				// bajar persianas
+				if (tglbtnPersiana.isSelected()) {
 					controlador.getHabitacion().setPersianaDer(4);
 					controlador.getHabitacion().setPersianaIzq(4);
-					//subir persianas
-				}else {
+					lblPersiana1.setIcon(persianasIcon[4]);
+					lblPersiana2.setIcon(persianasIcon[4]);
+					
+					// subir persianas
+				} else {
 					controlador.getHabitacion().setPersianaDer(0);
 					controlador.getHabitacion().setPersianaIzq(0);
+					lblPersiana1.setIcon(persianasIcon[0]);
+					lblPersiana2.setIcon(persianasIcon[0]);
 				}
-				
+
 			}
 		});
-		tglbtnPersiana.setSelectedIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/persianaSubirAll.png")));
+		tglbtnPersiana
+				.setSelectedIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/persianaSubirAll.png")));
 		tglbtnPersiana.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/persianaBajarAll.png")));
 		tglbtnPersiana.setToolTipText("Encender o apagar todas las luces.");
 		tglbtnPersiana.setOpaque(false);
@@ -379,18 +405,23 @@ public class PanelHabitacion extends JPanel {
 		tglbtnPersiana.setContentAreaFilled(false);
 		tglbtnPersiana.setBounds(261, 403, 75, 69);
 		panelPrincipal.add(tglbtnPersiana);
-		
+
 		JToggleButton tglbtnVentana = new JToggleButton("");
 		tglbtnVentana.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//abro las ventanas
-				if(tglbtnVentana.isSelected()) {
+				// abro las ventanas
+				if (tglbtnVentana.isSelected()) {
 					controlador.getHabitacion().setVentanaDer(1);
 					controlador.getHabitacion().setVentanaIzq(2);
-				//bajo las ventanas
-				}else {
+					lblVentana1.setIcon(ventanasIconIzq[2]);
+					lblVentana2.setIcon(ventanasIconDer[1]);
+					
+					// bajo las ventanas
+				} else {
 					controlador.getHabitacion().setVentanaDer(0);
-					controlador.getHabitacion().setVentanaIzq(0);					
+					controlador.getHabitacion().setVentanaIzq(0);
+					lblVentana1.setIcon(ventanasIconIzq[0]);
+					lblVentana2.setIcon(ventanasIconDer[0]);
 				}
 			}
 		});
@@ -405,24 +436,23 @@ public class PanelHabitacion extends JPanel {
 
 		// En principio no tiene que estar al final, pero por seguir la misma estructura
 		// que en panelSpa y porque tiene sentido lo voy a poner aquí
-		
+
 		panelEmergenteContenedor.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent evt) {
 				if (evt.getPropertyName() == "layeredContainerLayer") {
-					// TODO: comprobar estado ventanas y persianas y cambiar en caso de ser necesario
-					
-					
+					// TODO: comprobar estado ventanas y persianas y cambiar en caso de ser
+					// necesario
+
 					// TODO: activar, desactivar botones
 					if (evt.getNewValue().equals(0)) {
 						// reactivar botones
-					}
-					else if (evt.getNewValue().equals(0)) {
+					} else if (evt.getNewValue().equals(0)) {
 						// desactivar botones
 					}
 				}
 			}
 		});
-		
+
 		/* SEPARADOR */
 		microControlador = new MicroControladorLayersPadreHijo(layeredPane, panelEmergenteContenedor);
 

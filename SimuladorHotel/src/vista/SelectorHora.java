@@ -88,7 +88,7 @@ public class SelectorHora extends JPanel {
 		btnAumentarMinutos.setContentAreaFilled(false);
 		btnAumentarMinutos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (minutos < 60)
+				if (minutos < 59)
 					minutos++;
 				else
 					minutos = 0;
