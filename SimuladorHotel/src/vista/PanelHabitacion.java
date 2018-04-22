@@ -442,6 +442,23 @@ public class PanelHabitacion extends JPanel {
 				if (evt.getPropertyName() == "layeredContainerLayer") {
 					// TODO: comprobar estado ventanas y persianas y cambiar en caso de ser
 					// necesario
+					int persianasIzq = controlador.getHabitacion().getPersianaIzq();
+					int persianasDer = controlador.getHabitacion().getPersianaDer();
+					int ventanaIzq = controlador.getHabitacion().getVentanaIzq();
+					int ventanaDer = controlador.getHabitacion().getPersianaDer();
+					
+					if(persianasIzq == 4 && persianasDer == 4) {
+						controlador.getHabitacion().setPersianaDer(4);
+						controlador.getHabitacion().setPersianaIzq(4);
+						lblPersiana1.setIcon(persianasIcon[4]);
+						lblPersiana2.setIcon(persianasIcon[4]);
+						tglbtnPersiana.setSelected(true);
+					}else {
+						tglbtnPersiana.setSelected(false);
+						lblPersiana1.setIcon(persianasIcon[persianasIzq]);
+						lblPersiana2.setIcon(persianasIcon[persianasDer]);
+					}
+
 
 					// TODO: activar, desactivar botones
 					if (evt.getNewValue().equals(0)) {
