@@ -35,6 +35,9 @@ public class TextoEng extends Texto {
 		setLblPlazas("Available places:");
 		setLblSpa("SPA");
 		setLblSeleccionServicio("Select the service");
+		setLblNumeroPersonas("Number of tickets");
+		setStrPersonas("person");
+		setStrPersona("people");
 
 		// Panel Servicios
 		setPanelServiciosBtnMinibar("Replenish minibar");

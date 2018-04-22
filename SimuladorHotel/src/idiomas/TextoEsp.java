@@ -36,6 +36,12 @@ public class TextoEsp extends Texto {
 		setLblPlazas("Plazas disponibles:");
 		setLblSpa("SPA");
 		setLblSeleccionServicio("Seleccione el servicio deseado");
+		setLblNumeroPersonas("Número de tickets");
+		setStrPersonas("personas");
+		setStrPersona("persona");
+
+		
+
 
 		// Panel Servicios
 		setPanelServiciosBtnMinibar("Reponer minibar");
