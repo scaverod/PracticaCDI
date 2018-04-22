@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class Temperatura {
 
-	private double temperaturaActual;
+	private int temperaturaActual;
 	private ArrayList<ProgramacionTemperatura> programacionTemperatura;
 
-	public Temperatura(double temperaturaActual) {
+	public Temperatura(int temperaturaActual) {
 		this.temperaturaActual = temperaturaActual;
 		this.programacionTemperatura = new ArrayList<ProgramacionTemperatura>();
 	}
@@ -16,7 +16,7 @@ public class Temperatura {
 		return temperaturaActual;
 	}
 
-	public void setTemperaturaActual(double temperaturaActual) {
+	public void setTemperaturaActual(int temperaturaActual) {
 		this.temperaturaActual = temperaturaActual;
 	}
 
