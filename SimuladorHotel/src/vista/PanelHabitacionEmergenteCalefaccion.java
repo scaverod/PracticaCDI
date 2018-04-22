@@ -51,14 +51,14 @@ public class PanelHabitacionEmergenteCalefaccion extends JPanel {
 		btnCerrar.setBounds(610, 11, 75, 50);
 		add(btnCerrar);
 		
-		JLabel lblTitulo = new JLabel("Control de temperatura");
+		JLabel lblTitulo = new JLabel(t.getLblTituloTemperatura());
 		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblTitulo.setBounds(10, 11, 174, 23);
 		add(lblTitulo);
 		
 		JPanel panelManual = new JPanel();
 		panelManual.setBorder(new TitledBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 109, 240), new Color(0, 109, 240),
-				new Color(0, 109, 240), new Color(0, 109, 240)), "Control manual", TitledBorder.LEADING, TitledBorder.TOP, new Font("Tahoma", Font.PLAIN, 15), null));
+				new Color(0, 109, 240), new Color(0, 109, 240)), t.getLblControlManual(), TitledBorder.LEADING, TitledBorder.TOP, new Font("Tahoma", Font.PLAIN, 15), null));
 		panelManual.setBounds(10, 45, 210, 259);
 		add(panelManual);
 		panelManual.setLayout(null);
@@ -91,20 +91,20 @@ public class PanelHabitacionEmergenteCalefaccion extends JPanel {
 		slider.setBounds(10, 23, 79, 225);
 		panelManual.add(slider);
 		
-		JToggleButton tglBtnManual = new JToggleButton("Activar");
+		JToggleButton tglBtnManual = new JToggleButton(t.getBtnActivar());
 		tglBtnManual.setFocusPainted(false);
 		tglBtnManual.setBounds(99, 23, 101, 40);
 		panelManual.add(tglBtnManual);
 		tglBtnManual.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (tglBtnManual.isSelected()) {
-					tglBtnManual.setText("Desactivar");
+					tglBtnManual.setText(t.getBtnDesactivar());
 					slider.setEnabled(true);
 					lblTempManual.setEnabled(true);
 					setThermometerIcon(controlador);
 				}
 				else {
-					tglBtnManual.setText("Activar");
+					tglBtnManual.setText(t.getBtnActivar());
 					slider.setEnabled(false);
 					lblTempManual.setEnabled(false);
 					lblTempManual.setIcon(new ImageIcon(PanelHabitacionEmergenteCalefaccion.class.getResource("/iconos/weatherVacio.png")));
@@ -116,7 +116,7 @@ public class PanelHabitacionEmergenteCalefaccion extends JPanel {
 		JPanel panelAuto = new JPanel();
 		panelAuto.setLayout(null);
 		panelAuto.setBorder(new TitledBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 109, 240), new Color(0, 109, 240),
-				new Color(0, 109, 240), new Color(0, 109, 240)), "Programación automática", TitledBorder.LEADING, TitledBorder.TOP, new Font("Tahoma", Font.PLAIN, 15), null));
+				new Color(0, 109, 240), new Color(0, 109, 240)), t.getLblProgramacionAutomatica(), TitledBorder.LEADING, TitledBorder.TOP, new Font("Tahoma", Font.PLAIN, 15), null));
 		panelAuto.setBounds(230, 70, 455, 234);
 		add(panelAuto);
 		
@@ -124,12 +124,12 @@ public class PanelHabitacionEmergenteCalefaccion extends JPanel {
 		selectorHora.setBounds(70, 20, 200, 200);
 		panelAuto.add(selectorHora);
 		
-		JLabel lblDuracion = new JLabel("Duraci\u00F3n(h):");
+		JLabel lblDuracion = new JLabel(t.getLblDuracion());
 		lblDuracion.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblDuracion.setBounds(302, 91, 81, 41);
 		panelAuto.add(lblDuracion);
 		
-		JLabel lblInicio = new JLabel("Inicio:");
+		JLabel lblInicio = new JLabel(t.getLblInicio());
 		lblInicio.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblInicio.setBounds(10, 102, 50, 19);
 		panelAuto.add(lblInicio);
@@ -145,7 +145,7 @@ public class PanelHabitacionEmergenteCalefaccion extends JPanel {
 		comboBoxDuracion.setBounds(395, 99, 50, 25);
 		panelAuto.add(comboBoxDuracion);
 		
-		JToggleButton tglBtnAuto = new JToggleButton("Activar");
+		JToggleButton tglBtnAuto = new JToggleButton(t.getBtnActivar());
 		tglBtnAuto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (tglBtnAuto.isSelected()) {

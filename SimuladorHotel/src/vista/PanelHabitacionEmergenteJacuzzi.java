@@ -49,7 +49,7 @@ public class PanelHabitacionEmergenteJacuzzi extends JPanel {
 		btnCerrar.setBounds(610, 11, 75, 50);
 		add(btnCerrar);
 		
-		JLabel lblControlJacuzzi = new JLabel("Control del Jacuzzi");
+		JLabel lblControlJacuzzi = new JLabel(t.getLblControlJacuzzi());
 		lblControlJacuzzi.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblControlJacuzzi.setBounds(10, 11, 141, 30);
 		add(lblControlJacuzzi);
@@ -71,12 +71,12 @@ public class PanelHabitacionEmergenteJacuzzi extends JPanel {
 		
 		JPanel panelBurbujas = new JPanel();
 		panelBurbujas.setBorder(new TitledBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 109, 240), new Color(0, 109, 240),
-						new Color(0, 109, 240), new Color(0, 109, 240)), "Burbujas", TitledBorder.LEADING, TitledBorder.TOP, new Font("Tahoma", Font.PLAIN, 15), null));
+						new Color(0, 109, 240), new Color(0, 109, 240)), t.getLblBurbujas() , TitledBorder.LEADING, TitledBorder.TOP, new Font("Tahoma", Font.PLAIN, 15), null));
 		panelBurbujas.setBounds(10, 52, 306, 65);
 		add(panelBurbujas);
 		panelBurbujas.setLayout(null);
 		
-		JToggleButton tglBtnBurbujas = new JToggleButton("Activar");
+		JToggleButton tglBtnBurbujas = new JToggleButton(t.getBtnActivar());
 		tglBtnBurbujas.setFocusPainted(false);
 		tglBtnBurbujas.setBounds(59, 15, 187, 41);
 		panelBurbujas.add(tglBtnBurbujas);
@@ -87,19 +87,19 @@ public class PanelHabitacionEmergenteJacuzzi extends JPanel {
 				if (tglBtnBurbujas.isSelected()) {
 					lblBurbujas.setIcon(new ImageIcon(PanelHabitacionEmergenteJacuzzi.class.getResource("/iconos/jacuzziBurbujas.png")));
 					controlador.getHabitacion().getJacuzzi().setEncendido(true);
-					tglBtnBurbujas.setText("Desactivar");
+					tglBtnBurbujas.setText(t.getBtnDesactivar());
 				}
 				else {
 					lblBurbujas.setIcon(null);
 					controlador.getHabitacion().getJacuzzi().setEncendido(false);
-					tglBtnBurbujas.setText("Activar");
+					tglBtnBurbujas.setText(t.getBtnActivar());
 				}
 			}
 		});
 		
 		JPanel panelTemperatura = new JPanel();
 		panelTemperatura.setBorder(new TitledBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 109, 240), new Color(0, 109, 240),
-						new Color(0, 109, 240), new Color(0, 109, 240)), "Temperatura", TitledBorder.LEADING, TitledBorder.TOP, new Font("Tahoma", Font.PLAIN, 15), null));
+						new Color(0, 109, 240), new Color(0, 109, 240)), t.getLblTemperatura(), TitledBorder.LEADING, TitledBorder.TOP, new Font("Tahoma", Font.PLAIN, 15), null));
 		panelTemperatura.setBounds(326, 52, 149, 252);
 		add(panelTemperatura);
 		panelTemperatura.setLayout(null);
@@ -128,7 +128,7 @@ public class PanelHabitacionEmergenteJacuzzi extends JPanel {
 
 		JPanel panelAgua = new JPanel();
 		panelAgua.setBorder(new TitledBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 109, 240), new Color(0, 109, 240),
-				new Color(0, 109, 240), new Color(0, 109, 240)), "Agua", TitledBorder.LEADING, TitledBorder.TOP, new Font("Tahoma", Font.PLAIN, 15), null));
+				new Color(0, 109, 240), new Color(0, 109, 240)), t.getLblAgua(), TitledBorder.LEADING, TitledBorder.TOP, new Font("Tahoma", Font.PLAIN, 15), null));
 		panelAgua.setBounds(10, 128, 306, 176);
 		add(panelAgua);
 		panelAgua.setLayout(null);
@@ -184,19 +184,19 @@ public class PanelHabitacionEmergenteJacuzzi extends JPanel {
 		sliderAgua.setMajorTickSpacing(25);
 		sliderAgua.setMinorTickSpacing(25);
 		
-		JLabel lblLlenar = new JLabel("Llenar" + "(%):");
+		JLabel lblLlenar = new JLabel(t.getLblLlenar()+ "(%):");
 		lblLlenar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblLlenar.setBounds(16, 50, 70, 20);
 		panelAgua.add(lblLlenar);
 		
-		btnLlenar = new JButton("Llenar");
+		btnLlenar = new JButton(t.getLblLlenar());
 		btnLlenar.setFocusPainted(false);
 		btnLlenar.setBounds(10, 119, 126, 46);
 		panelAgua.add(btnLlenar);
 		btnLlenar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnLlenar.setIcon(new ImageIcon(PanelHabitacionEmergenteJacuzzi.class.getResource("/iconos/jacuzziLleno_x32.png")));
 		
-		btnVaciar = new JButton("Vaciar");
+		btnVaciar = new JButton(t.getLblVaciar());
 		btnVaciar.setFocusPainted(false);
 		btnVaciar.setBounds(164, 119, 132, 46);
 		panelAgua.add(btnVaciar);

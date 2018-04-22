@@ -24,6 +24,40 @@ public class TextoEng extends Texto {
 		setMenuPrincipalBtnCuenta("Account");
 
 		// TODO: panel habitacion
+			//Panel Habitacion Emergente Alarma
+		setLblLunes("Monday");
+		setLblMartes("Tuesday");
+		setLblMiercoles("Wednesday");
+		setLblJueves("Thursday");
+		setLblViernes("Friday");
+		setLblSabado("Saturday");
+		setLblDomingo("Sunday");
+		setTxtrParaEmpezarA("To start using our alarm clock, add an alarm just pressing the bottom right button");
+			//Panel Habitacion Emergente Calefaccion
+		setLblTituloTemperatura("Temperature Control Panel");
+		setLblControlManual("Manual control");
+		setBtnActivar("Enable");
+		setBtnDesactivar("Disable");
+		setLblProgramacionAutomatica("Automatic Programming");
+		setLblInicio("Inicio");
+			//Panel Habitacion Emergente Jacuzzi
+		setLblControlJacuzzi("Jacuzzi Control Panel");
+		setLblBurbujas("Bubbles");
+		setLblTemperatura("Temperature");
+		setLblAgua("Water");
+		setLblLlenar("Fill");
+		setLblVaciar("Empty");
+			//Panel Habitacion Emergente Ventana
+		setLblControlVentana("Window Control Panel");
+		setLblVentana("Window");
+		setLblPersianas("Blind");
+		setBtnAbrir("Open");
+			
+		
+		
+		
+		
+		
 		// TODO: panel spa
 		setLblTratamiento("Treatment");
 		setLblSeleccionTratamiento("Select the treatment");

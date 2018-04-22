@@ -23,6 +23,36 @@ public abstract class Texto {
 	private String menuPrincipalBtnCuenta;
 
 	// Panel Habitacion
+		//Panel Habitacion Emergente Alarma
+	private String lblLunes;
+	private String lblMartes;
+	private String lblMiercoles;
+	private String lblJueves;
+	private String lblViernes;
+	private String lblSabado;
+	private String lblDomingo;
+	private String txtrParaEmpezarA;
+		//Panel Habitación Emergente Calefaccion
+	private String lblTituloTemperatura;
+	private String lblControlManual;
+	private String btnActivar;
+	private String btnDesactivar;
+	private String lblInicio;
+	private String lblProgramacionAutomatica;
+		//Panel Habitacion Emergente Jacuzzi
+	private String lblControlJacuzzi;
+	private String lblBurbujas;
+	private String lblTemperatura;
+	private String lblAgua;
+	private String lblLlenar;
+	private String lblVaciar;
+		//Panel Habitacion Emergente Ventana
+	private String lblControlVentana;
+	private String lblVentana;
+	private String lblPersianas;
+	private String btnAbrir;
+	
+	
 	// TODO: pendiente de que se haga primero el panel habitacion
 
 	// Panel Spa
@@ -934,6 +964,198 @@ public abstract class Texto {
 
 	public void setInfo(String info) {
 		Info = info;
+	}
+
+	public String getLblLunes() {
+		return lblLunes;
+	}
+
+	public void setLblLunes(String lblLunes) {
+		this.lblLunes = lblLunes;
+	}
+
+	public String getLblMartes() {
+		return lblMartes;
+	}
+
+	public void setLblMartes(String lblMartes) {
+		this.lblMartes = lblMartes;
+	}
+
+	public String getLblMiercoles() {
+		return lblMiercoles;
+	}
+
+	public void setLblMiercoles(String lblMiercoles) {
+		this.lblMiercoles = lblMiercoles;
+	}
+
+	public String getLblJueves() {
+		return lblJueves;
+	}
+
+	public void setLblJueves(String lblJueves) {
+		this.lblJueves = lblJueves;
+	}
+
+	public String getLblViernes() {
+		return lblViernes;
+	}
+
+	public void setLblViernes(String lblViernes) {
+		this.lblViernes = lblViernes;
+	}
+
+	public String getLblSabado() {
+		return lblSabado;
+	}
+
+	public void setLblSabado(String lblSabado) {
+		this.lblSabado = lblSabado;
+	}
+
+	public String getLblDomingo() {
+		return lblDomingo;
+	}
+
+	public void setLblDomingo(String lblDomingo) {
+		this.lblDomingo = lblDomingo;
+	}
+
+	public String getTxtrParaEmpezarA() {
+		return txtrParaEmpezarA;
+	}
+
+	public void setTxtrParaEmpezarA(String txtrParaEmpezarA) {
+		this.txtrParaEmpezarA = txtrParaEmpezarA;
+	}
+
+	public String getLblTituloTemperatura() {
+		return lblTituloTemperatura;
+	}
+
+	public void setLblTituloTemperatura(String lblTituloTemperatura) {
+		this.lblTituloTemperatura = lblTituloTemperatura;
+	}
+
+	public String getLblControlManual() {
+		return lblControlManual;
+	}
+
+	public void setLblControlManual(String lblControlManual) {
+		this.lblControlManual = lblControlManual;
+	}
+
+	public String getBtnActivar() {
+		return btnActivar;
+	}
+
+	public void setBtnActivar(String btnActivar) {
+		this.btnActivar = btnActivar;
+	}
+
+	public String getLblInicio() {
+		return lblInicio;
+	}
+
+	public void setLblInicio(String lblInicio) {
+		this.lblInicio = lblInicio;
+	}
+
+	public String getBtnDesactivar() {
+		return btnDesactivar;
+	}
+
+	public void setBtnDesactivar(String btnDesactivar) {
+		this.btnDesactivar = btnDesactivar;
+	}
+
+	public String getLblProgramacionAutomatica() {
+		return lblProgramacionAutomatica;
+	}
+
+	public void setLblProgramacionAutomatica(String lblProgramacionAutomatica) {
+		this.lblProgramacionAutomatica = lblProgramacionAutomatica;
+	}
+
+	public String getLblControlJacuzzi() {
+		return lblControlJacuzzi;
+	}
+
+	public void setLblControlJacuzzi(String lblControlJacuzzi) {
+		this.lblControlJacuzzi = lblControlJacuzzi;
+	}
+
+	public String getLblBurbujas() {
+		return lblBurbujas;
+	}
+
+	public void setLblBurbujas(String lblBurbujas) {
+		this.lblBurbujas = lblBurbujas;
+	}
+
+	public String getLblTemperatura() {
+		return lblTemperatura;
+	}
+
+	public void setLblTemperatura(String lblTemperatura) {
+		this.lblTemperatura = lblTemperatura;
+	}
+
+	public String getLblAgua() {
+		return lblAgua;
+	}
+
+	public void setLblAgua(String lblAgua) {
+		this.lblAgua = lblAgua;
+	}
+
+	public String getLblLlenar() {
+		return lblLlenar;
+	}
+
+	public void setLblLlenar(String lblLlenar) {
+		this.lblLlenar = lblLlenar;
+	}
+
+	public String getLblVaciar() {
+		return lblVaciar;
+	}
+
+	public void setLblVaciar(String lblVaciar) {
+		this.lblVaciar = lblVaciar;
+	}
+
+	public String getLblControlVentana() {
+		return lblControlVentana;
+	}
+
+	public void setLblControlVentana(String lblControlVentana) {
+		this.lblControlVentana = lblControlVentana;
+	}
+
+	public String getLblVentana() {
+		return lblVentana;
+	}
+
+	public void setLblVentana(String lblVentana) {
+		this.lblVentana = lblVentana;
+	}
+
+	public String getLblPersianas() {
+		return lblPersianas;
+	}
+
+	public void setLblPersianas(String lblPersianas) {
+		this.lblPersianas = lblPersianas;
+	}
+
+	public String getBtnAbrir() {
+		return btnAbrir;
+	}
+
+	public void setBtnAbrir(String btnAbrir) {
+		this.btnAbrir = btnAbrir;
 	}
 
 }

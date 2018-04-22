@@ -446,7 +446,7 @@ public class PanelHabitacion extends JPanel {
 					// TODO: activar, desactivar botones
 					if (evt.getNewValue().equals(0)) {
 						// reactivar botones
-					} else if (evt.getNewValue().equals(0)) {
+					} else if (evt.getNewValue().equals(2)) {
 						// desactivar botones
 					}
 				}

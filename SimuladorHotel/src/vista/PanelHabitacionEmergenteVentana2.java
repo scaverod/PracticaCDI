@@ -101,7 +101,7 @@ public class PanelHabitacionEmergenteVentana2 extends JPanel {
 		panelVentana.setBorder(new TitledBorder(
 				new BevelBorder(BevelBorder.LOWERED, new Color(0, 109, 240), new Color(0, 109, 240),
 						new Color(0, 109, 240), new Color(0, 109, 240)),
-				"Ventana", TitledBorder.LEADING, TitledBorder.TOP, new Font("Tahoma", Font.PLAIN, 15), null));
+				t.getLblVentana(), TitledBorder.LEADING, TitledBorder.TOP, new Font("Tahoma", Font.PLAIN, 15), null));
 		panelVentana.setBounds(10, 64, 334, 240);
 		add(panelVentana);
 		panelVentana.setLayout(null);
@@ -111,10 +111,10 @@ public class PanelHabitacionEmergenteVentana2 extends JPanel {
 		lblVentana.setBounds(92, 24, 150, 150);
 		panelVentana.add(lblVentana);
 
-		btnAbrir = new JButton("Abrir");
+		btnAbrir = new JButton(t.getBtnAbrir());
 		btnAbrir.setRequestFocusEnabled(false);
 
-		btnCerrarV = new JButton("Cerrar");
+		btnCerrarV = new JButton(t.getBtnCerrar());
 		btnCerrarV.setRequestFocusEnabled(false);
 
 		btnCerrarV.setEnabled(false);
@@ -145,7 +145,7 @@ public class PanelHabitacionEmergenteVentana2 extends JPanel {
 		panelPersiana.setBorder(new TitledBorder(
 				new BevelBorder(BevelBorder.LOWERED, new Color(0, 109, 240), new Color(0, 109, 240),
 						new Color(0, 109, 240), new Color(0, 109, 240)),
-				"Persianas", TitledBorder.LEADING, TitledBorder.TOP, new Font("Tahoma", Font.PLAIN, 15), null));
+				t.getLblPersianas(), TitledBorder.LEADING, TitledBorder.TOP, new Font("Tahoma", Font.PLAIN, 15), null));
 		panelPersiana.setLayout(null);
 		panelPersiana.setBounds(354, 64, 334, 240);
 		add(panelPersiana);
@@ -203,7 +203,7 @@ public class PanelHabitacionEmergenteVentana2 extends JPanel {
 		btnBajar.setBounds(196, 185, 78, 44);
 		panelPersiana.add(btnBajar);
 
-		JLabel lblTitulo = new JLabel("Control de la ventana");
+		JLabel lblTitulo = new JLabel(t.getLblControlVentana());
 		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblTitulo.setBounds(10, 31, 167, 14);
 		add(lblTitulo);

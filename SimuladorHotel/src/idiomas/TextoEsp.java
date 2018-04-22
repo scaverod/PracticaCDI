@@ -24,6 +24,35 @@ public class TextoEsp extends Texto {
 		setMenuPrincipalBtnCuenta("Cuenta");
 
 		// TODO: panel habitacion
+			//Panel Habitacion Emergente Alarma
+		setLblLunes("Lunes");
+		setLblMartes("Martes");
+		setLblMiercoles("Miércoles");
+		setLblJueves("Jueves");
+		setLblViernes("Viernes");
+		setLblSabado("Sábado");
+		setLblDomingo("Domingo");
+		setTxtrParaEmpezarA("Para empezar a utilizar nuestro sistema de despertador a\u00F1ada una alarma pulsando en el bot\u00F3n inferior derecho");
+			//Panel Habitacion Emergente Calefaccion
+		setLblTituloTemperatura("Control de temperatura");
+		setLblControlManual("Control manual");
+		setBtnActivar("Activar");
+		setBtnDesactivar("Desactivar");
+		setLblProgramacionAutomatica("Programación Automática");
+		setLblInicio("Inicio");
+			//Panel Habitacion Emergente Jacuzzi
+		setLblControlJacuzzi("Control del Jacuzzi");
+		setLblBurbujas("Burbujas");
+		setLblTemperatura("Temperatura");
+		setLblAgua("Agua");
+		setLblLlenar("Llenar");
+		setLblVaciar("Vaciar");
+			//Panel Habitacion Emergente Ventana
+		setLblControlVentana("Control de la ventana");
+		setLblVentana("Ventana");
+		setLblPersianas("Persianas");
+		setBtnAbrir("Abrir");
+		
 		
 		// TODO: panel spa
 		setLblTratamiento("Tratamiento");

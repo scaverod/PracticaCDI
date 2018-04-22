@@ -99,8 +99,7 @@ public class PanelHabitacionEmergenteAlarma extends JPanel {
 		txtrParaEmpezarA.setEditable(false);
 
 		txtrParaEmpezarA.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		txtrParaEmpezarA.setText(
-				"Para empezar a utilizar nuestro sistema de despertador a\u00F1ada una alarma pulsando en el bot\u00F3n inferior derecho");
+		txtrParaEmpezarA.setText(t.getTxtrParaEmpezarA());
 		txtrParaEmpezarA.setLineWrap(true);
 		txtrParaEmpezarA.setRequestFocusEnabled(false);
 		txtrParaEmpezarA.setBounds(139, 136, 416, 42);
@@ -108,7 +107,7 @@ public class PanelHabitacionEmergenteAlarma extends JPanel {
 		btnCerrar.setBounds(610, 11, 75, 50);
 		add(btnCerrar);
 
-		chckbxLunes = new JCheckBox("Lunes");
+		chckbxLunes = new JCheckBox(t.getLblLunes());
 		chckbxLunes.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		chckbxLunes.setBounds(23, 19, 75, 23);
 		add(chckbxLunes);
@@ -117,32 +116,32 @@ public class PanelHabitacionEmergenteAlarma extends JPanel {
 		panelHora.noVisible();
 		add(panelHora);
 
-		chckbxMiercoles = new JCheckBox("Mi\u00E9rcoles");
+		chckbxMiercoles = new JCheckBox(t.getLblMiercoles());
 		chckbxMiercoles.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		chckbxMiercoles.setBounds(23, 103, 97, 23);
 		add(chckbxMiercoles);
 
-		chckbxJueves = new JCheckBox("Jueves");
+		chckbxJueves = new JCheckBox(t.getLblJueves());
 		chckbxJueves.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		chckbxJueves.setBounds(23, 145, 79, 23);
 		add(chckbxJueves);
 
-		chckbxViernes = new JCheckBox("Viernes");
+		chckbxViernes = new JCheckBox(t.getLblViernes());
 		chckbxViernes.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		chckbxViernes.setBounds(23, 187, 83, 23);
 		add(chckbxViernes);
 
-		chckbxSbado = new JCheckBox("S\u00E1bado");
+		chckbxSbado = new JCheckBox(t.getLblSabado());
 		chckbxSbado.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		chckbxSbado.setBounds(23, 229, 83, 23);
 		add(chckbxSbado);
 
-		chckbxDomingo = new JCheckBox("Domingo");
+		chckbxDomingo = new JCheckBox(t.getLblDomingo());
 		chckbxDomingo.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		chckbxDomingo.setBounds(23, 271, 97, 23);
 		add(chckbxDomingo);
 
-		chckbxMartes = new JCheckBox("Martes");
+		chckbxMartes = new JCheckBox(t.getLblMartes());
 		chckbxMartes.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		chckbxMartes.setBounds(23, 61, 86, 23);
 		add(chckbxMartes);
