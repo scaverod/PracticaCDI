@@ -121,6 +121,9 @@ public class TextoEng extends Texto {
 
 		// Panel Confirmacion
 		setLblConfirmacion("Are you sure you want to proceed?");
+		
+		//Panel Cuenta Emergente Detalles
+		setStrNingunServicio("You have not purchased any service");
 
 	}
 }

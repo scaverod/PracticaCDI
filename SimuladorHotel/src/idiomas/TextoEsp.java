@@ -125,6 +125,9 @@ public class TextoEsp extends Texto {
 
 		// Panel Confirmacion
 		setLblConfirmacion("¿Desea confirmar la operación?");
+		
+		//Panel Emergente Detalles
+		setStrNingunServicio("No ha adquirido ningún servicio");
 
 	}
 }

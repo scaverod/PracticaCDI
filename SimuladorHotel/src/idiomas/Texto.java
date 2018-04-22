@@ -111,6 +111,9 @@ public abstract class Texto {
 
 	// Panel confirmacion
 	private String lblConfirmacion;
+	
+	//Panel Cuenta Emergente Detalles
+	private String strNingunServicio;
 
 	protected void placeHolderParaQueMePongaGettersYSettersAbajoEquisde() {
 	}
@@ -697,5 +700,13 @@ public abstract class Texto {
 
 	public void setStrPersona(String strPersona) {
 		this.strPersona = strPersona;
+	}
+
+	public String getStrNingunServicio() {
+		return strNingunServicio;
+	}
+
+	public void setStrNingunServicio(String strNingunServicio) {
+		this.strNingunServicio = strNingunServicio;
 	}
 }
