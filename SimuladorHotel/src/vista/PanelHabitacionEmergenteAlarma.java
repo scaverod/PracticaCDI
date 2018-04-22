@@ -18,14 +18,11 @@ import javax.swing.JTextArea;
 
 public class PanelHabitacionEmergenteAlarma extends JPanel {
 	private static final long serialVersionUID = 1L;
-	private Texto t;
+	
 	private ImageIcon addIcon = new ImageIcon(PanelHabitacionEmergenteAlarma.class.getResource("/iconos/alarmAdd.png"));
-	private ImageIcon descativarIcon = new ImageIcon(
-			PanelHabitacionEmergenteAlarma.class.getResource("/iconos/alarmRemove.png"));
-	private ImageIcon editIcon = new ImageIcon(
-			PanelHabitacionEmergenteAlarma.class.getResource("/iconos/alarmEdit.png"));
-	private ImageIcon aceptIcon = new ImageIcon(
-			PanelHabitacionEmergenteAlarma.class.getResource("/iconos/alarmAcept.png"));
+	private ImageIcon descativarIcon = new ImageIcon(PanelHabitacionEmergenteAlarma.class.getResource("/iconos/alarmRemove.png"));
+	private ImageIcon editIcon = new ImageIcon(PanelHabitacionEmergenteAlarma.class.getResource("/iconos/alarmEdit.png"));
+	private ImageIcon aceptIcon = new ImageIcon(PanelHabitacionEmergenteAlarma.class.getResource("/iconos/alarmAcept.png"));
 	private JCheckBox chckbxLunes;
 	private JCheckBox chckbxMartes;
 	private JCheckBox chckbxMiercoles;
@@ -33,6 +30,8 @@ public class PanelHabitacionEmergenteAlarma extends JPanel {
 	private JCheckBox chckbxViernes;
 	private JCheckBox chckbxSbado;
 	private JCheckBox chckbxDomingo;
+	
+	private Texto t;
 
 	private int estado;
 

@@ -20,7 +20,6 @@ import java.awt.event.HierarchyEvent;
 
 public class PanelHabitacionEmergenteVentana extends JPanel {
 	private static final long serialVersionUID = 1L;
-	private Texto t;
 	// Valores de la posicion de las persianas del 0 al 4
 	private int persianas;
 	// Valores de la posicion de las persianas del 0 al 2
@@ -41,7 +40,9 @@ public class PanelHabitacionEmergenteVentana extends JPanel {
 	private JButton btnSubir;
 	private JButton btnBajar;
 	private JLabel lblVentana;
-	private JLabel lblPersiana; 
+	private JLabel lblPersiana;
+	
+	private Texto t;
 
 	public PanelHabitacionEmergenteVentana(MicroControladorLayersPadreHijo m, Controlador controlador) {
 		addHierarchyListener(new HierarchyListener() {
