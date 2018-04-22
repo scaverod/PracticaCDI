@@ -88,7 +88,7 @@ public class PanelSpaEmergente extends JPanel {
 					public void run() {
 						try {
 							//FIXME
-							System.out.println(controlador.getTexto());
+							System.out.println("btnConfirmar" + controlador.getTexto());
 							
 							mostrarPanelConfirmacion(String.valueOf(info.getFactura().getNumero()) + " \u20AC");
 
@@ -137,6 +137,8 @@ public class PanelSpaEmergente extends JPanel {
 	}
 
 	public void crearPanelConfirmacion(String precio) {
+		System.out.println("crear panel confirmacion" + t);
+		
 		panelConfirmacion = new PanelConfirmacion(new MicroControladorLayers(panelContenedor), this.getName(), s, precio, t);
 		panelConfirmacion.setBounds(147, 57, 400, 200);
 		panelContenedor.setLayer(panelConfirmacion, 0);
@@ -146,6 +148,7 @@ public class PanelSpaEmergente extends JPanel {
 	public void mostrarPanelConfirmacion(String precio) {
 		crearPanelConfirmacion(precio);
 		panelContenedor.setLayer(panelConfirmacion, 2);
-		System.out.println(panelConfirmacion);
+		
+		System.out.println("mostrar panel confirmacion" + panelConfirmacion);
 	}
 }
