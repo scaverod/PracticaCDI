@@ -45,17 +45,17 @@ public class PanelConfirmacion extends JPanel {
 		lblPrecio.setBorder(new LineBorder(Color.ORANGE, 3));
 		add(lblPrecio);
 
-		JButton btnNewButton = new JButton(t.getBtnCancelar());
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnCancelar = new JButton(t.getBtnCancelar());
+		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				confirmacion = false;
 				s.release(s.getQueueLength());
 				m.changeLayer(PanelConfirmacion.this, 0);
 			}
 		});
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnNewButton.setBounds(226, 130, 120, 40);
-		add(btnNewButton);
+		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnCancelar.setBounds(226, 130, 120, 40);
+		add(btnCancelar);
 
 		JButton btnAceptar = new JButton(t.getBtnAceptar());
 		btnAceptar.addActionListener(new ActionListener() {

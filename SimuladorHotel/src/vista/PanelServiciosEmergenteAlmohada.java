@@ -181,6 +181,9 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 				new Thread() {
 					public void run() {
 						try {
+							// FIXME
+							System.out.println(controlador.getTexto());
+							
 							mostrarPanelConfirmacion(
 									String.valueOf(controlador.getServicios().getAlmohada().getPrecioLatex()) + " €");
 

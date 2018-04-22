@@ -17,10 +17,10 @@ public class Controlador {
 
 	public Controlador() {
 		super();
+		this.setTexto(new TextoManager(TextoManager.español).getTexto());
 		this.servicios = new Servicios();
 		this.cuenta = new Cuenta("101", "contr12");
 		this.habitacion = new Habitacion();
-		this.setTexto(new TextoManager(TextoManager.español).getTexto());
 		this.serviciosSpa = new ServiciosSpa();
 	}
 

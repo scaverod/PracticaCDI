@@ -6,7 +6,6 @@ import javax.swing.border.EmptyBorder;
 
 import controlador.Controlador;
 import idiomas.Texto;
-import idiomas.TextoManager;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -54,9 +53,7 @@ public class Ventana extends JFrame {
 	private JPanel panelCuenta;
 	private Controlador controlador;
 
-	// FIXME: temporal para que salga el texto en vez de "<dynamic>"
-	// Habría que mandarlo desde el Main, por ejemplo
-	private Texto t = new TextoManager(TextoManager.english).getTexto();
+	private Texto t;
 
 	public Ventana() {
 		try {
@@ -67,6 +64,7 @@ public class Ventana extends JFrame {
 		}
 		// TODO: cargar los datos
 		this.controlador = new Controlador();
+		this.t = controlador.getTexto();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1366, 745);
 		contentPane = new JPanel();

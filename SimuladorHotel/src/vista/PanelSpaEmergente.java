@@ -87,6 +87,9 @@ public class PanelSpaEmergente extends JPanel {
 				new Thread() {
 					public void run() {
 						try {
+							//FIXME
+							System.out.println(controlador.getTexto());
+							
 							mostrarPanelConfirmacion(String.valueOf(info.getFactura().getNumero()) + " \u20AC");
 
 							s.acquire();
