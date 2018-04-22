@@ -354,7 +354,20 @@ public class PanelHabitacion extends JPanel {
 		panelPrincipal.add(lblVentana2);
 		
 		JToggleButton tglbtnPersiana = new JToggleButton("");
-		tglbtnPersiana.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/persianaSubirAll.png")));
+		tglbtnPersiana.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(tglbtnPersiana.isSelected()) {
+					controlador.getHabitacion().setVentanaDer(4);
+					controlador.getHabitacion().setVentanaIzq(4);
+				}else {
+					controlador.getHabitacion().setVentanaDer(0);
+					controlador.getHabitacion().setVentanaIzq(0);
+				}
+				
+			}
+		});
+		tglbtnPersiana.setSelectedIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/persianaSubirAll.png")));
+		tglbtnPersiana.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/persianaBajarAll.png")));
 		tglbtnPersiana.setToolTipText("Encender o apagar todas las luces.");
 		tglbtnPersiana.setOpaque(false);
 		tglbtnPersiana.setFocusPainted(false);
@@ -363,6 +376,18 @@ public class PanelHabitacion extends JPanel {
 		panelPrincipal.add(tglbtnPersiana);
 		
 		JToggleButton tglbtnVentana = new JToggleButton("");
+		tglbtnVentana.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(tglbtnVentana.isSelected()) {
+					controlador.getHabitacion().setVentanaDer(1);
+					controlador.getHabitacion().setVentanaIzq(2);
+				}else {
+					controlador.getHabitacion().setVentanaDer(0);
+					controlador.getHabitacion().setVentanaIzq(0);					
+				}
+			}
+		});
+		tglbtnVentana.setSelectedIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/ventanaCloseAll.png")));
 		tglbtnVentana.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/ventanaOpenAll.png")));
 		tglbtnVentana.setToolTipText("Encender o apagar todas las luces.");
 		tglbtnVentana.setOpaque(false);
