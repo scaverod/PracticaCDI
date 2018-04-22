@@ -146,5 +146,6 @@ public class PanelSpaEmergente extends JPanel {
 	public void mostrarPanelConfirmacion(String precio) {
 		crearPanelConfirmacion(precio);
 		panelContenedor.setLayer(panelConfirmacion, 2);
+		System.out.println(panelConfirmacion);
 	}
 }

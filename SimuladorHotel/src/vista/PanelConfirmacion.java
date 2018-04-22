@@ -16,6 +16,8 @@ import java.awt.event.ActionListener;
 import java.util.concurrent.Semaphore;
 import java.awt.event.ActionEvent;
 import java.awt.Rectangle;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PanelConfirmacion extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -23,6 +25,12 @@ public class PanelConfirmacion extends JPanel {
 	private boolean confirmacion;
 
 	public PanelConfirmacion(MicroControladorLayers m, String panel, Semaphore s, String precio, Texto t) {
+		addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// No borrar
+			}
+		});
 		this.setName("p" + this.getClass().getSimpleName().substring(1));
 
 		setBounds(new Rectangle(0, 0, 400, 200));
