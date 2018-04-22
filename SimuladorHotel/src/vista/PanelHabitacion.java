@@ -41,6 +41,22 @@ public class PanelHabitacion extends JPanel {
 	private JPanel panelVentana2;
 	private JPanel panelJacuzzi;
 	private JPanel panelCalefaccion;
+	
+	private ImageIcon[] persianasIcon = {
+			new ImageIcon(PanelHabitacionEmergenteVentana.class.getResource("/iconos/persiana0.png")),
+			new ImageIcon(PanelHabitacionEmergenteVentana.class.getResource("/iconos/persiana1.png")),
+			new ImageIcon(PanelHabitacionEmergenteVentana.class.getResource("/iconos/persiana2.png")),
+			new ImageIcon(PanelHabitacionEmergenteVentana.class.getResource("/iconos/persiana3.png")),
+			new ImageIcon(PanelHabitacionEmergenteVentana.class.getResource("/iconos/persiana4.png")) };
+	
+	private ImageIcon[] ventanasIconIzq = {
+			new ImageIcon(PanelHabitacionEmergenteVentana.class.getResource("/iconos/ventana20.png")),
+			new ImageIcon(PanelHabitacionEmergenteVentana.class.getResource("/iconos/ventana21.png")),
+			new ImageIcon(PanelHabitacionEmergenteVentana.class.getResource("/iconos/ventana22.png")) };
+	
+	private ImageIcon[] ventanasIconDer = {
+			new ImageIcon(PanelHabitacionEmergenteVentana2.class.getResource("/iconos/ventana0.png")),
+			new ImageIcon(PanelHabitacionEmergenteVentana2.class.getResource("/iconos/ventana1.png")) };
 
 	public PanelHabitacion(Controlador controlador) {
 		this.setSize(new Dimension(931, 483));
