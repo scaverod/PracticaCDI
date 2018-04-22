@@ -49,6 +49,11 @@ public class TextoEng extends Texto {
 		setLblAgua("Water");
 		setLblLlenar("Fill");
 		setLblVaciar("Empty");
+		// Panel Habitacion Emergente Ayuda
+		setTxtTip1("To interact with the elements of the room, click on those highlighted in yellow.");
+		setTxtTip2("To interact with all the elements at once (such as all the lights), click on the lower buttons on the left.");
+		setTxtTip3("To set an alarm clock, select the clock button at the bottom left.");
+			//Panel Habitacion Emergente Ventana
 			//Panel Habitacion Emergente Ventana
 		setLblControlVentana("Window Control Panel");
 		setLblVentana("Window");

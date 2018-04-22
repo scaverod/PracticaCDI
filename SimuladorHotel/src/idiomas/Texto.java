@@ -48,6 +48,10 @@ public abstract class Texto {
 	private String lblAgua;
 	private String lblLlenar;
 	private String lblVaciar;
+	// Panel Habitacion Emergente Ayuda
+	private String txtTip1;
+	private String txtTip2;
+	private String txtTip3;
 	// Panel Habitacion Emergente Ventana
 	private String lblControlVentana;
 	private String lblVentana;
@@ -1199,6 +1203,30 @@ public abstract class Texto {
 	public void setPanelServiciosEmergenteLimpiezaTxt(String panelServiciosEmergenteLimpiezaTxt) {
 		this.panelServiciosEmergenteLimpiezaTxt = panelServiciosEmergenteLimpiezaTxt;
 
+	}
+
+	public String getTxtTip1() {
+		return txtTip1;
+	}
+
+	public void setTxtTip1(String txtTip1) {
+		this.txtTip1 = txtTip1;
+	}
+
+	public String getTxtTip2() {
+		return txtTip2;
+	}
+
+	public void setTxtTip2(String txtTip2) {
+		this.txtTip2 = txtTip2;
+	}
+
+	public String getTxtTip3() {
+		return txtTip3;
+	}
+
+	public void setTxtTip3(String txtTip3) {
+		this.txtTip3 = txtTip3;
 	}
 
 	public String getPanelServiciosEmergenteLimpiezaBtnCambiar() {
