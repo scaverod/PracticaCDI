@@ -286,7 +286,7 @@ public class PanelCuenta extends JPanel {
 		panelPersonalizar.add(tglbtnAumentarTexto);
 
 		panelEmergenteContenedor = new JPanel();
-		panelEmergenteContenedor.setSize(400, 330);
+		panelEmergenteContenedor.setBounds(265, 76, 400, 330);
 		panelEmergenteContenedor.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent evt) {
 				if (evt.getNewValue().equals(0)) {
@@ -340,7 +340,6 @@ public class PanelCuenta extends JPanel {
 				}
 			}
 		});
-		panelEmergenteContenedor.setBounds(267, 84, 397, 315);
 		layeredPane.add(panelEmergenteContenedor);
 		panelEmergenteContenedor.setLayout(new CardLayout(0, 0));
 
