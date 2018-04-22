@@ -136,6 +136,10 @@ public class TextoEsp extends Texto {
 		setPanelServiciosEmergenteSabanasTxt(
 				"Nuestros hoteles cuentan con una atenci\u00F3n totalmente personalizada. Con solo pulsar el bot\u00F3n, nuestro servicio de limpieza subirá a su habitación con un juego de sábanas limpias. Servicio disponible las 24 horas del día");
 		
+		// Panel Emergente Limpieza
+		setPanelServiciosEmergenteLimpiezaTxt("Seleccione la hora más adecuada para que limpiemos la habitación.");
+		setPanelServiciosEmergenteLimpiezaTxtUnaVezHaya("Aviso: Una vez haya adquirido este servicio podr\u00E1 cambiar la hora ilimitadas veces sin coste alguno.");
+		
 		// Panel usuario
 		setLblCuentaHabitacion("Habitación");
 		setLblElegirIdioma("Elegir idioma");

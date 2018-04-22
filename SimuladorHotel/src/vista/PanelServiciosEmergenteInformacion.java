@@ -20,6 +20,8 @@ import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.HierarchyEvent;
+import java.awt.event.HierarchyListener;
 import java.util.concurrent.Semaphore;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
@@ -130,6 +132,19 @@ public class PanelServiciosEmergenteInformacion extends JPanel {
 		JLabel label = new JLabel("0\u20AC");
 		panel.add(label);
 		label.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		
+		this.addHierarchyListener(new HierarchyListener() {
+			public void hierarchyChanged(HierarchyEvent e) {
+				if (e.getChangeFlags() == HierarchyEvent.HIERARCHY_FIRST || e.getChangeFlags() == HierarchyEvent.SHOWING_CHANGED) {
+					t = controlador.getTexto();
+					
+					btnCerrar.setText(t.getBtnCerrar());
+					txtpnInfo.setText(t.getTxtInformacion());
+					lblPrecio.setText(t.getLblCoste());
+					btnAdquirir.setText(t.getBtnAdquirir());
+				}
+			}
+		});
 	}
 
 	public void cerrarPanelConfirmacion() {
