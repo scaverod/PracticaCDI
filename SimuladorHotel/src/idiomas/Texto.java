@@ -15,6 +15,8 @@ public abstract class Texto {
 	private String loginBtnAceptar;
 	private String loginErrorMensaje;
 	private String loginErrorTitulo;
+	private String loginInfoTitulo;
+	private String loginInfoMensaje;
 
 	// Menu principal
 	private String menuPrincipalBtnHabitacion;
@@ -23,7 +25,7 @@ public abstract class Texto {
 	private String menuPrincipalBtnCuenta;
 
 	// Panel Habitacion
-		//Panel Habitacion Emergente Alarma
+	// Panel Habitacion Emergente Alarma
 	private String lblLunes;
 	private String lblMartes;
 	private String lblMiercoles;
@@ -32,27 +34,26 @@ public abstract class Texto {
 	private String lblSabado;
 	private String lblDomingo;
 	private String txtrParaEmpezarA;
-		//Panel Habitación Emergente Calefaccion
+	// Panel Habitación Emergente Calefaccion
 	private String lblTituloTemperatura;
 	private String lblControlManual;
 	private String btnActivar;
 	private String btnDesactivar;
 	private String lblInicio;
 	private String lblProgramacionAutomatica;
-		//Panel Habitacion Emergente Jacuzzi
+	// Panel Habitacion Emergente Jacuzzi
 	private String lblControlJacuzzi;
 	private String lblBurbujas;
 	private String lblTemperatura;
 	private String lblAgua;
 	private String lblLlenar;
 	private String lblVaciar;
-		//Panel Habitacion Emergente Ventana
+	// Panel Habitacion Emergente Ventana
 	private String lblControlVentana;
 	private String lblVentana;
 	private String lblPersianas;
 	private String btnAbrir;
-	
-	
+
 	// TODO: pendiente de que se haga primero el panel habitacion
 
 	// Panel Spa
@@ -70,7 +71,6 @@ public abstract class Texto {
 	private String lblNumeroPersonas;
 	private String strPersonas;
 	private String strPersona;
-	
 
 	// Panel Servicios
 	private String panelServiciosBtnMinibar;
@@ -110,24 +110,25 @@ public abstract class Texto {
 
 	// Panel Emergente Taxi
 	private String panelServiciosEmergenteTaxiTxt;
-	
-	//Panel Emergente Comida
+
+	// Panel Emergente Comida
 	private String panelServiciosEmergenteComidaTxt;
 
-	//Panel Emergente Toallas
+	// Panel Emergente Toallas
 	private String panelServiciosEmergenteToallasTxt;
-	
-	//Panel Emergente Minibar
+
+	// Panel Emergente Minibar
 	private String panelServiciosEmergenteMinibarTxt;
-	
-	//Panel Emergente Sabanas
+
+	// Panel Emergente Sabanas
 	private String panelServiciosEmergenteSabanasTxt;
-	
+
 	// Panel Emergente Limpieza
 	private String panelServiciosEmergenteLimpiezaTxt;
 	private String panelServiciosEmergenteLimpiezaTxtUnaVezHaya;
 	private String panelServiciosEmergenteLimpiezaBtnCambiar;
-	
+
+
 	// Panel Usuario
 	private String lblCuentaHabitacion;
 	private String lblElegirIdioma;
@@ -146,11 +147,11 @@ public abstract class Texto {
 
 	// Panel confirmacion
 	private String lblConfirmacion;
-	
-	//Panel Cuenta Emergente Detalles
+
+	// Panel Cuenta Emergente Detalles
 	private String strNingunServicio;
-	
-	//Panel lista de gastos. (Provisional hasta que comprenda)
+
+	// Panel lista de gastos. (Provisional hasta que comprenda)
 	private String Facial;
 	private String Thai;
 	private String Sueco;
@@ -176,7 +177,7 @@ public abstract class Texto {
 	private String BBC;
 	private String Bein;
 	private String Info;
-	
+
 	protected void placeHolderParaQueMePongaGettersYSettersAbajoEquisde() {
 	}
 
@@ -771,6 +772,7 @@ public abstract class Texto {
 	public void setStrNingunServicio(String strNingunServicio) {
 		this.strNingunServicio = strNingunServicio;
 	}
+
 	public String getFacial() {
 		return Facial;
 	}
@@ -1163,6 +1165,22 @@ public abstract class Texto {
 		this.btnAbrir = btnAbrir;
 	}
 
+	public String getLoginInfoTitulo() {
+		return loginInfoTitulo;
+	}
+
+	public void setLoginInfoTitulo(String loginInfoTitulo) {
+		this.loginInfoTitulo = loginInfoTitulo;
+	}
+
+	public String getLoginInfoMensaje() {
+		return loginInfoMensaje;
+	}
+
+	public void setLoginInfoMensaje(String loginInfoMensaje) {
+		this.loginInfoMensaje = loginInfoMensaje;
+	}
+
 	public String getPanelServiciosEmergenteLimpiezaTxtUnaVezHaya() {
 		return panelServiciosEmergenteLimpiezaTxtUnaVezHaya;
 	}
@@ -1177,6 +1195,7 @@ public abstract class Texto {
 
 	public void setPanelServiciosEmergenteLimpiezaTxt(String panelServiciosEmergenteLimpiezaTxt) {
 		this.panelServiciosEmergenteLimpiezaTxt = panelServiciosEmergenteLimpiezaTxt;
+
 	}
 
 	public String getPanelServiciosEmergenteLimpiezaBtnCambiar() {

@@ -19,7 +19,7 @@ public class Controlador {
 		super();
 		this.setTexto(new TextoManager(TextoManager.español).getTexto());
 		this.servicios = new Servicios();
-		this.cuenta = new Cuenta("101", "contr12");
+		this.cuenta = new Cuenta("101", "cdi");
 		this.habitacion = new Habitacion();
 		this.serviciosSpa = new ServiciosSpa();
 	}

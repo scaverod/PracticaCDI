@@ -11,6 +11,8 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.HierarchyEvent;
+import java.awt.event.HierarchyListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JCheckBox;
 import javax.swing.ImageIcon;
@@ -18,19 +20,22 @@ import javax.swing.JTextArea;
 
 public class PanelHabitacionEmergenteAlarma extends JPanel {
 	private static final long serialVersionUID = 1L;
-	
+
 	private ImageIcon addIcon = new ImageIcon(PanelHabitacionEmergenteAlarma.class.getResource("/iconos/alarmAdd.png"));
-	private ImageIcon descativarIcon = new ImageIcon(PanelHabitacionEmergenteAlarma.class.getResource("/iconos/alarmRemove.png"));
-	private ImageIcon editIcon = new ImageIcon(PanelHabitacionEmergenteAlarma.class.getResource("/iconos/alarmEdit.png"));
-	private ImageIcon aceptIcon = new ImageIcon(PanelHabitacionEmergenteAlarma.class.getResource("/iconos/alarmAcept.png"));
+	private ImageIcon descativarIcon = new ImageIcon(
+			PanelHabitacionEmergenteAlarma.class.getResource("/iconos/alarmRemove.png"));
+	private ImageIcon editIcon = new ImageIcon(
+			PanelHabitacionEmergenteAlarma.class.getResource("/iconos/alarmEdit.png"));
+	private ImageIcon aceptIcon = new ImageIcon(
+			PanelHabitacionEmergenteAlarma.class.getResource("/iconos/alarmAcept.png"));
 	private JCheckBox chckbxLunes;
 	private JCheckBox chckbxMartes;
 	private JCheckBox chckbxMiercoles;
 	private JCheckBox chckbxJueves;
 	private JCheckBox chckbxViernes;
-	private JCheckBox chckbxSbado;
+	private JCheckBox chckbxSabado;
 	private JCheckBox chckbxDomingo;
-	
+
 	private Texto t;
 
 	private int estado;
@@ -109,7 +114,7 @@ public class PanelHabitacionEmergenteAlarma extends JPanel {
 
 		chckbxLunes = new JCheckBox(t.getLblLunes());
 		chckbxLunes.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		chckbxLunes.setBounds(23, 19, 75, 23);
+		chckbxLunes.setBounds(23, 19, 121, 23);
 		add(chckbxLunes);
 
 		panelHora.setLocation(247, 57);
@@ -118,32 +123,32 @@ public class PanelHabitacionEmergenteAlarma extends JPanel {
 
 		chckbxMiercoles = new JCheckBox(t.getLblMiercoles());
 		chckbxMiercoles.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		chckbxMiercoles.setBounds(23, 103, 97, 23);
+		chckbxMiercoles.setBounds(23, 103, 121, 23);
 		add(chckbxMiercoles);
 
 		chckbxJueves = new JCheckBox(t.getLblJueves());
 		chckbxJueves.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		chckbxJueves.setBounds(23, 145, 79, 23);
+		chckbxJueves.setBounds(23, 145, 121, 23);
 		add(chckbxJueves);
 
 		chckbxViernes = new JCheckBox(t.getLblViernes());
 		chckbxViernes.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		chckbxViernes.setBounds(23, 187, 83, 23);
+		chckbxViernes.setBounds(23, 187, 121, 23);
 		add(chckbxViernes);
 
-		chckbxSbado = new JCheckBox(t.getLblSabado());
-		chckbxSbado.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		chckbxSbado.setBounds(23, 229, 83, 23);
-		add(chckbxSbado);
+		chckbxSabado = new JCheckBox(t.getLblSabado());
+		chckbxSabado.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		chckbxSabado.setBounds(23, 229, 121, 23);
+		add(chckbxSabado);
 
 		chckbxDomingo = new JCheckBox(t.getLblDomingo());
 		chckbxDomingo.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		chckbxDomingo.setBounds(23, 271, 97, 23);
+		chckbxDomingo.setBounds(23, 271, 121, 23);
 		add(chckbxDomingo);
 
 		chckbxMartes = new JCheckBox(t.getLblMartes());
 		chckbxMartes.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		chckbxMartes.setBounds(23, 61, 86, 23);
+		chckbxMartes.setBounds(23, 61, 121, 23);
 		add(chckbxMartes);
 
 		btnAceptar.setIcon(addIcon);
@@ -171,6 +176,26 @@ public class PanelHabitacionEmergenteAlarma extends JPanel {
 		add(btnDescativar);
 
 		noVisibleChckbox();
+
+		this.addHierarchyListener(new HierarchyListener() {
+			public void hierarchyChanged(HierarchyEvent e) {
+				if (e.getChangeFlags() == HierarchyEvent.HIERARCHY_FIRST
+						|| e.getChangeFlags() == HierarchyEvent.SHOWING_CHANGED) {
+					t = controlador.getTexto();
+					chckbxLunes.setText(t.getLblLunes());
+					chckbxMartes.setText(t.getLblMartes());
+					chckbxMiercoles.setText(t.getLblMiercoles());
+					chckbxJueves.setText(t.getLblJueves());
+					chckbxViernes.setText(t.getLblViernes());
+					chckbxSabado.setText(t.getLblSabado());
+					chckbxDomingo.setText(t.getLblDomingo());
+					btnCerrar.setText(t.getBtnCerrar());
+					txtrParaEmpezarA.setText(t.getTxtrParaEmpezarA());
+
+				}
+			}
+		});
+
 	}
 
 	public void desactivarChckbox() {
@@ -179,7 +204,7 @@ public class PanelHabitacionEmergenteAlarma extends JPanel {
 		chckbxMiercoles.setEnabled(false);
 		chckbxJueves.setEnabled(false);
 		chckbxViernes.setEnabled(false);
-		chckbxSbado.setEnabled(false);
+		chckbxSabado.setEnabled(false);
 		chckbxDomingo.setEnabled(false);
 	}
 
@@ -189,7 +214,7 @@ public class PanelHabitacionEmergenteAlarma extends JPanel {
 		chckbxMiercoles.setEnabled(true);
 		chckbxJueves.setEnabled(true);
 		chckbxViernes.setEnabled(true);
-		chckbxSbado.setEnabled(true);
+		chckbxSabado.setEnabled(true);
 		chckbxDomingo.setEnabled(true);
 	}
 
@@ -199,7 +224,7 @@ public class PanelHabitacionEmergenteAlarma extends JPanel {
 		chckbxMiercoles.setVisible(false);
 		chckbxJueves.setVisible(false);
 		chckbxViernes.setVisible(false);
-		chckbxSbado.setVisible(false);
+		chckbxSabado.setVisible(false);
 		chckbxDomingo.setVisible(false);
 	}
 
@@ -209,7 +234,7 @@ public class PanelHabitacionEmergenteAlarma extends JPanel {
 		chckbxMiercoles.setVisible(true);
 		chckbxJueves.setVisible(true);
 		chckbxViernes.setVisible(true);
-		chckbxSbado.setVisible(true);
+		chckbxSabado.setVisible(true);
 		chckbxDomingo.setVisible(true);
 	}
 
@@ -220,7 +245,7 @@ public class PanelHabitacionEmergenteAlarma extends JPanel {
 		aux[2] = chckbxMiercoles.isSelected();
 		aux[3] = chckbxJueves.isSelected();
 		aux[4] = chckbxViernes.isSelected();
-		aux[5] = chckbxSbado.isSelected();
+		aux[5] = chckbxSabado.isSelected();
 		aux[6] = chckbxDomingo.isSelected();
 		return aux;
 	}

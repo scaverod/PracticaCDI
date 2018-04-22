@@ -246,8 +246,8 @@ public class Ventana extends JFrame {
 		btnCuenta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// TODO: Controlar esto para que se guarde el estado del resto de las cosas
-//				panelCuenta = new PanelCuenta(controlador);
-//				pantallaMenu.add(panelCuenta, panelCuenta.getName());
+				// panelCuenta = new PanelCuenta(controlador);
+				// pantallaMenu.add(panelCuenta, panelCuenta.getName());
 				changeToCuenta();
 			}
 		});
@@ -297,29 +297,28 @@ public class Ventana extends JFrame {
 	/* ******* */
 
 	private void loginHandler() {
-		// TODO: call user validation method
+		// TODO: Este método nos muestra un Mensaje con el usuario y la contraseña
+		if (campoUsuario.getText().equals(controlador.getCuenta().getUsuario())
+				&& String.valueOf(campoPassword.getPassword()).equals(controlador.getCuenta().getPwd())) {
 
-		if (campoUsuario.getText().length() == 0 || campoPassword.getPassword().length == 0) {
-			// TODO: esto es temporal; hay que crear los mensajes en otra clase para poder
-			// cambiar de idioma fácilmente
-			JOptionPane.showMessageDialog(contentPane, t.getLoginErrorMensaje() + ".", t.getLoginErrorTitulo(),
-					JOptionPane.ERROR_MESSAGE);
-		} else {
 			CardLayout l = (CardLayout) pantalla.getLayout();
 			l.show(pantalla, panelPrincipal.getName());
 			pantallaMenuActiva = "panelHabitacion";
+		} else {
+			JOptionPane.showMessageDialog(contentPane, t.getLoginInfoMensaje(), t.getLoginInfoTitulo(),
+					JOptionPane.ERROR_MESSAGE);
 		}
 	}
-	
+
 	public void changeIdioma() {
 		t = controlador.getTexto();
-		
+
 		btnHabitacion.setText(t.getMenuPrincipalBtnHabitacion());
 		btnSpa.setText(t.getMenuPrincipalBtnSpa());
 		btnServicios.setText(t.getMenuPrincipalBtnServicios());
 		btnCuenta.setText(t.getMenuPrincipalBtnCuenta());
 	}
-	
+
 	private void changeToHabitacion() {
 		CardLayout l = (CardLayout) pantallaMenu.getLayout();
 		l.show(pantallaMenu, panelHabitacion.getName());
@@ -346,43 +345,43 @@ public class Ventana extends JFrame {
 
 	private void desplazamientoDerecha() {
 		switch (pantallaMenuActiva) {
-			case "panelHabitacion":
-				btnCuenta.setSelected(true);
-				changeToCuenta();
-				break;
-			case "panelSpa":
-				btnHabitacion.setSelected(true);
-				changeToHabitacion();
-				break;
-			case "panelServicios":
-				btnSpa.setSelected(true);
-				changeToSpa();
-				break;
-			case "panelCuenta":
-				btnServicios.setSelected(true);
-				changeToServicios();
-				break;
-			}
+		case "panelHabitacion":
+			btnCuenta.setSelected(true);
+			changeToCuenta();
+			break;
+		case "panelSpa":
+			btnHabitacion.setSelected(true);
+			changeToHabitacion();
+			break;
+		case "panelServicios":
+			btnSpa.setSelected(true);
+			changeToSpa();
+			break;
+		case "panelCuenta":
+			btnServicios.setSelected(true);
+			changeToServicios();
+			break;
+		}
 	}
 
 	private void desplazamientoIzquierda() {
 		switch (pantallaMenuActiva) {
-			case "panelHabitacion":
-				btnSpa.setSelected(true);
-				changeToSpa();
-				break;
-			case "panelSpa":
-				btnServicios.setSelected(true);
-				changeToServicios();
-				break;
-			case "panelServicios":
-				btnCuenta.setSelected(true);
-				changeToCuenta();
-				break;
-			case "panelCuenta":
-				btnHabitacion.setSelected(true);
-				changeToHabitacion();
-				break;
-			}
+		case "panelHabitacion":
+			btnSpa.setSelected(true);
+			changeToSpa();
+			break;
+		case "panelSpa":
+			btnServicios.setSelected(true);
+			changeToServicios();
+			break;
+		case "panelServicios":
+			btnCuenta.setSelected(true);
+			changeToCuenta();
+			break;
+		case "panelCuenta":
+			btnHabitacion.setSelected(true);
+			changeToHabitacion();
+			break;
+		}
 	}
 }
