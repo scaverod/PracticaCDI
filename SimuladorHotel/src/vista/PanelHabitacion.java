@@ -358,9 +358,11 @@ public class PanelHabitacion extends JPanel {
 		JToggleButton tglbtnPersiana = new JToggleButton("");
 		tglbtnPersiana.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//bajar persianas
 				if(tglbtnPersiana.isSelected()) {
 					controlador.getHabitacion().setPersianaDer(4);
 					controlador.getHabitacion().setPersianaIzq(4);
+					//subir persianas
 				}else {
 					controlador.getHabitacion().setPersianaDer(0);
 					controlador.getHabitacion().setPersianaIzq(0);
@@ -380,9 +382,11 @@ public class PanelHabitacion extends JPanel {
 		JToggleButton tglbtnVentana = new JToggleButton("");
 		tglbtnVentana.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				//abro las ventanas
 				if(tglbtnVentana.isSelected()) {
 					controlador.getHabitacion().setVentanaDer(1);
 					controlador.getHabitacion().setVentanaIzq(2);
+				//bajo las ventanas
 				}else {
 					controlador.getHabitacion().setVentanaDer(0);
 					controlador.getHabitacion().setVentanaIzq(0);					

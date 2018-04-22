@@ -34,18 +34,19 @@ public class PanelServiciosEmergenteWifi extends JPanel {
 
 	// FIXME: temporal para que salga el texto en vez de "<dynamic>"
 	// Habría que mandarlo desde el Main, por ejemplo
-	private Texto t = new TextoManager(TextoManager.español).getTexto();
+	private Texto t;
 
 	public PanelServiciosEmergenteWifi(MicroControladorPanelesPadreHijo microControlador, String padre,
 			Controlador controlador, Semaphore s) {
 		this.s = s;
-
+		
 		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102),
 				new Color(0, 0, 102)));
 		this.setSize(new Dimension(695, 315));
 		this.setName("p" + this.getClass().getSimpleName().substring(1)); // No modificar
 		setLayout(null);
 
+		t = controlador.getTexto();
 		panelContenedor = new JLayeredPane();
 		panelContenedor.setBounds(0, 0, 695, 315);
 		add(panelContenedor);
