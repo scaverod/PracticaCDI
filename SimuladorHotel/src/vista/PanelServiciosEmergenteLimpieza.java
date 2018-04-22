@@ -17,6 +17,8 @@ import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.HierarchyEvent;
+import java.awt.event.HierarchyListener;
 import java.util.concurrent.Semaphore;
 import java.awt.event.ActionEvent;
 import javax.swing.JLayeredPane;
@@ -142,20 +144,31 @@ public class PanelServiciosEmergenteLimpieza extends JPanel {
 		txtpnInfo.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		txtpnInfo.setEditable(false);
 		txtpnInfo.setOpaque(false);
-		txtpnInfo.setText("Seleccione la hora m\u00E1s adecuada para que limpiemos la habitaci\u00F3n");
+		txtpnInfo.setText(t.getPanelServiciosEmergenteLimpiezaTxt());
 		txtpnInfo.setBounds(7, 9, 593, 25);
 		panelPrincipal.add(txtpnInfo);
 
 		txtpnUnaVezHaya.setMargin(new Insets(5, 5, 5, 5));
 		txtpnUnaVezHaya.setBorder(new LineBorder(Color.ORANGE));
-		txtpnUnaVezHaya.setText(
-				"Aviso: Una vez haya adquirido este servicio podr\u00E1 cambiar la hora ilimitadas veces sin coste alguno.");
+		txtpnUnaVezHaya.setText(t.getPanelServiciosEmergenteLimpiezaTxtUnaVezHaya());
 		txtpnUnaVezHaya.setOpaque(false);
 		txtpnUnaVezHaya.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		txtpnUnaVezHaya.setEditable(false);
 		txtpnUnaVezHaya.setBounds(7, 228, 200, 78);
 		panelPrincipal.add(txtpnUnaVezHaya);
-
+		
+		this.addHierarchyListener(new HierarchyListener() {
+			public void hierarchyChanged(HierarchyEvent e) {
+				if (e.getChangeFlags() == HierarchyEvent.HIERARCHY_FIRST || e.getChangeFlags() == HierarchyEvent.SHOWING_CHANGED) {
+					t = controlador.getTexto();
+					
+					btnCerrar.setText(t.getBtnCerrar());
+					txtpnInfo.setText(t.getPanelServiciosEmergenteComidaTxt());
+					txtpnUnaVezHaya.setText(t.getPanelServiciosEmergenteLimpiezaTxtUnaVezHaya());
+					btnAdquirir.setText(t.getBtnAdquirir());
+				}
+			}
+		});
 	}
 
 	public void cerrarPanelConfirmacion() {

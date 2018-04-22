@@ -21,6 +21,8 @@ import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.HierarchyEvent;
+import java.awt.event.HierarchyListener;
 import java.util.concurrent.Semaphore;
 import java.awt.event.ActionEvent;
 import javax.swing.JLayeredPane;
@@ -134,6 +136,19 @@ public class PanelServiciosEmergenteComida extends JPanel {
 		});
 		btnAdquirir.setBounds(260, 223, 175, 53);
 		panelPrincipal.add(btnAdquirir);
+		
+		this.addHierarchyListener(new HierarchyListener() {
+			public void hierarchyChanged(HierarchyEvent e) {
+				if (e.getChangeFlags() == HierarchyEvent.HIERARCHY_FIRST || e.getChangeFlags() == HierarchyEvent.SHOWING_CHANGED) {
+					t = controlador.getTexto();
+					
+					btnCerrar.setText(t.getBtnCerrar());
+					txtpnInfo.setText(t.getPanelServiciosEmergenteComidaTxt());
+					lblPrecio.setText(t.getLblCoste());
+					btnAdquirir.setText(t.getBtnAdquirir());
+				}
+			}
+		});
 	}
 
 	public void cerrarPanelConfirmacion() {

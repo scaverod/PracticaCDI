@@ -74,7 +74,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 		panelPrincipal.add(lblGif);
 
 		JTextPane txtpnInfo = new JTextPane();
-		txtpnInfo.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		txtpnInfo.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		txtpnInfo.setEditable(false);
 		txtpnInfo.setOpaque(false);
 		txtpnInfo.setText(t.getPanelServiciosEmergentealmohadaTxt());
@@ -88,9 +88,9 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 		panelPrecioVisco.setBounds(272, 103, 175, 35);
 		panelPrincipal.add(panelPrecioVisco);
 
-		JLabel lblPrecio = new JLabel(t.getLblCoste());
-		panelPrecioVisco.add(lblPrecio);
-		lblPrecio.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		JLabel lblVisco = new JLabel(t.getLblCoste());
+		panelPrecioVisco.add(lblVisco);
+		lblVisco.setFont(new Font("Tahoma", Font.PLAIN, 15));
 
 		JLabel labelPrecioVisco = new JLabel(
 				String.valueOf(controlador.getServicios().getAlmohada().getPrecioVisco()) + " \u20AC");
@@ -104,9 +104,9 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 		panelPrecioLatex.setBounds(272, 157, 175, 35);
 		panelPrincipal.add(panelPrecioLatex);
 
-		JLabel label = new JLabel("Coste:");
-		label.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		panelPrecioLatex.add(label);
+		JLabel lblLatex = new JLabel("Coste:");
+		lblLatex.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		panelPrecioLatex.add(lblLatex);
 
 		JLabel labelPrecioLatex = new JLabel(
 				String.valueOf(controlador.getServicios().getAlmohada().getPrecioLatex()) + " \u20AC");
@@ -120,9 +120,9 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 		panelPrecioPluma.setBounds(272, 211, 175, 35);
 		panelPrincipal.add(panelPrecioPluma);
 
-		JLabel label_2 = new JLabel("Coste:");
-		label_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		panelPrecioPluma.add(label_2);
+		JLabel lblPluma = new JLabel("Coste:");
+		lblPluma.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		panelPrecioPluma.add(lblPluma);
 
 		JLabel labelPrecioPluma = new JLabel(
 				String.valueOf(controlador.getServicios().getAlmohada().getPrecioPluma()) + " \u20AC");
@@ -136,48 +136,17 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 		panelPrecioGel.setBounds(272, 265, 175, 35);
 		panelPrincipal.add(panelPrecioGel);
 
-		JLabel label_4 = new JLabel("Coste:");
-		label_4.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		panelPrecioGel.add(label_4);
+		JLabel lblGel = new JLabel("Coste:");
+		lblGel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		panelPrecioGel.add(lblGel);
 
 		JLabel labelPrecioGel = new JLabel(
 				String.valueOf(controlador.getServicios().getAlmohada().getPrecioLatex()) + " \u20AC");
 		labelPrecioGel.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		panelPrecioGel.add(labelPrecioGel);
 
-		JTextPane textPaneVisco = new JTextPane();
-		textPaneVisco.setText("Viscoel\u00E1stica");
-		textPaneVisco.setOpaque(false);
-		textPaneVisco.setFont(new Font("Tahoma", Font.BOLD, 14));
-		textPaneVisco.setEditable(false);
-		textPaneVisco.setBounds(86, 97, 99, 23);
-		panelPrincipal.add(textPaneVisco);
-
-		JTextPane textPaneLatex = new JTextPane();
-		textPaneLatex.setText(t.getPanelServiciosEmergentealmohadaLatex());
-		textPaneLatex.setOpaque(false);
-		textPaneLatex.setFont(new Font("Tahoma", Font.BOLD, 14));
-		textPaneLatex.setEditable(false);
-		textPaneLatex.setBounds(86, 151, 99, 23);
-		panelPrincipal.add(textPaneLatex);
-
-		JTextPane textPanePluma = new JTextPane();
-		textPanePluma.setText(t.getPanelServiciosEmergentealmohadaPluma());
-		textPanePluma.setOpaque(false);
-		textPanePluma.setFont(new Font("Tahoma", Font.BOLD, 14));
-		textPanePluma.setEditable(false);
-		textPanePluma.setBounds(86, 205, 99, 23);
-		panelPrincipal.add(textPanePluma);
-
-		JTextPane textPaneGel = new JTextPane();
-		textPaneGel.setText(t.getPanelServiciosEmergentealmohadaGel());
-		textPaneGel.setOpaque(false);
-		textPaneGel.setFont(new Font("Tahoma", Font.BOLD, 14));
-		textPaneGel.setEditable(false);
-		textPaneGel.setBounds(86, 259, 99, 23);
-		panelPrincipal.add(textPaneGel);
-
 		JButton btnComprarLatex = new JButton("");
+		btnComprarLatex.setFocusPainted(false);
 		btnComprarLatex.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				new Thread() {
@@ -212,6 +181,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 		});
 
 		JButton btnComprarVisco = new JButton("");
+		btnComprarVisco.setFocusPainted(false);
 		btnComprarVisco.setContentAreaFilled(false);
 		btnComprarVisco.setOpaque(false);
 		btnComprarVisco
@@ -254,6 +224,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 		panelPrincipal.add(btnComprarLatex);
 
 		JButton btnComprarPluma = new JButton("");
+		btnComprarPluma.setFocusPainted(false);
 		btnComprarPluma.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new Thread() {
@@ -290,6 +261,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 		panelPrincipal.add(btnComprarPluma);
 
 		JButton btnComprarGel = new JButton("");
+		btnComprarGel.setFocusPainted(false);
 		btnComprarGel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new Thread() {
@@ -328,21 +300,57 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 		panelBordeVisco.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
 		panelBordeVisco.setBounds(66, 98, 564, 44);
 		panelPrincipal.add(panelBordeVisco);
+		panelBordeVisco.setLayout(null);
+
+		JTextPane textPaneVisco = new JTextPane();
+		textPaneVisco.setBounds(10, 11, 99, 23);
+		panelBordeVisco.add(textPaneVisco);
+		textPaneVisco.setText("Viscoel\u00E1stica");
+		textPaneVisco.setOpaque(false);
+		textPaneVisco.setFont(new Font("Tahoma", Font.BOLD, 14));
+		textPaneVisco.setEditable(false);
 
 		JPanel panelBordeLatex = new JPanel();
 		panelBordeLatex.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
 		panelBordeLatex.setBounds(66, 152, 564, 44);
 		panelPrincipal.add(panelBordeLatex);
+		panelBordeLatex.setLayout(null);
+
+		JTextPane textPaneLatex = new JTextPane();
+		textPaneLatex.setBounds(10, 11, 99, 23);
+		panelBordeLatex.add(textPaneLatex);
+		textPaneLatex.setText(t.getPanelServiciosEmergentealmohadaLatex());
+		textPaneLatex.setOpaque(false);
+		textPaneLatex.setFont(new Font("Tahoma", Font.BOLD, 14));
+		textPaneLatex.setEditable(false);
 
 		JPanel panelBordePluma = new JPanel();
 		panelBordePluma.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
 		panelBordePluma.setBounds(66, 206, 564, 44);
 		panelPrincipal.add(panelBordePluma);
+		panelBordePluma.setLayout(null);
+
+		JTextPane textPanePluma = new JTextPane();
+		textPanePluma.setBounds(10, 11, 99, 23);
+		panelBordePluma.add(textPanePluma);
+		textPanePluma.setText(t.getPanelServiciosEmergentealmohadaPluma());
+		textPanePluma.setOpaque(false);
+		textPanePluma.setFont(new Font("Tahoma", Font.BOLD, 14));
+		textPanePluma.setEditable(false);
 
 		JPanel panelBordeGel = new JPanel();
 		panelBordeGel.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
 		panelBordeGel.setBounds(66, 260, 564, 44);
 		panelPrincipal.add(panelBordeGel);
+		panelBordeGel.setLayout(null);
+
+		JTextPane textPaneGel = new JTextPane();
+		textPaneGel.setBounds(10, 11, 99, 23);
+		panelBordeGel.add(textPaneGel);
+		textPaneGel.setText(t.getPanelServiciosEmergentealmohadaGel());
+		textPaneGel.setOpaque(false);
+		textPaneGel.setFont(new Font("Tahoma", Font.BOLD, 14));
+		textPaneGel.setEditable(false);
 		
 		this.addHierarchyListener(new HierarchyListener() {
 			public void hierarchyChanged(HierarchyEvent e) {
@@ -355,6 +363,11 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 					textPaneLatex.setText(t.getPanelServiciosEmergentealmohadaLatex());
 					textPanePluma.setText(t.getPanelServiciosEmergentealmohadaPluma());
 					textPaneGel.setText(t.getPanelServiciosEmergentealmohadaGel());
+					
+					lblVisco.setText(t.getLblCoste());
+					lblLatex.setText(t.getLblCoste());
+					lblPluma.setText(t.getLblCoste());
+					lblGel.setText(t.getLblCoste());
 				}
 			}
 		});
