@@ -12,6 +12,8 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.HierarchyEvent;
+import java.awt.event.HierarchyListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import javax.swing.border.TitledBorder;
@@ -32,6 +34,13 @@ public class PanelHabitacionEmergenteVentana2 extends JPanel {
 			new ImageIcon(PanelHabitacionEmergenteVentana2.class.getResource("/iconos/ventana1.png")) };
 
 	public PanelHabitacionEmergenteVentana2(MicroControladorLayersPadreHijo m, Controlador controlador) {
+		addHierarchyListener(new HierarchyListener() {
+			public void hierarchyChanged(HierarchyEvent e) {
+				if (e.getChangeFlags() == HierarchyEvent.HIERARCHY_FIRST) {
+					// TODO: comprobar estado de persianas y ventnas y cambiar si necesario
+				}
+			}
+		});
 		t = controlador.getTexto();
 
 		this.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 109, 240), new Color(0, 109, 240),

@@ -22,6 +22,8 @@ import java.awt.CardLayout;
 import javax.swing.SwingConstants;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
 
 public class PanelHabitacion extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -398,7 +400,24 @@ public class PanelHabitacion extends JPanel {
 
 		// En principio no tiene que estar al final, pero por seguir la misma estructura
 		// que en panelSpa y porque tiene sentido lo voy a poner aquí
-
+		
+		panelEmergenteContenedor.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent evt) {
+				if (evt.getPropertyName() == "layeredContainerLayer") {
+					// TODO: comprobar estado ventanas y persianas y cambiar en caso de ser necesario
+					
+					
+					// TODO: activar, desactivar botones
+					if (evt.getNewValue().equals(0)) {
+						// reactivar botones
+					}
+					else if (evt.getNewValue().equals(0)) {
+						// desactivar botones
+					}
+				}
+			}
+		});
+		
 		/* SEPARADOR */
 		microControlador = new MicroControladorLayersPadreHijo(layeredPane, panelEmergenteContenedor);
 
