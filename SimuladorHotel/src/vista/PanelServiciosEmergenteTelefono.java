@@ -9,7 +9,7 @@ import javax.swing.border.LineBorder;
 
 import controlador.Controlador;
 import controlador.MicroControladorLayers;
-import controlador.MicroControladorPanelesPadreHijo;
+import controlador.MicroControladorLayersPadreHijo;
 import idiomas.Texto;
 import tiposVariable.StringDouble;
 
@@ -34,7 +34,7 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 	private int continente = 0;
 	private Texto t;
 
-	public PanelServiciosEmergenteTelefono(MicroControladorPanelesPadreHijo microControlador, String padre, Controlador controlador, Semaphore s) {
+	public PanelServiciosEmergenteTelefono(MicroControladorLayersPadreHijo microControlador, String padre, Controlador controlador, Semaphore s) {
 		this.s = s;
 		t = controlador.getTexto();
 		this.setSize(new Dimension(695, 315));
@@ -86,7 +86,7 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 		btnCerrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { // No modificar
 				// Devuelve control al padre
-				microControlador.cambiarPanel(padre);
+				microControlador.changeLayer(0);
 				s.release(s.getQueueLength());
 			}
 		});

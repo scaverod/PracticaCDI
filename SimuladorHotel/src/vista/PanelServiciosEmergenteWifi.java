@@ -9,7 +9,7 @@ import javax.swing.border.LineBorder;
 
 import controlador.Controlador;
 import controlador.MicroControladorLayers;
-import controlador.MicroControladorPanelesPadreHijo;
+import controlador.MicroControladorLayersPadreHijo;
 import idiomas.Texto;
 import tiposVariable.StringDouble;
 
@@ -32,7 +32,7 @@ public class PanelServiciosEmergenteWifi extends JPanel {
 	private Semaphore s;
 	private Texto t;
 
-	public PanelServiciosEmergenteWifi(MicroControladorPanelesPadreHijo microControlador, String padre, Controlador controlador, Semaphore s) {
+	public PanelServiciosEmergenteWifi(MicroControladorLayersPadreHijo microControlador, String padre, Controlador controlador, Semaphore s) {
 		this.s = s;
 		t = controlador.getTexto();
 		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102)));
@@ -60,7 +60,7 @@ public class PanelServiciosEmergenteWifi extends JPanel {
 		btnCerrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { // No modificar
 				// Devuelve control al padre
-				microControlador.cambiarPanel(padre);
+				microControlador.changeLayer(0);
 				s.release(s.getQueueLength());
 			}
 		});

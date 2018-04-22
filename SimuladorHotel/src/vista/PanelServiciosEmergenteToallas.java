@@ -9,7 +9,7 @@ import javax.swing.border.LineBorder;
 
 import controlador.Controlador;
 import controlador.MicroControladorLayers;
-import controlador.MicroControladorPanelesPadreHijo;
+import controlador.MicroControladorLayersPadreHijo;
 import idiomas.Texto;
 import tiposVariable.StringDouble;
 
@@ -32,7 +32,7 @@ public class PanelServiciosEmergenteToallas extends JPanel {
 	private Semaphore s;
 	private Texto t;
 
-	public PanelServiciosEmergenteToallas(MicroControladorPanelesPadreHijo microControlador, String padre, Controlador controlador, Semaphore s) {
+	public PanelServiciosEmergenteToallas(MicroControladorLayersPadreHijo microControlador, String padre, Controlador controlador, Semaphore s) {
 		this.s = s;
 		t = controlador.getTexto();
 		this.setSize(new Dimension(695, 315));
@@ -59,7 +59,7 @@ public class PanelServiciosEmergenteToallas extends JPanel {
 		btnCerrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { // No modificar
 				// Devuelve control al padre
-				microControlador.cambiarPanel(padre);
+				microControlador.changeLayer(0);
 				s.release(s.getQueueLength());
 			}
 		});

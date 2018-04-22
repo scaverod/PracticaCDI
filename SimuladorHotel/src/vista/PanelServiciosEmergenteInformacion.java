@@ -7,7 +7,7 @@ import javax.swing.border.BevelBorder;
 
 import controlador.Controlador;
 import controlador.MicroControladorLayers;
-import controlador.MicroControladorPanelesPadreHijo;
+import controlador.MicroControladorLayersPadreHijo;
 import idiomas.Texto;
 import tiposVariable.StringDouble;
 
@@ -33,7 +33,7 @@ public class PanelServiciosEmergenteInformacion extends JPanel {
 	private Semaphore s;
 	private Texto t;
 
-	public PanelServiciosEmergenteInformacion(MicroControladorPanelesPadreHijo microControlador, String padre, Controlador controlador, Semaphore s) {
+	public PanelServiciosEmergenteInformacion(MicroControladorLayersPadreHijo microControlador, String padre, Controlador controlador, Semaphore s) {
 		this.s = s;
 		this.t = controlador.getTexto();
 		setForeground(Color.ORANGE);
@@ -62,7 +62,7 @@ public class PanelServiciosEmergenteInformacion extends JPanel {
 		btnCerrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { // No modificar
 				// Devuelve control al padre
-				microControlador.cambiarPanel(padre);
+				microControlador.changeLayer(0);
 				s.release(s.getQueueLength());
 			}
 		});

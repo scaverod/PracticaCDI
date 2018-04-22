@@ -8,25 +8,24 @@ import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
 import controlador.Controlador;
-import controlador.MicroControladorPanelesPadreHijo;
+import controlador.MicroControladorLayersPadreHijo;
 import idiomas.Texto;
 
 import javax.swing.ImageIcon;
 import java.awt.CardLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JLabel;
+import java.util.concurrent.Semaphore;
+import javax.swing.JLayeredPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.concurrent.Semaphore;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
 
 public class PanelServicios extends JPanel {
 	private static final long serialVersionUID = 1L;
-	private MicroControladorPanelesPadreHijo microControlador;
-
-	private JPanel panelServicios;
-	private JPanel panelEmergente;
-	private JPanel panelServicio;
+	private MicroControladorLayersPadreHijo microControlador;
+	private JPanel panelEmergenteContenedor;
 
 	private JPanel panelToallas;
 	private JPanel panelSabanas;
@@ -44,18 +43,32 @@ public class PanelServicios extends JPanel {
 	private Texto t;
 
 	private Semaphore s;
+	private JLayeredPane layeredPane;
+	private JPanel panelPrincipalAux;
 
 	public PanelServicios(Controlador controlador) {
 		s = new Semaphore(0);
 		t = controlador.getTexto();
 		this.setSize(new Dimension(931, 483));
 		this.setName("p" + this.getClass().getSimpleName().substring(1));
-		setLayout(new CardLayout(0, 0));
+		setLayout(null);
+		
+		layeredPane = new JLayeredPane();
+		layeredPane.setBounds(0, 0, 931, 483);
+		add(layeredPane);
 
-		panelServicios = new JPanel();
-		panelServicios.setName("panelServicios"); // FIXME: mismo nombre para JPanel y PanelServicios!
-		this.add(panelServicios, "panelServicios");
-		panelServicios.setLayout(null);
+		JPanel panelPrincipal = new JPanel();
+		layeredPane.setLayer(panelPrincipal, 1);
+		panelPrincipal.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				mostrarVentanaServicios();
+			}
+		});
+		panelPrincipal.setBounds(0, 0, 931, 483);
+		layeredPane.add(panelPrincipal);
+		panelPrincipal.setName("panelServicios");
+		panelPrincipal.setLayout(null);
 
 		JButton btnCambioToalla = new JButton(t.getPanelServiciosBtnCambioToalla());
 		btnCambioToalla.addActionListener(new ActionListener() {
@@ -69,7 +82,7 @@ public class PanelServicios extends JPanel {
 		btnCambioToalla.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnCambioToalla.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnCambioToalla.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		panelServicios.add(btnCambioToalla);
+		panelPrincipal.add(btnCambioToalla);
 
 		JButton btnCambiarSabanas = new JButton(t.getPanelServiciosBtnCambiarSabanas());
 		btnCambiarSabanas.addActionListener(new ActionListener() {
@@ -83,7 +96,7 @@ public class PanelServicios extends JPanel {
 		btnCambiarSabanas.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnCambiarSabanas.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnCambiarSabanas.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		panelServicios.add(btnCambiarSabanas);
+		panelPrincipal.add(btnCambiarSabanas);
 
 		JButton btnCambioAlmohada = new JButton(t.getPanelServiciosBtnCambioAlmohada());
 		btnCambioAlmohada.addActionListener(new ActionListener() {
@@ -97,7 +110,7 @@ public class PanelServicios extends JPanel {
 		btnCambioAlmohada.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnCambioAlmohada.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnCambioAlmohada.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		panelServicios.add(btnCambioAlmohada);
+		panelPrincipal.add(btnCambioAlmohada);
 
 		JButton btnMiniBar = new JButton(t.getPanelServiciosBtnMinibar());
 		btnMiniBar.addActionListener(new ActionListener() {
@@ -111,7 +124,7 @@ public class PanelServicios extends JPanel {
 		btnMiniBar.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnMiniBar.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnMiniBar.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		panelServicios.add(btnMiniBar);
+		panelPrincipal.add(btnMiniBar);
 
 		JButton btnTelefono = new JButton(t.getPanelServiciosBtnTelefono());
 		btnTelefono.addActionListener(new ActionListener() {
@@ -125,7 +138,7 @@ public class PanelServicios extends JPanel {
 		btnTelefono.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnTelefono.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnTelefono.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		panelServicios.add(btnTelefono);
+		panelPrincipal.add(btnTelefono);
 
 		JButton btnBotones = new JButton(t.getPanelServiciosBtnBotones());
 		btnBotones.addActionListener(new ActionListener() {
@@ -139,7 +152,7 @@ public class PanelServicios extends JPanel {
 		btnBotones.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnBotones.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnBotones.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		panelServicios.add(btnBotones);
+		panelPrincipal.add(btnBotones);
 
 		JButton btnComidaHab = new JButton(t.getPanelServiciosBtnComidaHab());
 		btnComidaHab.addActionListener(new ActionListener() {
@@ -153,7 +166,7 @@ public class PanelServicios extends JPanel {
 		btnComidaHab.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnComidaHab.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnComidaHab.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		panelServicios.add(btnComidaHab);
+		panelPrincipal.add(btnComidaHab);
 
 		JButton btnHorarioLimpieza = new JButton(t.getPanelServiciosBtnHorarioLimpieza());
 		btnHorarioLimpieza.addActionListener(new ActionListener() {
@@ -167,7 +180,7 @@ public class PanelServicios extends JPanel {
 		btnHorarioLimpieza.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnHorarioLimpieza.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnHorarioLimpieza.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		panelServicios.add(btnHorarioLimpieza);
+		panelPrincipal.add(btnHorarioLimpieza);
 
 		JButton btnWifi = new JButton(t.getPanelServiciosBtnWifi());
 		btnWifi.addActionListener(new ActionListener() {
@@ -181,7 +194,7 @@ public class PanelServicios extends JPanel {
 		btnWifi.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnWifi.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnWifi.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		panelServicios.add(btnWifi);
+		panelPrincipal.add(btnWifi);
 
 		JButton btnPedirTaxi = new JButton(t.getPanelServiciosBtnPedirTaxi());
 		btnPedirTaxi.addActionListener(new ActionListener() {
@@ -195,7 +208,7 @@ public class PanelServicios extends JPanel {
 		btnPedirTaxi.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnPedirTaxi.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnPedirTaxi.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		panelServicios.add(btnPedirTaxi);
+		panelPrincipal.add(btnPedirTaxi);
 
 		JButton btnTelevision = new JButton(t.getPanelServiciosBtnTelevision());
 		btnTelevision.addActionListener(new ActionListener() {
@@ -209,7 +222,7 @@ public class PanelServicios extends JPanel {
 		btnTelevision.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnTelevision.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnTelevision.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		panelServicios.add(btnTelevision);
+		panelPrincipal.add(btnTelevision);
 
 		JButton btnInformacion = new JButton(t.getPanelServiciosBtnInformacion());
 		btnInformacion.addActionListener(new ActionListener() {
@@ -223,89 +236,121 @@ public class PanelServicios extends JPanel {
 		btnInformacion.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnInformacion.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnInformacion.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		panelServicios.add(btnInformacion);
+		panelPrincipal.add(btnInformacion);
 
-		panelEmergente = new JPanel();
-		panelEmergente.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mousePressed(MouseEvent e) {
-				if (!((e.getX() >= panelServicio.getX())
-						&& (e.getX() <= (panelServicio.getX() + panelServicio.getWidth()))
-						&& (e.getY() >= panelServicio.getY())
-						&& (e.getY() <= (panelServicio.getY() + panelServicio.getHeight())))) {
-					mostrarVentanaServicios();
-					s.release(s.getQueueLength());
+		panelEmergenteContenedor = new JPanel();
+		panelEmergenteContenedor.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent evt) {
+				if (evt.getPropertyName() == "layeredContainerLayer") {
+					layeredPane.setLayer(panelPrincipalAux, 0);
+					
+					if (evt.getNewValue().equals(0)) {
+						btnBotones.setEnabled(true);
+						btnCambiarSabanas.setEnabled(true);
+						btnCambioAlmohada.setEnabled(true);
+						btnCambioToalla.setEnabled(true);
+						btnComidaHab.setEnabled(true);
+						btnHorarioLimpieza.setEnabled(true);
+						btnInformacion.setEnabled(true);
+						btnMiniBar.setEnabled(true);
+						btnPedirTaxi.setEnabled(true);
+						btnTelefono.setEnabled(true);
+						btnTelevision.setEnabled(true);
+						btnWifi.setEnabled(true);
+					} else if (evt.getNewValue().equals(3)) {
+						btnBotones.setEnabled(false);
+						btnCambiarSabanas.setEnabled(false);
+						btnCambioAlmohada.setEnabled(false);
+						btnCambioToalla.setEnabled(false);
+						btnComidaHab.setEnabled(false);
+						btnHorarioLimpieza.setEnabled(false);
+						btnInformacion.setEnabled(false);
+						btnMiniBar.setEnabled(false);
+						btnPedirTaxi.setEnabled(false);
+						btnTelefono.setEnabled(false);
+						btnTelevision.setEnabled(false);
+						btnWifi.setEnabled(false);
+					}
 				}
 			}
 		});
-		panelEmergente.setName("panelEmergente");
-		add(panelEmergente, "panelEmergente");
-		panelEmergente.setLayout(null);
-
-		panelServicio = new JPanel();
-		panelServicio.setBounds(118, 84, 695, 315);
-		panelEmergente.add(panelServicio);
-		panelServicio.setLayout(new CardLayout(0, 0));
-
+		panelEmergenteContenedor.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// No borrar
+			}
+		});
+		panelEmergenteContenedor.setBounds(118, 84, 695, 315);
+		layeredPane.add(panelEmergenteContenedor);
+		panelEmergenteContenedor.setLayout(new CardLayout(0, 0));
+		
 		/* SEPARADOR */
-		microControlador = new MicroControladorPanelesPadreHijo(this);
-
+		microControlador = new MicroControladorLayersPadreHijo(layeredPane, panelEmergenteContenedor);
+		
 		panelToallas = new PanelServiciosEmergenteToallas(microControlador, this.getName(), controlador, s);
-		panelServicio.add(panelToallas, panelToallas.getName());
+		panelEmergenteContenedor.add(panelToallas, panelToallas.getName());
 
 		panelSabanas = new PanelServiciosEmergenteSabanas(microControlador, this.getName(), controlador, s);
-		panelServicio.add(panelSabanas, panelSabanas.getName());
+		panelEmergenteContenedor.add(panelSabanas, panelSabanas.getName());
 
 		panelAlmohada = new PanelServiciosEmergenteAlmohada(microControlador, this.getName(), controlador, s);
-		panelServicio.add(panelAlmohada, panelAlmohada.getName());
+		panelEmergenteContenedor.add(panelAlmohada, panelAlmohada.getName());
 
 		panelMinibar = new PanelServiciosEmergenteMinibar(microControlador, this.getName(), controlador, s);
-		panelServicio.add(panelMinibar, panelMinibar.getName());
+		panelEmergenteContenedor.add(panelMinibar, panelMinibar.getName());
 
 		panelTelefono = new PanelServiciosEmergenteTelefono(microControlador, this.getName(), controlador, s);
-		panelServicio.add(panelTelefono, panelTelefono.getName());
+		panelEmergenteContenedor.add(panelTelefono, panelTelefono.getName());
 
 		panelBotones = new PanelServiciosEmergenteBotones(microControlador, this.getName(), controlador, s);
-		panelServicio.add(panelBotones, panelBotones.getName());
+		panelEmergenteContenedor.add(panelBotones, panelBotones.getName());
 
 		panelComida = new PanelServiciosEmergenteComida(microControlador, this.getName(), controlador, s);
-		panelServicio.add(panelComida, panelComida.getName());
+		panelEmergenteContenedor.add(panelComida, panelComida.getName());
 
 		panelLimpieza = new PanelServiciosEmergenteLimpieza(microControlador, this.getName(), controlador, s);
-		panelServicio.add(panelLimpieza, panelLimpieza.getName());
+		panelEmergenteContenedor.add(panelLimpieza, panelLimpieza.getName());
 
 		panelWifi = new PanelServiciosEmergenteWifi(microControlador, this.getName(), controlador, s);
-		panelServicio.add(panelWifi, panelWifi.getName());
+		panelEmergenteContenedor.add(panelWifi, panelWifi.getName());
 
 		panelTaxi = new PanelServiciosEmergenteTaxi(microControlador, this.getName(), controlador, s);
-		panelServicio.add(panelTaxi, panelTaxi.getName());
+		panelEmergenteContenedor.add(panelTaxi, panelTaxi.getName());
 
 		panelTelevision = new PanelServiciosEmergenteTelevision(microControlador, this.getName(), controlador, s);
-		panelServicio.add(panelTelevision, panelTelevision.getName());
+		panelEmergenteContenedor.add(panelTelevision, panelTelevision.getName());
 
 		panelInformacion = new PanelServiciosEmergenteInformacion(microControlador, this.getName(), controlador, s);
-		panelServicio.add(panelInformacion, panelInformacion.getName());
-
-		JLabel lblFondo = new JLabel("");
-		lblFondo.setIcon(
-				new ImageIcon(PanelServicios.class.getResource("/iconos/imagenPanelServiciosFondoEditada.jpg")));
-		lblFondo.setBounds(0, 0, 931, 483);
-		panelEmergente.add(lblFondo);
+		panelEmergenteContenedor.add(panelInformacion, panelInformacion.getName());
+		
+		panelPrincipalAux = new JPanel();
+		panelPrincipalAux.setEnabled(false);
+		panelPrincipalAux.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				mostrarVentanaServicios();
+			}
+		});
+		panelPrincipalAux.setOpaque(false);
+		layeredPane.setLayer(panelPrincipalAux, 0);
+		panelPrincipalAux.setBounds(0, 0, 931, 483);
+		layeredPane.add(panelPrincipalAux);
+		panelPrincipalAux.setLayout(null);
 	}
 
 	private void establecerVentanaServicio(String panel) {
-		CardLayout l = (CardLayout) panelServicio.getLayout();
-		l.show(panelServicio, panel);
+		CardLayout l = (CardLayout) panelEmergenteContenedor.getLayout();
+		l.show(panelEmergenteContenedor, panel);
 	}
 
 	private void mostrarVentanaEmergente() {
-		CardLayout l = (CardLayout) this.getLayout();
-		l.show(this, panelEmergente.getName());
+		layeredPane.setLayer(panelEmergenteContenedor, 3);
+		layeredPane.setLayer(panelPrincipalAux, 2);
 	}
 
 	private void mostrarVentanaServicios() {
-		CardLayout l = (CardLayout) this.getLayout();
-		l.show(this, panelServicios.getName());
+		layeredPane.setLayer(panelEmergenteContenedor, 0);
+		layeredPane.setLayer(panelPrincipalAux, 0);
 	}
 
 	private void changeToVentanaEmergente(JPanel panel) {
