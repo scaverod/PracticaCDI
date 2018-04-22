@@ -16,6 +16,8 @@ public class TextoEng extends Texto {
 		setLoginBtnAceptar("Accept");
 		setLoginErrorMensaje("All fields must be filled");
 		setLoginErrorTitulo("Empty field(s)");
+		setLoginInfoTitulo(" How to enter the application? ");
+		setLoginInfoMensaje("User: 101\n Password: cdi");
 
 		// Menu principal
 		setMenuPrincipalBtnHabitacion("Room");

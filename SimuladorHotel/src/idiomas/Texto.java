@@ -15,6 +15,8 @@ public abstract class Texto {
 	private String loginBtnAceptar;
 	private String loginErrorMensaje;
 	private String loginErrorTitulo;
+	private String loginInfoTitulo;
+	private String loginInfoMensaje;
 
 	// Menu principal
 	private String menuPrincipalBtnHabitacion;
@@ -1156,6 +1158,22 @@ public abstract class Texto {
 
 	public void setBtnAbrir(String btnAbrir) {
 		this.btnAbrir = btnAbrir;
+	}
+
+	public String getLoginInfoTitulo() {
+		return loginInfoTitulo;
+	}
+
+	public void setLoginInfoTitulo(String loginInfoTitulo) {
+		this.loginInfoTitulo = loginInfoTitulo;
+	}
+
+	public String getLoginInfoMensaje() {
+		return loginInfoMensaje;
+	}
+
+	public void setLoginInfoMensaje(String loginInfoMensaje) {
+		this.loginInfoMensaje = loginInfoMensaje;
 	}
 
 }
