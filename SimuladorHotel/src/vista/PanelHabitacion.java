@@ -445,11 +445,9 @@ public class PanelHabitacion extends JPanel {
 					int persianasIzq = controlador.getHabitacion().getPersianaIzq();
 					int persianasDer = controlador.getHabitacion().getPersianaDer();
 					int ventanaIzq = controlador.getHabitacion().getVentanaIzq();
-					int ventanaDer = controlador.getHabitacion().getPersianaDer();
+					int ventanaDer = controlador.getHabitacion().getVentanaDer();
 					
 					if(persianasIzq == 4 && persianasDer == 4) {
-						controlador.getHabitacion().setPersianaDer(4);
-						controlador.getHabitacion().setPersianaIzq(4);
 						lblPersiana1.setIcon(persianasIcon[4]);
 						lblPersiana2.setIcon(persianasIcon[4]);
 						tglbtnPersiana.setSelected(true);
@@ -457,6 +455,16 @@ public class PanelHabitacion extends JPanel {
 						tglbtnPersiana.setSelected(false);
 						lblPersiana1.setIcon(persianasIcon[persianasIzq]);
 						lblPersiana2.setIcon(persianasIcon[persianasDer]);
+					}
+					
+					if(ventanaIzq == 2 && ventanaDer == 1) {
+						lblVentana1.setIcon(ventanasIconIzq[ventanaIzq]);
+						lblVentana2.setIcon(ventanasIconDer[ventanaDer]);
+						tglbtnVentana.setSelected(true);
+					}else {
+						lblVentana1.setIcon(ventanasIconIzq[ventanaIzq]);
+						lblVentana2.setIcon(ventanasIconDer[ventanaDer]);
+						tglbtnVentana.setSelected(false);
 					}
 
 
