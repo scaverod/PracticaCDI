@@ -18,6 +18,8 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 
 import java.awt.event.ActionListener;
+import java.awt.event.HierarchyEvent;
+import java.awt.event.HierarchyListener;
 import java.util.concurrent.Semaphore;
 import java.awt.event.ActionEvent;
 
@@ -242,6 +244,17 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 		btnBeinSport.setBounds(536, 138, 100, 90);
 		btnBeinSport.setContentAreaFilled(false);
 		panelPrincipal.add(btnBeinSport);
+		
+		this.addHierarchyListener(new HierarchyListener() {
+			public void hierarchyChanged(HierarchyEvent e) {
+				if (e.getChangeFlags() == HierarchyEvent.HIERARCHY_FIRST || e.getChangeFlags() == HierarchyEvent.SHOWING_CHANGED) {
+					t = controlador.getTexto();
+					
+					btnCerrar.setText(t.getBtnCerrar());
+					txtpnInfo.setText(t.getPanelServiciosEmergenteTelevisionTxt());
+				}
+			}
+		});
 	}
 
 	public void cerrarPanelConfirmacion() {

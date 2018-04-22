@@ -20,6 +20,8 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.HierarchyEvent;
+import java.awt.event.HierarchyListener;
 import java.util.concurrent.Semaphore;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
@@ -136,6 +138,28 @@ public class PanelServiciosEmergenteWifi extends JPanel {
 						}
 					}
 				}.start();
+			}
+		});
+		
+		this.addHierarchyListener(new HierarchyListener() {
+			public void hierarchyChanged(HierarchyEvent e) {
+				if (e.getChangeFlags() == HierarchyEvent.HIERARCHY_FIRST || e.getChangeFlags() == HierarchyEvent.SHOWING_CHANGED) {
+					t = controlador.getTexto();
+					
+					btnCerrar.setText(t.getBtnCerrar());
+					txtpnInfo.setText(t.getPanelServiciosEmergenteWifiTxt());
+					btnAdquirir.setText(t.getBtnAdquirir());
+					labelPrecioYPwd.setText(t.getPanelServiciosEmergenteWifiPwdTxt() + " " + controlador.getServicios().getWifi().getPwd());
+					
+					if(controlador.getServicios().getWifi().isActivado()) {
+						lblPrecio.setText("");
+						labelPrecioYPwd.setText(t.getPanelServiciosEmergenteWifiPwdTxt() + " " + controlador.getServicios().getWifi().getPwd());
+					}
+					else {
+						lblPrecio.setText(t.getLblCoste());
+						labelPrecioYPwd.setText(controlador.getServicios().getWifi().getPrecio() + " \u20AC");
+					}
+				}
 			}
 		});
 	}

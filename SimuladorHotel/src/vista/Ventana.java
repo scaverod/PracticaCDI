@@ -105,7 +105,7 @@ public class Ventana extends JFrame {
 		lblContrasea.setBounds(304, 289, 128, 29);
 		lblContrasea.setFont(new Font("Tahoma", Font.PLAIN, 24));
 
-		campoPassword = new JPasswordField();
+		campoPassword = new JPasswordField("cdi");
 		campoPassword.setBounds(450, 287, 188, 32);
 		campoPassword.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -119,7 +119,7 @@ public class Ventana extends JFrame {
 		lblUsuario.setBounds(304, 239, 120, 29);
 		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 24));
 
-		campoUsuario = new JTextField();
+		campoUsuario = new JTextField("101");
 		campoUsuario.setBounds(450, 237, 188, 32);
 		campoUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

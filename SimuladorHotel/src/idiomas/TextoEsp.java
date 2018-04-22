@@ -139,6 +139,10 @@ public class TextoEsp extends Texto {
 		setPanelServiciosEmergenteLimpiezaTxtUnaVezHaya("Aviso: Una vez haya adquirido este servicio podr\u00E1 cambiar la hora ilimitadas veces sin coste alguno.");
 		setPanelServiciosEmergenteLimpiezaBtnCambiar("Cambiar");
 		
+		// Panel Emergente Telefono
+		setPanelServiciosEmergenteTelefonoTxt("Seleccione el continente al que desea llamar y a continuaci\u00F3n confirme la llamada. \r\nDespu\u00E9s podr\u00E1 usar el tel\u00E9fono de la habitaci\u00F3n para realizar la llamada.");
+		setPanelServiciosEmergenteTelefonobtnConfirmarLLamada("Seleccione un continente");
+		
 		
 		// Panel usuario
 		setLblCuentaHabitacion("Habitación");

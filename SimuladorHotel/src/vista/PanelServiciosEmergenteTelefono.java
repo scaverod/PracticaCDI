@@ -42,7 +42,7 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 		this.setSize(new Dimension(695, 315));
 		this.setName("p" + this.getClass().getSimpleName().substring(1));
 		setLayout(null);
-		JButton btnConfirmarLLamada = new JButton();
+		JButton btnConfirmarLLamada = new JButton(t.getPanelServiciosEmergenteTelefonobtnConfirmarLLamada());
 		btnConfirmarLLamada.setEnabled(false);
 		panelContenedor = new JLayeredPane();
 		panelContenedor.setBounds(0, 0, 695, 315);
@@ -68,8 +68,7 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 		txtpnInfo.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		txtpnInfo.setEditable(false);
 		txtpnInfo.setOpaque(false);
-		txtpnInfo.setText(
-				"Seleccione el continente al que desea llamar y a continuaci\u00F3n confirme la llamada. \r\nDespu\u00E9s podr\u00E1 usar el tel\u00E9fono de la habitaci\u00F3n para realizar la llamada.");
+		txtpnInfo.setText(t.getPanelServiciosEmergenteTelefonoTxt());
 		txtpnInfo.setBounds(10, 11, 593, 81);
 		panelPrincipal.add(txtpnInfo);
 
@@ -112,7 +111,7 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 									controlador.getCuenta().getGasto().addGasto(new StringDouble(t.getAmerica(),
 											controlador.getServicios().getLlamada().getPrecioAmerica()));
 									btnConfirmarLLamada.setEnabled(false);
-									btnConfirmarLLamada.setText("Seleccione un continente");
+									btnConfirmarLLamada.setText(t.getPanelServiciosEmergenteTelefonobtnConfirmarLLamada());
 									lblGif.setVisible(true);
 									Thread.sleep(2050);
 									lblGif.setVisible(false);
@@ -132,7 +131,7 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 									controlador.getCuenta().getGasto().addGasto(new StringDouble(t.getAsia(),
 											controlador.getServicios().getLlamada().getPrecioAsia()));
 									btnConfirmarLLamada.setEnabled(false);
-									btnConfirmarLLamada.setText("Seleccione un continente");
+									btnConfirmarLLamada.setText(t.getPanelServiciosEmergenteTelefonobtnConfirmarLLamada());
 									lblGif.setVisible(true);
 									Thread.sleep(2050);
 									lblGif.setVisible(false);
@@ -152,7 +151,7 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 									controlador.getCuenta().getGasto().addGasto(new StringDouble(t.getEuropa(),
 											controlador.getServicios().getLlamada().getPrecioEuropa()));
 									btnConfirmarLLamada.setEnabled(false);
-									btnConfirmarLLamada.setText("Seleccione un continente");
+									btnConfirmarLLamada.setText(t.getPanelServiciosEmergenteTelefonobtnConfirmarLLamada());
 									lblGif.setVisible(true);
 									Thread.sleep(2050);
 									lblGif.setVisible(false);
@@ -172,7 +171,7 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 									controlador.getCuenta().getGasto().addGasto(new StringDouble(t.getAfrica(),
 											controlador.getServicios().getLlamada().getPrecioAfrica()));
 									btnConfirmarLLamada.setEnabled(false);
-									btnConfirmarLLamada.setText("Seleccione un continente");
+									btnConfirmarLLamada.setText(t.getPanelServiciosEmergenteTelefonobtnConfirmarLLamada());
 									lblGif.setVisible(true);
 									Thread.sleep(2050);
 									lblGif.setVisible(false);
@@ -261,6 +260,7 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 					
 					btnCerrar.setText(t.getBtnCerrar());
 					txtpnInfo.setText(t.getPanelServiciosEmergenteTelevisionTxt());
+					btnConfirmarLLamada.setText(t.getPanelServiciosEmergenteTelefonobtnConfirmarLLamada());
 				}
 			}
 		});

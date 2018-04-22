@@ -127,7 +127,10 @@ public abstract class Texto {
 	private String panelServiciosEmergenteLimpiezaTxt;
 	private String panelServiciosEmergenteLimpiezaTxtUnaVezHaya;
 	private String panelServiciosEmergenteLimpiezaBtnCambiar;
-
+	
+	// Panel Emergente Telefono
+	private String panelServiciosEmergenteTelefonoTxt;
+	private String panelServiciosEmergenteTelefonobtnConfirmarLLamada;
 
 	// Panel Usuario
 	private String lblCuentaHabitacion;
@@ -1204,6 +1207,23 @@ public abstract class Texto {
 
 	public void setPanelServiciosEmergenteLimpiezaBtnCambiar(String panelServiciosEmergenteLimpiezaBtnCambiar) {
 		this.panelServiciosEmergenteLimpiezaBtnCambiar = panelServiciosEmergenteLimpiezaBtnCambiar;
+	}
+
+	public String getPanelServiciosEmergenteTelefonobtnConfirmarLLamada() {
+		return panelServiciosEmergenteTelefonobtnConfirmarLLamada;
+	}
+
+	public void setPanelServiciosEmergenteTelefonobtnConfirmarLLamada(
+			String panelServiciosEmergenteTelefonobtnConfirmarLLamada) {
+		this.panelServiciosEmergenteTelefonobtnConfirmarLLamada = panelServiciosEmergenteTelefonobtnConfirmarLLamada;
+	}
+
+	public String getPanelServiciosEmergenteTelefonoTxt() {
+		return panelServiciosEmergenteTelefonoTxt;
+	}
+
+	public void setPanelServiciosEmergenteTelefonoTxt(String panelServiciosEmergenteTelefonoTxt) {
+		this.panelServiciosEmergenteTelefonoTxt = panelServiciosEmergenteTelefonoTxt;
 	}
 
 }

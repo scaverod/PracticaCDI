@@ -138,6 +138,8 @@ public class TextoEng extends Texto {
 		setPanelServiciosEmergenteSabanasTxt(
 				"Our hotels have a totally personalized service. With just pressing the button, our cleaning service will go to your room with a set of clean bed sheets. Service available 24 hours a day.");
 		
+		// Panel Emergente Telefono
+		setPanelServiciosEmergenteTelefonobtnConfirmarLLamada("Select a continent");
 		
 		// TODO: panel usuario
 		setLblCuentaHabitacion("Room");
