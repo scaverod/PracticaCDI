@@ -22,10 +22,6 @@ import java.util.concurrent.Semaphore;
 
 public class PanelServicios extends JPanel {
 	private static final long serialVersionUID = 1L;
-
-	// FIXME: temporal para que salga el texto en vez de "<dynamic>"
-	// Habría que mandarlo desde el Main, por ejemplo
-	private Texto t;
 	private MicroControladorPanelesPadreHijo microControlador;
 
 	private JPanel panelServicios;
@@ -44,6 +40,8 @@ public class PanelServicios extends JPanel {
 	private JPanel panelTaxi;
 	private JPanel panelTelevision;
 	private JPanel panelInformacion;
+	
+	private Texto t;
 
 	private Semaphore s;
 
