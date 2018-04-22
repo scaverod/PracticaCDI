@@ -72,7 +72,7 @@ public class PanelServiciosEmergenteWifi extends JPanel {
 		txtpnInfo.setEditable(false);
 		txtpnInfo.setOpaque(false);
 		txtpnInfo.setText(t.getPanelServiciosEmergenteWifiTxt());
-		txtpnInfo.setBounds(45, 63, 593, 75);
+		txtpnInfo.setBounds(10, 11, 590, 81);
 		panelPrincipal.add(txtpnInfo);
 
 		JButton btnAdquirir = new JButton(t.getBtnAdquirir());

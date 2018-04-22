@@ -72,7 +72,7 @@ public class PanelServiciosEmergenteTaxi extends JPanel {
 		txtpnInfo.setEditable(false);
 		txtpnInfo.setOpaque(false);
 		txtpnInfo.setText(t.getPanelServiciosEmergenteTaxiTxt());
-		txtpnInfo.setBounds(45, 63, 593, 75);
+		txtpnInfo.setBounds(10, 11, 590, 81);
 		panelPrincipal.add(txtpnInfo);
 
 		JLabel lblGif = new JLabel("");

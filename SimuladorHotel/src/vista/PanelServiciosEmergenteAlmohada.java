@@ -20,6 +20,8 @@ import java.util.concurrent.Semaphore;
 import java.awt.event.ActionEvent;
 import javax.swing.JLayeredPane;
 import javax.swing.border.EtchedBorder;
+import java.awt.event.HierarchyListener;
+import java.awt.event.HierarchyEvent;
 
 public class PanelServiciosEmergenteAlmohada extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -76,14 +78,14 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 		txtpnInfo.setEditable(false);
 		txtpnInfo.setOpaque(false);
 		txtpnInfo.setText(t.getPanelServiciosEmergentealmohadaTxt());
-		txtpnInfo.setBounds(45, 31, 555, 35);
+		txtpnInfo.setBounds(10, 11, 590, 50);
 		panelPrincipal.add(txtpnInfo);
 
 		JPanel panelPrecioVisco = new JPanel();
 		panelPrecioVisco.setBackground(new Color(255, 255, 153));
 		panelPrecioVisco.setBorder(new LineBorder(Color.ORANGE, 3));
 		panelPrecioVisco.setForeground(Color.ORANGE);
-		panelPrecioVisco.setBounds(271, 91, 175, 35);
+		panelPrecioVisco.setBounds(272, 103, 175, 35);
 		panelPrincipal.add(panelPrecioVisco);
 
 		JLabel lblPrecio = new JLabel(t.getLblCoste());
@@ -99,7 +101,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 		panelPrecioLatex.setForeground(Color.ORANGE);
 		panelPrecioLatex.setBorder(new LineBorder(Color.ORANGE, 3));
 		panelPrecioLatex.setBackground(new Color(255, 255, 153));
-		panelPrecioLatex.setBounds(271, 145, 175, 35);
+		panelPrecioLatex.setBounds(272, 157, 175, 35);
 		panelPrincipal.add(panelPrecioLatex);
 
 		JLabel label = new JLabel("Coste:");
@@ -115,7 +117,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 		panelPrecioPluma.setForeground(Color.ORANGE);
 		panelPrecioPluma.setBorder(new LineBorder(Color.ORANGE, 3));
 		panelPrecioPluma.setBackground(new Color(255, 255, 153));
-		panelPrecioPluma.setBounds(271, 199, 175, 35);
+		panelPrecioPluma.setBounds(272, 211, 175, 35);
 		panelPrincipal.add(panelPrecioPluma);
 
 		JLabel label_2 = new JLabel("Coste:");
@@ -131,7 +133,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 		panelPrecioGel.setForeground(Color.ORANGE);
 		panelPrecioGel.setBorder(new LineBorder(Color.ORANGE, 3));
 		panelPrecioGel.setBackground(new Color(255, 255, 153));
-		panelPrecioGel.setBounds(271, 253, 175, 35);
+		panelPrecioGel.setBounds(272, 265, 175, 35);
 		panelPrincipal.add(panelPrecioGel);
 
 		JLabel label_4 = new JLabel("Coste:");
@@ -243,12 +245,12 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 				}.start();
 			}
 		});
-		btnComprarVisco.setBounds(532, 91, 75, 35);
+		btnComprarVisco.setBounds(533, 103, 75, 35);
 		panelPrincipal.add(btnComprarVisco);
 		btnComprarLatex.setContentAreaFilled(false);
 		btnComprarLatex
 				.setIcon(new ImageIcon(PanelServiciosEmergenteAlmohada.class.getResource("/iconos/comprar.png")));
-		btnComprarLatex.setBounds(532, 145, 75, 35);
+		btnComprarLatex.setBounds(533, 157, 75, 35);
 		panelPrincipal.add(btnComprarLatex);
 
 		JButton btnComprarPluma = new JButton("");
@@ -284,7 +286,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 		btnComprarPluma.setContentAreaFilled(false);
 		btnComprarPluma
 				.setIcon(new ImageIcon(PanelServiciosEmergenteAlmohada.class.getResource("/iconos/comprar.png")));
-		btnComprarPluma.setBounds(532, 199, 75, 35);
+		btnComprarPluma.setBounds(533, 211, 75, 35);
 		panelPrincipal.add(btnComprarPluma);
 
 		JButton btnComprarGel = new JButton("");
@@ -319,28 +321,43 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 		btnComprarGel.setContentAreaFilled(false);
 		btnComprarGel.setOpaque(false);
 		btnComprarGel.setIcon(new ImageIcon(PanelServiciosEmergenteAlmohada.class.getResource("/iconos/comprar.png")));
-		btnComprarGel.setBounds(532, 253, 75, 35);
+		btnComprarGel.setBounds(533, 265, 75, 35);
 		panelPrincipal.add(btnComprarGel);
 
 		JPanel panelBordeVisco = new JPanel();
 		panelBordeVisco.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
-		panelBordeVisco.setBounds(65, 86, 564, 44);
+		panelBordeVisco.setBounds(66, 98, 564, 44);
 		panelPrincipal.add(panelBordeVisco);
 
 		JPanel panelBordeLatex = new JPanel();
 		panelBordeLatex.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
-		panelBordeLatex.setBounds(65, 140, 564, 44);
+		panelBordeLatex.setBounds(66, 152, 564, 44);
 		panelPrincipal.add(panelBordeLatex);
 
 		JPanel panelBordePluma = new JPanel();
 		panelBordePluma.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
-		panelBordePluma.setBounds(65, 194, 564, 44);
+		panelBordePluma.setBounds(66, 206, 564, 44);
 		panelPrincipal.add(panelBordePluma);
 
 		JPanel panelBordeGel = new JPanel();
 		panelBordeGel.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
-		panelBordeGel.setBounds(65, 248, 564, 44);
+		panelBordeGel.setBounds(66, 260, 564, 44);
 		panelPrincipal.add(panelBordeGel);
+		
+		this.addHierarchyListener(new HierarchyListener() {
+			public void hierarchyChanged(HierarchyEvent e) {
+				if (e.getChangeFlags() == HierarchyEvent.HIERARCHY_FIRST || e.getChangeFlags() == HierarchyEvent.SHOWING_CHANGED) {
+					t = controlador.getTexto();
+					
+					btnCerrar.setText(t.getBtnCerrar());
+					txtpnInfo.setText(t.getPanelServiciosEmergentealmohadaTxt());
+					textPaneVisco.setText(t.getPanelServiciosEmergentealmohadaVisco());
+					textPaneLatex.setText(t.getPanelServiciosEmergentealmohadaLatex());
+					textPanePluma.setText(t.getPanelServiciosEmergentealmohadaPluma());
+					textPaneGel.setText(t.getPanelServiciosEmergentealmohadaGel());
+				}
+			}
+		});
 	}
 
 	public void cerrarPanelConfirmacion() {

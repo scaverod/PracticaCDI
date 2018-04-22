@@ -123,7 +123,7 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 		txtpnInfo.setEditable(false);
 		txtpnInfo.setOpaque(false);
 		txtpnInfo.setText(t.getPanelServiciosEmergenteTelevisionTxt());
-		txtpnInfo.setBounds(51, 63, 593, 75);
+		txtpnInfo.setBounds(10, 11, 590, 81);
 		panelPrincipal.add(txtpnInfo);
 
 		JButton btnNetflix = new JButton("");

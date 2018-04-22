@@ -111,7 +111,7 @@ public class PanelServiciosEmergenteSabanas extends JPanel {
 		txtpnInfo.setEditable(false);
 		txtpnInfo.setOpaque(false);
 		txtpnInfo.setText(t.getPanelServiciosEmergenteSabanasTxt());
-		txtpnInfo.setBounds(45, 63, 593, 75);
+		txtpnInfo.setBounds(10, 11, 590, 81);
 		panelPrincipal.add(txtpnInfo);
 
 		JPanel panel = new JPanel();

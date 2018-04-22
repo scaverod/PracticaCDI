@@ -21,6 +21,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeEvent;
+import java.awt.event.HierarchyListener;
+import java.awt.event.HierarchyEvent;
 
 public class PanelServicios extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -336,6 +338,25 @@ public class PanelServicios extends JPanel {
 		panelPrincipalAux.setBounds(0, 0, 931, 483);
 		layeredPane.add(panelPrincipalAux);
 		panelPrincipalAux.setLayout(null);
+		
+		layeredPane.addHierarchyListener(new HierarchyListener() {
+			public void hierarchyChanged(HierarchyEvent e) {
+				t = controlador.getTexto();
+				
+				btnBotones.setText(t.getPanelServiciosBtnBotones());
+				btnCambiarSabanas.setText(t.getPanelServiciosBtnCambiarSabanas());
+				btnCambioAlmohada.setText(t.getPanelServiciosBtnCambioAlmohada());
+				btnCambioToalla.setText(t.getPanelServiciosBtnCambioToalla());
+				btnComidaHab.setText(t.getPanelServiciosBtnComidaHab());
+				btnHorarioLimpieza.setText(t.getPanelServiciosBtnHorarioLimpieza());
+				btnInformacion.setText(t.getPanelServiciosBtnInformacion());
+				btnMiniBar.setText(t.getPanelServiciosBtnMinibar());
+				btnPedirTaxi.setText(t.getPanelServiciosBtnPedirTaxi());
+				btnTelefono.setText(t.getPanelServiciosBtnTelefono());
+				btnTelevision.setText(t.getPanelServiciosBtnTelevision());
+				btnWifi.setText(t.getPanelServiciosBtnWifi());
+			}
+		});
 	}
 
 	private void establecerVentanaServicio(String panel) {

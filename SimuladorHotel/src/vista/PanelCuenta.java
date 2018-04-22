@@ -28,6 +28,8 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.HierarchyListener;
+import java.awt.event.HierarchyEvent;
 
 public class PanelCuenta extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -39,7 +41,6 @@ public class PanelCuenta extends JPanel {
 	private JPanel panelDetalles;
 
 	public PanelCuenta(Controlador controlador, Ventana ventana) {
-
 		this.setSize(new Dimension(931, 483));
 		this.setName("p" + this.getClass().getSimpleName().substring(1));
 		t = controlador.getTexto();
@@ -424,6 +425,16 @@ public class PanelCuenta extends JPanel {
 		} else {
 			btnRU.setSelected(true);
 		}
+		
+		layeredPane.addHierarchyListener(new HierarchyListener() {
+			public void hierarchyChanged(HierarchyEvent e) {
+				if (e.getChangeFlags() == HierarchyEvent.SHOWING_CHANGED) {
+					lblGastoNumero.setText(String.format("%.2f", controlador.getCuenta().getGasto().getGastoTotal()) + " \u20AC");
+					panelDetalles = new PanelCuentaEmergenteDetalles(new MicroControladorLayersPadreHijo(layeredPane, panelEmergenteContenedor), controlador);
+					panelEmergenteContenedor.add(panelDetalles, panelDetalles.getName());
+				}
+			}
+		});
 	}
 	
 	private void establecerVentanaServicio(String panel) {

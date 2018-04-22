@@ -67,7 +67,7 @@ public class PanelServiciosEmergenteComida extends JPanel {
 		txtpnInfo.setOpaque(false);
 		//Mensaje en la clase Texto
 		txtpnInfo.setText(t.getPanelServiciosEmergenteComidaTxt());
-		txtpnInfo.setBounds(45, 63, 593, 75);
+		txtpnInfo.setBounds(10, 11, 590, 81);
 		panelPrincipal.add(txtpnInfo);
 
 		crearPanelConfirmacion("<precio>");
