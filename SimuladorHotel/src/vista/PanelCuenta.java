@@ -413,7 +413,7 @@ public class PanelCuenta extends JPanel {
 		if (controlador.getCuenta().getPersonalizacion().isAumentoTexto()) {
 			tglbtnAumentarTexto.setSelected(true);
 		}
-//		FIXME: System.out.println();
+		
 		if (controlador.getCuenta().getIdioma() == Idioma.Castellano) {
 			btnESP.setSelected(true);
 		} else if (controlador.getCuenta().getIdioma() == Idioma.Ingles) {
@@ -422,15 +422,6 @@ public class PanelCuenta extends JPanel {
 			btnRU.setSelected(true);
 		}
 	}
-
-//	private void changeToPanelEmergente(JPanel subPanel) {
-//		// Cambio el panel activo dentro del panel emergente
-//		CardLayout l = (CardLayout) panelEmergenteContenedor.getLayout();
-//		l.show(panelEmergenteContenedor, subPanel.getName());
-//
-//		// Pongo el panel emergente por encima del principal
-//		layeredPane.setLayer(panelEmergenteContenedor, 2);
-//	}
 	
 	private void establecerVentanaServicio(String panel) {
 		CardLayout l = (CardLayout) panelEmergenteContenedor.getLayout();
