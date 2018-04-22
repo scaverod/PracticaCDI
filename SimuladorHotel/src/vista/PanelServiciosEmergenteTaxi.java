@@ -20,6 +20,8 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.HierarchyEvent;
+import java.awt.event.HierarchyListener;
 import java.util.concurrent.Semaphore;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
@@ -191,7 +193,18 @@ public class PanelServiciosEmergenteTaxi extends JPanel {
 				String.valueOf(controlador.getServicios().getTaxi().getPrecio()) + " \u20AC");
 		panelPrecio.add(labelPrecioYPwd);
 		labelPrecioYPwd.setFont(new Font("Tahoma", Font.PLAIN, 15));
-
+		
+		this.addHierarchyListener(new HierarchyListener() {
+			public void hierarchyChanged(HierarchyEvent e) {
+				if (e.getChangeFlags() == HierarchyEvent.HIERARCHY_FIRST || e.getChangeFlags() == HierarchyEvent.SHOWING_CHANGED) {
+					t = controlador.getTexto();
+					
+					btnCerrar.setText(t.getBtnCerrar());
+					txtpnInfo.setText(t.getPanelServiciosEmergenteTaxiTxt());
+					lblPrecio.setText(t.getLblCoste());
+				}
+			}
+		});
 	}
 
 	public void generarGasto(String compania, Controlador controlador) {

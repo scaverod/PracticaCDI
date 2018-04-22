@@ -106,7 +106,7 @@ public class PanelServiciosEmergenteLimpieza extends JPanel {
 									lblGif.setVisible(true);
 									Thread.sleep(2050);
 									lblGif.setVisible(false);
-									btnAdquirir.setText("Cambiar");
+									btnAdquirir.setText(t.getPanelServiciosEmergenteLimpiezaBtnCambiar());
 									// Tiene que hacerse siempre!
 									((PanelConfirmacion) panelConfirmacion).setConfirmacion(false);
 								}

@@ -59,8 +59,6 @@ public abstract class Texto {
 	private String lblVentana;
 	private String lblPersianas;
 	private String btnAbrir;
-	
-	
 
 	// TODO: pendiente de que se haga primero el panel habitacion
 
@@ -134,6 +132,7 @@ public abstract class Texto {
 	// Panel Emergente Limpieza
 	private String panelServiciosEmergenteLimpiezaTxt;
 	private String panelServiciosEmergenteLimpiezaTxtUnaVezHaya;
+	private String panelServiciosEmergenteLimpiezaBtnCambiar;
 
 	// Panel Usuario
 	private String lblCuentaHabitacion;
@@ -1226,6 +1225,14 @@ public abstract class Texto {
 
 	public void setTxtTip3(String txtTip3) {
 		this.txtTip3 = txtTip3;
+	}
+
+	public String getPanelServiciosEmergenteLimpiezaBtnCambiar() {
+		return panelServiciosEmergenteLimpiezaBtnCambiar;
+	}
+
+	public void setPanelServiciosEmergenteLimpiezaBtnCambiar(String panelServiciosEmergenteLimpiezaBtnCambiar) {
+		this.panelServiciosEmergenteLimpiezaBtnCambiar = panelServiciosEmergenteLimpiezaBtnCambiar;
 	}
 
 }

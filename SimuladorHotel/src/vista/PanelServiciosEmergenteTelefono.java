@@ -18,6 +18,8 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.HierarchyEvent;
+import java.awt.event.HierarchyListener;
 import java.util.concurrent.Semaphore;
 import java.awt.event.ActionEvent;
 import javax.swing.JLayeredPane;
@@ -40,7 +42,7 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 		this.setSize(new Dimension(695, 315));
 		this.setName("p" + this.getClass().getSimpleName().substring(1));
 		setLayout(null);
-		JButton btnConfirmarLLamada = new JButton("Seleccione un continente");
+		JButton btnConfirmarLLamada = new JButton();
 		btnConfirmarLLamada.setEnabled(false);
 		panelContenedor = new JLayeredPane();
 		panelContenedor.setBounds(0, 0, 695, 315);
@@ -251,6 +253,17 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 		lblImagen.setIcon(new ImageIcon(PanelServiciosEmergenteTelefono.class.getResource("/iconos/continente.png")));
 		lblImagen.setBounds(111, 45, 472, 259);
 		panelPrincipal.add(lblImagen);
+		
+		this.addHierarchyListener(new HierarchyListener() {
+			public void hierarchyChanged(HierarchyEvent e) {
+				if (e.getChangeFlags() == HierarchyEvent.HIERARCHY_FIRST || e.getChangeFlags() == HierarchyEvent.SHOWING_CHANGED) {
+					t = controlador.getTexto();
+					
+					btnCerrar.setText(t.getBtnCerrar());
+					txtpnInfo.setText(t.getPanelServiciosEmergenteTelevisionTxt());
+				}
+			}
+		});
 	}
 
 	public void cerrarPanelConfirmacion() {
