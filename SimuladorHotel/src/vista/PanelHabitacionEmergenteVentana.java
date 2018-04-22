@@ -21,6 +21,7 @@ public class PanelHabitacionEmergenteVentana extends JPanel {
 	private Texto t;
 	// Valores de la posicion de las persianas del 0 al 4
 	private int persianas;
+	// Valores de la posicion de las persianas del 0 al 2
 	private int ventanas;
 	private ImageIcon[] persianasIcon = {
 			new ImageIcon(PanelHabitacionEmergenteVentana.class.getResource("/iconos/persiana0.png")),
@@ -82,10 +83,12 @@ public class PanelHabitacionEmergenteVentana extends JPanel {
 				if(ventanas == 0) {
 					ventanas++;
 					lblVentana.setIcon(ventanasIcon[ventanas]);
+					controlador.getHabitacion().setVentanaIzq(ventanas);
 				}else if (ventanas == 1) {
 					ventanas++;
 					lblVentana.setIcon(ventanasIcon[ventanas]);
 					btnAbrir.setEnabled(false);
+					controlador.getHabitacion().setVentanaIzq(ventanas);
 				}
 			}
 		});
@@ -98,10 +101,12 @@ public class PanelHabitacionEmergenteVentana extends JPanel {
 				if(ventanas==2) {
 					ventanas--;
 					lblVentana.setIcon(ventanasIcon[ventanas]);
+					controlador.getHabitacion().setVentanaIzq(ventanas);
 				} else if(ventanas == 1) {
 					ventanas --;
 					lblVentana.setIcon(ventanasIcon[ventanas]);
 					btnCerrarV.setEnabled(false);
+					controlador.getHabitacion().setVentanaIzq(ventanas);
 				}
 			}
 		});
@@ -131,10 +136,12 @@ public class PanelHabitacionEmergenteVentana extends JPanel {
 					persianas--;
 					lblPersiana.setIcon(persianasIcon[persianas]);
 					btnBajar.setEnabled(true);
+					controlador.getHabitacion().setPersianaIzq(persianas);
 				} else if (persianas == 1) {
 					persianas--;
 					lblPersiana.setIcon(persianasIcon[persianas]);
 					btnSubir.setEnabled(false);
+					controlador.getHabitacion().setPersianaIzq(persianas);
 				}
 			}
 		});
@@ -151,10 +158,12 @@ public class PanelHabitacionEmergenteVentana extends JPanel {
 					persianas++;
 					btnSubir.setEnabled(true);
 					lblPersiana.setIcon(persianasIcon[persianas]);
+					controlador.getHabitacion().setPersianaIzq(persianas);
 				} else if (persianas == 3) {
 					persianas++;
 					lblPersiana.setIcon(persianasIcon[persianas]);
 					btnBajar.setEnabled(false);
+					controlador.getHabitacion().setPersianaIzq(persianas);
 				}
 
 			}

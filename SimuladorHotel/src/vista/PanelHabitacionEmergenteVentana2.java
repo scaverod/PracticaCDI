@@ -78,6 +78,7 @@ public class PanelHabitacionEmergenteVentana2 extends JPanel {
 				btnAbrir.setEnabled(false);
 				btnCerrarV.setEnabled(true);
 				lblVentana.setIcon(ventanasIcon[1]);
+				controlador.getHabitacion().setVentanaDer(1);
 			}
 		});
 		btnAbrir.setBounds(59, 185, 78, 44);
@@ -88,6 +89,7 @@ public class PanelHabitacionEmergenteVentana2 extends JPanel {
 				btnCerrarV.setEnabled(false);
 				btnAbrir.setEnabled(true);
 				lblVentana.setIcon(ventanasIcon[0]);
+				controlador.getHabitacion().setVentanaDer(0);
 			}
 		});
 		btnCerrarV.setBounds(196, 185, 78, 44);
@@ -116,10 +118,12 @@ public class PanelHabitacionEmergenteVentana2 extends JPanel {
 					persianas--;
 					lblPersiana.setIcon(persianasIcon[persianas]);
 					btnBajar.setEnabled(true);
+					controlador.getHabitacion().setPersianaDer(persianas);
 				} else if (persianas == 1) {
 					persianas--;
 					lblPersiana.setIcon(persianasIcon[persianas]);
 					btnSubir.setEnabled(false);
+					controlador.getHabitacion().setPersianaDer(persianas);
 				}
 			}
 		});
@@ -136,10 +140,12 @@ public class PanelHabitacionEmergenteVentana2 extends JPanel {
 					persianas++;
 					btnSubir.setEnabled(true);
 					lblPersiana.setIcon(persianasIcon[persianas]);
+					controlador.getHabitacion().setPersianaDer(persianas);
 				} else if (persianas == 3) {
 					persianas++;
 					lblPersiana.setIcon(persianasIcon[persianas]);
 					btnBajar.setEnabled(false);
+					controlador.getHabitacion().setPersianaDer(persianas);
 				}
 
 			}

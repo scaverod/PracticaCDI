@@ -136,6 +136,13 @@ public class PanelHabitacion extends JPanel {
 				}
 			}
 		});
+		
+				JLabel lblTemperatura = new JLabel("23\u00BA");
+				lblTemperatura.setHorizontalAlignment(SwingConstants.CENTER);
+				lblTemperatura.setForeground(Color.WHITE);
+				lblTemperatura.setFont(new Font("Tahoma", Font.BOLD, 12));
+				lblTemperatura.setBounds(31, 38, 80, 27);
+				panelPrincipal.add(lblTemperatura);
 
 		tglbtnLuz.setToolTipText("Encender o apagar todas las luces.");
 		tglbtnLuz.setSelectedIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/lucesON.png")));
@@ -312,8 +319,8 @@ public class PanelHabitacion extends JPanel {
 			}
 		});
 		btnAyuda.setToolTipText("<consejos>");
-		btnAyuda.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/help.png")));
-		btnAyuda.setBounds(871, 411, 50, 50);
+		btnAyuda.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/tips.png")));
+		btnAyuda.setBounds(861, 411, 60, 61);
 		btnAyuda.setOpaque(false);
 		btnAyuda.setContentAreaFilled(false);
 		panelPrincipal.add(btnAyuda);
@@ -325,13 +332,44 @@ public class PanelHabitacion extends JPanel {
 		btnTemperatura.setBounds(10, 11, 80, 80);
 		btnTemperatura.setContentAreaFilled(false);
 		panelPrincipal.add(btnTemperatura);
-
-		JLabel lblTemperatura = new JLabel("23\u00BA");
-		lblTemperatura.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTemperatura.setForeground(Color.WHITE);
-		lblTemperatura.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblTemperatura.setBounds(10, 80, 80, 27);
-		panelPrincipal.add(lblTemperatura);
+		
+		JLabel lblPersiana1 = new JLabel("");
+		lblPersiana1.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/persiana4min.png")));
+		lblPersiana1.setBounds(179, 196, 32, 32);
+		panelPrincipal.add(lblPersiana1);
+		
+		JLabel lblPersiana2 = new JLabel("");
+		lblPersiana2.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/persiana4min.png")));
+		lblPersiana2.setBounds(519, 196, 32, 32);
+		panelPrincipal.add(lblPersiana2);
+		
+		JLabel lblVentana1 = new JLabel("");
+		lblVentana1.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/ventana20min.png")));
+		lblVentana1.setBounds(134, 196, 32, 32);
+		panelPrincipal.add(lblVentana1);
+		
+		JLabel lblVentana2 = new JLabel("");
+		lblVentana2.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/ventana0min.png")));
+		lblVentana2.setBounds(484, 196, 32, 32);
+		panelPrincipal.add(lblVentana2);
+		
+		JToggleButton tglbtnPersiana = new JToggleButton("");
+		tglbtnPersiana.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/persianaSubirAll.png")));
+		tglbtnPersiana.setToolTipText("Encender o apagar todas las luces.");
+		tglbtnPersiana.setOpaque(false);
+		tglbtnPersiana.setFocusPainted(false);
+		tglbtnPersiana.setContentAreaFilled(false);
+		tglbtnPersiana.setBounds(261, 403, 75, 69);
+		panelPrincipal.add(tglbtnPersiana);
+		
+		JToggleButton tglbtnVentana = new JToggleButton("");
+		tglbtnVentana.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/ventanaOpenAll.png")));
+		tglbtnVentana.setToolTipText("Encender o apagar todas las luces.");
+		tglbtnVentana.setOpaque(false);
+		tglbtnVentana.setFocusPainted(false);
+		tglbtnVentana.setContentAreaFilled(false);
+		tglbtnVentana.setBounds(176, 403, 75, 69);
+		panelPrincipal.add(tglbtnVentana);
 
 		// En principio no tiene que estar al final, pero por seguir la misma estructura
 		// que en panelSpa y porque tiene sentido lo voy a poner aquí
