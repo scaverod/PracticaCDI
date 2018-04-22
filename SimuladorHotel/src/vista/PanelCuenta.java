@@ -38,7 +38,7 @@ public class PanelCuenta extends JPanel {
 	private JPanel panelEmergenteContenedor;
 	private JPanel panelDetalles;
 
-	public PanelCuenta(Controlador controlador) {
+	public PanelCuenta(Controlador controlador, Ventana ventana) {
 
 		this.setSize(new Dimension(931, 483));
 		this.setName("p" + this.getClass().getSimpleName().substring(1));
@@ -351,6 +351,7 @@ public class PanelCuenta extends JPanel {
 				controlador.getCuenta().setIdioma(Idioma.Castellano);
 				controlador.setTexto(new TextoManager(TextoManager.español).getTexto());
 				t = controlador.getTexto();
+				ventana.changeIdioma();
 				lblHabitacion.setText(t.getLblCuentaHabitacion() + ": " + controlador.getCuenta().getUsuario());
 				lblElegirIdioma.setText(t.getLblElegirIdioma());
 				lblAumentarTexto.setText(t.getLblAumentarTexto());
@@ -369,6 +370,7 @@ public class PanelCuenta extends JPanel {
 				controlador.getCuenta().setIdioma(Idioma.Ingles);
 				controlador.setTexto(new TextoManager(TextoManager.english).getTexto());
 				t = controlador.getTexto();
+				ventana.changeIdioma();
 				lblHabitacion.setText(t.getLblCuentaHabitacion() + ": " + controlador.getCuenta().getUsuario());
 				lblElegirIdioma.setText(t.getLblElegirIdioma());
 				lblAumentarTexto.setText(t.getLblAumentarTexto());
@@ -387,6 +389,7 @@ public class PanelCuenta extends JPanel {
 				controlador.getCuenta().setIdioma(Idioma.Rumano);
 				controlador.setTexto(new TextoManager(TextoManager.romana).getTexto());
 				t = controlador.getTexto();
+				ventana.changeIdioma();
 				lblHabitacion.setText(t.getLblCuentaHabitacion() + ": " + controlador.getCuenta().getUsuario());
 				lblElegirIdioma.setText(t.getLblElegirIdioma());
 				lblAumentarTexto.setText(t.getLblAumentarTexto());

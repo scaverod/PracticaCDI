@@ -70,7 +70,6 @@ public class Ventana extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		// contentPane.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
 		JLayeredPane layeredPane = new JLayeredPane();
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
@@ -79,10 +78,10 @@ public class Ventana extends JFrame {
 		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addComponent(layeredPane,
 				GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE));
 
-		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon(Ventana.class.getResource("/iconos/marcoTablet.png")));
-		label.setBounds(130, 3, 1080, 690);
-		layeredPane.add(label);
+		JLabel lblMarco = new JLabel("");
+		lblMarco.setIcon(new ImageIcon(Ventana.class.getResource("/iconos/marcoTablet.png")));
+		lblMarco.setBounds(130, 3, 1080, 690);
+		layeredPane.add(lblMarco);
 
 		pantalla = new JPanel();
 		layeredPane.setLayer(pantalla, 1);
@@ -144,25 +143,25 @@ public class Ventana extends JFrame {
 		separador.setBounds(0, 0, 939, 1);
 
 		// Es una prueba
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setBounds(301, 7, 337, 200);
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setIcon(new ImageIcon(Ventana.class.getResource("/iconos/logoAplicacion.png")));
+		JLabel lblLogo = new JLabel("");
+		lblLogo.setBounds(301, 7, 337, 200);
+		lblLogo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLogo.setIcon(new ImageIcon(Ventana.class.getResource("/iconos/logoAplicacion.png")));
 
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setBounds(304, 389, 334, 96);
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setIcon(new ImageIcon(Ventana.class.getResource("/iconos/eslogan1.png")));
+		JLabel lblEslogan = new JLabel("");
+		lblEslogan.setBounds(304, 389, 334, 96);
+		lblEslogan.setHorizontalAlignment(SwingConstants.CENTER);
+		lblEslogan.setIcon(new ImageIcon(Ventana.class.getResource("/iconos/eslogan1.png")));
 		panelLogin.add(panelDatosSesion);
 		panelDatosSesion.setLayout(null);
 		panelDatosSesion.add(separador);
-		panelDatosSesion.add(lblNewLabel);
+		panelDatosSesion.add(lblLogo);
 		panelDatosSesion.add(lblUsuario);
 		panelDatosSesion.add(campoUsuario);
 		panelDatosSesion.add(btnAceptar);
 		panelDatosSesion.add(lblContrasea);
 		panelDatosSesion.add(campoPassword);
-		panelDatosSesion.add(lblNewLabel_1);
+		panelDatosSesion.add(lblEslogan);
 		panelLogin.add(lblInicieSesinPara);
 
 		panelPrincipal = new JPanel();
@@ -213,7 +212,7 @@ public class Ventana extends JFrame {
 		panelServicios = new PanelServicios(controlador);
 		pantallaMenu.add(panelServicios, panelServicios.getName());
 
-		panelCuenta = new PanelCuenta(controlador);
+		panelCuenta = new PanelCuenta(controlador, this);
 		pantallaMenu.add(panelCuenta, panelCuenta.getName());
 
 		btnSpa = new JToggleButton(t.getMenuPrincipalBtnSpa());
@@ -234,6 +233,7 @@ public class Ventana extends JFrame {
 		btnHabitacion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				changeToHabitacion();
+				changeIdioma();
 			}
 		});
 		btnHabitacion.setFont(new Font("Tahoma", Font.PLAIN, 24));
@@ -246,8 +246,8 @@ public class Ventana extends JFrame {
 		btnCuenta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// TODO: Controlar esto para que se guarde el estado del resto de las cosas
-				panelCuenta = new PanelCuenta(controlador);
-				pantallaMenu.add(panelCuenta, panelCuenta.getName());
+//				panelCuenta = new PanelCuenta(controlador);
+//				pantallaMenu.add(panelCuenta, panelCuenta.getName());
 				changeToCuenta();
 			}
 		});
@@ -310,7 +310,16 @@ public class Ventana extends JFrame {
 			pantallaMenuActiva = "panelHabitacion";
 		}
 	}
-
+	
+	public void changeIdioma() {
+		t = controlador.getTexto();
+		
+		btnHabitacion.setText(t.getMenuPrincipalBtnHabitacion());
+		btnSpa.setText(t.getMenuPrincipalBtnSpa());
+		btnServicios.setText(t.getMenuPrincipalBtnServicios());
+		btnCuenta.setText(t.getMenuPrincipalBtnCuenta());
+	}
+	
 	private void changeToHabitacion() {
 		CardLayout l = (CardLayout) pantallaMenu.getLayout();
 		l.show(pantallaMenu, panelHabitacion.getName());
@@ -337,43 +346,43 @@ public class Ventana extends JFrame {
 
 	private void desplazamientoDerecha() {
 		switch (pantallaMenuActiva) {
-		case "panelHabitacion":
-			btnCuenta.setSelected(true);
-			changeToCuenta();
-			break;
-		case "panelSpa":
-			btnHabitacion.setSelected(true);
-			changeToHabitacion();
-			break;
-		case "panelServicios":
-			btnSpa.setSelected(true);
-			changeToSpa();
-			break;
-		case "panelCuenta":
-			btnServicios.setSelected(true);
-			changeToServicios();
-			break;
-		}
+			case "panelHabitacion":
+				btnCuenta.setSelected(true);
+				changeToCuenta();
+				break;
+			case "panelSpa":
+				btnHabitacion.setSelected(true);
+				changeToHabitacion();
+				break;
+			case "panelServicios":
+				btnSpa.setSelected(true);
+				changeToSpa();
+				break;
+			case "panelCuenta":
+				btnServicios.setSelected(true);
+				changeToServicios();
+				break;
+			}
 	}
 
 	private void desplazamientoIzquierda() {
 		switch (pantallaMenuActiva) {
-		case "panelHabitacion":
-			btnSpa.setSelected(true);
-			changeToSpa();
-			break;
-		case "panelSpa":
-			btnServicios.setSelected(true);
-			changeToServicios();
-			break;
-		case "panelServicios":
-			btnCuenta.setSelected(true);
-			changeToCuenta();
-			break;
-		case "panelCuenta":
-			btnHabitacion.setSelected(true);
-			changeToHabitacion();
-			break;
-		}
+			case "panelHabitacion":
+				btnSpa.setSelected(true);
+				changeToSpa();
+				break;
+			case "panelSpa":
+				btnServicios.setSelected(true);
+				changeToServicios();
+				break;
+			case "panelServicios":
+				btnCuenta.setSelected(true);
+				changeToCuenta();
+				break;
+			case "panelCuenta":
+				btnHabitacion.setSelected(true);
+				changeToHabitacion();
+				break;
+			}
 	}
 }
