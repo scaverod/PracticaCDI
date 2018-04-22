@@ -33,24 +33,60 @@ public class PanelHabitacionEmergenteVentana2 extends JPanel {
 			new ImageIcon(PanelHabitacionEmergenteVentana2.class.getResource("/iconos/ventana0.png")),
 			new ImageIcon(PanelHabitacionEmergenteVentana2.class.getResource("/iconos/ventana1.png")) };
 
+
+	private JLabel lblVentana;
+	private JLabel lblPersiana;
+	private JButton btnCerrar;
+	private JButton btnAbrir;
+	private JButton btnCerrarV;
+	private JButton btnSubir;
+	private JButton btnBajar;
+
+	
+	
 	public PanelHabitacionEmergenteVentana2(MicroControladorLayersPadreHijo m, Controlador controlador) {
 		addHierarchyListener(new HierarchyListener() {
 			public void hierarchyChanged(HierarchyEvent e) {
 				if (e.getChangeFlags() == HierarchyEvent.HIERARCHY_FIRST) {
-					// TODO: comprobar estado de persianas y ventnas y cambiar si necesario
+					// Compruebo Persiana
+					if (controlador.getHabitacion().getPersianaDer() == 0) {
+						persianas = 0;
+						btnSubir.setEnabled(false);
+						btnBajar.setEnabled(true);
+						lblPersiana.setIcon(persianasIcon[persianas]);
+					} else if (controlador.getHabitacion().getPersianaDer() == 4) {
+						persianas = 4;
+						btnSubir.setEnabled(true);
+						btnBajar.setEnabled(false);
+						lblPersiana.setIcon(persianasIcon[persianas]);
+					}
+					//Compruebo ventana
+					if (controlador.getHabitacion().getVentanaDer() == 0) {
+						btnAbrir.setEnabled(true);
+						btnCerrarV.setEnabled(false);
+						lblVentana.setIcon(ventanasIcon[0]);
+						
+					} else if (controlador.getHabitacion().getVentanaDer() == 1) {
+						btnAbrir.setEnabled(false);
+						btnCerrarV.setEnabled(true);
+						lblVentana.setIcon(ventanasIcon[1]);
+					}
+
 				}
 			}
 		});
+
 		t = controlador.getTexto();
 
+		
 		this.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 109, 240), new Color(0, 109, 240),
 				new Color(0, 109, 240), new Color(0, 109, 240)));
 		this.setSize(695, 315);
 		this.setName("p" + this.getClass().getSimpleName().substring(1));
 		setLayout(null);
 
-		JLabel lblPersiana = new JLabel("");
-		JButton btnCerrar = new JButton(t.getBtnCerrar());
+		btnCerrar = new JButton("");
+		btnCerrar.setText(t.getBtnCerrar());
 		btnCerrar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnCerrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -70,14 +106,15 @@ public class PanelHabitacionEmergenteVentana2 extends JPanel {
 		add(panelVentana);
 		panelVentana.setLayout(null);
 
-		JLabel lblVentana = new JLabel("");
+		lblVentana = new JLabel("");
 		lblVentana.setIcon(ventanasIcon[0]);
 		lblVentana.setBounds(92, 24, 150, 150);
 		panelVentana.add(lblVentana);
 
-		JButton btnAbrir = new JButton("Abrir");
+		btnAbrir = new JButton("Abrir");
 		btnAbrir.setRequestFocusEnabled(false);
-		JButton btnCerrarV = new JButton("Cerrar");
+
+		btnCerrarV = new JButton("Cerrar");
 		btnCerrarV.setRequestFocusEnabled(false);
 
 		btnCerrarV.setEnabled(false);
@@ -113,9 +150,10 @@ public class PanelHabitacionEmergenteVentana2 extends JPanel {
 		panelPersiana.setBounds(354, 64, 334, 240);
 		add(panelPersiana);
 
-		JButton btnSubir = new JButton("");
+		btnSubir = new JButton("");
 		btnSubir.setRequestFocusEnabled(false);
-		JButton btnBajar = new JButton("");
+
+		btnBajar = new JButton("");
 		btnBajar.setRequestFocusEnabled(false);
 
 		btnSubir.setEnabled(false);
@@ -139,6 +177,7 @@ public class PanelHabitacionEmergenteVentana2 extends JPanel {
 		btnSubir.setBounds(59, 185, 78, 44);
 		panelPersiana.add(btnSubir);
 
+		lblPersiana = new JLabel("");
 		lblPersiana.setIcon(persianasIcon[0]);
 		lblPersiana.setBounds(92, 24, 150, 150);
 		panelPersiana.add(lblPersiana);

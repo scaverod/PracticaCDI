@@ -359,11 +359,11 @@ public class PanelHabitacion extends JPanel {
 		tglbtnPersiana.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(tglbtnPersiana.isSelected()) {
-					controlador.getHabitacion().setVentanaDer(4);
-					controlador.getHabitacion().setVentanaIzq(4);
+					controlador.getHabitacion().setPersianaDer(4);
+					controlador.getHabitacion().setPersianaIzq(4);
 				}else {
-					controlador.getHabitacion().setVentanaDer(0);
-					controlador.getHabitacion().setVentanaIzq(0);
+					controlador.getHabitacion().setPersianaDer(0);
+					controlador.getHabitacion().setPersianaIzq(0);
 				}
 				
 			}
