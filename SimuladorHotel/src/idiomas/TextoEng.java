@@ -84,7 +84,7 @@ public class TextoEng extends Texto {
 		setPanelServiciosEmergentealmohadaVisco("Viscoelastic");
 		setPanelServiciosEmergentealmohadaGel("Gel");
 		setPanelServiciosEmergentealmohadaPluma("Feather");
-		setPanelServiciosEmergentealmohadaTxt("Completar -> Linea 74 TextoEng");
+		setPanelServiciosEmergentealmohadaTxt("We want you to rest as much as possible during your stay. Please select what kind of pillow you want and in a few minutes a bellguy will bring it to your room");
 
 		//Panel Emergente Comida
 		setPanelServiciosEmergenteComidaTxt(
@@ -123,7 +123,32 @@ public class TextoEng extends Texto {
 		setLblConfirmacion("Are you sure you want to proceed?");
 		
 		//Panel Cuenta Emergente Detalles
-		setStrNingunServicio("You have not purchased any service");
+		setStrNingunServicio("You have not purchased any service.");
+		setFacial("Facial massage");
+		setThai("Thai massage");
+		setSueco("Swedish massage");
+		setTermal("Thermal circuit");
+		setTurco("Turkish bath");
+		setToallas("Towell exchange");
+		setSabanas("Bedsheet exchange");
+		setViscoelastica("Viscoelastic pillow");
+		setLatex("Latex pillow");
+		setPluma("Feather pillow");
+		setGel("Gel pillow");
+		setMiniBar("Replace minibar");
+		setEuropa("Call to Europe");
+		setAsia("Call to Asia");
+		setAmerica("Call to America");
+		setAfrica("Call to Africa");
+		setBotones("Call bellboy");
+		setComida("Order food");
+		setHoraLimpieza("Choose cleaning hour");
+		setWiFi("WiFi hiring");
+		setNetflix("Netflix");
+		setMovistar("Movistar");
+		setBBC("BBC");
+		setBein("Bein");
+		setInfo("Request info");
 
 	}
 }

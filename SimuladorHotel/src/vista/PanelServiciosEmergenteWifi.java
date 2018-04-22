@@ -120,7 +120,7 @@ public class PanelServiciosEmergenteWifi extends JPanel {
 								panelPrecio.setBorder(new LineBorder(Color.decode("#005cb9"), 3));
 								panelPrecio.setBackground(Color.decode("#9bbfe3"));
 								String pwd = controlador.getServicios().getWifi().activarWifi();
-								controlador.getCuenta().getGasto().addGasto(new StringDouble("Contratar WiFi",
+								controlador.getCuenta().getGasto().addGasto(new StringDouble(t.getWiFi(),
 										controlador.getServicios().getWifi().getPrecio()));
 								lblPrecio.setText("");
 								labelPrecioYPwd.setText(t.getPanelServiciosEmergenteWifiPwdTxt() + " " + pwd);

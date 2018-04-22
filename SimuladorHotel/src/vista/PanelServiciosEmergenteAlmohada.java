@@ -189,7 +189,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 							if (((PanelConfirmacion) panelConfirmacion).getConfirmacion() == true) {
 								// Actualizar ventana; en otro caso no hacer nada
 								controlador.getCuenta().getGasto()
-										.addGasto(new StringDouble("Contratar Almoahada Latex",
+										.addGasto(new StringDouble(t.getLatex(),
 												controlador.getServicios().getAlmohada().getPrecioLatex()));
 								lblGif.setVisible(true);
 								Thread.sleep(2050);
@@ -224,7 +224,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 							if (((PanelConfirmacion) panelConfirmacion).getConfirmacion() == true) {
 								// Actualizar ventana; en otro caso no hacer nada
 								controlador.getCuenta().getGasto()
-										.addGasto(new StringDouble("Contratar Almoahada Viscoelástica",
+										.addGasto(new StringDouble(t.getViscoelastica(),
 												controlador.getServicios().getAlmohada().getPrecioVisco()));
 								lblGif.setVisible(true);
 								Thread.sleep(2050);
@@ -262,7 +262,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 							if (((PanelConfirmacion) panelConfirmacion).getConfirmacion() == true) {
 								// Actualizar ventana; en otro caso no hacer nada
 								controlador.getCuenta().getGasto()
-										.addGasto(new StringDouble("Contratar Almoahada Pluma",
+										.addGasto(new StringDouble(t.getPluma(),
 												controlador.getServicios().getAlmohada().getPrecioPluma()));
 								lblGif.setVisible(true);
 								Thread.sleep(2050);
@@ -297,7 +297,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 
 							if (((PanelConfirmacion) panelConfirmacion).getConfirmacion() == true) {
 								// Actualizar ventana; en otro caso no hacer nada
-								controlador.getCuenta().getGasto().addGasto(new StringDouble("Contratar Almoahada Gel",
+								controlador.getCuenta().getGasto().addGasto(new StringDouble(t.getGel(),
 										controlador.getServicios().getAlmohada().getPrecioGel()));
 								lblGif.setVisible(true);
 								Thread.sleep(2050);

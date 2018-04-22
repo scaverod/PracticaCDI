@@ -116,7 +116,7 @@ public class PanelServiciosEmergenteComida extends JPanel {
 
 							if (((PanelConfirmacion) panelConfirmacion).getConfirmacion() == true) {
 								// Actualizar ventana; en otro caso no hacer nada
-								controlador.getCuenta().getGasto().addGasto(new StringDouble("Pedido de comida",
+								controlador.getCuenta().getGasto().addGasto(new StringDouble(t.getComida(),
 										controlador.getServicios().getComida().getPrecio()));
 								lblGif.setVisible(true);
 								Thread.sleep(2050);

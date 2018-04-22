@@ -70,7 +70,7 @@ public class TextoEsp extends Texto {
 
 		// Panel Emergen Wifi
 		setPanelServiciosEmergenteWifiTxt(
-				"Todo el mundo quiere tener la posibilidad de conectarse a internet en cualquier momento, por eso, nosotros contamos con Wifi en todas las habitaciones del hotel de alta calidad. \r\n"
+				"Todo el mundo quiere tener la posibilidad de conectarse a internet en cualquier momento, por eso nosotros contamos con Wifi en todas las habitaciones del hotel de alta calidad. \r\n"
 						+ "Una vez usted active el servicio, éste estará disponible durante toda su estancia. ");
 		setPanelServiciosEmergenteWifiActivadoTxt(
 				"Has adquirido el servicio de WiFi. Esperamos que pueda disfrutar de la mejor calidad de nuestra conexion a internet.\n\nPara comenzar a usar el WiFi introduzca la clave en sus dispositivos.");
@@ -78,13 +78,13 @@ public class TextoEsp extends Texto {
 
 		// Panel Emergen Taxi
 		setPanelServiciosEmergenteTaxiTxt(
-				"No pierdas tu tiempo llamando a un vehículo para tu traslado. Nosotros lo hacemos por tí.\n\nLista de empresas asociadas:");
+				"No pierdas tu tiempo llamando a un vehículo para tu traslado. Nosotros lo hacemos por ti.\n\nLista de empresas asociadas:");
 
 		// Panel Emergen Botones
 		setPanelServiciosEmergenteBotonesTxt(
 				"Nuestros hoteles cuentan con una atenci\u00F3n totalmente personalizada. Con solo pulsar el bot\u00F3n, un botones se acercar\u00E1 hasta su habitaci\u00F3n para ayudarle en lo que necesite.\r\nDisponible las 24 horas al d\u00EDa");
 		
-		//Panel Emergen Almofada
+		//Panel Emergen Almohada
 		setPanelServiciosEmergentealmohadaLatex("Látex");
 		setPanelServiciosEmergentealmohadaVisco("Viscoelástica");
 		setPanelServiciosEmergentealmohadaGel("Gel");
@@ -93,7 +93,7 @@ public class TextoEsp extends Texto {
 		
 		//Panel Emergente Comida
 		setPanelServiciosEmergenteComidaTxt(
-				"Nuestros hoteles cuentan con una atenci\u00F3n totalmente personalizada. Con solo pulsar el bot\u00F3n, un botones le llevará la comida desde nuestro exclusivo restaurante directamente a su habitación, para que pueda disfrutar de nuestra comida gourmet con total comodidad. Servicio disponible de 7:00 a 00:00");
+				"Nuestros hoteles cuentan con una atenci\u00F3n totalmente personalizada. Con solo pulsar el bot\u00F3n, un botones le llevará la comida desde nuestro exclusivo restaurante directamente a su habitación para que pueda disfrutar de nuestra comida gourmet con total comodidad. Servicio disponible de 7:00 a 00:00");
 		
 		//Panel Emergente Toallas
 		setPanelServiciosEmergenteToallasTxt(
@@ -126,8 +126,33 @@ public class TextoEsp extends Texto {
 		// Panel Confirmacion
 		setLblConfirmacion("¿Desea confirmar la operación?");
 		
-		//Panel Emergente Detalles
+		//Panel Emergente Detalles (provisional)
 		setStrNingunServicio("No ha adquirido ningún servicio");
+		setFacial("Masaje facial");
+		setThai("Masaje Thai");
+		setSueco("Masaje Sueco");
+		setTermal("Circuito Termal");
+		setTurco("Baño Turco");
+		setToallas("Cambio de toallas");
+		setSabanas("Cambio de sabanas");
+		setViscoelastica("Contratar Almohada viscoelástica");
+		setLatex("Contratar almohada latex");
+		setPluma("Contratar almohada pluma");
+		setGel("Contratar almohada gel");
+		setMiniBar("Reponer minibar");
+		setEuropa("Llamada Europa");
+		setAsia("Llamada Asia");
+		setAmerica("Llamada América");
+		setAfrica("Llamada África");
+		setBotones("Llamada al botones");
+		setComida("Pedido de comida");
+		setHoraLimpieza("Seleccionar hora de limpieza");
+		setWiFi("Contratar WiFi");
+		setNetflix("Contratar Netflix");
+		setMovistar("Contratar Movistar");
+		setBBC("Contratar BBC");
+		setBein("Contratar Bein");
+		setInfo("Solicitar información");
 
 	}
 }

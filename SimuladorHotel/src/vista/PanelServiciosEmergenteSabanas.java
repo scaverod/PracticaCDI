@@ -86,7 +86,7 @@ public class PanelServiciosEmergenteSabanas extends JPanel {
 							s.acquire();
 
 							if (((PanelConfirmacion) panelConfirmacion).getConfirmacion() == true) {
-								controlador.getCuenta().getGasto().addGasto(new StringDouble("Cambio de sabanas",
+								controlador.getCuenta().getGasto().addGasto(new StringDouble(t.getSabanas(),
 										controlador.getServicios().getSabanas().getPrecio()));
 								lblGif.setVisible(true);
 								Thread.sleep(2050);

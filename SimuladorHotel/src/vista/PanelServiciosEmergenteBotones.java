@@ -115,7 +115,7 @@ public class PanelServiciosEmergenteBotones extends JPanel {
 								lblGif.setVisible(true);
 								Thread.sleep(2050);
 								lblGif.setVisible(false);
-								controlador.getCuenta().getGasto().addGasto(new StringDouble("Llamada al botones",
+								controlador.getCuenta().getGasto().addGasto(new StringDouble(t.getBotones(),
 										controlador.getServicios().getBotones().getPrecio()));
 
 								// Tiene que hacerse siempre!

@@ -114,7 +114,34 @@ public abstract class Texto {
 	
 	//Panel Cuenta Emergente Detalles
 	private String strNingunServicio;
-
+	
+	//Panel lista de gastos. (Provisional hasta que comprenda)
+	private String Facial;
+	private String Thai;
+	private String Sueco;
+	private String Termal;
+	private String Turco;
+	private String Toallas;
+	private String Sabanas;
+	private String Viscoelastica;
+	private String Latex;
+	private String Pluma;
+	private String Gel;
+	private String MiniBar;
+	private String Europa;
+	private String Asia;
+	private String America;
+	private String Africa;
+	private String Botones;
+	private String Comida;
+	private String HoraLimpieza;
+	private String WiFi;
+	private String Netflix;
+	private String Movistar;
+	private String BBC;
+	private String Bein;
+	private String Info;
+	
 	protected void placeHolderParaQueMePongaGettersYSettersAbajoEquisde() {
 	}
 
@@ -709,4 +736,204 @@ public abstract class Texto {
 	public void setStrNingunServicio(String strNingunServicio) {
 		this.strNingunServicio = strNingunServicio;
 	}
+	public String getFacial() {
+		return Facial;
+	}
+
+	public void setFacial(String facial) {
+		Facial = facial;
+	}
+
+	public String getThai() {
+		return Thai;
+	}
+
+	public void setThai(String thai) {
+		Thai = thai;
+	}
+
+	public String getSueco() {
+		return Sueco;
+	}
+
+	public void setSueco(String sueco) {
+		Sueco = sueco;
+	}
+
+	public String getTermal() {
+		return Termal;
+	}
+
+	public void setTermal(String termal) {
+		Termal = termal;
+	}
+
+	public String getTurco() {
+		return Turco;
+	}
+
+	public void setTurco(String turco) {
+		Turco = turco;
+	}
+
+	public String getToallas() {
+		return Toallas;
+	}
+
+	public void setToallas(String toallas) {
+		Toallas = toallas;
+	}
+
+	public String getSabanas() {
+		return Sabanas;
+	}
+
+	public void setSabanas(String sabanas) {
+		Sabanas = sabanas;
+	}
+
+	public String getViscoelastica() {
+		return Viscoelastica;
+	}
+
+	public void setViscoelastica(String viscoelastica) {
+		Viscoelastica = viscoelastica;
+	}
+
+	public String getLatex() {
+		return Latex;
+	}
+
+	public void setLatex(String latex) {
+		Latex = latex;
+	}
+
+	public String getPluma() {
+		return Pluma;
+	}
+
+	public void setPluma(String pluma) {
+		Pluma = pluma;
+	}
+
+	public String getGel() {
+		return Gel;
+	}
+
+	public void setGel(String gel) {
+		Gel = gel;
+	}
+
+	public String getMiniBar() {
+		return MiniBar;
+	}
+
+	public void setMiniBar(String miniBar) {
+		MiniBar = miniBar;
+	}
+
+	public String getEuropa() {
+		return Europa;
+	}
+
+	public void setEuropa(String europa) {
+		Europa = europa;
+	}
+
+	public String getAsia() {
+		return Asia;
+	}
+
+	public void setAsia(String asia) {
+		Asia = asia;
+	}
+
+	public String getAmerica() {
+		return America;
+	}
+
+	public void setAmerica(String america) {
+		America = america;
+	}
+
+	public String getAfrica() {
+		return Africa;
+	}
+
+	public void setAfrica(String africa) {
+		Africa = africa;
+	}
+
+	public String getBotones() {
+		return Botones;
+	}
+
+	public void setBotones(String botones) {
+		Botones = botones;
+	}
+
+	public String getComida() {
+		return Comida;
+	}
+
+	public void setComida(String comida) {
+		Comida = comida;
+	}
+
+	public String getHoraLimpieza() {
+		return HoraLimpieza;
+	}
+
+	public void setHoraLimpieza(String horaLimpieza) {
+		HoraLimpieza = horaLimpieza;
+	}
+
+	public String getWiFi() {
+		return WiFi;
+	}
+
+	public void setWiFi(String wiFi) {
+		WiFi = wiFi;
+	}
+
+	public String getNetflix() {
+		return Netflix;
+	}
+
+	public void setNetflix(String netflix) {
+		Netflix = netflix;
+	}
+
+	public String getMovistar() {
+		return Movistar;
+	}
+
+	public void setMovistar(String movistar) {
+		Movistar = movistar;
+	}
+
+	public String getBBC() {
+		return BBC;
+	}
+
+	public void setBBC(String bBC) {
+		BBC = bBC;
+	}
+
+	public String getBein() {
+		return Bein;
+	}
+
+	public void setBein(String bein) {
+		Bein = bein;
+	}
+
+	public String getInfo() {
+		return Info;
+	}
+
+	public void setInfo(String info) {
+		Info = info;
+	}
+
 }

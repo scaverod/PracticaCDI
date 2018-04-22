@@ -112,7 +112,7 @@ public class PanelServiciosEmergenteMinibar extends JPanel {
 
 							if (((PanelConfirmacion) panelConfirmacion).getConfirmacion() == true) {
 								// Actualizar ventana; en otro caso no hacer nada
-								controlador.getCuenta().getGasto().addGasto(new StringDouble("Reponer MiniBar",
+								controlador.getCuenta().getGasto().addGasto(new StringDouble(t.getMiniBar(),
 										controlador.getServicios().getMinibar().getPrecio()));
 								lblGif.setVisible(true);
 								Thread.sleep(2050);

@@ -93,7 +93,7 @@ public class PanelServiciosEmergenteInformacion extends JPanel {
 								lblGif.setVisible(true);
 								Thread.sleep(2050);
 								lblGif.setVisible(false);
-								controlador.getCuenta().getGasto().addGasto(new StringDouble("Solicitar Información", 0));
+								controlador.getCuenta().getGasto().addGasto(new StringDouble(t.getInfo(), 0));
 
 								// Tiene que hacerse siempre!
 								((PanelConfirmacion) panelConfirmacion).setConfirmacion(false);

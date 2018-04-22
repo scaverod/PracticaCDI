@@ -95,7 +95,7 @@ public class PanelServiciosEmergenteTaxi extends JPanel {
 
 							if (((PanelConfirmacion) panelConfirmacion).getConfirmacion() == true) {
 								// Actualizar ventana; en otro caso no hacer nada
-								generarGasto("Cabifay", controlador);
+								generarGasto("Cabify", controlador);
 								lblGif.setVisible(true);
 								Thread.sleep(2050);
 								lblGif.setVisible(false);
@@ -196,7 +196,7 @@ public class PanelServiciosEmergenteTaxi extends JPanel {
 
 	public void generarGasto(String compania, Controlador controlador) {
 		controlador.getCuenta().getGasto().addGasto(
-				new StringDouble("Contrata servicio " + compania, controlador.getServicios().getTaxi().getPrecio()));
+				new StringDouble(compania, controlador.getServicios().getTaxi().getPrecio()));
 	}
 
 	public void cerrarPanelConfirmacion() {

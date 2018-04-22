@@ -86,7 +86,7 @@ public class PanelServiciosEmergenteToallas extends JPanel {
 							s.acquire();
 
 							if (((PanelConfirmacion) panelConfirmacion).getConfirmacion() == true) {
-								controlador.getCuenta().getGasto().addGasto(new StringDouble("Cambio de toallas",
+								controlador.getCuenta().getGasto().addGasto(new StringDouble(t.getToallas(),
 										controlador.getServicios().getToallas().getPrecio()));
 								lblGif.setVisible(true);
 								Thread.sleep(2050);

@@ -98,7 +98,7 @@ public class PanelServiciosEmergenteLimpieza extends JPanel {
 									controlador.getServicios().getLimpieza().setTiempo(tiempo);
 									panelHora.setTiempo(tiempo);
 									controlador.getCuenta().getGasto()
-											.addGasto(new StringDouble("Selección de hora de limpieza ",
+											.addGasto(new StringDouble(t.getHoraLimpieza(),
 													controlador.getServicios().getLimpieza().getPrecio()));
 									txtpnUnaVezHaya.setVisible(false);
 									lblGif.setVisible(true);

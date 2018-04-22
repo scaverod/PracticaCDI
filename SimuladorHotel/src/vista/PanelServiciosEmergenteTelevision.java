@@ -93,7 +93,7 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 							if (((PanelConfirmacion) panelConfirmacion).getConfirmacion() == true) {
 								// Actualizar ventana; en otro caso no hacer nada
 								btnMoviestar.setEnabled(false);
-								controlador.getCuenta().getGasto().addGasto(new StringDouble("Contratar Moviestar +",
+								controlador.getCuenta().getGasto().addGasto(new StringDouble(t.getMovistar(),
 										controlador.getServicios().getTelevision().getPrecioMoviestarPlus()));
 								controlador.getServicios().getTelevision().setActivadoMoviestarPlus(true);
 								lblGif.setVisible(true);
@@ -141,7 +141,7 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 							if (((PanelConfirmacion) panelConfirmacion).getConfirmacion() == true) {
 								// Actualizar ventana; en otro caso no hacer nada
 								btnNetflix.setEnabled(false);
-								controlador.getCuenta().getGasto().addGasto(new StringDouble("Contratar Netflix",
+								controlador.getCuenta().getGasto().addGasto(new StringDouble(t.getNetflix(),
 										controlador.getServicios().getTelevision().getPrecioNetflix()));
 								controlador.getServicios().getTelevision().setActivadoNetflix(true);
 								lblGif.setVisible(true);
@@ -179,7 +179,7 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 							if (((PanelConfirmacion) panelConfirmacion).getConfirmacion() == true) {
 								// Actualizar ventana; en otro caso no hacer nada
 								btnBBC.setEnabled(false);
-								controlador.getCuenta().getGasto().addGasto(new StringDouble("Contratar BBC",
+								controlador.getCuenta().getGasto().addGasto(new StringDouble(t.getBBC(),
 										controlador.getServicios().getTelevision().getPrecioBBC()));
 								controlador.getServicios().getTelevision().setActivadoBBC(true);
 								lblGif.setVisible(true);
@@ -218,7 +218,7 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 							if (((PanelConfirmacion) panelConfirmacion).getConfirmacion() == true) {
 								// Actualizar ventana; en otro caso no hacer nada
 								btnBeinSport.setEnabled(false);
-								controlador.getCuenta().getGasto().addGasto(new StringDouble("Contratar Bein Sport",
+								controlador.getCuenta().getGasto().addGasto(new StringDouble(t.getBein(),
 										controlador.getServicios().getTelevision().getPrecioBeinSport()));
 								controlador.getServicios().getTelevision().setActivadoBeinSport(true);
 								lblGif.setVisible(true);

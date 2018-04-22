@@ -107,7 +107,7 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 								s.acquire();
 
 								if (((PanelConfirmacion) panelConfirmacion).getConfirmacion() == true) {
-									controlador.getCuenta().getGasto().addGasto(new StringDouble("Llamada América",
+									controlador.getCuenta().getGasto().addGasto(new StringDouble(t.getAmerica(),
 											controlador.getServicios().getLlamada().getPrecioAmerica()));
 									btnConfirmarLLamada.setEnabled(false);
 									btnConfirmarLLamada.setText("Seleccione un continente");
@@ -127,7 +127,7 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 								s.acquire();
 
 								if (((PanelConfirmacion) panelConfirmacion).getConfirmacion() == true) {
-									controlador.getCuenta().getGasto().addGasto(new StringDouble("Llamada Asia",
+									controlador.getCuenta().getGasto().addGasto(new StringDouble(t.getAsia(),
 											controlador.getServicios().getLlamada().getPrecioAsia()));
 									btnConfirmarLLamada.setEnabled(false);
 									btnConfirmarLLamada.setText("Seleccione un continente");
@@ -147,7 +147,7 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 								s.acquire();
 
 								if (((PanelConfirmacion) panelConfirmacion).getConfirmacion() == true) {
-									controlador.getCuenta().getGasto().addGasto(new StringDouble("Llamada Europa",
+									controlador.getCuenta().getGasto().addGasto(new StringDouble(t.getEuropa(),
 											controlador.getServicios().getLlamada().getPrecioEuropa()));
 									btnConfirmarLLamada.setEnabled(false);
 									btnConfirmarLLamada.setText("Seleccione un continente");
@@ -167,7 +167,7 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 								s.acquire();
 
 								if (((PanelConfirmacion) panelConfirmacion).getConfirmacion() == true) {
-									controlador.getCuenta().getGasto().addGasto(new StringDouble("Llamada África",
+									controlador.getCuenta().getGasto().addGasto(new StringDouble(t.getAfrica(),
 											controlador.getServicios().getLlamada().getPrecioAfrica()));
 									btnConfirmarLLamada.setEnabled(false);
 									btnConfirmarLLamada.setText("Seleccione un continente");
@@ -197,7 +197,7 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				continente = 1;
 				btnConfirmarLLamada.setEnabled(true);
-				btnConfirmarLLamada.setText("Llamar a América");
+				btnConfirmarLLamada.setText(t.getAmerica());
 				lblImagen.setIcon(america);
 
 			}
@@ -212,7 +212,7 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				continente = 2;
 				btnConfirmarLLamada.setEnabled(true);
-				btnConfirmarLLamada.setText("Llamar a Asia");
+				btnConfirmarLLamada.setText(t.getAsia());
 				lblImagen.setIcon(asia);
 			}
 		});
@@ -226,7 +226,7 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				continente = 3;
 				btnConfirmarLLamada.setEnabled(true);
-				btnConfirmarLLamada.setText("Llamar a Europa");
+				btnConfirmarLLamada.setText(t.getEuropa());
 				lblImagen.setIcon(europa);
 			}
 		});
@@ -240,7 +240,7 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				continente = 4;
 				btnConfirmarLLamada.setEnabled(true);
-				btnConfirmarLLamada.setText("Llamar a África");
+				btnConfirmarLLamada.setText(t.getAfrica());
 				lblImagen.setIcon(africa);
 			}
 		});
