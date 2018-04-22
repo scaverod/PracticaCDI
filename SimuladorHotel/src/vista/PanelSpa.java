@@ -169,7 +169,7 @@ public class PanelSpa extends JPanel {
 		comboBoxDuracionTrat.setBounds(55, 185, 221, 25);
 		panelIzquierdo.add(comboBoxDuracionTrat);
 
-		JLabel lblDuracionTrat = new JLabel("Duraci\u00F3n");
+		JLabel lblDuracionTrat = new JLabel(t.getLblDuracion());
 		lblDuracionTrat.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDuracionTrat.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblDuracionTrat.setBounds(55, 146, 221, 41);
@@ -224,7 +224,7 @@ public class PanelSpa extends JPanel {
 		panelPrecioTrat.setBorder(new LineBorder(Color.ORANGE, 3));
 		panelPrecioTrat.setBackground(new Color(255, 255, 153));
 
-		JLabel lblCoste = new JLabel("Coste:");
+		JLabel lblCoste = new JLabel(t.getLblCoste());
 		lblCoste.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblCoste.setBounds(14, 0, 47, 31);
 		panelPrecioTrat.add(lblCoste);
@@ -282,7 +282,7 @@ public class PanelSpa extends JPanel {
 		panelPrecioSPA.setBounds(289, 403, 125, 31);
 		panelDerecho.add(panelPrecioSPA);
 
-		JLabel label_2 = new JLabel("Coste:");
+		JLabel label_2 = new JLabel(t.getLblCoste());
 		label_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		label_2.setBounds(14, 0, 47, 31);
 		panelPrecioSPA.add(label_2);
@@ -315,7 +315,7 @@ public class PanelSpa extends JPanel {
 		comboBoxDuracionSpa.setSelectedIndex(0);
 		panelDerecho.add(comboBoxDuracionSpa);
 
-		JLabel lblDuracionSpa = new JLabel("Duraci\u00F3n");
+		JLabel lblDuracionSpa = new JLabel(t.getLblDuracion());
 		lblDuracionSpa.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDuracionSpa.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblDuracionSpa.setBounds(61, 146, 221, 41);
@@ -333,13 +333,13 @@ public class PanelSpa extends JPanel {
 		});
 		comboBoxNumPersonas.setToolTipText("");
 		comboBoxNumPersonas.setModel(new DefaultComboBoxModel<String>(
-				new String[] { "1 persona", "2 personas", "3 personas", "4 personas" }));
+				new String[] { "1 " + t.getStrPersona(), "2 " + t.getStrPersonas(), "3 "+ t.getStrPersonas(), "4 "+ t.getStrPersonas() }));
 		comboBoxNumPersonas.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		comboBoxNumPersonas.setSelectedIndex(0);
 		comboBoxNumPersonas.setBounds(61, 259, 221, 25);
 		panelDerecho.add(comboBoxNumPersonas);
 
-		JLabel lblNumeroDePersonas = new JLabel("Numero de personas");
+		JLabel lblNumeroDePersonas = new JLabel(t.getLblNumeroPersonas());
 		lblNumeroDePersonas.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNumeroDePersonas.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNumeroDePersonas.setBounds(61, 221, 221, 41);
@@ -353,7 +353,7 @@ public class PanelSpa extends JPanel {
 		panelPlazasDisp.setBounds(114, 328, 221, 31);
 		panelDerecho.add(panelPlazasDisp);
 
-		JLabel lblPlazasDisponibles = new JLabel("Plazas disponibles:");
+		JLabel lblPlazasDisponibles = new JLabel(t.getLblPlazas());
 		lblPlazasDisponibles.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblPlazasDisponibles.setBounds(14, 0, 127, 31);
 		panelPlazasDisp.add(lblPlazasDisponibles);

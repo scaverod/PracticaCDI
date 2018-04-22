@@ -47,7 +47,7 @@ public class PanelCuentaEmergenteDetalles extends JPanel {
 		});
 		btnCerrar.setBounds(301, 13, 89, 35);
 		add(btnCerrar);
-		Tabla tabla = new Tabla();
+		Tabla tabla = new Tabla(t);
 		ArrayList<StringDouble> listagastos = controlador.getCuenta().getGasto().getGastos();
 		if (listagastos.size() > 0) {
 			tabla.removeFilaInicial();

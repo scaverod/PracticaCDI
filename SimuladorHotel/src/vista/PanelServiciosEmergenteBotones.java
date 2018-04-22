@@ -11,7 +11,6 @@ import controlador.Controlador;
 import controlador.MicroControladorLayers;
 import controlador.MicroControladorPanelesPadreHijo;
 import idiomas.Texto;
-import idiomas.TextoManager;
 import tiposVariable.StringDouble;
 
 import javax.swing.JLabel;
@@ -32,15 +31,11 @@ public class PanelServiciosEmergenteBotones extends JPanel {
 	private JPanel panelPrincipal;
 	private JPanel panelConfirmacion;
 	private Semaphore s;
+	private Texto t;
 
-	// FIXME: temporal para que salga el texto en vez de "<dynamic>"
-	// Habría que mandarlo desde el Main, por ejemplo
-	private Texto t = new TextoManager(TextoManager.español).getTexto();
-
-	public PanelServiciosEmergenteBotones(MicroControladorPanelesPadreHijo microControlador, String padre,
-			Controlador controlador, Semaphore s) {
+	public PanelServiciosEmergenteBotones(MicroControladorPanelesPadreHijo microControlador, String padre, Controlador controlador, Semaphore s) {
 		this.s = s;
-
+		this.t = controlador.getTexto();
 		this.setSize(new Dimension(695, 315));
 		this.setName("p" + this.getClass().getSimpleName().substring(1));
 		setLayout(null);
@@ -116,7 +111,7 @@ public class PanelServiciosEmergenteBotones extends JPanel {
 
 							s.acquire();
 
-							if (((PanelConfirmacionServicios) panelConfirmacion).getConfirmacion() == true) {
+							if (((PanelConfirmacion) panelConfirmacion).getConfirmacion() == true) {
 								lblGif.setVisible(true);
 								Thread.sleep(2050);
 								lblGif.setVisible(false);
@@ -124,7 +119,7 @@ public class PanelServiciosEmergenteBotones extends JPanel {
 										controlador.getServicios().getBotones().getPrecio()));
 
 								// Tiene que hacerse siempre!
-								((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
+								((PanelConfirmacion) panelConfirmacion).setConfirmacion(false);
 							}
 						} catch (InterruptedException e1) {
 							e1.printStackTrace();
@@ -142,8 +137,7 @@ public class PanelServiciosEmergenteBotones extends JPanel {
 	}
 
 	public void crearPanelConfirmacion(String precio) {
-		panelConfirmacion = new PanelConfirmacionServicios(new MicroControladorLayers(panelContenedor), this.getName(),
-				s, precio);
+		panelConfirmacion = new PanelConfirmacion(new MicroControladorLayers(panelContenedor), this.getName(), s, precio, t);
 		panelConfirmacion.setBounds(147, 57, 400, 200);
 		panelContenedor.setLayer(panelConfirmacion, 0);
 		panelContenedor.add(panelConfirmacion);

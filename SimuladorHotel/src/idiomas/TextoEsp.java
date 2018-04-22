@@ -36,6 +36,12 @@ public class TextoEsp extends Texto {
 		setLblPlazas("Plazas disponibles:");
 		setLblSpa("SPA");
 		setLblSeleccionServicio("Seleccione el servicio deseado");
+		setLblNumeroPersonas("Número de tickets");
+		setStrPersonas("personas");
+		setStrPersona("persona");
+
+		
+
 
 		// Panel Servicios
 		setPanelServiciosBtnMinibar("Reponer minibar");
@@ -119,6 +125,9 @@ public class TextoEsp extends Texto {
 
 		// Panel Confirmacion
 		setLblConfirmacion("¿Desea confirmar la operación?");
+		
+		//Panel Emergente Detalles
+		setStrNingunServicio("No ha adquirido ningún servicio");
 
 	}
 }

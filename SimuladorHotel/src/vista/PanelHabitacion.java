@@ -14,7 +14,6 @@ import javax.swing.JToggleButton;
 import controlador.Controlador;
 import controlador.MicroControladorLayersPadreHijo;
 import idiomas.Texto;
-import idiomas.TextoManager;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -27,7 +26,6 @@ import java.beans.PropertyChangeEvent;
 
 public class PanelHabitacion extends JPanel {
 	private static final long serialVersionUID = 1L;
-	private Texto t = new TextoManager(TextoManager.español).getTexto();
 
 	private MicroControladorLayersPadreHijo microControlador;
 
@@ -57,8 +55,10 @@ public class PanelHabitacion extends JPanel {
 	private ImageIcon[] ventanasIconDer = {
 			new ImageIcon(PanelHabitacionEmergenteVentana2.class.getResource("/iconos/ventana0.png")),
 			new ImageIcon(PanelHabitacionEmergenteVentana2.class.getResource("/iconos/ventana1.png")) };
+	private Texto t;
 
 	public PanelHabitacion(Controlador controlador) {
+		t = controlador.getTexto();
 		this.setSize(new Dimension(931, 483));
 		this.setName("p" + this.getClass().getSimpleName().substring(1));
 		setLayout(null);

@@ -37,6 +37,9 @@ public abstract class Texto {
 	private String lblPlazas;
 	private String lblSpa;
 	private String lblSeleccionServicio;
+	private String lblNumeroPersonas;
+	private String strPersonas;
+	private String strPersona;
 	
 
 	// Panel Servicios
@@ -108,6 +111,9 @@ public abstract class Texto {
 
 	// Panel confirmacion
 	private String lblConfirmacion;
+	
+	//Panel Cuenta Emergente Detalles
+	private String strNingunServicio;
 
 	protected void placeHolderParaQueMePongaGettersYSettersAbajoEquisde() {
 	}
@@ -670,5 +676,37 @@ public abstract class Texto {
 
 	public void setLblSeleccionServicio(String lblSeleccionServicio) {
 		this.lblSeleccionServicio = lblSeleccionServicio;
+	}
+
+	public String getLblNumeroPersonas() {
+		return lblNumeroPersonas;
+	}
+
+	public void setLblNumeroPersonas(String lblNumeroPersonas) {
+		this.lblNumeroPersonas = lblNumeroPersonas;
+	}
+
+	public String getStrPersonas() {
+		return strPersonas;
+	}
+
+	public void setStrPersonas(String strPersonas) {
+		this.strPersonas = strPersonas;
+	}
+
+	public String getStrPersona() {
+		return strPersona;
+	}
+
+	public void setStrPersona(String strPersona) {
+		this.strPersona = strPersona;
+	}
+
+	public String getStrNingunServicio() {
+		return strNingunServicio;
+	}
+
+	public void setStrNingunServicio(String strNingunServicio) {
+		this.strNingunServicio = strNingunServicio;
 	}
 }

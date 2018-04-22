@@ -3,7 +3,8 @@ package tiposVariable;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
+
+import idiomas.Texto;
 
 public class Tabla extends JPanel {
 	/**
@@ -13,16 +14,33 @@ public class Tabla extends JPanel {
 
 	JTable table;
 
-	public Tabla() {
+	public Tabla(Texto t) {
 		table = new JTable();
 		table.setRowHeight(40);
-		table.setModel(new javax.swing.table.DefaultTableModel(
-				new Object[][] { { "No ha adquirido ningún servicio", "0 €" } },
-				new String[] { "Title 1", "Title 2" }));
-		TableColumnModel columnModel = table.getColumnModel();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{t.getStrNingunServicio(), "0 \u20AC"},
+			},
+			new String[] {
+				"Title 1", "Title 2"
+			}
+		) {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+			boolean[] columnEditables = new boolean[] {
+				false, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
+		table.getColumnModel().getColumn(0).setResizable(false);
+		table.getColumnModel().getColumn(1).setResizable(false);
 
-		columnModel.getColumn(0).setPreferredWidth(250);
-		columnModel.getColumn(1).setPreferredWidth(100);
+		table.getColumnModel().getColumn(0).setPreferredWidth(250);
+		table.getColumnModel().getColumn(1).setPreferredWidth(100);
 
 		this.add(table);
 		table.setDefaultRenderer(Object.class, new CellRend());
