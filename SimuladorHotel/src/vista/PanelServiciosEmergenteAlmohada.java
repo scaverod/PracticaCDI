@@ -9,7 +9,6 @@ import controlador.Controlador;
 import controlador.MicroControladorLayers;
 import controlador.MicroControladorPanelesPadreHijo;
 import idiomas.Texto;
-import idiomas.TextoManager;
 import tiposVariable.StringDouble;
 import javax.swing.JLabel;
 import java.awt.Color;
@@ -28,16 +27,11 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 	private JPanel panelPrincipal;
 	private JPanel panelConfirmacion;
 	private Semaphore s;
+	private Texto t;
 
-	// FIXME: temporal para que salga el texto en vez de "<dynamic>"
-	// Habría que mandarlo desde el Main, por ejemplo
-	private Texto t = new TextoManager(TextoManager.español).getTexto();
-	// TODO: COMPLETAR TEXTO
-
-	public PanelServiciosEmergenteAlmohada(MicroControladorPanelesPadreHijo microControlador, String padre,
-			Controlador controlador, Semaphore s) {
+	public PanelServiciosEmergenteAlmohada(MicroControladorPanelesPadreHijo microControlador, String padre, Controlador controlador, Semaphore s) {
 		this.s = s;
-
+		this.t = controlador.getTexto();
 		this.setSize(new Dimension(695, 315));
 		this.setName("p" + this.getClass().getSimpleName().substring(1));
 		setLayout(null);
@@ -192,7 +186,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 
 							s.acquire();
 
-							if (((PanelConfirmacionServicios) panelConfirmacion).getConfirmacion() == true) {
+							if (((PanelConfirmacion) panelConfirmacion).getConfirmacion() == true) {
 								// Actualizar ventana; en otro caso no hacer nada
 								controlador.getCuenta().getGasto()
 										.addGasto(new StringDouble("Contratar Almoahada Latex",
@@ -202,7 +196,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 								lblGif.setVisible(false);
 
 								// Tiene que hacerse siempre!
-								((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
+								((PanelConfirmacion) panelConfirmacion).setConfirmacion(false);
 							}
 						} catch (InterruptedException e1) {
 							e1.printStackTrace();
@@ -227,7 +221,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 
 							s.acquire();
 
-							if (((PanelConfirmacionServicios) panelConfirmacion).getConfirmacion() == true) {
+							if (((PanelConfirmacion) panelConfirmacion).getConfirmacion() == true) {
 								// Actualizar ventana; en otro caso no hacer nada
 								controlador.getCuenta().getGasto()
 										.addGasto(new StringDouble("Contratar Almoahada Viscoelástica",
@@ -237,7 +231,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 								lblGif.setVisible(false);
 
 								// Tiene que hacerse siempre!
-								((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
+								((PanelConfirmacion) panelConfirmacion).setConfirmacion(false);
 							}
 						} catch (InterruptedException e1) {
 							e1.printStackTrace();
@@ -265,7 +259,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 
 							s.acquire();
 
-							if (((PanelConfirmacionServicios) panelConfirmacion).getConfirmacion() == true) {
+							if (((PanelConfirmacion) panelConfirmacion).getConfirmacion() == true) {
 								// Actualizar ventana; en otro caso no hacer nada
 								controlador.getCuenta().getGasto()
 										.addGasto(new StringDouble("Contratar Almoahada Pluma",
@@ -275,7 +269,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 								lblGif.setVisible(false);
 
 								// Tiene que hacerse siempre!
-								((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
+								((PanelConfirmacion) panelConfirmacion).setConfirmacion(false);
 							}
 						} catch (InterruptedException e1) {
 							e1.printStackTrace();
@@ -301,7 +295,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 
 							s.acquire();
 
-							if (((PanelConfirmacionServicios) panelConfirmacion).getConfirmacion() == true) {
+							if (((PanelConfirmacion) panelConfirmacion).getConfirmacion() == true) {
 								// Actualizar ventana; en otro caso no hacer nada
 								controlador.getCuenta().getGasto().addGasto(new StringDouble("Contratar Almoahada Gel",
 										controlador.getServicios().getAlmohada().getPrecioGel()));
@@ -310,7 +304,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 								lblGif.setVisible(false);
 
 								// Tiene que hacerse siempre!
-								((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
+								((PanelConfirmacion) panelConfirmacion).setConfirmacion(false);
 							}
 						} catch (InterruptedException e1) {
 							e1.printStackTrace();
@@ -351,8 +345,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 	}
 
 	public void crearPanelConfirmacion(String precio) {
-		panelConfirmacion = new PanelConfirmacionServicios(new MicroControladorLayers(panelContenedor), this.getName(),
-				s, precio);
+		panelConfirmacion = new PanelConfirmacion(new MicroControladorLayers(panelContenedor), this.getName(), s, precio, t);
 		panelConfirmacion.setBounds(147, 57, 400, 200);
 		panelContenedor.setLayer(panelConfirmacion, 0);
 		panelContenedor.add(panelConfirmacion);

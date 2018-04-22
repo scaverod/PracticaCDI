@@ -10,7 +10,6 @@ import controlador.Controlador;
 import controlador.MicroControladorLayers;
 import controlador.MicroControladorLayersPadreHijo;
 import idiomas.Texto;
-import idiomas.TextoManager;
 import tiposVariable.InformacionSpaTratamiento;
 import tiposVariable.StringDouble;
 
@@ -33,14 +32,11 @@ public class PanelSpaEmergente extends JPanel {
 	private JPanel panelPrincipal;
 	private JPanel panelConfirmacion;
 	private Semaphore s;
-
-	// FIXME: temporal para que salga el texto en vez de "<dynamic>"
-	// Habría que mandarlo desde el Main, por ejemplo
-	private Texto t = new TextoManager(TextoManager.español).getTexto();
+	private Texto t;
 
 	public PanelSpaEmergente(MicroControladorLayersPadreHijo microControlador, String padre, Controlador controlador, Semaphore s, InformacionSpaTratamiento info) {
 		this.s = s;
-
+		t = controlador.getTexto();
 		this.setSize(new Dimension(695, 315));
 		this.setName("p" + this.getClass().getSimpleName().substring(1));
 		setLayout(null);
@@ -95,7 +91,7 @@ public class PanelSpaEmergente extends JPanel {
 
 							s.acquire();
 
-							if (((PanelConfirmacionServicios) panelConfirmacion).getConfirmacion() == true) {
+							if (((PanelConfirmacion) panelConfirmacion).getConfirmacion() == true) {
 								// Actualizar ventana; en otro caso no hacer nada
 								info.setFactura(new StringDouble(info.getFactura().getCadena() + "  " + panelFecha.getFecha().toString() + " - " + panelTiempo.getTiempo().toString(), info.getFactura().getNumero()));
 								controlador.getCuenta().getGasto().addGasto(info.getFactura());
@@ -106,7 +102,7 @@ public class PanelSpaEmergente extends JPanel {
 								s.release(s.getQueueLength());
 
 								// Tiene que hacerse siempre!
-								((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
+								((PanelConfirmacion) panelConfirmacion).setConfirmacion(false);
 							}
 						} catch (InterruptedException e1) {
 							e1.printStackTrace();
@@ -138,7 +134,7 @@ public class PanelSpaEmergente extends JPanel {
 	}
 
 	public void crearPanelConfirmacion(String precio) {
-		panelConfirmacion = new PanelConfirmacionServicios(new MicroControladorLayers(panelContenedor), this.getName(), s, precio);
+		panelConfirmacion = new PanelConfirmacion(new MicroControladorLayers(panelContenedor), this.getName(), s, precio, t);
 		panelConfirmacion.setBounds(147, 57, 400, 200);
 		panelContenedor.setLayer(panelConfirmacion, 0);
 		panelContenedor.add(panelConfirmacion);

@@ -11,7 +11,6 @@ import controlador.Controlador;
 import controlador.MicroControladorLayers;
 import controlador.MicroControladorPanelesPadreHijo;
 import idiomas.Texto;
-import idiomas.TextoManager;
 import tiposVariable.StringDouble;
 
 import javax.swing.JLabel;
@@ -33,15 +32,11 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 
 	// 1 -> America, 2-> Asia, 3-> Europa y 4-> Africa
 	private int continente = 0;
+	private Texto t;
 
-	// FIXME: temporal para que salga el texto en vez de "<dynamic>"
-	// Habría que mandarlo desde el Main, por ejemplo
-	private Texto t = new TextoManager(TextoManager.español).getTexto();
-
-	public PanelServiciosEmergenteTelefono(MicroControladorPanelesPadreHijo microControlador, String padre,
-			Controlador controlador, Semaphore s) {
+	public PanelServiciosEmergenteTelefono(MicroControladorPanelesPadreHijo microControlador, String padre, Controlador controlador, Semaphore s) {
 		this.s = s;
-
+		t = controlador.getTexto();
 		this.setSize(new Dimension(695, 315));
 		this.setName("p" + this.getClass().getSimpleName().substring(1));
 		setLayout(null);
@@ -111,7 +106,7 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 
 								s.acquire();
 
-								if (((PanelConfirmacionServicios) panelConfirmacion).getConfirmacion() == true) {
+								if (((PanelConfirmacion) panelConfirmacion).getConfirmacion() == true) {
 									controlador.getCuenta().getGasto().addGasto(new StringDouble("Llamada América",
 											controlador.getServicios().getLlamada().getPrecioAmerica()));
 									btnConfirmarLLamada.setEnabled(false);
@@ -121,7 +116,7 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 									lblGif.setVisible(false);
 
 									// Tiene que hacerse siempre!
-									((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
+									((PanelConfirmacion) panelConfirmacion).setConfirmacion(false);
 								}
 								break;
 							case 2:
@@ -131,7 +126,7 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 
 								s.acquire();
 
-								if (((PanelConfirmacionServicios) panelConfirmacion).getConfirmacion() == true) {
+								if (((PanelConfirmacion) panelConfirmacion).getConfirmacion() == true) {
 									controlador.getCuenta().getGasto().addGasto(new StringDouble("Llamada Asia",
 											controlador.getServicios().getLlamada().getPrecioAsia()));
 									btnConfirmarLLamada.setEnabled(false);
@@ -141,7 +136,7 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 									lblGif.setVisible(false);
 
 									// Tiene que hacerse siempre!
-									((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
+									((PanelConfirmacion) panelConfirmacion).setConfirmacion(false);
 								}
 								break;
 							case 3:
@@ -151,7 +146,7 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 
 								s.acquire();
 
-								if (((PanelConfirmacionServicios) panelConfirmacion).getConfirmacion() == true) {
+								if (((PanelConfirmacion) panelConfirmacion).getConfirmacion() == true) {
 									controlador.getCuenta().getGasto().addGasto(new StringDouble("Llamada Europa",
 											controlador.getServicios().getLlamada().getPrecioEuropa()));
 									btnConfirmarLLamada.setEnabled(false);
@@ -161,7 +156,7 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 									lblGif.setVisible(false);
 
 									// Tiene que hacerse siempre!
-									((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
+									((PanelConfirmacion) panelConfirmacion).setConfirmacion(false);
 								}
 								break;
 							case 4:
@@ -171,7 +166,7 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 
 								s.acquire();
 
-								if (((PanelConfirmacionServicios) panelConfirmacion).getConfirmacion() == true) {
+								if (((PanelConfirmacion) panelConfirmacion).getConfirmacion() == true) {
 									controlador.getCuenta().getGasto().addGasto(new StringDouble("Llamada África",
 											controlador.getServicios().getLlamada().getPrecioAfrica()));
 									btnConfirmarLLamada.setEnabled(false);
@@ -181,7 +176,7 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 									lblGif.setVisible(false);
 
 									// Tiene que hacerse siempre!
-									((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
+									((PanelConfirmacion) panelConfirmacion).setConfirmacion(false);
 								}
 								break;
 							}
@@ -263,8 +258,7 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 	}
 
 	public void crearPanelConfirmacion(String precio) {
-		panelConfirmacion = new PanelConfirmacionServicios(new MicroControladorLayers(panelContenedor), this.getName(),
-				s, precio);
+		panelConfirmacion = new PanelConfirmacion(new MicroControladorLayers(panelContenedor), this.getName(), s, precio, t);
 		panelConfirmacion.setBounds(147, 57, 400, 200);
 		panelContenedor.setLayer(panelConfirmacion, 0);
 		panelContenedor.add(panelConfirmacion);

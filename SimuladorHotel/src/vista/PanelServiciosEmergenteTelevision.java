@@ -9,7 +9,6 @@ import controlador.Controlador;
 import controlador.MicroControladorLayers;
 import controlador.MicroControladorPanelesPadreHijo;
 import idiomas.Texto;
-import idiomas.TextoManager;
 import tiposVariable.StringDouble;
 
 import java.awt.Color;
@@ -33,15 +32,11 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 	private JPanel panelPrincipal;
 	private JPanel panelConfirmacion;
 	private Semaphore s;
+	private Texto t;
 
-	// FIXME: temporal para que salga el texto en vez de "<dynamic>"
-	// Habría que mandarlo desde el Main, por ejemplo
-	private Texto t = new TextoManager(TextoManager.español).getTexto();
-
-	public PanelServiciosEmergenteTelevision(MicroControladorPanelesPadreHijo microControlador, String padre,
-			Controlador controlador, Semaphore s) {
+	public PanelServiciosEmergenteTelevision(MicroControladorPanelesPadreHijo microControlador, String padre, Controlador controlador, Semaphore s) {
 		this.s = s;
-
+		t = controlador.getTexto();
 		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102),
 				new Color(0, 0, 102)));
 		this.setSize(new Dimension(695, 315));
@@ -95,7 +90,7 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 
 							s.acquire();
 
-							if (((PanelConfirmacionServicios) panelConfirmacion).getConfirmacion() == true) {
+							if (((PanelConfirmacion) panelConfirmacion).getConfirmacion() == true) {
 								// Actualizar ventana; en otro caso no hacer nada
 								btnMoviestar.setEnabled(false);
 								controlador.getCuenta().getGasto().addGasto(new StringDouble("Contratar Moviestar +",
@@ -107,7 +102,7 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 								btnMoviestar.setIcon(new ImageIcon(
 										PanelServiciosEmergenteTelevision.class.getResource("/iconos/movistarC.png")));
 								// Tiene que hacerse siempre!
-								((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
+								((PanelConfirmacion) panelConfirmacion).setConfirmacion(false);
 							}
 						} catch (InterruptedException e1) {
 							e1.printStackTrace();
@@ -143,7 +138,7 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 
 							s.acquire();
 
-							if (((PanelConfirmacionServicios) panelConfirmacion).getConfirmacion() == true) {
+							if (((PanelConfirmacion) panelConfirmacion).getConfirmacion() == true) {
 								// Actualizar ventana; en otro caso no hacer nada
 								btnNetflix.setEnabled(false);
 								controlador.getCuenta().getGasto().addGasto(new StringDouble("Contratar Netflix",
@@ -155,7 +150,7 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 								// Tiene que hacerse siempre!
 								btnNetflix.setIcon(new ImageIcon(
 										PanelServiciosEmergenteTelevision.class.getResource("/iconos/netflixC.png")));
-								((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
+								((PanelConfirmacion) panelConfirmacion).setConfirmacion(false);
 							}
 						} catch (InterruptedException e1) {
 							e1.printStackTrace();
@@ -181,7 +176,7 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 
 							s.acquire();
 
-							if (((PanelConfirmacionServicios) panelConfirmacion).getConfirmacion() == true) {
+							if (((PanelConfirmacion) panelConfirmacion).getConfirmacion() == true) {
 								// Actualizar ventana; en otro caso no hacer nada
 								btnBBC.setEnabled(false);
 								controlador.getCuenta().getGasto().addGasto(new StringDouble("Contratar BBC",
@@ -193,7 +188,7 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 								btnBBC.setIcon(new ImageIcon(
 										PanelServiciosEmergenteTelevision.class.getResource("/iconos/bbcC.png")));
 								// Tiene que hacerse siempre!
-								((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
+								((PanelConfirmacion) panelConfirmacion).setConfirmacion(false);
 							}
 						} catch (InterruptedException e1) {
 							e1.printStackTrace();
@@ -220,7 +215,7 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 
 							s.acquire();
 
-							if (((PanelConfirmacionServicios) panelConfirmacion).getConfirmacion() == true) {
+							if (((PanelConfirmacion) panelConfirmacion).getConfirmacion() == true) {
 								// Actualizar ventana; en otro caso no hacer nada
 								btnBeinSport.setEnabled(false);
 								controlador.getCuenta().getGasto().addGasto(new StringDouble("Contratar Bein Sport",
@@ -232,7 +227,7 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 								btnBeinSport.setIcon(new ImageIcon(
 										PanelServiciosEmergenteTelevision.class.getResource("/iconos/beinC.png")));
 								// Tiene que hacerse siempre!
-								((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
+								((PanelConfirmacion) panelConfirmacion).setConfirmacion(false);
 							}
 						} catch (InterruptedException e1) {
 							e1.printStackTrace();
@@ -254,8 +249,7 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 	}
 
 	public void crearPanelConfirmacion(String precio) {
-		panelConfirmacion = new PanelConfirmacionServicios(new MicroControladorLayers(panelContenedor), this.getName(),
-				s, precio);
+		panelConfirmacion = new PanelConfirmacion(new MicroControladorLayers(panelContenedor), this.getName(), s, precio, t);
 		panelConfirmacion.setBounds(147, 57, 400, 200);
 		panelContenedor.setLayer(panelConfirmacion, 0);
 		panelContenedor.add(panelConfirmacion);

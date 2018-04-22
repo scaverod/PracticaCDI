@@ -11,7 +11,6 @@ import controlador.Controlador;
 import controlador.MicroControladorLayers;
 import controlador.MicroControladorPanelesPadreHijo;
 import idiomas.Texto;
-import idiomas.TextoManager;
 import tiposVariable.StringDouble;
 
 import javax.swing.JLabel;
@@ -31,17 +30,12 @@ public class PanelServiciosEmergenteTaxi extends JPanel {
 	private JPanel panelPrincipal;
 	private JPanel panelConfirmacion;
 	private Semaphore s;
+	private Texto t;
 
-	// FIXME: temporal para que salga el texto en vez de "<dynamic>"
-	// Habría que mandarlo desde el Main, por ejemplo
-	private Texto t = new TextoManager(TextoManager.español).getTexto();
-
-	public PanelServiciosEmergenteTaxi(MicroControladorPanelesPadreHijo microControlador, String padre,
-			Controlador controlador, Semaphore s) {
+	public PanelServiciosEmergenteTaxi(MicroControladorPanelesPadreHijo microControlador, String padre, Controlador controlador, Semaphore s) {
 		this.s = s;
-
-		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102),
-				new Color(0, 0, 102)));
+		t = controlador.getTexto();
+		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102), new Color(0, 0, 102)));
 		this.setSize(new Dimension(695, 315));
 		this.setName("p" + this.getClass().getSimpleName().substring(1)); // No modificar
 		setLayout(null);
@@ -99,14 +93,14 @@ public class PanelServiciosEmergenteTaxi extends JPanel {
 
 							s.acquire();
 
-							if (((PanelConfirmacionServicios) panelConfirmacion).getConfirmacion() == true) {
+							if (((PanelConfirmacion) panelConfirmacion).getConfirmacion() == true) {
 								// Actualizar ventana; en otro caso no hacer nada
 								generarGasto("Cabifay", controlador);
 								lblGif.setVisible(true);
 								Thread.sleep(2050);
 								lblGif.setVisible(false);
 								// Tiene que hacerse siempre!
-								((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
+								((PanelConfirmacion) panelConfirmacion).setConfirmacion(false);
 							}
 						} catch (InterruptedException e1) {
 							e1.printStackTrace();
@@ -130,14 +124,14 @@ public class PanelServiciosEmergenteTaxi extends JPanel {
 
 							s.acquire();
 
-							if (((PanelConfirmacionServicios) panelConfirmacion).getConfirmacion() == true) {
+							if (((PanelConfirmacion) panelConfirmacion).getConfirmacion() == true) {
 								// Actualizar ventana; en otro caso no hacer nada
 								generarGasto("Uber", controlador);
 								lblGif.setVisible(true);
 								Thread.sleep(2050);
 								lblGif.setVisible(false);
 								// Tiene que hacerse siempre!
-								((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
+								((PanelConfirmacion) panelConfirmacion).setConfirmacion(false);
 							}
 						} catch (InterruptedException e1) {
 							e1.printStackTrace();
@@ -161,14 +155,14 @@ public class PanelServiciosEmergenteTaxi extends JPanel {
 
 							s.acquire();
 
-							if (((PanelConfirmacionServicios) panelConfirmacion).getConfirmacion() == true) {
+							if (((PanelConfirmacion) panelConfirmacion).getConfirmacion() == true) {
 								// Actualizar ventana; en otro caso no hacer nada
 								generarGasto("Taxi", controlador);
 								lblGif.setVisible(true);
 								Thread.sleep(2050);
 								lblGif.setVisible(false);
 								// Tiene que hacerse siempre!
-								((PanelConfirmacionServicios) panelConfirmacion).setConfirmacion(false);
+								((PanelConfirmacion) panelConfirmacion).setConfirmacion(false);
 							}
 						} catch (InterruptedException e1) {
 							e1.printStackTrace();
@@ -210,8 +204,7 @@ public class PanelServiciosEmergenteTaxi extends JPanel {
 	}
 
 	public void crearPanelConfirmacion(String precio) {
-		panelConfirmacion = new PanelConfirmacionServicios(new MicroControladorLayers(panelContenedor), this.getName(),
-				s, precio);
+		panelConfirmacion = new PanelConfirmacion(new MicroControladorLayers(panelContenedor), this.getName(), s, precio, t);
 		panelConfirmacion.setBounds(147, 57, 400, 200);
 		panelContenedor.setLayer(panelConfirmacion, 0);
 		panelContenedor.add(panelConfirmacion);
