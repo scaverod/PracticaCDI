@@ -45,22 +45,26 @@ public class PanelHabitacionEmergenteCalefaccion extends JPanel {
 		JPanel panel = new JPanel();
 		panel.setBorder(new TitledBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 109, 240), new Color(0, 109, 240),
 				new Color(0, 109, 240), new Color(0, 109, 240)), "Control manual", TitledBorder.LEADING, TitledBorder.TOP, new Font("Tahoma", Font.PLAIN, 15), null));
-		panel.setBounds(10, 70, 675, 234);
+		panel.setBounds(10, 45, 210, 259);
 		add(panel);
 		panel.setLayout(null);
 		
-		JPanel panel_1 = new SelectorHora(0, 24);
-		panel_1.setBounds(10, 21, 200, 200);
-		panel.add(panel_1);
+		JSlider sliderTemperaturaManual = new JSlider();
+		sliderTemperaturaManual.setBounds(10, 23, 89, 225);
+		panel.add(sliderTemperaturaManual);
+		sliderTemperaturaManual.setOrientation(SwingConstants.VERTICAL);
+		sliderTemperaturaManual.setMajorTickSpacing(2);
+		sliderTemperaturaManual.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		sliderTemperaturaManual.setMinorTickSpacing(1);
+		sliderTemperaturaManual.setSnapToTicks(true);
+		sliderTemperaturaManual.setPaintTicks(true);
+		sliderTemperaturaManual.setPaintLabels(true);
+		sliderTemperaturaManual.setMinimum(15);
+		sliderTemperaturaManual.setMaximum(29);
 		
-		JLabel lblTemperatura = new JLabel("Control de temperatura");
-		lblTemperatura.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblTemperatura.setBounds(10, 11, 174, 23);
-		add(lblTemperatura);
-		
-		JToggleButton tglBtnManual = new JToggleButton("Activar");
-		tglBtnManual.setBounds(194, 9, 113, 50);
-		add(tglBtnManual);
+		JToggleButton tglBtnManual = new JToggleButton("Desactivar");
+		tglBtnManual.setBounds(99, 23, 101, 50);
+		panel.add(tglBtnManual);
 		tglBtnManual.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (tglBtnManual.isSelected()) {
@@ -73,16 +77,20 @@ public class PanelHabitacionEmergenteCalefaccion extends JPanel {
 		});
 		tglBtnManual.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
-		JSlider slider = new JSlider();
-		slider.setBounds(317, 11, 283, 50);
-		add(slider);
-		slider.setMajorTickSpacing(2);
-		slider.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		slider.setMinorTickSpacing(1);
-		slider.setSnapToTicks(true);
-		slider.setPaintTicks(true);
-		slider.setPaintLabels(true);
-		slider.setMinimum(15);
-		slider.setMaximum(29);
+		JLabel lblTemperatura = new JLabel("Control de temperatura");
+		lblTemperatura.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblTemperatura.setBounds(10, 11, 174, 23);
+		add(lblTemperatura);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setLayout(null);
+		panel_2.setBorder(new TitledBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 109, 240), new Color(0, 109, 240),
+						new Color(0, 109, 240), new Color(0, 109, 240)), "Programación automática", TitledBorder.LEADING, TitledBorder.TOP, new Font("Tahoma", Font.PLAIN, 15), null));
+		panel_2.setBounds(230, 70, 455, 234);
+		add(panel_2);
+		
+		SelectorHora selectorHora = new SelectorHora(0, 24);
+		selectorHora.setBounds(10, 21, 200, 200);
+		panel_2.add(selectorHora);
 	}
 }
