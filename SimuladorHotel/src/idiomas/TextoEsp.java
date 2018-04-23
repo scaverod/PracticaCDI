@@ -51,8 +51,8 @@ public class TextoEsp extends Texto {
 		setLblVaciar("Vaciar");
 		// Panel Habitacion Emergente Ayuda
 		setTxtTip1("Para interactuar con los elementos de la habitación pulse sobre aquellos que están resaltados de amarillo.");
-		setTxtTip2("Para interactuar con todos los elementos a a la vez (como por ejemplo, todas las luces), pulse sobre los botones inferiores de la izquierda.");
-		setTxtTip3("Para programar un despertador, seleccione el botón del reloj que se encuentra en la parte inferior izquierda.");
+		setTxtTip2("Para  interactuar  con  todos  los  elementos  a   la  vez  (como  por  ejemplo, todas las luces) pulse sobre los botones inferiores de la izquierda.");
+		setTxtTip3("Para programar  un despertador,  seleccione el botón  del reloj  que se encuentra en la parte inferior izquierda.");
 			//Panel Habitacion Emergente Ventana
 		setLblControlVentana("Control de la ventana");
 		setLblVentana("Ventana");
@@ -74,6 +74,8 @@ public class TextoEsp extends Texto {
 		setLblNumeroPersonas("Número de tickets");
 		setStrPersonas("personas");
 		setStrPersona("persona");
+		// TODO: panel spa EMERGENTE
+		setLblTxtSpaTitulo("Seleccione la hora y el día");
 
 		// Panel Servicios
 		setPanelServiciosBtnMinibar("Reponer minibar");

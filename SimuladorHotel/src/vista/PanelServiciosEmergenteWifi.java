@@ -22,6 +22,10 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.HierarchyEvent;
 import java.awt.event.HierarchyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.concurrent.Semaphore;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
@@ -33,6 +37,7 @@ public class PanelServiciosEmergenteWifi extends JPanel {
 	private JPanel panelConfirmacion;
 	private Semaphore s;
 	private Texto t;
+	private JButton btnAdquirir;
 
 	public PanelServiciosEmergenteWifi(MicroControladorLayersPadreHijo microControlador, String padre, Controlador controlador, Semaphore s) {
 		this.s = s;
@@ -48,6 +53,12 @@ public class PanelServiciosEmergenteWifi extends JPanel {
 		panelContenedor.setLayout(null);
 
 		panelPrincipal = new JPanel();
+		panelPrincipal.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cerrarPanelConfirmacion();
+			}
+		});
 		panelPrincipal.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 109, 240), new Color(0, 109, 240),
 				new Color(0, 109, 240), new Color(0, 109, 240)));
 		panelPrincipal.setBounds(0, 0, 695, 315);
@@ -77,7 +88,7 @@ public class PanelServiciosEmergenteWifi extends JPanel {
 		txtpnInfo.setBounds(10, 11, 590, 81);
 		panelPrincipal.add(txtpnInfo);
 
-		JButton btnAdquirir = new JButton(t.getBtnAdquirir());
+		btnAdquirir = new JButton(t.getBtnAdquirir());
 		btnAdquirir.setFont(new Font("Tahoma", Font.PLAIN, 15));
 
 		btnAdquirir.setBounds(260, 223, 175, 53);
@@ -171,6 +182,18 @@ public class PanelServiciosEmergenteWifi extends JPanel {
 	public void crearPanelConfirmacion(String precio) {
 		panelConfirmacion = new PanelConfirmacion(new MicroControladorLayers(panelContenedor), this.getName(), s, precio, t);
 		panelConfirmacion.setBounds(147, 57, 400, 200);
+		
+		panelConfirmacion.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent evt) {
+				if (evt.getNewValue().equals(0)) {
+					btnAdquirir.setEnabled(true);
+				}
+				else if (evt.getNewValue().equals(2)) {
+					btnAdquirir.setEnabled(false);
+				}
+			}
+		});
+		
 		panelContenedor.setLayer(panelConfirmacion, 0);
 		panelContenedor.add(panelConfirmacion);
 	}

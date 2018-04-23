@@ -20,6 +20,8 @@ import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.HierarchyEvent;
+import java.awt.event.HierarchyListener;
 import java.util.concurrent.Semaphore;
 import java.awt.event.ActionEvent;
 import javax.swing.JLayeredPane;
@@ -60,7 +62,7 @@ public class PanelSpaEmergente extends JPanel {
 
 		crearPanelConfirmacion("<precio>");
 
-		JButton btnCancelar = new JButton("Cancelar");
+		JButton btnCancelar = new JButton(t.getBtnCancelar());
 		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { // No modificar
@@ -80,7 +82,7 @@ public class PanelSpaEmergente extends JPanel {
 		btnCancelar.setBounds(405, 254, 175, 53);
 		panelPrincipal.add(btnCancelar);
 
-		JButton btnConfirmar = new JButton("Confirmar");
+		JButton btnConfirmar = new JButton(t.getBtnAceptar());
 		btnConfirmar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnConfirmar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -118,15 +120,28 @@ public class PanelSpaEmergente extends JPanel {
 
 		panelPrincipal.add(panelTiempo);
 		
-		JLabel lblTxt = new JLabel("Seleccione el dia y la hora");
-		lblTxt.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblTxt.setBounds(21, 6, 175, 34);
-		panelPrincipal.add(lblTxt);
+		JLabel lblTxtSpaTitulo = new JLabel(t.getLblTxtSpaTitulo());
+		lblTxtSpaTitulo.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblTxtSpaTitulo.setBounds(21, 6, 214, 34);
+		panelPrincipal.add(lblTxtSpaTitulo);
 		
 		JSeparator separator = new JSeparator();
 		separator.setOrientation(SwingConstants.VERTICAL);
 		separator.setBounds(270, 48, 2, 200);
 		panelPrincipal.add(separator);
+		
+		
+		this.addHierarchyListener(new HierarchyListener() {
+			public void hierarchyChanged(HierarchyEvent e) {
+				if (e.getChangeFlags() == HierarchyEvent.HIERARCHY_FIRST || e.getChangeFlags() == HierarchyEvent.SHOWING_CHANGED) {
+					t = controlador.getTexto();
+					lblTxtSpaTitulo.setText(t.getLblTxtSpaTitulo());
+					btnCancelar.setText(t.getBtnCancelar());
+					btnConfirmar.setText(t.getBtnAceptar());
+				}
+			}
+		});
+		
 	}
 
 	public void cerrarPanelConfirmacion() {

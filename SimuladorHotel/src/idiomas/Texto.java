@@ -61,7 +61,6 @@ public abstract class Texto {
 	// TODO: pendiente de que se haga primero el panel habitacion
 
 	// Panel Spa
-	// TODO: pendiente de que se haga aprimero el panel spa
 	private String lblTratamiento;
 	private String lblSeleccionTratamiento;
 	private String lblDuracion;
@@ -75,6 +74,9 @@ public abstract class Texto {
 	private String lblNumeroPersonas;
 	private String strPersonas;
 	private String strPersona;
+	// Panel Spa EMERGENTE
+	private String lblTxtSpaTitulo;
+	
 
 	// Panel Servicios
 	private String panelServiciosBtnMinibar;
@@ -1252,6 +1254,14 @@ public abstract class Texto {
 
 	public void setPanelServiciosEmergenteTelefonoTxt(String panelServiciosEmergenteTelefonoTxt) {
 		this.panelServiciosEmergenteTelefonoTxt = panelServiciosEmergenteTelefonoTxt;
+	}
+
+	public String getLblTxtSpaTitulo() {
+		return lblTxtSpaTitulo;
+	}
+
+	public void setLblTxtSpaTitulo(String lblTxtSpaTitulo) {
+		this.lblTxtSpaTitulo = lblTxtSpaTitulo;
 	}
 
 }

@@ -20,6 +20,10 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.HierarchyEvent;
 import java.awt.event.HierarchyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.concurrent.Semaphore;
 import java.awt.event.ActionEvent;
 import javax.swing.JLayeredPane;
@@ -35,6 +39,13 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 	// 1 -> America, 2-> Asia, 3-> Europa y 4-> Africa
 	private int continente = 0;
 	private Texto t;
+	private JButton btnCerrar;
+	private JButton btnConfirmarLLamada;
+	private JButton btnAmerica;
+	private JButton btnAsia;
+	private JButton btnEuropa;
+	private JButton btnAfrica;
+	private JLabel lblImagen;
 
 	public PanelServiciosEmergenteTelefono(MicroControladorLayersPadreHijo microControlador, String padre, Controlador controlador, Semaphore s) {
 		this.s = s;
@@ -42,7 +53,7 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 		this.setSize(new Dimension(695, 315));
 		this.setName("p" + this.getClass().getSimpleName().substring(1));
 		setLayout(null);
-		JButton btnConfirmarLLamada = new JButton(t.getPanelServiciosEmergenteTelefonobtnConfirmarLLamada());
+		btnConfirmarLLamada = new JButton(t.getPanelServiciosEmergenteTelefonobtnConfirmarLLamada());
 		btnConfirmarLLamada.setEnabled(false);
 		panelContenedor = new JLayeredPane();
 		panelContenedor.setBounds(0, 0, 695, 315);
@@ -50,6 +61,12 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 		panelContenedor.setLayout(null);
 
 		panelPrincipal = new JPanel();
+		panelPrincipal.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cerrarPanelConfirmacion();
+			}
+		});
 		panelPrincipal.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 109, 240), new Color(0, 109, 240),
 				new Color(0, 109, 240), new Color(0, 109, 240)));
 		panelPrincipal.setBounds(0, 0, 695, 315);
@@ -57,7 +74,7 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 		panelContenedor.add(panelPrincipal);
 		panelPrincipal.setLayout(null);
 
-		JLabel lblImagen = new JLabel("");
+		lblImagen = new JLabel("");
 		ImageIcon mapa = new ImageIcon(PanelServiciosEmergenteTelefono.class.getResource("/iconos/continente.png"));
 		ImageIcon europa = new ImageIcon(PanelServiciosEmergenteTelefono.class.getResource("/iconos/europa.jpg"));
 		ImageIcon asia = new ImageIcon(PanelServiciosEmergenteTelefono.class.getResource("/iconos/asia.jpg"));
@@ -82,7 +99,7 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 
 		crearPanelConfirmacion("<precio>");
 
-		JButton btnCerrar = new JButton(t.getBtnCerrar());
+		btnCerrar = new JButton(t.getBtnCerrar());
 		btnCerrar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnCerrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { // No modificar
@@ -192,7 +209,7 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 		btnConfirmarLLamada.setBounds(268, 266, 158, 38);
 		panelPrincipal.add(btnConfirmarLLamada);
 
-		JButton btnAmerica = new JButton("");
+		btnAmerica = new JButton("");
 		btnAmerica.setFocusPainted(false);
 		btnAmerica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -207,7 +224,7 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 		btnAmerica.setBounds(111, 55, 166, 210);
 		panelPrincipal.add(btnAmerica);
 
-		JButton btnAsia = new JButton("");
+		btnAsia = new JButton("");
 		btnAsia.setFocusPainted(false);
 		btnAsia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -221,7 +238,7 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 		btnAsia.setBounds(383, 55, 190, 210);
 		panelPrincipal.add(btnAsia);
 
-		JButton btnEuropa = new JButton("");
+		btnEuropa = new JButton("");
 		btnEuropa.setFocusPainted(false);
 		btnEuropa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -235,7 +252,7 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 		btnEuropa.setBounds(284, 56, 97, 75);
 		panelPrincipal.add(btnEuropa);
 
-		JButton btnAfrica = new JButton("");
+		btnAfrica = new JButton("");
 		btnAfrica.setFocusPainted(false);
 		btnAfrica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -273,6 +290,28 @@ public class PanelServiciosEmergenteTelefono extends JPanel {
 	public void crearPanelConfirmacion(String precio) {
 		panelConfirmacion = new PanelConfirmacion(new MicroControladorLayers(panelContenedor), this.getName(), s, precio, t);
 		panelConfirmacion.setBounds(147, 57, 400, 200);
+		
+		panelConfirmacion.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent evt) {
+				if (evt.getNewValue().equals(0)) {
+					btnAfrica.setEnabled(true);
+					btnAmerica.setEnabled(true);
+					btnAsia.setEnabled(true);
+					btnConfirmarLLamada.setEnabled(true);
+					btnEuropa.setEnabled(true);
+					lblImagen.setEnabled(true);
+				}
+				else if (evt.getNewValue().equals(2)) {
+					btnAfrica.setEnabled(false);
+					btnAmerica.setEnabled(false);
+					btnAsia.setEnabled(false);
+					btnConfirmarLLamada.setEnabled(false);
+					btnEuropa.setEnabled(false);
+					lblImagen.setEnabled(false);
+				}
+			}
+		});
+		
 		panelContenedor.setLayer(panelConfirmacion, 0);
 		panelContenedor.add(panelConfirmacion);
 	}
