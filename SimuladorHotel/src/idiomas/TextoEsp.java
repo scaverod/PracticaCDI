@@ -227,6 +227,9 @@ public class TextoEsp extends Texto {
 		setBBC("Contratar BBC");
 		setBein("Contratar Bein");
 		setInfo("Solicitar información");
-
+		
+		// Panel Acerca De
+		setPanelAcercaDelblTitulo("Acerca de...");
+		setPanelAcercaDeTxtInfo("Cerrar sesión no implementado. En su lugar dejamos el \"Acerca de\".\r\n\r\nCréditos a los autores de Flaticon, especialmente a Freepik, por proporcionar la mayoría de iconos de nuestra aplicación. A continuación dejamos los créditos tal y como nos lo indican:\r\nIcons made by Freepik from https://www.flaticon.com/\r\nwww.flaticon.com is licensed by Creative Commons BY 3.0 CC 3.0 BY");
 	}
 }

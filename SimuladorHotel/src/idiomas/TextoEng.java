@@ -228,6 +228,9 @@ public class TextoEng extends Texto {
 		setBBC("BBC");
 		setBein("Bein");
 		setInfo("Request info");
-
+		
+		// Panel Acerca De
+		setPanelAcercaDelblTitulo("About...");
+		setPanelAcercaDeTxtInfo("Signing out is not implemented. Instead we leave you with the \"About\" panel.\r\n\r\nCredits to the authors from Flaticon, specially to Freepik, for providing us with most of the icons used in our application. In the following line are the credits as specified by Flaticon:\r\nIcons made by Freepik from https://www.flaticon.com/\r\nwww.flaticon.com is licensed by Creative Commons BY 3.0 CC 3.0 BY");
 	}
 }

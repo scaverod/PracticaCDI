@@ -217,6 +217,10 @@ public abstract class Texto {
 	private String BBC;
 	private String Bein;
 	private String Info;
+	
+	// Panel Acerca De
+	private String panelAcercaDelblTitulo;
+	private String panelAcercaDeTxtInfo;
 
 	protected void placeHolderParaQueMePongaGettersYSettersAbajoEquisde() {
 	}
@@ -1293,6 +1297,22 @@ public abstract class Texto {
 
 	public void setLblTxtSpaTitulo(String lblTxtSpaTitulo) {
 		this.lblTxtSpaTitulo = lblTxtSpaTitulo;
+	}
+
+	public String getPanelAcercaDelblTitulo() {
+		return panelAcercaDelblTitulo;
+	}
+
+	public void setPanelAcercaDelblTitulo(String panelAcercaDelblTitulo) {
+		this.panelAcercaDelblTitulo = panelAcercaDelblTitulo;
+	}
+
+	public String getPanelAcercaDeTxtInfo() {
+		return panelAcercaDeTxtInfo;
+	}
+
+	public void setPanelAcercaDeTxtInfo(String panelAcercaDeTxtInfo) {
+		this.panelAcercaDeTxtInfo = panelAcercaDeTxtInfo;
 	}
 
 }

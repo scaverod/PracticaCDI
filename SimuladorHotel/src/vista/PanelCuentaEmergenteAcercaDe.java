@@ -45,8 +45,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.HierarchyEvent;
 import java.awt.event.HierarchyListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JLabel;
 import javax.swing.JTextArea;
+import javax.swing.JLabel;
 
 public class PanelCuentaEmergenteAcercaDe extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -57,7 +57,7 @@ public class PanelCuentaEmergenteAcercaDe extends JPanel {
 
 		this.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 109, 240), new Color(0, 109, 240),
 				new Color(0, 109, 240), new Color(0, 109, 240)));
-		this.setSize(695, 315);
+		this.setSize(400, 330);
 		this.setName("p" + this.getClass().getSimpleName().substring(1));
 		setLayout(null);
 
@@ -70,23 +70,31 @@ public class PanelCuentaEmergenteAcercaDe extends JPanel {
 				m.changeLayer(0);
 			}
 		});
-		btnCerrar.setBounds(610, 11, 75, 50);
+		btnCerrar.setBounds(315, 11, 75, 50);
 		add(btnCerrar);
 		
-		JTextArea txtrCerrarSesinNo = new JTextArea();
-		txtrCerrarSesinNo.setWrapStyleWord(true);
-		txtrCerrarSesinNo.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		txtrCerrarSesinNo.setOpaque(false);
-		txtrCerrarSesinNo.setLineWrap(true);
-		txtrCerrarSesinNo.setText("Cerrar sesi\u00F3n no implementado. En su lugar dejamos el \"Acerca de\".\r\n\r\nCr\u00E9ditos a los autores de Flaticon, especialmente a Freepik, por proporcionar la mayor\u00EDa de iconos de nuestra aplicaci\u00F3n. A continuaci\u00F3n dejamos los cr\u00E9ditos tal y como nos lo indican:\r\nIcons made by Freepik from https://www.flaticon.com/\r\nwww.flaticon.com is licensed by Creative Commons BY 3.0 CC 3.0 BY");
-		txtrCerrarSesinNo.setBounds(10, 11, 589, 293);
-		add(txtrCerrarSesinNo);
+		JTextArea txtInfo = new JTextArea();
+		txtInfo.setWrapStyleWord(true);
+		txtInfo.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		txtInfo.setOpaque(false);
+		txtInfo.setLineWrap(true);
+		txtInfo.setText("Cerrar sesi\u00F3n no implementado. En su lugar dejamos el \"Acerca de\".\r\n\r\nCr\u00E9ditos a los autores de Flaticon, especialmente a Freepik, por proporcionar la mayor\u00EDa de iconos de nuestra aplicaci\u00F3n. A continuaci\u00F3n dejamos los cr\u00E9ditos tal y como nos lo indican:\r\nIcons made by Freepik from https://www.flaticon.com/\r\nwww.flaticon.com is licensed by Creative Commons BY 3.0 CC 3.0 BY");
+		txtInfo.setBounds(10, 72, 380, 247);
+		add(txtInfo);
+		
+		JLabel lblTitulo = new JLabel("Acerca de...");
+		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblTitulo.setBounds(10, 11, 295, 19);
+		add(lblTitulo);
 
 		this.addHierarchyListener(new HierarchyListener() {
 			public void hierarchyChanged(HierarchyEvent e) {
 				if (e.getChangeFlags() == HierarchyEvent.HIERARCHY_FIRST || e.getChangeFlags() == HierarchyEvent.SHOWING_CHANGED) {
-
 					t = controlador.getTexto();
+					
+					btnCerrar.setText(t.getBtnCerrar());
+					lblTitulo.setText(t.getPanelAcercaDelblTitulo());
+					txtInfo.setText(t.getPanelAcercaDeTxtInfo());
 				}
 			}
 		});

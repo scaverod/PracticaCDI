@@ -70,6 +70,7 @@ public class PanelCuenta extends JPanel {
 	private JLayeredPane layeredPane;
 	private JPanel panelEmergenteContenedor;
 	private JPanel panelDetalles;
+	private JPanel panelAcercaDe;
 
 	public PanelCuenta(Controlador controlador, Ventana ventana) {
 		this.setSize(new Dimension(931, 483));
@@ -142,6 +143,11 @@ public class PanelCuenta extends JPanel {
 		panelLogout.setLayout(null);
 
 		JButton btnLogout = new JButton("");
+		btnLogout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				changeToVentanaEmergente(panelAcercaDe);
+			}
+		});
 		btnLogout.setBounds(0, 0, 76, 47);
 		btnLogout.setFocusPainted(false);
 		btnLogout.setIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/logout.png")));
@@ -388,6 +394,9 @@ public class PanelCuenta extends JPanel {
 
 		panelDetalles = new PanelCuentaEmergenteDetalles(new MicroControladorLayersPadreHijo(layeredPane, panelEmergenteContenedor), controlador);
 		panelEmergenteContenedor.add(panelDetalles, panelDetalles.getName());
+		
+		panelAcercaDe = new PanelCuentaEmergenteAcercaDe(new MicroControladorLayersPadreHijo(layeredPane, panelEmergenteContenedor), controlador);
+		panelEmergenteContenedor.add(panelAcercaDe, panelAcercaDe.getName());
 
 		btnESP.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
