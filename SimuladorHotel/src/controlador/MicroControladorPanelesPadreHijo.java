@@ -1,6 +1,7 @@
 /*
 
-The following notices can be found in each source file.
+The following notices can be found in each source file of the 
+original project.
 
 Copyright (C) 2018 EquipoSPA:
 	David Herrero Pascual	- GitHub: Deividhp13
