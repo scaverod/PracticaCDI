@@ -63,9 +63,8 @@ public class ServiciosSpa {
 	public void inicializar() {
 		spas.add(new Spa("Circuito termal", new String[] { "30 min.", "60 min.", "90 min." }, 40,
 				new double[] { 22.50, 30, 37.99 }, 16, 21));
-		spas.add(
-				new Spa("Baño Turco", new String[] { "30 min.", "60 min." }, 20, new double[] { 15, 25.99 }, 9, 13));
-		spas.add(new Spa("Termas Romanas", new String[] { "30 min.", "60 min." }, 15, new double[] { 17, 28.99 }, 9,
+		spas.add(new Spa("Baño turco", new String[] { "30 min.", "60 min." }, 20, new double[] { 15, 25.99 }, 9, 13));
+		spas.add(new Spa("Termas romanas", new String[] { "30 min.", "60 min." }, 15, new double[] { 17, 28.99 }, 9,
 				13));
 		tratamientos.add(new Tratamiento("Masaje facial", new String[] { "15 min.", "30 min." },
 				new String[] { "Cabina", "Habitación" }, new String[] { "Deivid Herrero" }, 9, 13,

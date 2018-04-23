@@ -408,9 +408,9 @@ public class PanelSpa extends JPanel {
 				info.setFactura(new StringDouble(controlador.getServiciosSpa().getNombresTratamientos()[tratamiento],
 						controlador.getServiciosSpa().getTratamientos().get(tratamiento)
 								.getPrecio()[comboBoxDuracionTrat.getSelectedIndex()]));
-				panelEmergenteSpa = new PanelSpaEmergenteSpa(microControlador, PanelSpa.this.getName(), controlador, s, info);
+				panelEmergenteSpa = new PanelSpaEmergenteTratamiento(microControlador, PanelSpa.this.getName(), controlador, s, info);
 				panelEmergenteContenedor.add(panelEmergenteSpa, panelEmergenteSpa.getName());
-				changeToVentanaEmergente(panelEmergenteSpa);
+				changeToVentanaEmergente(panelEmergenteTratamiento);
 			}
 		});
 

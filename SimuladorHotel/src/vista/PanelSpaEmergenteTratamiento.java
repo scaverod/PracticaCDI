@@ -81,15 +81,12 @@ public class PanelSpaEmergenteTratamiento extends JPanel {
 	private int horas;
 	private int maxHoras;
 	private int minHoras;
-	private JPanel panelAforo;
-	private JLabel lblAforo;
-	private JLabel lblNumAforo;
 	private GuayCalendar panelFecha;
 	private JButton btnConfirmar;
 	private JButton btnCancelar;
 
-	public PanelSpaEmergenteTratamiento(MicroControladorLayersPadreHijo microControlador, String padre, Controlador controlador,
-			Semaphore s, InformacionSpaTratamiento info) {
+	public PanelSpaEmergenteTratamiento(MicroControladorLayersPadreHijo microControlador, String padre,
+			Controlador controlador, Semaphore s, InformacionSpaTratamiento info) {
 		this.s = s;
 		t = controlador.getTexto();
 		this.setSize(new Dimension(695, 315));
@@ -122,7 +119,7 @@ public class PanelSpaEmergenteTratamiento extends JPanel {
 
 		btnCancelar = new JButton(t.getBtnCancelar());
 		btnConfirmar = new JButton(t.getBtnAceptar());
-		
+
 		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { // No modificar
@@ -187,40 +184,30 @@ public class PanelSpaEmergenteTratamiento extends JPanel {
 		btnDisminuirHoras.setBounds(41, 198, 85, 50);
 		panelPrincipal.add(btnDisminuirHoras);
 
-		lblNumAforo = new JLabel("0");
 		comboHoras = new JComboBox<Integer>();
 		comboHoras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				horas = (int) comboHoras.getSelectedItem();
-				int plazasDisp = info.getMaxAforo() - info.getAforo()[horas-minHoras];
-				lblNumAforo.setText(String.valueOf(plazasDisp));
-				if(plazasDisp == 0 || plazasDisp < info.getPersonas()) {
-					btnConfirmar.setEnabled(false);
-				}else {
-					btnConfirmar.setEnabled(true);
-				}
-				
 			}
 		});
 
 		comboHoras.setForeground(new Color(0, 109, 240));
 		comboHoras.setFont(new Font("Tahoma", Font.PLAIN, 40));
+
 		this.setRangoHora(minHoras, maxHoras);
 		comboHoras.setSelectedItem(horas);
 		comboHoras.setBounds(41, 98, 85, 100);
 		panelPrincipal.add(comboHoras);
-		
+
 		comboMinutos = new JComboBox<Integer>();
 		comboMinutos.setForeground(new Color(0, 109, 240));
 		comboMinutos.setFont(new Font("Tahoma", Font.PLAIN, 40));
-		comboMinutos.setModel(new DefaultComboBoxModel<Integer>(new Integer[] { 0}));
+		comboMinutos.setModel(new DefaultComboBoxModel<Integer>(new Integer[] { 0 }));
 		comboMinutos.setSelectedItem(0);
 		comboMinutos.setBounds(156, 98, 85, 100);
 		comboMinutos.setEnabled(false);
 		panelPrincipal.add(comboMinutos);
 
-
-		
 		btnConfirmar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnConfirmar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -233,13 +220,11 @@ public class PanelSpaEmergenteTratamiento extends JPanel {
 
 							if (((PanelConfirmacion) panelConfirmacion).getConfirmacion() == true) {
 								// Actualizar ventana; en otro caso no hacer nada
-								info.setFactura(new StringDouble(info.getFactura().getCadena() + "  "
-										+ panelFecha.getFecha().toString() + " - " + String.valueOf(comboHoras.getSelectedItem())+":00",
+								info.setFactura(new StringDouble(
+										info.getFactura().getCadena() + "  " + panelFecha.getFecha().toString() + " - "
+												+ String.valueOf(comboHoras.getSelectedItem()) + ":00",
 										info.getFactura().getNumero()));
 								controlador.getCuenta().getGasto().addGasto(info.getFactura());
-								int [] aux = info.getAforo();
-								aux[comboHoras.getSelectedIndex()] = aux[comboHoras.getSelectedIndex()] + info.getPersonas();
-								controlador.getServiciosSpa().getSpas().get(info.getSpa()).setAsistentes(aux);
 								lblGif.setVisible(true);
 								Thread.sleep(2050);
 								lblGif.setVisible(false);
@@ -270,31 +255,6 @@ public class PanelSpaEmergenteTratamiento extends JPanel {
 		separator.setOrientation(SwingConstants.VERTICAL);
 		separator.setBounds(270, 48, 2, 200);
 		panelPrincipal.add(separator);
-		
-		panelAforo = new JPanel();
-		panelAforo.setLayout(null);
-		panelAforo.setForeground(new Color(60, 179, 113));
-		panelAforo.setBorder(new LineBorder(new Color(51, 153, 102), 3));
-		panelAforo.setBackground(new Color(153, 255, 153));
-		panelAforo.setBounds(237, 273, 221, 31);
-		panelPrincipal.add(panelAforo);
-		
-		lblAforo = new JLabel(t.getLblPlazas());
-		lblAforo.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblAforo.setBounds(14, 0, 127, 31);
-		panelAforo.add(lblAforo);
-		lblNumAforo = new JLabel(String.valueOf(String.valueOf(info.getMaxAforo() - info.getAforo()[0])));
-		lblNumAforo.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNumAforo.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNumAforo.setBounds(137, 0, 84, 31);
-		panelAforo.add(lblNumAforo);
-		
-		if(info.getMaxAforo() - info.getAforo()[horas-minHoras] == 0 || info.getMaxAforo() - info.getAforo()[horas-minHoras] < info.getPersonas()) {
-			btnConfirmar.setEnabled(false);
-			panelAforo.setForeground(Color.decode("#f13007"));
-			panelAforo.setBorder(new LineBorder(new Color(51, 153, 102), 3));
-			panelAforo.setBackground(new Color(153, 255, 153));
-		}
 
 		this.addHierarchyListener(new HierarchyListener() {
 			public void hierarchyChanged(HierarchyEvent e) {
@@ -315,9 +275,10 @@ public class PanelSpaEmergenteTratamiento extends JPanel {
 	}
 
 	public void crearPanelConfirmacion(String precio) {
-		panelConfirmacion = new PanelConfirmacion(new MicroControladorLayers(panelContenedor), this.getName(), s, precio, t);
+		panelConfirmacion = new PanelConfirmacion(new MicroControladorLayers(panelContenedor), this.getName(), s,
+				precio, t);
 		panelConfirmacion.setBounds(147, 57, 400, 200);
-		
+
 		panelConfirmacion.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent evt) {
 				if (evt.getNewValue().equals(0)) {
@@ -328,9 +289,7 @@ public class PanelSpaEmergenteTratamiento extends JPanel {
 					btnCancelar.setEnabled(true);
 					label.setEnabled(true);
 					comboHoras.setEnabled(true);
-					comboMinutos.setEnabled(true);
-				}
-				else if (evt.getNewValue().equals(2)) {
+				} else if (evt.getNewValue().equals(2)) {
 					panelFecha.setActivado(false);
 					panelFecha.setActivado(false);
 					btnAumentarHoras.setEnabled(false);
@@ -339,11 +298,10 @@ public class PanelSpaEmergenteTratamiento extends JPanel {
 					btnCancelar.setEnabled(false);
 					label.setEnabled(false);
 					comboHoras.setEnabled(false);
-					comboMinutos.setEnabled(false);
 				}
 			}
 		});
-		
+
 		panelContenedor.setLayer(panelConfirmacion, 0);
 		panelContenedor.add(panelConfirmacion);
 	}
@@ -366,6 +324,5 @@ public class PanelSpaEmergenteTratamiento extends JPanel {
 		}
 		comboHoras.setModel(new DefaultComboBoxModel<Integer>(horas));
 	}
-	
-	
+
 }
