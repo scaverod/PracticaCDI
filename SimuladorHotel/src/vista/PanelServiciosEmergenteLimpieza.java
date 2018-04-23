@@ -205,7 +205,7 @@ public class PanelServiciosEmergenteLimpieza extends JPanel {
 					t = controlador.getTexto();
 					
 					btnCerrar.setText(t.getBtnCerrar());
-					txtpnInfo.setText(t.getPanelServiciosEmergenteComidaTxt());
+					txtpnInfo.setText(t.getPanelServiciosEmergenteLimpiezaTxt());
 					txtpnUnaVezHaya.setText(t.getPanelServiciosEmergenteLimpiezaTxtUnaVezHaya());
 					btnAdquirir.setText(t.getBtnAdquirir());
 				}

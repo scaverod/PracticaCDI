@@ -55,9 +55,8 @@ public class TextoEsp extends Texto {
 		setMenuPrincipalBtnSpa("Spa");
 		setMenuPrincipalBtnServicios("Servicios");
 		setMenuPrincipalBtnCuenta("Cuenta");
-
-		// TODO: panel habitacion
-			//Panel Habitacion Emergente Alarma
+		
+		//Panel Habitacion Emergente Alarma
 		setLblLunes("Lunes");
 		setLblMartes("Martes");
 		setLblMiercoles("Miércoles");
@@ -66,30 +65,33 @@ public class TextoEsp extends Texto {
 		setLblSabado("Sábado");
 		setLblDomingo("Domingo");
 		setTxtrParaEmpezarA("Para empezar a utilizar nuestro sistema de despertador a\u00F1ada una alarma pulsando en el bot\u00F3n inferior derecho");
-			//Panel Habitacion Emergente Calefaccion
+		
+		//Panel Habitacion Emergente Calefaccion
 		setLblTituloTemperatura("Control de temperatura");
 		setLblControlManual("Control manual");
 		setBtnActivar("Activar");
 		setBtnDesactivar("Desactivar");
 		setLblProgramacionAutomatica("Programación Automática");
 		setLblInicio("Inicio");
-			//Panel Habitacion Emergente Jacuzzi
+		
+		//Panel Habitacion Emergente Jacuzzi
 		setLblControlJacuzzi("Control del Jacuzzi");
 		setLblBurbujas("Burbujas");
 		setLblTemperatura("Temperatura");
 		setLblAgua("Agua");
 		setLblLlenar("Llenar");
 		setLblVaciar("Vaciar");
+		
 		// Panel Habitacion Emergente Ayuda
 		setTxtTip1("Para interactuar con los elementos de la habitación pulse sobre aquellos que están resaltados de amarillo.");
 		setTxtTip2("Para  interactuar  con  todos  los  elementos  a   la  vez  (como  por  ejemplo, todas las luces) pulse sobre los botones inferiores de la izquierda.");
 		setTxtTip3("Para programar  un despertador,  seleccione el botón  del reloj  que se encuentra en la parte inferior izquierda.");
-			//Panel Habitacion Emergente Ventana
+		
+		//Panel Habitacion Emergente Ventana
 		setLblControlVentana("Control de la ventana");
 		setLblVentana("Ventana");
 		setLblPersianas("Persianas");
 		setBtnAbrir("Abrir");
-		
 		
 		// TODO: panel spa
 		setLblTratamiento("Tratamiento");
@@ -105,6 +107,7 @@ public class TextoEsp extends Texto {
 		setLblNumeroPersonas("Número de tickets");
 		setStrPersonas("personas");
 		setStrPersona("persona");
+		
 		// TODO: panel spa EMERGENTE
 		setLblTxtSpaTitulo("Seleccione la hora y el día");
 
@@ -125,30 +128,25 @@ public class TextoEsp extends Texto {
 		// Panel Emergen Informacion
 		setBtnAdquirir("Adquirir");
 		setTxtInformacion("Nuestros hoteles cuentan con una atención totalmente personalizada. Con solo pulsar el botón, le llamaremos al teléfono de la habitación desde la recepción del hotel.\nDisponible las 24 horas al día");
-
 		setLblCoste("Coste:");
 
 		// Panel Emergen Television
-		setPanelServiciosEmergenteTelevisionTxt(
-				"Nuestros hoteles cuentan con una variedad de canales exclusivos para nuestros clientes más exigentes.");
+		setPanelServiciosEmergenteTelevisionTxt("Nuestros hoteles cuentan con una variedad de canales exclusivos para nuestros clientes más exigentes.");
 
 		// Panel Emergen Wifi
 		setPanelServiciosEmergenteWifiTxt(
 				"Todo el mundo quiere tener la posibilidad de conectarse a internet en cualquier momento, por eso nosotros contamos con Wifi en todas las habitaciones del hotel de alta calidad. \r\n"
 						+ "Una vez usted active el servicio, éste estará disponible durante toda su estancia. ");
-		setPanelServiciosEmergenteWifiActivadoTxt(
-				"Has adquirido el servicio de WiFi. Esperamos que pueda disfrutar de la mejor calidad de nuestra conexion a internet.\n\nPara comenzar a usar el WiFi introduzca la clave en sus dispositivos.");
+		setPanelServiciosEmergenteWifiActivadoTxt("Has adquirido el servicio de WiFi. Esperamos que pueda disfrutar de la mejor calidad de nuestra conexion a internet.\n\nPara comenzar a usar el WiFi introduzca la clave en sus dispositivos.");
 		setPanelServiciosEmergenteWifiPwdTxt("Clave del WiFi:");
 
 		// Panel Emergen Taxi
-		setPanelServiciosEmergenteTaxiTxt(
-				"No pierdas tu tiempo llamando a un vehículo para tu traslado. Nosotros lo hacemos por ti.\n\nLista de empresas asociadas:");
+		setPanelServiciosEmergenteTaxiTxt("No pierdas tu tiempo llamando a un vehículo para tu traslado. Nosotros lo hacemos por ti.\n\nLista de empresas asociadas:");
 
 		// Panel Emergen Botones
-		setPanelServiciosEmergenteBotonesTxt(
-				"Nuestros hoteles cuentan con una atenci\u00F3n totalmente personalizada. Con solo pulsar el bot\u00F3n, un botones se acercar\u00E1 hasta su habitaci\u00F3n para ayudarle en lo que necesite.\r\nDisponible las 24 horas al d\u00EDa");
+		setPanelServiciosEmergenteBotonesTxt("Nuestros hoteles cuentan con una atenci\u00F3n totalmente personalizada. Con solo pulsar el bot\u00F3n, un botones se acercar\u00E1 hasta su habitaci\u00F3n para ayudarle en lo que necesite.\r\nDisponible las 24 horas al d\u00EDa");
 		
-		//Panel Emergen Almohada
+		// Panel Emergen Almohada
 		setPanelServiciosEmergentealmohadaLatex("Látex");
 		setPanelServiciosEmergentealmohadaVisco("Viscoelástica");
 		setPanelServiciosEmergentealmohadaGel("Gel");
@@ -156,20 +154,16 @@ public class TextoEsp extends Texto {
 		setPanelServiciosEmergentealmohadaTxt("Queremos que descanse todo lo posible durante su estancia. Seleccione el tipo de almohada que desee y en unos minutos un botones se la subirá a la habitación");
 		
 		//Panel Emergente Comida
-		setPanelServiciosEmergenteComidaTxt(
-				"Nuestros hoteles cuentan con una atenci\u00F3n totalmente personalizada. Con solo pulsar el bot\u00F3n, un botones le llevará la comida desde nuestro exclusivo restaurante directamente a su habitación para que pueda disfrutar de nuestra comida gourmet con total comodidad. Servicio disponible de 7:00 a 00:00");
+		setPanelServiciosEmergenteComidaTxt("Nuestros hoteles cuentan con una atenci\u00F3n totalmente personalizada. Con solo pulsar el bot\u00F3n, un botones le llevará la comida desde nuestro exclusivo restaurante directamente a su habitación para que pueda disfrutar de nuestra comida gourmet con total comodidad. Servicio disponible de 7:00 a 00:00");
 		
 		//Panel Emergente Toallas
-		setPanelServiciosEmergenteToallasTxt(
-				"Nuestros hoteles cuentan con una atenci\u00F3n totalmente personalizada. Con solo pulsar el bot\u00F3n, nuestro servicio de limpieza subirá a su habitación con un juego de toallas limpias. Servicio disponible las 24 horas del día");
+		setPanelServiciosEmergenteToallasTxt("Nuestros hoteles cuentan con una atenci\u00F3n totalmente personalizada. Con solo pulsar el bot\u00F3n, nuestro servicio de limpieza subirá a su habitación con un juego de toallas limpias. Servicio disponible las 24 horas del día");
 		
 		//Panel Emergente Minibar
-		setPanelServiciosEmergenteMinibarTxt(
-				"Nuestros hoteles cuentan con una atenci\u00F3n totalmente personalizada. Con solo pulsar el bot\u00F3n, un botones repondrá todos los artículos del minibar, para que siempre pueda disfrutar de las mejores bebidas y snacks que tenemos a su disposición");
+		setPanelServiciosEmergenteMinibarTxt("Nuestros hoteles cuentan con una atenci\u00F3n totalmente personalizada. Con solo pulsar el bot\u00F3n, un botones repondrá todos los artículos del minibar, para que siempre pueda disfrutar de las mejores bebidas y snacks que tenemos a su disposición");
 		
 		//Panel Emergente Sabanas
-		setPanelServiciosEmergenteSabanasTxt(
-				"Nuestros hoteles cuentan con una atenci\u00F3n totalmente personalizada. Con solo pulsar el bot\u00F3n, nuestro servicio de limpieza subirá a su habitación con un juego de sábanas limpias. Servicio disponible las 24 horas del día");
+		setPanelServiciosEmergenteSabanasTxt("Nuestros hoteles cuentan con una atenci\u00F3n totalmente personalizada. Con solo pulsar el bot\u00F3n, nuestro servicio de limpieza subirá a su habitación con un juego de sábanas limpias. Servicio disponible las 24 horas del día");
 		
 		// Panel Emergente Limpieza
 		setPanelServiciosEmergenteLimpiezaTxt("Seleccione la hora más adecuada para que limpiemos la habitación.");
@@ -179,7 +173,6 @@ public class TextoEsp extends Texto {
 		// Panel Emergente Telefono
 		setPanelServiciosEmergenteTelefonoTxt("Seleccione el continente al que desea llamar y a continuaci\u00F3n confirme la llamada. \r\nDespu\u00E9s podr\u00E1 usar el tel\u00E9fono de la habitaci\u00F3n para realizar la llamada.");
 		setPanelServiciosEmergenteTelefonobtnConfirmarLLamada("Seleccione un continente");
-		
 		
 		// Panel usuario
 		setLblCuentaHabitacion("Habitación");
