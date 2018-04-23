@@ -12,6 +12,8 @@ import tiposVariable.StringDouble;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.HierarchyEvent;
+import java.awt.event.HierarchyListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLayeredPane;
 import java.awt.CardLayout;
@@ -282,10 +284,10 @@ public class PanelSpa extends JPanel {
 		panelPrecioSPA.setBounds(289, 403, 125, 31);
 		panelDerecho.add(panelPrecioSPA);
 
-		JLabel label_2 = new JLabel(t.getLblCoste());
-		label_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		label_2.setBounds(14, 0, 47, 31);
-		panelPrecioSPA.add(label_2);
+		JLabel lblCoste2 = new JLabel(t.getLblCoste());
+		lblCoste2.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblCoste2.setBounds(14, 0, 47, 31);
+		panelPrecioSPA.add(lblCoste2);
 
 		lblPrecioSpa.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPrecioSpa.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -444,8 +446,33 @@ public class PanelSpa extends JPanel {
 		info = new InformacionSpaTratamiento(0, 1, new StringDouble("", 0));
 		panelBase = new PanelSpaEmergente(microControlador, this.getName(), controlador, s, info);
 		panelEmergenteContenedor.add(panelBase, panelBase.getName());
+		
+		layeredPane.addHierarchyListener(new HierarchyListener() {
+			public void hierarchyChanged(HierarchyEvent e) {
+				t = controlador.getTexto();
+				btnAdquirirIzq.setText(t.getBtnAdquirir());
+				lblTratamiento.setText(t.getLblTratamiento());
+				lblSeleccionTratamiento.setText(t.getLblSeleccionTratamiento());
+				lblDuracionTrat.setText(t.getLblDuracion());
+				lblLugar.setText(t.getLblLugar());
+				lblEmpleado.setText(t.getLblEmpleado());
+				lblCoste.setText(t.getLblCoste());
+				lblSpa.setText(t.getLblSpa());
+				lblSeleccioneElServicio.setText(t.getLblSeleccionServicio());
+				lblCoste2.setText(t.getLblCoste());
+				lblDuracionSpa.setText(t.getLblDuracion());
+				comboBoxNumPersonas.setModel(new DefaultComboBoxModel<String>(
+						new String[] { "1 " + t.getStrPersona(), "2 " + t.getStrPersonas(), "3 "+ t.getStrPersonas(), "4 "+ t.getStrPersonas() }));
+				lblNumeroDePersonas.setText(t.getLblNumeroPersonas());
+				lblPlazasDisponibles.setText(t.getLblPlazas());
+				btnAdquirirDch.setText(t.getBtnAdquirir());
+				
+			}
+		});
 
 	}
+	
+	
 
 	private void establecerVentanaServicio(String panel) {
 		CardLayout l = (CardLayout) panelEmergenteContenedor.getLayout();
