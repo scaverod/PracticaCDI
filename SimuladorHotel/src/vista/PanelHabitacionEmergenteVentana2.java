@@ -207,5 +207,34 @@ public class PanelHabitacionEmergenteVentana2 extends JPanel {
 		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblTitulo.setBounds(10, 31, 167, 14);
 		add(lblTitulo);
+		
+		
+		this.addHierarchyListener(new HierarchyListener() {
+			public void hierarchyChanged(HierarchyEvent e) {
+				if (e.getChangeFlags() == HierarchyEvent.HIERARCHY_FIRST
+						|| e.getChangeFlags() == HierarchyEvent.SHOWING_CHANGED) {
+
+					t = controlador.getTexto();
+
+					panelPersiana.setBorder(new TitledBorder(
+							new BevelBorder(BevelBorder.LOWERED, new Color(0, 109, 240), new Color(0, 109, 240),
+									new Color(0, 109, 240), new Color(0, 109, 240)),
+							t.getLblPersianas(), TitledBorder.LEADING, TitledBorder.TOP,
+							new Font("Tahoma", Font.PLAIN, 15), null));
+
+					panelVentana.setBorder(new TitledBorder(
+							new BevelBorder(BevelBorder.LOWERED, new Color(0, 109, 240), new Color(0, 109, 240),
+									new Color(0, 109, 240), new Color(0, 109, 240)),
+							t.getLblVentana(), TitledBorder.LEADING, TitledBorder.TOP,
+							new Font("Tahoma", Font.PLAIN, 15), null));
+
+					btnAbrir.setText(t.getBtnAbrir());
+					btnCerrarV.setText(t.getBtnCerrar());
+					lblTitulo.setText(t.getLblControlVentana());
+					btnCerrar.setText(t.getBtnCerrar());
+
+				}
+			}
+		});
 	}
 }
