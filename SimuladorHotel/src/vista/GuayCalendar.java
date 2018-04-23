@@ -72,6 +72,14 @@ public class GuayCalendar extends JPanel {
 	private final DefaultComboBoxModel<Integer> modelDias31 = new DefaultComboBoxModel<Integer>(dias31);
 
 	private Fecha fecha;
+	private JLabel lblSeparador;
+	private JLabel lblSeparador2;
+	private JButton btnAumentarDia;
+	private JButton btnDisminuirDia;
+	private JButton btnAumentarMes;
+	private JButton btnDisminuirMes;
+	private JButton btnAumentarAnyo;
+	private JButton btnDisminuirAnyo;
 
 	public GuayCalendar() {
 		fecha = new Fecha();
@@ -85,21 +93,21 @@ public class GuayCalendar extends JPanel {
 		}
 		setLayout(null);
 
-		JLabel lblSeparador = new JLabel("/");
+		lblSeparador = new JLabel("/");
 		lblSeparador.setForeground(new Color(0, 109, 240));
 		lblSeparador.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		lblSeparador.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSeparador.setBounds(85, 65, 30, 70);
 		add(lblSeparador);
 
-		JLabel lblSeparador2 = new JLabel("/");
+		lblSeparador2 = new JLabel("/");
 		lblSeparador2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSeparador2.setForeground(new Color(0, 109, 240));
 		lblSeparador2.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		lblSeparador2.setBounds(200, 65, 30, 70);
 		add(lblSeparador2);
 
-		JButton btnAumentarDia = new JButton("");
+		btnAumentarDia = new JButton("");
 		btnAumentarDia.setFocusPainted(false);
 		btnAumentarDia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -115,7 +123,7 @@ public class GuayCalendar extends JPanel {
 		btnAumentarDia.setBounds(0, 0, 85, 50);
 		add(btnAumentarDia);
 
-		JButton btnDisminuirDia = new JButton("");
+		btnDisminuirDia = new JButton("");
 		btnDisminuirDia.setFocusPainted(false);
 		btnDisminuirDia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -131,7 +139,7 @@ public class GuayCalendar extends JPanel {
 		btnDisminuirDia.setBounds(0, 150, 85, 50);
 		add(btnDisminuirDia);
 
-		JButton btnAumentarMes = new JButton("");
+		btnAumentarMes = new JButton("");
 		btnAumentarMes.setFocusPainted(false);
 		btnAumentarMes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -147,7 +155,7 @@ public class GuayCalendar extends JPanel {
 		btnAumentarMes.setBounds(115, 0, 85, 50);
 		add(btnAumentarMes);
 
-		JButton btnDisminuirMes = new JButton("");
+		btnDisminuirMes = new JButton("");
 		btnDisminuirMes.setFocusPainted(false);
 		btnDisminuirMes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -162,7 +170,7 @@ public class GuayCalendar extends JPanel {
 		btnDisminuirMes.setBounds(115, 150, 85, 50);
 		add(btnDisminuirMes);
 
-		JButton btnAumentarAnyo = new JButton("");
+		btnAumentarAnyo = new JButton("");
 		btnAumentarAnyo.setFocusPainted(false);
 		btnAumentarAnyo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -178,7 +186,7 @@ public class GuayCalendar extends JPanel {
 		btnAumentarAnyo.setBounds(230, 0, 120, 50);
 		add(btnAumentarAnyo);
 
-		JButton btnDisminuirAnyo = new JButton("");
+		btnDisminuirAnyo = new JButton("");
 		btnDisminuirAnyo.setFocusPainted(false);
 		btnDisminuirAnyo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -274,5 +282,19 @@ public class GuayCalendar extends JPanel {
 
 	public Fecha getFecha() {
 		return fecha;
+	}
+	
+	public void setActivado(boolean b) {
+		lblSeparador.setEnabled(b);
+		lblSeparador2.setEnabled(b);
+		btnAumentarAnyo.setEnabled(b);
+		btnAumentarDia.setEnabled(b);
+		btnAumentarMes.setEnabled(b);
+		btnDisminuirAnyo.setEnabled(b);
+		btnDisminuirDia.setEnabled(b);
+		btnDisminuirMes.setEnabled(b);
+		comboAnyo.setEnabled(b);
+		comboDia.setEnabled(b);
+		comboMes.setEnabled(b);
 	}
 }

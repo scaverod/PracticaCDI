@@ -73,7 +73,7 @@ public class PanelSpa extends JPanel {
 
 	private JPanel panelEmergenteContenedor;
 	private JPanel panelPrincipal;
-	private JPanel panelBase;
+	private JPanel panelEmergenteSpa;
 	private JLayeredPane layeredPane;
 	private int tratamiento;
 	private int spa;
@@ -81,6 +81,7 @@ public class PanelSpa extends JPanel {
 	private InformacionSpaTratamiento info;
 
 	private Semaphore s;
+	private JPanel panelEmergenteTratamiento;
 
 	public PanelSpa(Controlador controlador) {
 		t = controlador.getTexto();
@@ -391,9 +392,9 @@ public class PanelSpa extends JPanel {
 				info.setAforo(controlador.getServiciosSpa().getSpas().get(spa).getAsistentes());
 				info.setPersonas(comboBoxNumPersonas.getSelectedIndex()+1);
 				info.setSpa(spa);
-				panelBase = new PanelSpaEmergente(microControlador, PanelSpa.this.getName(), controlador, s, info);
-				panelEmergenteContenedor.add(panelBase, panelBase.getName());
-				changeToVentanaEmergente(panelBase);
+				panelEmergenteSpa = new PanelSpaEmergente(microControlador, PanelSpa.this.getName(), controlador, s, info);
+				panelEmergenteContenedor.add(panelEmergenteSpa, panelEmergenteSpa.getName());
+				changeToVentanaEmergente(panelEmergenteSpa);
 			}
 		});
 		btnAdquirirDch.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -407,9 +408,9 @@ public class PanelSpa extends JPanel {
 				info.setFactura(new StringDouble(controlador.getServiciosSpa().getNombresTratamientos()[tratamiento],
 						controlador.getServiciosSpa().getTratamientos().get(tratamiento)
 								.getPrecio()[comboBoxDuracionTrat.getSelectedIndex()]));
-				panelBase = new PanelSpaEmergente(microControlador, PanelSpa.this.getName(), controlador, s, info);
-				panelEmergenteContenedor.add(panelBase, panelBase.getName());
-				changeToVentanaEmergente(panelBase);
+				panelEmergenteSpa = new PanelSpaEmergente(microControlador, PanelSpa.this.getName(), controlador, s, info);
+				panelEmergenteContenedor.add(panelEmergenteSpa, panelEmergenteSpa.getName());
+				changeToVentanaEmergente(panelEmergenteSpa);
 			}
 		});
 
@@ -458,8 +459,11 @@ public class PanelSpa extends JPanel {
 		microControlador = new MicroControladorLayersPadreHijo(layeredPane, panelEmergenteContenedor);
 
 		info = new InformacionSpaTratamiento(0, 1, new StringDouble("", 0), new int [] {0}, 0,0, 0);
-		panelBase = new PanelSpaEmergente(microControlador, this.getName(), controlador, s, info);
-		panelEmergenteContenedor.add(panelBase, panelBase.getName());
+		panelEmergenteSpa = new PanelSpaEmergente(microControlador, this.getName(), controlador, s, info);
+		panelEmergenteContenedor.add(panelEmergenteSpa, panelEmergenteSpa.getName());
+		
+		panelEmergenteTratamiento = new JPanel();
+		panelEmergenteContenedor.add(panelEmergenteTratamiento, panelEmergenteTratamiento.getName());
 		
 		layeredPane.addHierarchyListener(new HierarchyListener() {
 			public void hierarchyChanged(HierarchyEvent e) {

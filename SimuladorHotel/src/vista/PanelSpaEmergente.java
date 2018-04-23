@@ -56,12 +56,15 @@ import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
 import java.awt.event.HierarchyEvent;
 import java.awt.event.HierarchyListener;
-import java.util.Date;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.concurrent.Semaphore;
 import java.awt.event.ActionEvent;
 import javax.swing.JLayeredPane;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PanelSpaEmergente extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -81,6 +84,9 @@ public class PanelSpaEmergente extends JPanel {
 	private JPanel panelAforo;
 	private JLabel lblAforo;
 	private JLabel lblNumAforo;
+	private GuayCalendar panelFecha;
+	private JButton btnConfirmar;
+	private JButton btnCancelar;
 
 	public PanelSpaEmergente(MicroControladorLayersPadreHijo microControlador, String padre, Controlador controlador,
 			Semaphore s, InformacionSpaTratamiento info) {
@@ -96,6 +102,12 @@ public class PanelSpaEmergente extends JPanel {
 		panelContenedor.setLayout(null);
 
 		panelPrincipal = new JPanel();
+		panelPrincipal.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cerrarPanelConfirmacion();
+			}
+		});
 		panelPrincipal.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 109, 240), new Color(0, 109, 240),
 				new Color(0, 109, 240), new Color(0, 109, 240)));
 		panelPrincipal.setBounds(0, 0, 695, 315);
@@ -103,13 +115,13 @@ public class PanelSpaEmergente extends JPanel {
 		panelContenedor.add(panelPrincipal);
 		panelPrincipal.setLayout(null);
 
-		GuayCalendar panelFecha = new GuayCalendar();
+		panelFecha = new GuayCalendar();
 		panelFecha.setLocation(307, 48);
 
 		crearPanelConfirmacion("<precio>");
 
-		JButton btnCancelar = new JButton(t.getBtnCancelar());
-		JButton btnConfirmar = new JButton(t.getBtnAceptar());
+		btnCancelar = new JButton(t.getBtnCancelar());
+		btnConfirmar = new JButton(t.getBtnAceptar());
 		
 		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnCancelar.addActionListener(new ActionListener() {
@@ -181,7 +193,6 @@ public class PanelSpaEmergente extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				horas = (int) comboHoras.getSelectedItem();
 				int plazasDisp = info.getMaxAforo() - info.getAforo()[horas-minHoras];
-				System.out.println(plazasDisp);
 				lblNumAforo.setText(String.valueOf(plazasDisp));
 				if(plazasDisp == 0 || plazasDisp < info.getPersonas()) {
 					btnConfirmar.setEnabled(false);
@@ -304,9 +315,35 @@ public class PanelSpaEmergente extends JPanel {
 	}
 
 	public void crearPanelConfirmacion(String precio) {
-		panelConfirmacion = new PanelConfirmacion(new MicroControladorLayers(panelContenedor), this.getName(), s,
-				precio, t);
+		panelConfirmacion = new PanelConfirmacion(new MicroControladorLayers(panelContenedor), this.getName(), s, precio, t);
 		panelConfirmacion.setBounds(147, 57, 400, 200);
+		
+		panelConfirmacion.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent evt) {
+				if (evt.getNewValue().equals(0)) {
+					panelFecha.setActivado(true);
+					btnAumentarHoras.setEnabled(true);
+					btnConfirmar.setEnabled(true);
+					btnDisminuirHoras.setEnabled(true);
+					btnCancelar.setEnabled(true);
+					label.setEnabled(true);
+					comboHoras.setEnabled(true);
+					comboMinutos.setEnabled(true);
+				}
+				else if (evt.getNewValue().equals(2)) {
+					panelFecha.setActivado(false);
+					panelFecha.setActivado(false);
+					btnAumentarHoras.setEnabled(false);
+					btnConfirmar.setEnabled(false);
+					btnDisminuirHoras.setEnabled(false);
+					btnCancelar.setEnabled(false);
+					label.setEnabled(false);
+					comboHoras.setEnabled(false);
+					comboMinutos.setEnabled(false);
+				}
+			}
+		});
+		
 		panelContenedor.setLayer(panelConfirmacion, 0);
 		panelContenedor.add(panelConfirmacion);
 	}
