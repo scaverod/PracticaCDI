@@ -103,7 +103,6 @@ public class PanelSpa extends JPanel {
 		JLabel lblPrecioTrat = new JLabel(controlador.getServiciosSpa().getTratamientos().get(0).getPrecio()[0] + " \u20AC");
 		costeSPA = controlador.getServiciosSpa().getSpas().get(spa).getPrecio()[0];
 		JLabel lblPrecioSpa = new JLabel(String.valueOf(costeSPA + " \u20AC"));
-		JLabel lblNumPlazas = new JLabel(String.valueOf(controlador.getServiciosSpa().getSpas().get(spa).getAforoMax()));
 		JComboBox<String> comboBoxDuracionTrat = new JComboBox<String>();
 		JComboBox<String> comboBoxLugar = new JComboBox<String>();
 		JComboBox<String> comboBoxEmpleado = new JComboBox<String>();
@@ -121,8 +120,6 @@ public class PanelSpa extends JPanel {
 				int multiplicador = comboBoxNumPersonas.getSelectedIndex() + 1;
 				costeSPA = multiplicador * costeSPA;
 				lblPrecioSpa.setText(String.valueOf(costeSPA) + " \u20AC");
-				lblNumPlazas.setText(String.valueOf(controlador.getServiciosSpa().getSpas().get(spa).getAforoMax()
-						- controlador.getServiciosSpa().getSpas().get(spa).getAsistentes()));
 			}
 		});
 
@@ -154,7 +151,7 @@ public class PanelSpa extends JPanel {
 
 		JLabel iconoTratamiento = new JLabel("");
 		iconoTratamiento.setIcon(new ImageIcon(PanelSpa.class.getResource("/iconos/massage (1).png")));
-		iconoTratamiento.setBounds(331, 71, 64, 64);
+		iconoTratamiento.setBounds(331, 90, 64, 64);
 		panelIzquierdo.add(iconoTratamiento);
 
 		comboBoxDuracionTrat.addItemListener(new ItemListener() {
@@ -179,7 +176,7 @@ public class PanelSpa extends JPanel {
 
 		JLabel iconoDuracion = new JLabel("");
 		iconoDuracion.setIcon(new ImageIcon(PanelSpa.class.getResource("/iconos/time.png")));
-		iconoDuracion.setBounds(331, 146, 64, 64);
+		iconoDuracion.setBounds(331, 165, 64, 64);
 		panelIzquierdo.add(iconoDuracion);
 
 		JLabel lblLugar = new JLabel(t.getLblLugar());
@@ -197,7 +194,7 @@ public class PanelSpa extends JPanel {
 
 		JLabel iconoLugar = new JLabel("");
 		iconoLugar.setIcon(new ImageIcon(PanelSpa.class.getResource("/iconos/room.png")));
-		iconoLugar.setBounds(331, 221, 64, 64);
+		iconoLugar.setBounds(331, 240, 64, 64);
 		panelIzquierdo.add(iconoLugar);
 
 		comboBoxEmpleado.setModel(new DefaultComboBoxModel<String>(
@@ -215,7 +212,7 @@ public class PanelSpa extends JPanel {
 
 		JLabel lblImagenEmpleado = new JLabel("");
 		lblImagenEmpleado.setIcon(new ImageIcon(PanelSpa.class.getResource("/iconos/user.png")));
-		lblImagenEmpleado.setBounds(341, 296, 64, 60);
+		lblImagenEmpleado.setBounds(341, 317, 64, 60);
 		panelIzquierdo.add(lblImagenEmpleado);
 
 		JPanel panelPrecioTrat = new JPanel();
@@ -296,7 +293,7 @@ public class PanelSpa extends JPanel {
 
 		JLabel lblImagenReloj = new JLabel("");
 		lblImagenReloj.setIcon(new ImageIcon(PanelSpa.class.getResource("/iconos/time.png")));
-		lblImagenReloj.setBounds(345, 146, 64, 64);
+		lblImagenReloj.setBounds(345, 165, 64, 64);
 		panelDerecho.add(lblImagenReloj);
 
 		comboBoxDuracionSpa.addItemListener(new ItemListener() {
@@ -338,7 +335,7 @@ public class PanelSpa extends JPanel {
 				new String[] { "1 " + t.getStrPersona(), "2 " + t.getStrPersonas(), "3 "+ t.getStrPersonas(), "4 "+ t.getStrPersonas() }));
 		comboBoxNumPersonas.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		comboBoxNumPersonas.setSelectedIndex(0);
-		comboBoxNumPersonas.setBounds(61, 259, 221, 25);
+		comboBoxNumPersonas.setBounds(61, 260, 221, 25);
 		panelDerecho.add(comboBoxNumPersonas);
 
 		JLabel lblNumeroDePersonas = new JLabel(t.getLblNumeroPersonas());
@@ -347,27 +344,9 @@ public class PanelSpa extends JPanel {
 		lblNumeroDePersonas.setBounds(61, 221, 221, 41);
 		panelDerecho.add(lblNumeroDePersonas);
 
-		JPanel panelPlazasDisp = new JPanel();
-		panelPlazasDisp.setLayout(null);
-		panelPlazasDisp.setForeground(new Color(60, 179, 113));
-		panelPlazasDisp.setBorder(new LineBorder(new Color(51, 153, 102), 3));
-		panelPlazasDisp.setBackground(new Color(153, 255, 153));
-		panelPlazasDisp.setBounds(114, 328, 221, 31);
-		panelDerecho.add(panelPlazasDisp);
-
-		JLabel lblPlazasDisponibles = new JLabel(t.getLblPlazas());
-		lblPlazasDisponibles.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblPlazasDisponibles.setBounds(14, 0, 127, 31);
-		panelPlazasDisp.add(lblPlazasDisponibles);
-
-		lblNumPlazas.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNumPlazas.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNumPlazas.setBounds(137, 0, 84, 31);
-		panelPlazasDisp.add(lblNumPlazas);
-
 		JLabel lblImagenUsers = new JLabel("");
 		lblImagenUsers.setIcon(new ImageIcon(PanelSpa.class.getResource("/iconos/users.png")));
-		lblImagenUsers.setBounds(345, 223, 64, 60);
+		lblImagenUsers.setBounds(350, 242, 64, 60);
 		panelDerecho.add(lblImagenUsers);
 
 		JButton btnAdquirirDch = new JButton(t.getBtnAdquirir());
@@ -377,6 +356,10 @@ public class PanelSpa extends JPanel {
 				info.setMin(controlador.getServiciosSpa().getSpas().get(spa).getHoraIni());
 				info.setFactura(
 						new StringDouble(controlador.getServiciosSpa().getSpas().get(spa).getNombre(), costeSPA));
+				info.setMaxAforo(controlador.getServiciosSpa().getSpas().get(spa).getAforoMax());
+				info.setAforo(controlador.getServiciosSpa().getSpas().get(spa).getAsistentes());
+				info.setPersonas(comboBoxNumPersonas.getSelectedIndex()+1);
+				info.setSpa(spa);
 				panelBase = new PanelSpaEmergente(microControlador, PanelSpa.this.getName(), controlador, s, info);
 				panelEmergenteContenedor.add(panelBase, panelBase.getName());
 				changeToVentanaEmergente(panelBase);
@@ -443,7 +426,7 @@ public class PanelSpa extends JPanel {
 		/* SEPARADOR */
 		microControlador = new MicroControladorLayersPadreHijo(layeredPane, panelEmergenteContenedor);
 
-		info = new InformacionSpaTratamiento(0, 1, new StringDouble("", 0));
+		info = new InformacionSpaTratamiento(0, 1, new StringDouble("", 0), new int [] {0}, 0,0, 0);
 		panelBase = new PanelSpaEmergente(microControlador, this.getName(), controlador, s, info);
 		panelEmergenteContenedor.add(panelBase, panelBase.getName());
 		
@@ -464,7 +447,6 @@ public class PanelSpa extends JPanel {
 				comboBoxNumPersonas.setModel(new DefaultComboBoxModel<String>(
 						new String[] { "1 " + t.getStrPersona(), "2 " + t.getStrPersonas(), "3 "+ t.getStrPersonas(), "4 "+ t.getStrPersonas() }));
 				lblNumeroDePersonas.setText(t.getLblNumeroPersonas());
-				lblPlazasDisponibles.setText(t.getLblPlazas());
 				btnAdquirirDch.setText(t.getBtnAdquirir());
 				
 			}

@@ -5,17 +5,17 @@ public class Spa {
 	private String nombre;
 	private String[] duracion;
 	private int aforoMax;
-	private int asistentes;
+	private int [] asistentes;
 	private double[] precio;
 	private int horaIni;
 	private int horaFin;
 
-	public Spa(String nombre, String[] duracion, int aforoMax, int asistentes, double[] precio, int horaIni, int horaFin) {
+	public Spa(String nombre, String[] duracion, int aforoMax, double[] precio, int horaIni, int horaFin) {
 		super();
 		this.nombre = nombre;
 		this.duracion = duracion;
 		this.aforoMax = aforoMax;
-		this.asistentes = asistentes;
+		this.setAsistentes(new int [1 + horaFin-horaIni]);
 		this.precio = precio;
 		this.horaFin = horaFin;
 		this.horaIni = horaIni;
@@ -69,12 +69,21 @@ public class Spa {
 		this.aforoMax = aforoMax;
 	}
 
-	public int getAsistentes() {
+	public int [] getAsistentes() {
 		return asistentes;
 	}
 
-	public void setAsistentes(int asistentes) {
+	public void setAsistentes(int [] asistentes) {
 		this.asistentes = asistentes;
 	}
+	
+	public int plazasTotalesDisponibles () {
+		int plazas = 0;
+		for (int i = 0; i < asistentes.length; i++ ) {
+			plazas  += (aforoMax- asistentes[i]);
+		}
+		return plazas;
+	}
+
 
 }
