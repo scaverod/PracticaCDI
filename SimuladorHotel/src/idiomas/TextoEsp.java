@@ -64,7 +64,7 @@ public class TextoEsp extends Texto {
 		setLblViernes("Viernes");
 		setLblSabado("Sábado");
 		setLblDomingo("Domingo");
-		setTxtrParaEmpezarA("Para empezar a utilizar nuestro sistema de despertador a\u00F1ada una alarma pulsando en el bot\u00F3n inferior derecho");
+		setTxtrParaEmpezarA("Para empezar a utilizar nuestro sistema de despertador a\u00F1ada una alarma pulsando en el bot\u00F3n inferior derecho.");
 		
 		//Panel Habitacion Emergente Calefaccion
 		setLblTituloTemperatura("Control de temperatura");
@@ -85,7 +85,7 @@ public class TextoEsp extends Texto {
 		// Panel Habitacion Emergente Ayuda
 		setTxtTip1("Para interactuar con los elementos de la habitación pulse sobre aquellos que están resaltados de amarillo.");
 		setTxtTip2("Para  interactuar  con  todos  los  elementos  a   la  vez  (como  por  ejemplo, todas las luces) pulse sobre los botones inferiores de la izquierda.");
-		setTxtTip3("Para programar  un despertador,  seleccione el botón  del reloj  que se encuentra en la parte inferior izquierda.");
+		setTxtTip3("Para programar  un despertador,  seleccione el botón  del reloj  que se encuentra en la parte inferior derecha.");
 		
 		//Panel Habitacion Emergente Ventana
 		setLblControlVentana("Control de la ventana");
@@ -127,7 +127,7 @@ public class TextoEsp extends Texto {
 
 		// Panel Emergen Informacion
 		setBtnAdquirir("Adquirir");
-		setTxtInformacion("Nuestros hoteles cuentan con una atención totalmente personalizada. Con solo pulsar el botón, le llamaremos al teléfono de la habitación desde la recepción del hotel.\nDisponible las 24 horas al día");
+		setTxtInformacion("Nuestros hoteles cuentan con una atención totalmente personalizada. Con solo pulsar el botón, le llamaremos al teléfono de la habitación desde la recepción del hotel.\nDisponible las 24 horas al día.");
 		setLblCoste("Coste:");
 
 		// Panel Emergen Television
@@ -144,26 +144,26 @@ public class TextoEsp extends Texto {
 		setPanelServiciosEmergenteTaxiTxt("No pierdas tu tiempo llamando a un vehículo para tu traslado. Nosotros lo hacemos por ti.\n\nLista de empresas asociadas:");
 
 		// Panel Emergen Botones
-		setPanelServiciosEmergenteBotonesTxt("Nuestros hoteles cuentan con una atenci\u00F3n totalmente personalizada. Con solo pulsar el bot\u00F3n, un botones se acercar\u00E1 hasta su habitaci\u00F3n para ayudarle en lo que necesite.\r\nDisponible las 24 horas al d\u00EDa");
+		setPanelServiciosEmergenteBotonesTxt("Nuestros hoteles cuentan con una atenci\u00F3n totalmente personalizada. Con solo pulsar el bot\u00F3n, un botones se acercar\u00E1 hasta su habitaci\u00F3n para ayudarle en lo que necesite.\r\nDisponible las 24 horas al d\u00EDa.");
 		
 		// Panel Emergen Almohada
 		setPanelServiciosEmergentealmohadaLatex("Látex");
 		setPanelServiciosEmergentealmohadaVisco("Viscoelástica");
 		setPanelServiciosEmergentealmohadaGel("Gel");
 		setPanelServiciosEmergentealmohadaPluma("Pluma");
-		setPanelServiciosEmergentealmohadaTxt("Queremos que descanse todo lo posible durante su estancia. Seleccione el tipo de almohada que desee y en unos minutos un botones se la subirá a la habitación");
+		setPanelServiciosEmergentealmohadaTxt("Queremos que descanse todo lo posible durante su estancia. Seleccione el tipo de almohada que desee y en unos minutos un botones se la subirá a la habitación.");
 		
-		//Panel Emergente Comida
-		setPanelServiciosEmergenteComidaTxt("Nuestros hoteles cuentan con una atenci\u00F3n totalmente personalizada. Con solo pulsar el bot\u00F3n, un botones le llevará la comida desde nuestro exclusivo restaurante directamente a su habitación para que pueda disfrutar de nuestra comida gourmet con total comodidad. Servicio disponible de 7:00 a 00:00");
+		// Panel Emergente Comida
+		setPanelServiciosEmergenteComidaTxt("Nuestros hoteles cuentan con una atenci\u00F3n totalmente personalizada. Con solo pulsar el bot\u00F3n, un botones le llevará la comida desde nuestro exclusivo restaurante directamente a su habitación para que pueda disfrutar de nuestra comida gourmet con total comodidad. Servicio disponible de 7:00 a 00:00.");
 		
-		//Panel Emergente Toallas
-		setPanelServiciosEmergenteToallasTxt("Nuestros hoteles cuentan con una atenci\u00F3n totalmente personalizada. Con solo pulsar el bot\u00F3n, nuestro servicio de limpieza subirá a su habitación con un juego de toallas limpias. Servicio disponible las 24 horas del día");
+		// Panel Emergente Toallas
+		setPanelServiciosEmergenteToallasTxt("Nuestros hoteles cuentan con una atenci\u00F3n totalmente personalizada. Con solo pulsar el bot\u00F3n, nuestro servicio de limpieza subirá a su habitación con un juego de toallas limpias. Servicio disponible las 24 horas del día.");
 		
-		//Panel Emergente Minibar
-		setPanelServiciosEmergenteMinibarTxt("Nuestros hoteles cuentan con una atenci\u00F3n totalmente personalizada. Con solo pulsar el bot\u00F3n, un botones repondrá todos los artículos del minibar, para que siempre pueda disfrutar de las mejores bebidas y snacks que tenemos a su disposición");
+		// Panel Emergente Minibar
+		setPanelServiciosEmergenteMinibarTxt("Nuestros hoteles cuentan con una atenci\u00F3n totalmente personalizada. Con solo pulsar el bot\u00F3n, un botones repondrá todos los artículos del minibar, para que siempre pueda disfrutar de las mejores bebidas y snacks que tenemos a su disposición.");
 		
-		//Panel Emergente Sabanas
-		setPanelServiciosEmergenteSabanasTxt("Nuestros hoteles cuentan con una atenci\u00F3n totalmente personalizada. Con solo pulsar el bot\u00F3n, nuestro servicio de limpieza subirá a su habitación con un juego de sábanas limpias. Servicio disponible las 24 horas del día");
+		// Panel Emergente Sabanas
+		setPanelServiciosEmergenteSabanasTxt("Nuestros hoteles cuentan con una atenci\u00F3n totalmente personalizada. Con solo pulsar el bot\u00F3n, nuestro servicio de limpieza subirá a su habitación con un juego de sábanas limpias. Servicio disponible las 24 horas del día.");
 		
 		// Panel Emergente Limpieza
 		setPanelServiciosEmergenteLimpiezaTxt("Seleccione la hora más adecuada para que limpiemos la habitación.");
@@ -193,7 +193,7 @@ public class TextoEsp extends Texto {
 		// Panel Confirmacion
 		setLblConfirmacion("¿Desea confirmar la operación?");
 		
-		//Panel Emergente Detalles (provisional)
+		// Panel Emergente Detalles (provisional)
 		setStrNingunServicio("No ha adquirido ningún servicio");
 		setFacial("Masaje facial");
 		setThai("Masaje Thai");

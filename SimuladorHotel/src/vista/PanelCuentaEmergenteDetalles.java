@@ -92,7 +92,7 @@ public class PanelCuentaEmergenteDetalles extends JPanel {
 
 		JLabel lblListaDeGastos = new JLabel(t.getLblListaDeGastos());
 		lblListaDeGastos.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblListaDeGastos.setBounds(135, 16, 130, 25);
+		lblListaDeGastos.setBounds(120, 16, 160, 25);
 		add(lblListaDeGastos);
 	}
 }

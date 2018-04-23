@@ -239,7 +239,7 @@ public class PanelCuenta extends JPanel {
 		JLabel lblPersonalizar = new JLabel(t.getLblPersonalizar());
 		lblPersonalizar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPersonalizar.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblPersonalizar.setBounds(174, 11, 103, 19);
+		lblPersonalizar.setBounds(168, 11, 115, 19);
 		panelPersonalizar.add(lblPersonalizar);
 
 		JLabel lblModoNocturno = new JLabel(t.getLblModoNocturno());
@@ -414,6 +414,10 @@ public class PanelCuenta extends JPanel {
 				lblGastoTotal.setText(t.getLblGastoTotal());
 				btnMsDetalles.setText(t.getBtnMsDetalles());
 				lblGasto.setText(t.getLblGasto());
+				
+				lblGastoNumero.setText(String.format("%.2f", controlador.getCuenta().getGasto().getGastoTotal()) + " \u20AC");
+				panelDetalles = new PanelCuentaEmergenteDetalles(new MicroControladorLayersPadreHijo(layeredPane, panelEmergenteContenedor), controlador);
+				panelEmergenteContenedor.add(panelDetalles, panelDetalles.getName());
 			}
 		});
 
@@ -433,6 +437,10 @@ public class PanelCuenta extends JPanel {
 				lblGastoTotal.setText(t.getLblGastoTotal());
 				btnMsDetalles.setText(t.getBtnMsDetalles());
 				lblGasto.setText(t.getLblGasto());
+				
+				lblGastoNumero.setText(String.format("%.2f", controlador.getCuenta().getGasto().getGastoTotal()) + " \u20AC");
+				panelDetalles = new PanelCuentaEmergenteDetalles(new MicroControladorLayersPadreHijo(layeredPane, panelEmergenteContenedor), controlador);
+				panelEmergenteContenedor.add(panelDetalles, panelDetalles.getName());
 			}
 		});
 
@@ -452,6 +460,10 @@ public class PanelCuenta extends JPanel {
 				lblGastoTotal.setText(t.getLblGastoTotal());
 				btnMsDetalles.setText(t.getBtnMsDetalles());
 				lblGasto.setText(t.getLblGasto());
+				
+				lblGastoNumero.setText(String.format("%.2f", controlador.getCuenta().getGasto().getGastoTotal()) + " \u20AC");
+				panelDetalles = new PanelCuentaEmergenteDetalles(new MicroControladorLayersPadreHijo(layeredPane, panelEmergenteContenedor), controlador);
+				panelEmergenteContenedor.add(panelDetalles, panelDetalles.getName());
 			}
 		});
 
