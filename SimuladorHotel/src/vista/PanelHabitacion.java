@@ -59,10 +59,7 @@ public class PanelHabitacion extends JPanel {
 			new ImageIcon(PanelHabitacionEmergenteVentana2.class.getResource("/iconos/ventana0min.png")),
 			new ImageIcon(PanelHabitacionEmergenteVentana2.class.getResource("/iconos/ventana1min.png")) };
 
-//	private Texto t;
-
 	public PanelHabitacion(Controlador controlador) {
-//		t = controlador.getTexto();
 		this.setSize(new Dimension(931, 483));
 		this.setName("p" + this.getClass().getSimpleName().substring(1));
 		setLayout(null);
@@ -166,7 +163,6 @@ public class PanelHabitacion extends JPanel {
 		lblTemperatura.setBounds(31, 38, 80, 27);
 		panelPrincipal.add(lblTemperatura);
 
-		tglbtnLuz.setToolTipText("Encender o apagar todas las luces.");
 		tglbtnLuz.setSelectedIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/lucesON.png")));
 		tglbtnLuz.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/lucesOFF.png")));
 		tglbtnLuz.setOpaque(false);
@@ -176,7 +172,6 @@ public class PanelHabitacion extends JPanel {
 
 		JToggleButton tglbtnPuerta = new JToggleButton("");
 		tglbtnPuerta.setFocusPainted(false);
-		tglbtnPuerta.setToolTipText("Abrir o cerrar la puerta principal.");
 		tglbtnPuerta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// TODO:
@@ -327,7 +322,6 @@ public class PanelHabitacion extends JPanel {
 			}
 		});
 		btnAlarma.setFocusPainted(false);
-		btnAlarma.setToolTipText("Programar una alarma.");
 		btnAlarma.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/alarm.png")));
 		btnAlarma.setBounds(772, 403, 89, 69);
 		btnAlarma.setContentAreaFilled(false);
@@ -340,7 +334,7 @@ public class PanelHabitacion extends JPanel {
 				changeToVentanaEmergente(panelAyuda);
 			}
 		});
-		btnAyuda.setToolTipText("<consejos>");
+		
 		btnAyuda.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/tips.png")));
 		btnAyuda.setBounds(861, 411, 60, 61);
 		btnAyuda.setOpaque(false);
@@ -349,7 +343,6 @@ public class PanelHabitacion extends JPanel {
 
 		JButton btnTemperatura = new JButton("");
 		btnTemperatura.setFocusPainted(false);
-		btnTemperatura.setToolTipText("Ajustar la temperatura de la habitaci\u00F3n.");
 		btnTemperatura.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/thermometer.png")));
 		btnTemperatura.setBounds(10, 11, 80, 80);
 		btnTemperatura.setContentAreaFilled(false);
@@ -398,7 +391,6 @@ public class PanelHabitacion extends JPanel {
 		tglbtnPersiana
 				.setSelectedIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/persianaSubirAll.png")));
 		tglbtnPersiana.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/persianaBajarAll.png")));
-		tglbtnPersiana.setToolTipText("Encender o apagar todas las luces.");
 		tglbtnPersiana.setOpaque(false);
 		tglbtnPersiana.setFocusPainted(false);
 		tglbtnPersiana.setContentAreaFilled(false);
@@ -426,7 +418,6 @@ public class PanelHabitacion extends JPanel {
 		});
 		tglbtnVentana.setSelectedIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/ventanaCloseAll.png")));
 		tglbtnVentana.setIcon(new ImageIcon(PanelHabitacion.class.getResource("/iconos/ventanaOpenAll.png")));
-		tglbtnVentana.setToolTipText("Encender o apagar todas las luces.");
 		tglbtnVentana.setOpaque(false);
 		tglbtnVentana.setFocusPainted(false);
 		tglbtnVentana.setContentAreaFilled(false);
