@@ -22,6 +22,10 @@ import javax.swing.JLayeredPane;
 import javax.swing.border.EtchedBorder;
 import java.awt.event.HierarchyListener;
 import java.awt.event.HierarchyEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PanelServiciosEmergenteAlmohada extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -30,6 +34,10 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 	private JPanel panelConfirmacion;
 	private Semaphore s;
 	private Texto t;
+	private JButton btnComprarVisco;
+	private JButton btnComprarLatex;
+	private JButton btnComprarPluma;
+	private JButton btnComprarGel;
 
 	public PanelServiciosEmergenteAlmohada(MicroControladorLayersPadreHijo microControlador, String padre, Controlador controlador, Semaphore s) {
 		this.s = s;
@@ -44,6 +52,12 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 		panelContenedor.setLayout(null);
 
 		panelPrincipal = new JPanel();
+		panelPrincipal.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cerrarPanelConfirmacion();
+			}
+		});
 		panelPrincipal.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 109, 240), new Color(0, 109, 240),
 				new Color(0, 109, 240), new Color(0, 109, 240)));
 		panelPrincipal.setBounds(0, 0, 695, 315);
@@ -145,7 +159,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 		labelPrecioGel.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		panelPrecioGel.add(labelPrecioGel);
 
-		JButton btnComprarLatex = new JButton("");
+		btnComprarLatex = new JButton("");
 		btnComprarLatex.setFocusPainted(false);
 		btnComprarLatex.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -176,7 +190,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 			}
 		});
 
-		JButton btnComprarVisco = new JButton("");
+		btnComprarVisco = new JButton("");
 		btnComprarVisco.setFocusPainted(false);
 		btnComprarVisco.setContentAreaFilled(false);
 		btnComprarVisco.setOpaque(false);
@@ -217,7 +231,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 		btnComprarLatex.setBounds(533, 157, 75, 35);
 		panelPrincipal.add(btnComprarLatex);
 
-		JButton btnComprarPluma = new JButton("");
+		btnComprarPluma = new JButton("");
 		btnComprarPluma.setFocusPainted(false);
 		btnComprarPluma.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -253,7 +267,7 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 		btnComprarPluma.setBounds(533, 211, 75, 35);
 		panelPrincipal.add(btnComprarPluma);
 
-		JButton btnComprarGel = new JButton("");
+		btnComprarGel = new JButton("");
 		btnComprarGel.setFocusPainted(false);
 		btnComprarGel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -372,6 +386,24 @@ public class PanelServiciosEmergenteAlmohada extends JPanel {
 	public void crearPanelConfirmacion(String precio) {
 		panelConfirmacion = new PanelConfirmacion(new MicroControladorLayers(panelContenedor), this.getName(), s, precio, t);
 		panelConfirmacion.setBounds(147, 57, 400, 200);
+		
+		panelConfirmacion.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent evt) {
+				if (evt.getNewValue().equals(0)) {
+					btnComprarGel.setEnabled(true);
+					btnComprarLatex.setEnabled(true);
+					btnComprarPluma.setEnabled(true);
+					btnComprarVisco.setEnabled(true);
+				}
+				else if (evt.getNewValue().equals(2)) {
+					btnComprarGel.setEnabled(false);
+					btnComprarLatex.setEnabled(false);
+					btnComprarPluma.setEnabled(false);
+					btnComprarVisco.setEnabled(false);
+				}
+			}
+		});
+		
 		panelContenedor.setLayer(panelConfirmacion, 0);
 		panelContenedor.add(panelConfirmacion);
 	}

@@ -20,6 +20,8 @@ import javax.swing.JLayeredPane;
 import java.awt.event.ActionListener;
 import java.awt.event.HierarchyEvent;
 import java.awt.event.HierarchyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.concurrent.Semaphore;
 import java.awt.event.ActionEvent;
 
@@ -27,6 +29,8 @@ import javax.swing.ImageIcon;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.JTextPane;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
 
 public class PanelServiciosEmergenteTelevision extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -35,6 +39,10 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 	private JPanel panelConfirmacion;
 	private Semaphore s;
 	private Texto t;
+	private JButton btnMoviestar;
+	private JButton btnNetflix;
+	private JButton btnBBC;
+	private JButton btnBeinSport;
 
 	public PanelServiciosEmergenteTelevision(MicroControladorLayersPadreHijo microControlador, String padre, Controlador controlador, Semaphore s) {
 		this.s = s;
@@ -51,6 +59,12 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 		panelContenedor.setLayout(null);
 
 		panelPrincipal = new JPanel();
+		panelPrincipal.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cerrarPanelConfirmacion();
+			}
+		});
 		panelPrincipal.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 109, 240), new Color(0, 109, 240),
 				new Color(0, 109, 240), new Color(0, 109, 240)));
 		panelPrincipal.setBounds(0, 0, 695, 315);
@@ -58,7 +72,7 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 		panelContenedor.add(panelPrincipal);
 		panelPrincipal.setLayout(null);
 
-		crearPanelConfirmacion("<precio>");
+		crearPanelConfirmacion("<precio>", controlador);
 
 		JButton btnCerrar = new JButton(t.getBtnCerrar());
 		btnCerrar.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -80,7 +94,7 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 		lblGif.setBounds(287, 103, 120, 109);
 		panelPrincipal.add(lblGif);
 
-		JButton btnMoviestar = new JButton("");
+		btnMoviestar = new JButton("");
 		btnMoviestar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				new Thread() {
@@ -88,7 +102,7 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 						try {
 							mostrarPanelConfirmacion(
 									String.valueOf(controlador.getServicios().getTelevision().getPrecioMoviestarPlus())
-											+ " €");
+											+ " €", controlador);
 
 							s.acquire();
 
@@ -128,7 +142,7 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 		txtpnInfo.setBounds(10, 11, 590, 81);
 		panelPrincipal.add(txtpnInfo);
 
-		JButton btnNetflix = new JButton("");
+		btnNetflix = new JButton("");
 		btnNetflix.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new Thread() {
@@ -136,7 +150,7 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 						try {
 							mostrarPanelConfirmacion(
 									String.valueOf(controlador.getServicios().getTelevision().getPrecioNetflix())
-											+ " €");
+											+ " €", controlador);
 
 							s.acquire();
 
@@ -167,14 +181,14 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 		btnNetflix.setContentAreaFilled(false);
 		panelPrincipal.add(btnNetflix);
 
-		JButton btnBBC = new JButton("");
+		btnBBC = new JButton("");
 		btnBBC.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new Thread() {
 					public void run() {
 						try {
 							mostrarPanelConfirmacion(
-									String.valueOf(controlador.getServicios().getTelevision().getPrecioBBC()) + " €");
+									String.valueOf(controlador.getServicios().getTelevision().getPrecioBBC()) + " €", controlador);
 
 							s.acquire();
 
@@ -205,7 +219,7 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 		btnBBC.setContentAreaFilled(false);
 		panelPrincipal.add(btnBBC);
 
-		JButton btnBeinSport = new JButton("");
+		btnBeinSport = new JButton("");
 		btnBeinSport.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new Thread() {
@@ -213,7 +227,7 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 						try {
 							mostrarPanelConfirmacion(
 									String.valueOf(controlador.getServicios().getTelevision().getPrecioBeinSport())
-											+ " €");
+											+ " €", controlador);
 
 							s.acquire();
 
@@ -261,15 +275,40 @@ public class PanelServiciosEmergenteTelevision extends JPanel {
 		panelContenedor.setLayer(panelConfirmacion, 0);
 	}
 
-	public void crearPanelConfirmacion(String precio) {
+	public void crearPanelConfirmacion(String precio, Controlador controlador) {
 		panelConfirmacion = new PanelConfirmacion(new MicroControladorLayers(panelContenedor), this.getName(), s, precio, t);
 		panelConfirmacion.setBounds(147, 57, 400, 200);
+		
+		panelConfirmacion.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent evt) {
+				if (evt.getNewValue().equals(0)) {
+					if (!controlador.getServicios().getTelevision().isActivadoBBC())
+						btnBBC.setEnabled(true);
+					
+					if (!controlador.getServicios().getTelevision().isActivadoBeinSport())
+						btnBeinSport.setEnabled(true);
+					
+					if (!controlador.getServicios().getTelevision().isActivadoMoviestarPlus())
+						btnMoviestar.setEnabled(true);
+					
+					if (!controlador.getServicios().getTelevision().isActivadoNetflix())
+						btnNetflix.setEnabled(true);
+				}
+				else if (evt.getNewValue().equals(2)) {
+					btnBBC.setEnabled(false);
+					btnBeinSport.setEnabled(false);
+					btnMoviestar.setEnabled(false);
+					btnNetflix.setEnabled(false);
+				}
+			}
+		});
+		
 		panelContenedor.setLayer(panelConfirmacion, 0);
 		panelContenedor.add(panelConfirmacion);
 	}
 
-	public void mostrarPanelConfirmacion(String precio) {
-		crearPanelConfirmacion(precio);
+	public void mostrarPanelConfirmacion(String precio, Controlador controlador) {
+		crearPanelConfirmacion(precio, controlador);
 		panelContenedor.setLayer(panelConfirmacion, 2);
 	}
 }

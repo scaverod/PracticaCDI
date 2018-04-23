@@ -22,9 +22,13 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.HierarchyEvent;
 import java.awt.event.HierarchyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.concurrent.Semaphore;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
 
 public class PanelServiciosEmergenteTaxi extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -33,6 +37,9 @@ public class PanelServiciosEmergenteTaxi extends JPanel {
 	private JPanel panelConfirmacion;
 	private Semaphore s;
 	private Texto t;
+	private JButton btnCabify;
+	private JButton btnUber;
+	private JButton btnTaxi;
 
 	public PanelServiciosEmergenteTaxi(MicroControladorLayersPadreHijo microControlador, String padre, Controlador controlador, Semaphore s) {
 		this.s = s;
@@ -48,6 +55,12 @@ public class PanelServiciosEmergenteTaxi extends JPanel {
 		panelContenedor.setLayout(null);
 
 		panelPrincipal = new JPanel();
+		panelPrincipal.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cerrarPanelConfirmacion();
+			}
+		});
 		panelPrincipal.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 109, 240), new Color(0, 109, 240),
 				new Color(0, 109, 240), new Color(0, 109, 240)));
 		panelPrincipal.setBounds(0, 0, 695, 315);
@@ -85,7 +98,7 @@ public class PanelServiciosEmergenteTaxi extends JPanel {
 		lblGif.setBounds(287, 103, 120, 109);
 		panelPrincipal.add(lblGif);
 
-		JButton btnCabify = new JButton("");
+		btnCabify = new JButton("");
 		btnCabify.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new Thread() {
@@ -116,7 +129,7 @@ public class PanelServiciosEmergenteTaxi extends JPanel {
 		btnCabify.setBounds(296, 138, 100, 90);
 		panelPrincipal.add(btnCabify);
 
-		JButton btnUber = new JButton("");
+		btnUber = new JButton("");
 		btnUber.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new Thread() {
@@ -147,7 +160,7 @@ public class PanelServiciosEmergenteTaxi extends JPanel {
 		btnUber.setBounds(494, 138, 100, 90);
 		panelPrincipal.add(btnUber);
 
-		JButton btnTaxi = new JButton("");
+		btnTaxi = new JButton("");
 		btnTaxi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				new Thread() {
@@ -219,6 +232,22 @@ public class PanelServiciosEmergenteTaxi extends JPanel {
 	public void crearPanelConfirmacion(String precio) {
 		panelConfirmacion = new PanelConfirmacion(new MicroControladorLayers(panelContenedor), this.getName(), s, precio, t);
 		panelConfirmacion.setBounds(147, 57, 400, 200);
+		
+		panelConfirmacion.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent evt) {
+				if (evt.getNewValue().equals(0)) {
+					btnCabify.setEnabled(true);
+					btnTaxi.setEnabled(true);
+					btnUber.setEnabled(true);
+				}
+				else if (evt.getNewValue().equals(2)) {
+					btnCabify.setEnabled(false);
+					btnTaxi.setEnabled(false);
+					btnUber.setEnabled(false);
+				}
+			}
+		});
+		
 		panelContenedor.setLayer(panelConfirmacion, 0);
 		panelContenedor.add(panelConfirmacion);
 	}
