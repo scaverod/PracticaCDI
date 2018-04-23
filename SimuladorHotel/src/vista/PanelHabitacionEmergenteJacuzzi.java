@@ -219,7 +219,7 @@ public class PanelHabitacionEmergenteJacuzzi extends JPanel {
 		
 		JLabel lblLlenar = new JLabel(t.getLblLlenar()+ "(%):");
 		lblLlenar.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblLlenar.setBounds(16, 50, 70, 20);
+		lblLlenar.setBounds(16, 50, 83, 20);
 		panelAgua.add(lblLlenar);
 		
 		btnLlenar = new JButton(t.getLblLlenar());
@@ -299,7 +299,6 @@ public class PanelHabitacionEmergenteJacuzzi extends JPanel {
 				if (e.getChangeFlags() == HierarchyEvent.HIERARCHY_FIRST || e.getChangeFlags() == HierarchyEvent.SHOWING_CHANGED) {
 					t = controlador.getTexto();
 					
-					// TODO
 					btnCerrar.setText(t.getBtnCerrar());
 					lblControlJacuzzi.setText(t.getLblControlJacuzzi());
 					lblLlenar.setText(t.getLblLlenar()+ "(%):");
@@ -310,6 +309,13 @@ public class PanelHabitacionEmergenteJacuzzi extends JPanel {
 						tglBtnBurbujas.setText(t.getBtnDesactivar());
 					else
 						tglBtnBurbujas.setText(t.getBtnActivar());
+					
+					panelAgua.setBorder(new TitledBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 109, 240), new Color(0, 109, 240),
+							new Color(0, 109, 240), new Color(0, 109, 240)), t.getLblAgua(), TitledBorder.LEADING, TitledBorder.TOP, new Font("Tahoma", Font.PLAIN, 15), null));
+					panelTemperatura.setBorder(new TitledBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 109, 240), new Color(0, 109, 240),
+							new Color(0, 109, 240), new Color(0, 109, 240)), t.getLblTemperatura(), TitledBorder.LEADING, TitledBorder.TOP, new Font("Tahoma", Font.PLAIN, 15), null));
+					panelBurbujas.setBorder(new TitledBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 109, 240), new Color(0, 109, 240),
+							new Color(0, 109, 240), new Color(0, 109, 240)), t.getLblBurbujas() , TitledBorder.LEADING, TitledBorder.TOP, new Font("Tahoma", Font.PLAIN, 15), null));
 				}
 			}
 		});

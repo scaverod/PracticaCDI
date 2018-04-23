@@ -67,10 +67,13 @@ public class PanelHabitacionEmergenteAyuda extends JPanel {
 		JLabel lblTip2 = new JLabel("");
 		JLabel lblTip3 = new JLabel("");
 		JTextArea txtTip1 = new JTextArea();
+		txtTip1.setWrapStyleWord(true);
 		txtTip1.setOpaque(false);
 		JTextArea txtTip2 = new JTextArea();
+		txtTip2.setWrapStyleWord(true);
 		txtTip2.setOpaque(false);
 		JTextArea txtTip3 = new JTextArea();
+		txtTip3.setWrapStyleWord(true);
 		txtTip3.setOpaque(false);
 
 		btnCerrar.setFont(new Font("Tahoma", Font.PLAIN, 15));
