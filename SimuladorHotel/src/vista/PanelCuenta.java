@@ -68,6 +68,7 @@ public class PanelCuenta extends JPanel {
 		lblElegirIdioma.setFont(new Font("Tahoma", Font.BOLD, 15));
 
 		JToggleButton btnESP = new JToggleButton("");
+		btnESP.setFocusPainted(false);
 		btnESP.setBounds(31, 44, 108, 69);
 		btnESP.setSelected(true);
 		btnESP.setIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/espa\u00F1a.png")));
@@ -77,6 +78,7 @@ public class PanelCuenta extends JPanel {
 		btnESP.setContentAreaFilled(false);
 
 		JToggleButton btnUK = new JToggleButton("");
+		btnUK.setFocusPainted(false);
 
 		btnUK.setBounds(170, 44, 108, 69);
 		btnUK.setSelectedIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/ukSelected.png")));
@@ -86,6 +88,7 @@ public class PanelCuenta extends JPanel {
 		btnUK.setContentAreaFilled(false);
 
 		JToggleButton btnRU = new JToggleButton("");
+		btnRU.setFocusPainted(false);
 
 		btnRU.setBounds(309, 44, 108, 69);
 		btnRU.setSelectedIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/rumaniaSelected.png")));
@@ -107,6 +110,7 @@ public class PanelCuenta extends JPanel {
 		lblRumano.setHorizontalAlignment(SwingConstants.CENTER);
 
 		JButton btnLogout = new JButton("");
+		btnLogout.setFocusPainted(false);
 		btnLogout.setIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/logout.png")));
 		panelLogout.add(btnLogout);
 		btnLogout.setOpaque(true);
@@ -154,6 +158,7 @@ public class PanelCuenta extends JPanel {
 		panelGasto.add(lblGasto);
 
 		JButton btnMsDetalles = new JButton(t.getBtnMsDetalles());
+		btnMsDetalles.setFocusPainted(false);
 		btnMsDetalles.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				changeToVentanaEmergente(panelDetalles);

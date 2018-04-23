@@ -13,7 +13,6 @@ import javax.swing.JToggleButton;
 
 import controlador.Controlador;
 import controlador.MicroControladorLayersPadreHijo;
-import idiomas.Texto;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -60,10 +59,10 @@ public class PanelHabitacion extends JPanel {
 			new ImageIcon(PanelHabitacionEmergenteVentana2.class.getResource("/iconos/ventana0min.png")),
 			new ImageIcon(PanelHabitacionEmergenteVentana2.class.getResource("/iconos/ventana1min.png")) };
 
-	private Texto t;
+//	private Texto t;
 
 	public PanelHabitacion(Controlador controlador) {
-		t = controlador.getTexto();
+//		t = controlador.getTexto();
 		this.setSize(new Dimension(931, 483));
 		this.setName("p" + this.getClass().getSimpleName().substring(1));
 		setLayout(null);
@@ -160,7 +159,7 @@ public class PanelHabitacion extends JPanel {
 			}
 		});
 
-		JLabel lblTemperatura = new JLabel("23\u00BA");
+		JLabel lblTemperatura = new JLabel("21" + "º");
 		lblTemperatura.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTemperatura.setForeground(Color.WHITE);
 		lblTemperatura.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -440,6 +439,8 @@ public class PanelHabitacion extends JPanel {
 		panelEmergenteContenedor.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent evt) {
 				if (evt.getPropertyName() == "layeredContainerLayer") {
+					lblTemperatura.setText(String.valueOf(controlador.getHabitacion().getTemperatura().getTemperaturaActual()));
+					
 					// TODO: comprobar estado ventanas y persianas y cambiar en caso de ser
 					// necesario
 					int persianasIzq = controlador.getHabitacion().getPersianaIzq();

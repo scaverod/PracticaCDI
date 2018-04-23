@@ -17,7 +17,7 @@ public class TextoEsp extends Texto {
 		setLoginErrorMensaje("Ningún campo puede estar vacío");
 		setLoginErrorTitulo("Campo(s) vacíos");
 		setLoginInfoTitulo("¿Cómo entrar en la aplicación?");
-		setLoginInfoMensaje("Usuario: 101\n Contraseña: cdi");
+		setLoginInfoMensaje("Usuario: 101\nContraseña: cdi");
 
 		// Menu principal
 		setMenuPrincipalBtnHabitacion("Habitación");

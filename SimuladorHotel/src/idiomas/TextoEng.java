@@ -41,7 +41,7 @@ public class TextoEng extends Texto {
 		setBtnActivar("Enable");
 		setBtnDesactivar("Disable");
 		setLblProgramacionAutomatica("Automatic Programming");
-		setLblInicio("Inicio");
+		setLblInicio("Start");
 			//Panel Habitacion Emergente Jacuzzi
 		setLblControlJacuzzi("Jacuzzi Control Panel");
 		setLblBurbujas("Bubbles");
