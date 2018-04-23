@@ -12,6 +12,8 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.HierarchyEvent;
+import java.awt.event.HierarchyListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JSlider;
@@ -51,7 +53,7 @@ public class PanelHabitacionEmergenteJacuzzi extends JPanel {
 		
 		JLabel lblControlJacuzzi = new JLabel(t.getLblControlJacuzzi());
 		lblControlJacuzzi.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblControlJacuzzi.setBounds(10, 11, 141, 30);
+		lblControlJacuzzi.setBounds(10, 11, 590, 30);
 		add(lblControlJacuzzi);
 		
 		JLabel lblTemperatura = new JLabel("-");
@@ -140,7 +142,7 @@ public class PanelHabitacionEmergenteJacuzzi extends JPanel {
 				if (sliderAgua.getValue() == 0) {
 					tglBtnBurbujas.setSelected(false);
 					tglBtnBurbujas.setEnabled(false);
-					tglBtnBurbujas.setText("Activar");
+					tglBtnBurbujas.setText(t.getBtnActivar());
 					lblBurbujas.setIcon(null);
 					lblTemperatura.setVisible(false);
 				}
@@ -150,7 +152,7 @@ public class PanelHabitacionEmergenteJacuzzi extends JPanel {
 					if (controlador.getHabitacion().getJacuzzi().isEncendido()) {
 						tglBtnBurbujas.setSelected(true);
 						tglBtnBurbujas.setEnabled(true);
-						tglBtnBurbujas.setText("Desactivar");
+						tglBtnBurbujas.setText(t.getBtnDesactivar());
 						lblBurbujas.setIcon(new ImageIcon(PanelHabitacionEmergenteJacuzzi.class.getResource("/iconos/jacuzziBurbujas.png")));
 					}
 				}
@@ -250,13 +252,34 @@ public class PanelHabitacionEmergenteJacuzzi extends JPanel {
 				}.start();
 			}
 		});
-		btnLlenar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				new Thread() {
-					public void run() {
-						
-					}
-				}.start();
+//		btnLlenar.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				new Thread() {
+//					public void run() {
+//						// FIXME ???
+//						System.out.println("listener duplicado!?!?");
+//					}
+//				}.start();
+//			}
+//		});
+		
+		this.addHierarchyListener(new HierarchyListener() {
+			public void hierarchyChanged(HierarchyEvent e) {
+				if (e.getChangeFlags() == HierarchyEvent.HIERARCHY_FIRST || e.getChangeFlags() == HierarchyEvent.SHOWING_CHANGED) {
+					t = controlador.getTexto();
+					
+					// TODO
+					btnCerrar.setText(t.getBtnCerrar());
+					lblControlJacuzzi.setText(t.getLblControlJacuzzi());
+					lblLlenar.setText(t.getLblLlenar()+ "(%):");
+					btnLlenar.setText(t.getLblLlenar());
+					btnVaciar.setText(t.getLblVaciar());
+					
+					if (tglBtnBurbujas.isSelected())
+						tglBtnBurbujas.setText(t.getBtnDesactivar());
+					else
+						tglBtnBurbujas.setText(t.getBtnActivar());
+				}
 			}
 		});
 	}
