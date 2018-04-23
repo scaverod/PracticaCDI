@@ -108,8 +108,10 @@ public class PanelCuenta extends JPanel {
 		JLabel lblRumano = new JLabel("Română");
 		lblRumano.setBounds(309, 116, 108, 26);
 		lblRumano.setHorizontalAlignment(SwingConstants.CENTER);
+		panelLogout.setLayout(null);
 
 		JButton btnLogout = new JButton("");
+		btnLogout.setBounds(0, 0, 76, 47);
 		btnLogout.setFocusPainted(false);
 		btnLogout.setIcon(new ImageIcon(PanelCuenta.class.getResource("/iconos/logout.png")));
 		panelLogout.add(btnLogout);
@@ -209,6 +211,7 @@ public class PanelCuenta extends JPanel {
 		panelPersonalizar.add(lblModoNocturno);
 
 		JToggleButton tglbtnModoNocturno = new JToggleButton();
+		tglbtnModoNocturno.setFocusPainted(false);
 		tglbtnModoNocturno.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (controlador.getCuenta().getPersonalizacion().isModoNocturno()) {
@@ -241,6 +244,7 @@ public class PanelCuenta extends JPanel {
 		panelPersonalizar.add(lblAumentarTexto);
 
 		JToggleButton tglbtnInvertirColores = new JToggleButton("");
+		tglbtnInvertirColores.setFocusPainted(false);
 		tglbtnInvertirColores.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (controlador.getCuenta().getPersonalizacion().isInvertiColores()) {
@@ -258,6 +262,7 @@ public class PanelCuenta extends JPanel {
 		panelPersonalizar.add(tglbtnInvertirColores);
 
 		JToggleButton tglbtnSalidaTexto = new JToggleButton("");
+		tglbtnSalidaTexto.setFocusPainted(false);
 		tglbtnSalidaTexto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (controlador.getCuenta().getPersonalizacion().isTextoVoz()) {
@@ -275,6 +280,7 @@ public class PanelCuenta extends JPanel {
 		panelPersonalizar.add(tglbtnSalidaTexto);
 
 		JToggleButton tglbtnAumentarTexto = new JToggleButton("");
+		tglbtnAumentarTexto.setFocusPainted(false);
 		tglbtnAumentarTexto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (controlador.getCuenta().getPersonalizacion().isAumentoTexto()) {
