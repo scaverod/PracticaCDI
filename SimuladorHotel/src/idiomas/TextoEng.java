@@ -79,6 +79,8 @@ public class TextoEng extends Texto {
 		setLblNumeroPersonas("Number of tickets");
 		setStrPersonas("person");
 		setStrPersona("people");
+		// TODO: panel spa EMERGENTE 
+		setLblTxtSpaTitulo("Select the time and day");
 
 		// Panel Servicios
 		setPanelServiciosBtnMinibar("Replenish minibar");

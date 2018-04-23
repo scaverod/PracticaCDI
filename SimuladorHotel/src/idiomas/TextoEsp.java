@@ -74,6 +74,8 @@ public class TextoEsp extends Texto {
 		setLblNumeroPersonas("Número de tickets");
 		setStrPersonas("personas");
 		setStrPersona("persona");
+		// TODO: panel spa EMERGENTE
+		setLblTxtSpaTitulo("Seleccione la hora y el día");
 
 		// Panel Servicios
 		setPanelServiciosBtnMinibar("Reponer minibar");
