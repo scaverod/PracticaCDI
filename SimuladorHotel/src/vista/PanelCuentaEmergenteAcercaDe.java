@@ -45,6 +45,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.HierarchyEvent;
 import java.awt.event.HierarchyListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
+import javax.swing.JTextArea;
 
 public class PanelCuentaEmergenteAcercaDe extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -70,6 +72,15 @@ public class PanelCuentaEmergenteAcercaDe extends JPanel {
 		});
 		btnCerrar.setBounds(610, 11, 75, 50);
 		add(btnCerrar);
+		
+		JTextArea txtrCerrarSesinNo = new JTextArea();
+		txtrCerrarSesinNo.setWrapStyleWord(true);
+		txtrCerrarSesinNo.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		txtrCerrarSesinNo.setOpaque(false);
+		txtrCerrarSesinNo.setLineWrap(true);
+		txtrCerrarSesinNo.setText("Cerrar sesi\u00F3n no implementado. En su lugar dejamos el \"Acerca de\".\r\n\r\nCr\u00E9ditos a los autores de Flaticon, especialmente a Freepik, por proporcionar la mayor\u00EDa de iconos de nuestra aplicaci\u00F3n. A continuaci\u00F3n dejamos los cr\u00E9ditos tal y como nos lo indican:\r\nIcons made by Freepik from https://www.flaticon.com/\r\nwww.flaticon.com is licensed by Creative Commons BY 3.0 CC 3.0 BY");
+		txtrCerrarSesinNo.setBounds(10, 11, 589, 293);
+		add(txtrCerrarSesinNo);
 
 		this.addHierarchyListener(new HierarchyListener() {
 			public void hierarchyChanged(HierarchyEvent e) {

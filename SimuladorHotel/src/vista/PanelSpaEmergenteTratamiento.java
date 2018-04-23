@@ -66,7 +66,7 @@ import javax.swing.SwingConstants;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class PanelSpaEmergente extends JPanel {
+public class PanelSpaEmergenteTratamiento extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JLayeredPane panelContenedor;
 	private JPanel panelPrincipal;
@@ -88,7 +88,7 @@ public class PanelSpaEmergente extends JPanel {
 	private JButton btnConfirmar;
 	private JButton btnCancelar;
 
-	public PanelSpaEmergente(MicroControladorLayersPadreHijo microControlador, String padre, Controlador controlador,
+	public PanelSpaEmergenteTratamiento(MicroControladorLayersPadreHijo microControlador, String padre, Controlador controlador,
 			Semaphore s, InformacionSpaTratamiento info) {
 		this.s = s;
 		t = controlador.getTexto();

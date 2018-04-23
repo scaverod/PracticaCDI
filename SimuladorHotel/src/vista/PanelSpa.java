@@ -392,7 +392,7 @@ public class PanelSpa extends JPanel {
 				info.setAforo(controlador.getServiciosSpa().getSpas().get(spa).getAsistentes());
 				info.setPersonas(comboBoxNumPersonas.getSelectedIndex()+1);
 				info.setSpa(spa);
-				panelEmergenteSpa = new PanelSpaEmergente(microControlador, PanelSpa.this.getName(), controlador, s, info);
+				panelEmergenteSpa = new PanelSpaEmergenteSpa(microControlador, PanelSpa.this.getName(), controlador, s, info);
 				panelEmergenteContenedor.add(panelEmergenteSpa, panelEmergenteSpa.getName());
 				changeToVentanaEmergente(panelEmergenteSpa);
 			}
@@ -408,7 +408,7 @@ public class PanelSpa extends JPanel {
 				info.setFactura(new StringDouble(controlador.getServiciosSpa().getNombresTratamientos()[tratamiento],
 						controlador.getServiciosSpa().getTratamientos().get(tratamiento)
 								.getPrecio()[comboBoxDuracionTrat.getSelectedIndex()]));
-				panelEmergenteSpa = new PanelSpaEmergente(microControlador, PanelSpa.this.getName(), controlador, s, info);
+				panelEmergenteSpa = new PanelSpaEmergenteSpa(microControlador, PanelSpa.this.getName(), controlador, s, info);
 				panelEmergenteContenedor.add(panelEmergenteSpa, panelEmergenteSpa.getName());
 				changeToVentanaEmergente(panelEmergenteSpa);
 			}
@@ -459,10 +459,11 @@ public class PanelSpa extends JPanel {
 		microControlador = new MicroControladorLayersPadreHijo(layeredPane, panelEmergenteContenedor);
 
 		info = new InformacionSpaTratamiento(0, 1, new StringDouble("", 0), new int [] {0}, 0,0, 0);
-		panelEmergenteSpa = new PanelSpaEmergente(microControlador, this.getName(), controlador, s, info);
+		panelEmergenteSpa = new PanelSpaEmergenteSpa(microControlador, this.getName(), controlador, s, info);
 		panelEmergenteContenedor.add(panelEmergenteSpa, panelEmergenteSpa.getName());
 		
-		panelEmergenteTratamiento = new JPanel();
+		// FIXME: revisar info
+		panelEmergenteTratamiento = new PanelSpaEmergenteTratamiento(microControlador, this.getName(), controlador, s, info);
 		panelEmergenteContenedor.add(panelEmergenteTratamiento, panelEmergenteTratamiento.getName());
 		
 		layeredPane.addHierarchyListener(new HierarchyListener() {
